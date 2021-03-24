@@ -1,4 +1,4 @@
-/*package controller;
+package controller;
 
 
 import javafx.fxml.FXML;
@@ -62,8 +62,6 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        //permet de quitter le jeu
         button_play.setOnAction(event -> { button_playAction();});
 
         button_credit.setOnAction(event -> { button_creditAction(); });
@@ -71,4 +69,3 @@ public class HomeController implements Initializable {
         button_quit.setOnAction(event -> { button_quitAction(); });
     }
 }
-*/

@@ -1,24 +1,52 @@
 package controller;
 
-public class HomeController implements Initializable{
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.scene.control.Button;
+
+public class HomeController implements Initializable {
+    @FXML
+    private Button button_play;
+    @FXML
+    private Button button_credit;
+    @FXML
+    private Button button_quit;
 
     @FXML
     private void button_playAction(){
-        // ouverture du main
-        Stage main = (Stage) Main.mainPage;
-        main.show();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Parent home;
+
+        try{
+            home = loader.load(getClass().getResource("view/main.fxml"));
+            stage.setScene(new Scene(home));
+            stage.show();
+        }catch (Exception e){
+            System.err.println(e + " : main open err !");
+        }
+
 
         // on ferme la page home
-        Stage stage = (Stage) button_play.getScene().getWindow();
-        stage.close();
+        Stage currentStage = (Stage) button_play.getScene().getWindow();
+        currentStage.close();
     }
 
     @FXML
     private void button_creditAction(){
+        /*
         // ouverture du main
         Stage main = (Stage) Main.CreditPage;
         main.show();
-
+*/
         // on ferme la page home
         Stage stage = (Stage) button_credit.getScene().getWindow();
         stage.close();

@@ -14,8 +14,8 @@ public class ElectricityMeter extends Obj{
 
 	// ***** CONSTRUCTOR *****
 
-	public ElectricityMeter(String name, Place p) {
-		super(name);
+	public ElectricityMeter(String name, String info, Place p) {
+		super(name, info);
 		this.hasFuse = false;
 		this.place = p;
 	}

@@ -9,8 +9,8 @@ public class FiredStick extends Obj {
 
 	// ***** CONSTRUCTOR *****
 
-	public FiredStick(String name) {
-		super(name);
+	public FiredStick(String name, String info) {
+		super(name, info);
 	}
 
 

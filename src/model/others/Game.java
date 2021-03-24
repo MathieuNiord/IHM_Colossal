@@ -69,22 +69,22 @@ public class Game {
 
 
 		// OBJECTS CREATION
-		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME);
-		Potion potion = new Potion(Script.DEFAULT_POTION_NAME);
-		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME);
-		Stick stick = new Stick(Script.DEFAULT_STICK_NAME);
-		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME);
-		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME);
-		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
-		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
-		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME);
-		Key k1 = new Key(Script.DEFAULT_KEY1_NAME);
-		Key k2 = new Key(Script.DEFAULT_KEY2_NAME);
-		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME,coldRoom);
-		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME,this.hero);
-		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME);
-		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME);
-		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME);
+		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
+		Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
+		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
+		Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
+		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
+		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
+		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
+		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
+		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
+		Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
+		Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
+		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
+		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,this.hero);
+		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
+		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
 		// DOORS ADDING TO ROOMS

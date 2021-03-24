@@ -13,8 +13,8 @@ public class Locker extends Obj{
 	private ArrayList<Obj> objs;
 	private final Hero hero;
 	
-	public Locker(String name, Hero hero) {
-		super(name);
+	public Locker(String name, String info, Hero hero) {
+		super(name, info);
 		this.objs = null;
 		this.hero = hero;
 	}

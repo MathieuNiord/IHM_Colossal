@@ -8,17 +8,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import model.characters.Animal;
 import model.objects.Banana;
 import model.objects.NaziPoster;
 import model.others.Script;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainController implements Initializable {
     @FXML
@@ -152,11 +151,16 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //Inventaire
+        int row = 0;
+        AtomicInteger column = new AtomicInteger();
+
         imageViewPairHashMap = new HashMap<>();
         imageViewPairHashMap.put(caveman,new Pair<>(4,4));
         imageViewPairHashMap.put(cat,new Pair<>(2,2));
-        piece.setObj(new Banana("Banana"));
-        drapeau.setObj(new NaziPoster("naziPoster"));
+        piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT));
+        drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER));
         //permet de quitter le jeu
         button_quit.setOnAction(event -> { button_quitAction();});
 
@@ -168,11 +172,11 @@ public class MainController implements Initializable {
                 if(im.obj != null){
                     if(im.equals(piece)){
                         grid_game.getChildren().remove(piece);
-                        gridPane_inventory.add(im,1,1);
+                        gridPane_inventory.add(im,0,0);
                     }
                     if(im.equals(drapeau)){
                         grid_game.getChildren().remove(drapeau);
-                        gridPane_inventory.add(im,2,1);
+                        gridPane_inventory.add(im,1,0);
                     }
                     im.obj.take(caveman.hero);
 
@@ -187,6 +191,23 @@ public class MainController implements Initializable {
 
         });
 
+        gridPane_inventory.setOnMousePressed(event -> {
+            try{
+                MyImageView im = (MyImageView)event.getTarget();
+                if(im.obj != null){
+                    label_object_name.setText(((MyImageView) event.getTarget()).obj.NAME);
+                    label_object_info.setText(((MyImageView) event.getTarget()).obj.INFO);
+                }
+                else{
+                    label_object_name.setText("");
+                    label_object_info.setText("");
+                }//Ne fonctionne pas
+            } catch (Exception ignored){}
+
+
+        });
+
 
     }
+
 }

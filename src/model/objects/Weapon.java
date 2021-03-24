@@ -8,8 +8,8 @@ public class Weapon extends Obj{
 
 	// ***** CONSTRUCTOR *****
 
-	public Weapon(String name) {
-		super(name);
+	public Weapon(String name, String info) {
+		super(name, info);
 	}
 
 

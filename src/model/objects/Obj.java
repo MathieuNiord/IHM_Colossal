@@ -9,12 +9,14 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	// ***** ATTRIBUTES *****
 
 	public final String NAME;
+	public final String INFO;
 
 
 	// ***** CONSTRUCTOR *****
 
-	public Obj(String name) {
+	public Obj(String name, String info) {
 		this.NAME = name;
+		this.INFO = info;
 	}
 
 

@@ -47,10 +47,10 @@ public class Script {
                     "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n" +
                     doSpaces(DEFAULT_NARRATOR) + "36 years later you are the head of the stock exchange, rising star of cinema and president\n" +
                     doSpaces(DEFAULT_NARRATOR) + "of the United States of America. Women run after you and men envy you, you are voted the\n" +
-                    doSpaces(DEFAULT_NARRATOR) + "sexiest man in the world and your three children, Gaëtan, Benjamin and Mathieu, have obtained\n" +
-                    doSpaces(DEFAULT_NARRATOR) + "a superb rating for their Java project.\n\n" + "\t(Thanks for them...)\n\n";
+                    doSpaces(DEFAULT_NARRATOR) + "sexiest man in the world and your four children, Gaëtan, Benjamin, Mathieu and Thibault, have obtained\n" +
+                    doSpaces(DEFAULT_NARRATOR) + "a superb rating for their project.\n\n" + "\t(Thanks for them...)\n\n";
 
-    public static final String YOU_LOOSE = "I thought this game was easy, you suck on a keyboard...You remind me of Psychology students ...\n";
+    public static final String YOU_LOOSE = "I thought this game was easy, you suck on a computer...You remind me of Psychology students...\n";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
             "\t\t======================== CREDITS ========================\n" +

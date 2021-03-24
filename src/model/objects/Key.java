@@ -7,8 +7,8 @@ public class Key extends Obj{
 
     // ***** CONSTRUCTOR *****
 
-    public Key(String name) {
-        super(name);
+    public Key(String name, String info) {
+        super(name, info);
     }
 
     // ***** METHODS *****

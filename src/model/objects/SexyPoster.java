@@ -9,8 +9,8 @@ public class SexyPoster extends Poster{
 	
 	// ***** CONSTRUCTOR *****
 	
-	public SexyPoster(String name) {
-		super(name);
+	public SexyPoster(String name, String info) {
+		super(name, info);
 	}
 	
 	// ***** METHODS *****

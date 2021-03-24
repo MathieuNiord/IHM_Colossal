@@ -8,8 +8,8 @@ public class Bescherelle extends Obj{
 
 	// ***** CONSTRUCTOR *****
 
-	public Bescherelle(String name) {
-		super(name);
+	public Bescherelle(String name, String info) {
+		super(name, info);
 	}
 
 

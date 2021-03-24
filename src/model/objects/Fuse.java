@@ -8,8 +8,8 @@ public class Fuse extends Obj {
 	
 	// ***** CONSTRUCTOR *****
 
-	public Fuse(String name) {
-		super(name);
+	public Fuse(String name, String info) {
+		super(name, info);
 	}
 
 

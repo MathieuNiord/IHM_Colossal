@@ -7,8 +7,8 @@ public abstract class Poster extends Obj {
 	
 	// ***** CONSTRUCTORS *****
 	
-	public Poster(String name) {
-		super(name);
+	public Poster(String name, String info) {
+		super(name, info);
 	}
 	
 	// ***** METHODS *****

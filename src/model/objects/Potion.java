@@ -8,8 +8,8 @@ public class Potion extends Obj {
 	
 	// ***** CONSTRUCTOR *****
 
-	public Potion(String name) {
-		super(name);
+	public Potion(String name, String info) {
+		super(name, info);
 	}
 
 	

@@ -8,8 +8,8 @@ public class Banana extends Obj {
 	
 	// ***** CONSTRUCTOR *****
 	
-	public Banana(String name) {
-		super(name);
+	public Banana(String name, String info) {
+		super(name, info);
 	}
 
 
@@ -22,6 +22,8 @@ public class Banana extends Obj {
 	public void look() {
 		Game.printLetterByLetter(Script.BANANA_DESCRIPT, Script.DEFAULT_NARRATOR);
 	}
+
+	public String getInfo() {return Script.BANANA_DESCRIPT;}
 
 	@Override
 	public void use(Hero h) {

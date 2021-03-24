@@ -5,8 +5,8 @@ import model.others.Game;
 import model.others.Script;
 
 public class Walkman extends Obj{
-	public Walkman(String name) {
-		super(name);
+	public Walkman(String name, String info) {
+		super(name, info);
 	}
 	
 	@Override

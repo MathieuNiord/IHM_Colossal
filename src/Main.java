@@ -1,3 +1,4 @@
+import controller.HomeController;
 import controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +10,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
+        // le jeu
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("view/main.fxml"));
+        loader.setLocation(this.getClass().getResource("view/home.fxml"));
         Parent root = loader.load();
 
-        MainController c = loader.getController();
+        HomeController c = loader.getController();
         /*
         Font myFont24 = Font.loadFont(getClass().getResourceAsStream("rainyhearts.ttf"), 24);
         Font myFont48 = Font.loadFont(getClass().getResourceAsStream("rainyhearts.ttf"), 48);

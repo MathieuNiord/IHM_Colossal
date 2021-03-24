@@ -13,6 +13,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.characters.Animal;
+import model.objects.Banana;
+import model.objects.NaziPoster;
 import model.others.Script;
 
 import java.net.URL;
@@ -48,12 +50,16 @@ public class MainController implements Initializable {
     @FXML
     private GridPane grid_game;
     @FXML
-    private ImageView caveman;
+    private MyHeroImageView caveman;
     @FXML
-    private ImageView cat;
+    private MyImageView cat;
+    @FXML
+    private MyImageView piece;
+    @FXML
+    private MyImageView drapeau;
 
     private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
-    private Animal cat1 = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT,2,2);
+
 
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
         int newK = p.getKey();
@@ -70,12 +76,10 @@ public class MainController implements Initializable {
     private void cavemanInteract(){
         //TODO (Interaction avec un voisin de la position du caveman)
         Pair<Integer, Integer> p = imageViewPairHashMap.get(caveman);
+
         int k = p.getKey();
         int v = p.getValue();
-        System.out.println(k-1 +" "+v  + cat1.x + " " + cat1.y);
-        if(((k-1) == cat1.x) && (v == cat1.y)){
-            label_script.setText("yo");
-        }
+
     }
 
     @FXML
@@ -83,7 +87,7 @@ public class MainController implements Initializable {
                 //TODO (Interaction avec un objet voisin à la position du caveman)
     }
     @FXML
-    private void cavemanMove(){
+    private void cavemanEvent(){
         pane_main.setOnKeyPressed(event -> {
 
             Pair<Integer,Integer> oldPair = imageViewPairHashMap.get(caveman);
@@ -111,7 +115,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void button_quitAction(){
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Quit");
         alert.setContentText("Are you sure you want to leave ? ");
         ButtonType buttonMenu = new ButtonType("Menu");
@@ -141,7 +145,7 @@ public class MainController implements Initializable {
     @FXML
     private void setGridPane_mapBackground() {
         BackgroundImage backgroundImage= new BackgroundImage(
-                new Image("/ressource/pictures/floor.png"),
+                new Image("ressource/pictures/floor.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         grid_game.setBackground(new Background(backgroundImage));
     }
@@ -151,12 +155,37 @@ public class MainController implements Initializable {
         imageViewPairHashMap = new HashMap<>();
         imageViewPairHashMap.put(caveman,new Pair<>(4,4));
         imageViewPairHashMap.put(cat,new Pair<>(2,2));
-
+        piece.setObj(new Banana("Banana"));
+        drapeau.setObj(new NaziPoster("naziPoster"));
         //permet de quitter le jeu
         button_quit.setOnAction(event -> { button_quitAction();});
 
         setGridPane_mapBackground();
-        cavemanMove();
+        cavemanEvent();
+        grid_game.setOnMousePressed(event -> {
+            try{
+                MyImageView im = (MyImageView)event.getTarget();
+                if(im.obj != null){
+                    if(im.equals(piece)){
+                        grid_game.getChildren().remove(piece);
+                        gridPane_inventory.add(im,1,1);
+                    }
+                    if(im.equals(drapeau)){
+                        grid_game.getChildren().remove(drapeau);
+                        gridPane_inventory.add(im,2,1);
+                    }
+                    im.obj.take(caveman.hero);
+
+                }
+                im.animal.talk(caveman.hero);
+                im.monkey.talk(caveman.hero);
+
+
+
+            } catch (Exception ignored){}
+
+
+        });
 
 
     }

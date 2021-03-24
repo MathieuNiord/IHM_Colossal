@@ -21,7 +21,6 @@ public class Hero {
 	public final static int DEFAULT_HEAL = 20;
 
 	// ***** ATTRIBUTES *****
-
 	public final String PLAYERNAME;
 	private int hp;
 	private int keyLevel;

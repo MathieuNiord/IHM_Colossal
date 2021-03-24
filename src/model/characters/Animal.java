@@ -6,6 +6,8 @@ import model.interfaces.*;
 public class Animal implements Lookable {
 
 	// ***** ATTRIBUTES *****
+	public final int x;
+	public final int y;
 	public final String NAME;
 	
 	//This attribute is used for dialog
@@ -17,7 +19,9 @@ public class Animal implements Lookable {
 
 	// ***** CONSTRUCTOR *****
 	
-	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc){
+	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc,int x, int y){
+		this.x = x;
+		this.y = y;
 		this.NAME = name;
 		this.beschLevel=bLevel;
 		this.beschDialog = beschDialog;

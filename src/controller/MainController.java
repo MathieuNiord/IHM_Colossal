@@ -9,13 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import model.characters.Animal;
+import model.others.Script;
 
 import java.net.URL;
 import java.util.*;
@@ -55,7 +53,7 @@ public class MainController implements Initializable {
     private ImageView cat;
 
     private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
-
+    private Animal cat1 = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT,2,2);
 
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
         int newK = p.getKey();
@@ -68,19 +66,36 @@ public class MainController implements Initializable {
         }
         return new Pair<>(newK,newV);
     }
+    @FXML
+    private void cavemanInteract(){
+        //TODO (Interaction avec un voisin de la position du caveman)
+        Pair<Integer, Integer> p = imageViewPairHashMap.get(caveman);
+        int k = p.getKey();
+        int v = p.getValue();
+        System.out.println(k-1 +" "+v  + cat1.x + " " + cat1.y);
+        if(((k-1) == cat1.x) && (v == cat1.y)){
+            label_script.setText("yo");
+        }
+    }
 
+    @FXML
+    private void cavemanTake(){
+                //TODO (Interaction avec un objet voisin à la position du caveman)
+    }
     @FXML
     private void cavemanMove(){
         pane_main.setOnKeyPressed(event -> {
 
             Pair<Integer,Integer> oldPair = imageViewPairHashMap.get(caveman);
-            Pair<Integer,Integer> newPair;
+            Pair<Integer,Integer> newPair=oldPair;
             switch (event.getCode()){
                 case Z:newPair = computeNewPair(oldPair,0,-1) ; break;
                 case Q:newPair = computeNewPair(oldPair,-1,0); break;
                 case S:newPair = computeNewPair(oldPair,0,1); break;
                 case D:newPair = computeNewPair(oldPair,1,0); break;
-                default: newPair = oldPair;break;
+                case I:cavemanInteract(); break;
+                case T:cavemanTake(); break;
+                default:break;
             }
             if(!newPair.equals(imageViewPairHashMap.get(cat)))
             {
@@ -90,6 +105,9 @@ public class MainController implements Initializable {
             }
         });
     }
+
+
+
 
     @FXML
     private void button_quitAction(){
@@ -125,7 +143,6 @@ public class MainController implements Initializable {
         BackgroundImage backgroundImage= new BackgroundImage(
                 new Image("/ressource/pictures/floor.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-//then you set to your node
         grid_game.setBackground(new Background(backgroundImage));
     }
 
@@ -137,6 +154,7 @@ public class MainController implements Initializable {
 
         //permet de quitter le jeu
         button_quit.setOnAction(event -> { button_quitAction();});
+
         setGridPane_mapBackground();
         cavemanMove();
 

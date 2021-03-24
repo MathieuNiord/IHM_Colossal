@@ -63,9 +63,9 @@ public class Game {
 
 
 		// ANIMALS CREATION
-		Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
-		Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-		Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+		//Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+		//Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+		//Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
 
 		// OBJECTS CREATION
@@ -122,9 +122,9 @@ public class Game {
 
 
 		// ANIMALS ADDING TO ROOMS
-		animalRoom.addAnimal(cat);
-		experimentsRoom.addAnimal(monkey);
-		experimentsRoom.addAnimal(mouse);
+		//animalRoom.addAnimal(cat);
+		//experimentsRoom.addAnimal(monkey);
+		//experimentsRoom.addAnimal(mouse);
 
 
 		// OBJECTS ADDING TO ROOMS

@@ -42,14 +42,21 @@ public class HomeController implements Initializable {
 
     @FXML
     private void button_creditAction(){
-        /*
-        // ouverture du main
-        Stage main = (Stage) Main.CreditPage;
-        main.show();
-*/
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        Parent home;
+
+        try{
+            home = loader.load(getClass().getResource("view/main.fxml"));
+            stage.setScene(new Scene(home));
+            stage.show();
+        }catch (Exception e){
+            System.err.println(e + " : credit open err !");
+        }
+
         // on ferme la page home
-        Stage stage = (Stage) button_credit.getScene().getWindow();
-        stage.close();
+        Stage currentStage = (Stage) button_play.getScene().getWindow();
+        currentStage.close();
     }
 
     @FXML

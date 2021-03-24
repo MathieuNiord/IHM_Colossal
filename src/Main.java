@@ -9,7 +9,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        // le menu
+        // l'accueil
         MyStage myStage = new MyStage("../view/home.fxml");
         myStage.show();
 

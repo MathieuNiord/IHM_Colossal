@@ -3,6 +3,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import stage.MyStage;
 
 public class HomeController implements Initializable {
+    public ImageView homeBG;
     @FXML
     private Button button_play;
     @FXML

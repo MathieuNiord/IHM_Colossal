@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 
 import javafx.fxml.FXML;
@@ -71,3 +71,4 @@ public class HomeController implements Initializable {
         button_quit.setOnAction(event -> { button_quitAction(); });
     }
 }
+*/

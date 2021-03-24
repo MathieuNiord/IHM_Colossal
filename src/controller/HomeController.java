@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,49 +14,42 @@ import javafx.scene.control.Button;
 
 public class HomeController implements Initializable {
     @FXML
-    private ImageView homeBG;
+    public Button button_play;
     @FXML
-    private Button button_play;
+    public Button button_credit;
     @FXML
-    private Button button_credit;
-    @FXML
-    private Button button_quit;
+    public Button button_quit;
 
     @FXML
     private void button_playAction(){
-        Stage stage = new Stage();
-        Parent home;
 
-        try{
-            home = FXMLLoader.load(getClass().getResource("view/main.fxml"));
-            stage.setScene(new Scene(home));
-            stage.show();
-        }catch (Exception e){
-            System.err.println(e + " : main open err !");
-        }
-
-
-        // on ferme la page home
         Stage currentStage = (Stage) button_play.getScene().getWindow();
         currentStage.close();
+
+        try{
+            FXMLLoader mainLoader = new FXMLLoader();
+            mainLoader.setLocation(this.getClass().getResource("../view/main.fxml"));
+            Parent mainRoot = mainLoader.load();
+            Stage s = new Stage();
+            s.setScene(new Scene(mainRoot));
+            s.show();
+        }catch (Exception ignored){}
     }
 
     @FXML
     private void button_creditAction(){
-        Stage stage = new Stage();
-        Parent home;
+
+        Stage currentStage = (Stage) button_credit.getScene().getWindow();
+        currentStage.close();
 
         try{
-            home = FXMLLoader.load(getClass().getResource("view/main.fxml"));
-            stage.setScene(new Scene(home));
-            stage.show();
-        }catch (Exception e){
-            System.err.println(e + " : credit open err !");
-        }
-
-        // on ferme la page home
-        Stage currentStage = (Stage) button_play.getScene().getWindow();
-        currentStage.close();
+            FXMLLoader mainLoader = new FXMLLoader();
+            mainLoader.setLocation(this.getClass().getResource("../view/credit.fxml"));
+            Parent creditRoot = mainLoader.load();
+            Stage s = new Stage();
+            s.setScene(new Scene(creditRoot));
+            s.show();
+        }catch (Exception ignored){}
     }
 
     @FXML

@@ -1,23 +1,24 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainController implements Initializable {
     @FXML
@@ -55,8 +56,6 @@ public class MainController implements Initializable {
 
     private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
 
-    public MainController() {
-    }
 
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
         int newK = p.getKey();
@@ -94,8 +93,31 @@ public class MainController implements Initializable {
 
     @FXML
     private void button_quitAction(){
-        Stage stage = (Stage) button_quit.getScene().getWindow();
-        stage.close();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Quit");
+        alert.setContentText("Are you sure you want to leave ? ");
+        ButtonType buttonMenu = new ButtonType("Menu");
+        ButtonType buttonQuit = new ButtonType("Quit");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonMenu, buttonQuit, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonMenu){
+            try{
+                Stage stage = (Stage) button_quit.getScene().getWindow();
+                stage.close();
+                FXMLLoader mainLoader = new FXMLLoader();
+                mainLoader.setLocation(this.getClass().getResource("../view/home.fxml"));
+                Parent homeRoot = mainLoader.load();
+                Stage s = new Stage();
+                s.setScene(new Scene(homeRoot));
+                s.show();
+            }catch (Exception ignored){}
+        } else if (result.get() == buttonQuit) {
+            Stage stage = (Stage) button_quit.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @FXML

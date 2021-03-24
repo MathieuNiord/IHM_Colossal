@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:controller="controller.Controller" fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity"
+<Pane fx:controller="controller.MainController" fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml/1">
     <GridPane fx:id="grid_game" alignment="CENTER" layoutX="64.0" layoutY="64.0" maxHeight="576.0" maxWidth="576.0"
@@ -124,7 +124,7 @@
         </Tab>
     </TabPane>
     <Button fx:id="button_quit" layoutX="1152.0" layoutY="665.0" mnemonicParsing="false" prefHeight="42.0"
-            prefWidth="99.0" text="QUIT"/>
+            prefWidth="99.0" text="QUIT" />
     <Button fx:id="button_skip" layoutX="1038.0" layoutY="665.0" mnemonicParsing="false" prefHeight="42.0"
             prefWidth="99.0" text="SKIP"/>
 </Pane>

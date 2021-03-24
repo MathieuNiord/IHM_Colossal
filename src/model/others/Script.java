@@ -53,7 +53,7 @@ public class Script {
     public static final String YOU_LOOSE = "I thought this game was easy, you suck on a keyboard...You remind me of Psychology students ...\n";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
-            "\n\n\n\t\t======================== CREDITS ========================\n" +
+            "\t\t======================== CREDITS ========================\n" +
             "\t\t=========================================================\n" +
             "\t\t===  SCENARIO :                                       ===\n" +
             "\t\t===                                 BENJAMIN CHEVAIS  ===\n" +

@@ -23,11 +23,10 @@ public class HomeController implements Initializable {
     @FXML
     private void button_playAction(){
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
         Parent home;
 
         try{
-            home = loader.load(getClass().getResource("view/main.fxml"));
+            home = FXMLLoader.load(getClass().getResource("view/main.fxml"));
             stage.setScene(new Scene(home));
             stage.show();
         }catch (Exception e){
@@ -43,11 +42,10 @@ public class HomeController implements Initializable {
     @FXML
     private void button_creditAction(){
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
         Parent home;
 
         try{
-            home = loader.load(getClass().getResource("view/main.fxml"));
+            home = FXMLLoader.load(getClass().getResource("view/main.fxml"));
             stage.setScene(new Scene(home));
             stage.show();
         }catch (Exception e){

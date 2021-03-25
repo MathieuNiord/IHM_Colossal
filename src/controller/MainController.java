@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import model.GameRessources;
 import model.doors.Door;
 import model.objects.Banana;
 import model.objects.NaziPoster;
@@ -191,16 +192,13 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        final Game game = new Game("heroName");
-        game.
+        GameRessources game = new GameRessources();
 
         imageViewPairHashMap = new HashMap<>();
         imageViewPairHashMap.put(caveman,new Pair<>(4,4));
         imageViewPairHashMap.put(cat,new Pair<>(2,2));
-        piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT,2,2));
-        drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER,3,5));
-        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true),2,2));
+
+        gridGame.add(game.zombieNaziIm,game.zombieNaziIm.x,game.zombieNaziIm.y);
 
         labelTitle.textProperty().bind(caveman.hero.getPlace().getNameProperty());
 

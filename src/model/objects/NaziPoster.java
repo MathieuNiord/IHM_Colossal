@@ -5,13 +5,14 @@ import model.others.Game;
 import model.others.Script;
 
 public class NaziPoster extends Poster{
-	
-	
+
+
+
 	// ***** CONSTRUCTOR *****
-	
-	public NaziPoster(String name, String info) {
-		super(name, info);
+	public NaziPoster(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
+
 	
 	// ***** METHODS *****
 	

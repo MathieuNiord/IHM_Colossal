@@ -5,12 +5,13 @@ import model.others.*;
 
 public class Potion extends Obj {
 
-	
-	// ***** CONSTRUCTOR *****
 
-	public Potion(String name, String info) {
-		super(name, info);
+
+	// ***** CONSTRUCTOR *****
+	public Potion(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
+
 
 	
 	// ***** METHODS *****

@@ -5,12 +5,13 @@ import model.others.*;
 
 public class Fuse extends Obj {
 
-	
-	// ***** CONSTRUCTOR *****
 
-	public Fuse(String name, String info) {
-		super(name, info);
+
+	// ***** CONSTRUCTOR *****
+	public Fuse(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
+
 
 
 	// ***** METHODS *****

@@ -1,4 +1,4 @@
-package controller;
+package imageView;
 
 import javafx.scene.image.ImageView;
 import model.characters.Hero;

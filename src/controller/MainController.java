@@ -1,19 +1,21 @@
 package controller;
 
+import imageView.MyHeroImageView;
+import imageView.MyImageView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import model.doors.Door;
 import model.objects.Banana;
 import model.objects.NaziPoster;
+import model.others.Place;
 import model.others.Script;
+import stage.MyStage;
 
 import java.net.URL;
 import java.util.*;
@@ -24,39 +26,39 @@ public class MainController implements Initializable {
 
     // Labels
     @FXML
-    private Label label_title;
+    private Label labelTitle;
     @FXML
-    private Label label_script;
+    private Label labelScript;
     @FXML
-    private Label label_object_name;
+    private Label labelObjectName;
     @FXML
-    private Label label_object_info;
+    private Label labelObjectInfo;
 
     // Buttons
     @FXML
-    private Button button_use;
+    private Button buttonUse;
     @FXML
-    private Button button_match;
+    private Button buttonMatch;
     @FXML
-    private Button button_look;
+    private Button buttonLook;
     @FXML
-    private Button button_quit;
+    private Button buttonQuit;
     @FXML
-    private Button button_skip;
+    private Button buttonSkip;
     @FXML
-    private Button button_help;
+    private Button buttonHelp;
 
     // Panes
     @FXML
     private TabPane tabPane;
     @FXML
-    private GridPane gridPane_inventory;
+    private GridPane gridPaneInventory;
     @FXML
-    private GridPane gridPane_map;
+    private GridPane gridPaneMap;
     @FXML
-    private Pane pane_main;
+    private Pane paneMain;
     @FXML
-    private GridPane grid_game;
+    private GridPane gridGame;
 
     // ImageViews
     @FXML
@@ -67,6 +69,9 @@ public class MainController implements Initializable {
     private MyImageView piece;
     @FXML
     private MyImageView drapeau;
+    @FXML
+    private MyImageView porte;
+
 
     // HashMap ImageView->Position
     private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
@@ -86,6 +91,23 @@ public class MainController implements Initializable {
         return new Pair<>(newK,newV);
     }
 
+
+    @FXML
+    private void gridGameSetOnMousePressedEvent(){
+        gridGame.setOnMousePressed(event -> {
+            try{
+                MyImageView im = (MyImageView)event.getTarget();
+                if(im.obj != null) gridPaneInventory.getChildren().add(im);
+                if(im.animal != null) labelScript.setText(im.animal.description);
+                if (im.monkey != null) labelScript.setText(im.monkey.description);
+                if(im.enemy != null) labelScript.setText(im.enemy.NAME);
+                if(im.door != null) labelScript.setText(im.door.toString());
+            } catch (Exception ignored){}
+
+
+        });
+
+    }
 
 
     // - this method is called to do the hero interacts with objects -
@@ -109,7 +131,7 @@ public class MainController implements Initializable {
     @FXML
     private void cavemanEvent(){
 
-        pane_main.setOnKeyPressed(event -> {
+        paneMain.setOnKeyPressed(event -> {
 
             Pair<Integer,Integer> oldPair = imageViewPairHashMap.get(caveman);
             Pair<Integer,Integer> newPair = oldPair;
@@ -126,38 +148,34 @@ public class MainController implements Initializable {
             if(!newPair.equals(imageViewPairHashMap.get(cat)))
             {
                 imageViewPairHashMap.replace(caveman,newPair);
-                grid_game.getChildren().remove(caveman);
-                grid_game.add(caveman,newPair.getKey(),newPair.getValue());
+                gridGame.getChildren().remove(caveman);
+                gridGame.add(caveman,newPair.getKey(),newPair.getValue());
             }
         });
     }
 
 
     @FXML
-    private void button_quitAction(){
+    private void buttonQuitAction(){
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Quit");
         alert.setContentText("Are you sure you want to leave ? ");
-        ButtonType buttonMenu = new ButtonType("Menu");
-        ButtonType buttonQuit = new ButtonType("Quit");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType b1 = new ButtonType("Menu");
+        ButtonType b2 = new ButtonType("Quit");
+        ButtonType b3 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        alert.getButtonTypes().setAll(buttonMenu, buttonQuit, buttonTypeCancel);
+        alert.getButtonTypes().setAll(b1, b2, b3);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonMenu){
+        if (result.get() == b1){
             try{
-                Stage stage = (Stage) button_quit.getScene().getWindow();
+                Stage stage = (Stage) buttonQuit.getScene().getWindow();
                 stage.close();
-                FXMLLoader mainLoader = new FXMLLoader();
-                mainLoader.setLocation(this.getClass().getResource("../view/home.fxml"));
-                Parent homeRoot = mainLoader.load();
-                Stage s = new Stage();
-                s.setScene(new Scene(homeRoot));
+                MyStage s = new MyStage("../view/home.fxml");
                 s.show();
             }catch (Exception ignored){}
-        } else if (result.get() == buttonQuit) {
-            Stage stage = (Stage) button_quit.getScene().getWindow();
+        } else if (result.get() == b2) {
+            Stage stage = (Stage) buttonQuit.getScene().getWindow();
             stage.close();
         }
     }
@@ -167,7 +185,7 @@ public class MainController implements Initializable {
         BackgroundImage backgroundImage= new BackgroundImage(
                 new Image("assets/images/place/floor.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        grid_game.setBackground(new Background(backgroundImage));
+        gridGame.setBackground(new Background(backgroundImage));
     }
 
     @Override
@@ -181,48 +199,26 @@ public class MainController implements Initializable {
         piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT));
         drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER));
 
-        label_title.textProperty().bind(caveman.hero.getPlace().getNameProperty());
+        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true)));
 
-        //permet de quitter le jeu
-        button_quit.setOnAction(event -> { button_quitAction();});
+        labelTitle.textProperty().bind(caveman.hero.getPlace().getNameProperty());
+
+
 
         setGridPane_mapBackground();
         cavemanEvent();
-        grid_game.setOnMousePressed(event -> {
+        gridGameSetOnMousePressedEvent();
+
+        gridPaneInventory.setOnMousePressed(event -> {
             try{
                 MyImageView im = (MyImageView)event.getTarget();
                 if(im.obj != null){
-                    if(im.equals(piece)){
-                        grid_game.getChildren().remove(piece);
-                        gridPane_inventory.add(im,0,0);
-                    }
-                    if(im.equals(drapeau)){
-                        grid_game.getChildren().remove(drapeau);
-                        gridPane_inventory.add(im,1,0);
-                    }
-                    im.obj.take(caveman.hero);
-
-                }
-                im.animal.talk(caveman.hero);
-                im.monkey.talk(caveman.hero);
-
-
-
-            } catch (Exception ignored){}
-
-
-        });
-
-        gridPane_inventory.setOnMousePressed(event -> {
-            try{
-                MyImageView im = (MyImageView)event.getTarget();
-                if(im.obj != null){
-                    label_object_name.setText(((MyImageView) event.getTarget()).obj.NAME);
-                    label_object_info.setText(((MyImageView) event.getTarget()).obj.INFO);
+                    labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
+                    labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
                 }
                 else{
-                    label_object_name.setText("");
-                    label_object_info.setText("");
+                    labelObjectName.setText("");
+                    labelObjectInfo.setText("");
                 }//Ne fonctionne pas
             } catch (Exception ignored){}
 

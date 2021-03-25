@@ -5,11 +5,12 @@ import model.others.*;
 
 public class Key extends Obj{
 
-    // ***** CONSTRUCTOR *****
 
-    public Key(String name, String info) {
-        super(name, info);
+    // ***** CONSTRUCTOR *****
+    public Key(String name, String info, int x, int y) {
+        super(name, info, x, y);
     }
+
 
     // ***** METHODS *****
 

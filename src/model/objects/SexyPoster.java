@@ -6,13 +6,14 @@ import model.others.Script;
 
 public class SexyPoster extends Poster{
 
-	
+
 	// ***** CONSTRUCTOR *****
-	
-	public SexyPoster(String name, String info) {
-		super(name, info);
+	public SexyPoster(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
-	
+
+
+
 	// ***** METHODS *****
 	
 	

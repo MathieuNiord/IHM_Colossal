@@ -5,12 +5,13 @@ import model.others.*;
 
 public class Stick extends Obj {
 
-	
+
+
 	// ***** CONSTRUCTOR *****
-	
-	public Stick(String name, String info) {
-		super(name, info);
+	public Stick(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
+
 
 
 	// ***** METHODS *****
@@ -36,7 +37,7 @@ public class Stick extends Obj {
 				if (h.getObjs().containsKey(s)) {
 					h.getObjs().remove(s);
 					h.getObjs().remove(this.NAME);
-					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
+					FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT,2,2);
 					h.getObjs().put(firedStick.NAME, firedStick);
 					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick, a fired stick.\n", Script.DEFAULT_NARRATOR);
 				}

@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import controller.MyHeroImageView?>
-<?import controller.MyImageView?>
+<?import imageView.MyHeroImageView?>
+<?import imageView.MyImageView?>
 
 
 <?import javafx.scene.image.Image?>
-<Pane fx:id="pane_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-    <GridPane fx:id="grid_game" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
+<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+    <GridPane fx:id="gridGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,6 +54,10 @@
                      GridPane.columnIndex="3" GridPane.rowIndex="3">
             <Image url="@../assets/images/characters/cat.gif"/>
         </MyImageView>
+        <MyImageView fx:id="porte" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
+                     GridPane.columnIndex="5" GridPane.rowIndex="0">
+            <Image url="@../assets/images/place/BasicDoor.png"/>
+        </MyImageView>
         <MyImageView fx:id="drapeau" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="3" GridPane.rowIndex="0">
             <Image url="@../assets/images/objects/NazisPoster.png"/>
@@ -62,7 +66,7 @@
          <Cursor fx:constant="CROSSHAIR" />
       </cursor>
     </GridPane>
-    <Label fx:id="label_title" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" text="ROOM" textFill="WHITE">
+    <Label fx:id="labelTitle" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" text="ROOM" textFill="WHITE">
         <font>
           <Font name="Arial" size="36.0" />
         </font>
@@ -70,7 +74,7 @@
          <Cursor fx:constant="NONE" />
       </cursor>
     </Label>
-    <Label fx:id="label_script" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="724.0" layoutY="542.0" prefHeight="99.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into in the" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="724.0" layoutY="542.0" prefHeight="99.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 15; -fx-background-radius: 15;" text="dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into in the" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
       <font>
          <Font size="18.0" />
       </font>
@@ -83,7 +87,7 @@
     <TabPane fx:id="tabPane" layoutX="722.0" layoutY="29.0" prefHeight="486.0" prefWidth="480.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <Tab closable="false" text="Inventory">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="256.0">
-                <GridPane fx:id="gridPane_inventory" layoutX="14.0" layoutY="15.0" prefHeight="256.0" prefWidth="272.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15;">
+                <GridPane fx:id="gridPaneInventory" layoutX="14.0" layoutY="15.0" prefHeight="256.0" prefWidth="272.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15;">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -101,7 +105,7 @@
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
                 </GridPane>
-                <Label fx:id="label_object_name" alignment="TOP_LEFT" layoutX="14.0" layoutY="288.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
+                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="14.0" layoutY="288.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -109,7 +113,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
                 </Label>
-                <Label fx:id="label_object_info" alignment="TOP_LEFT" layoutX="14.0" layoutY="333.0" prefHeight="100.0" prefWidth="453.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" textFill="WHITE">
+                <Label fx:id="labeObjectInfo" alignment="TOP_LEFT" layoutX="14.0" layoutY="333.0" prefHeight="100.0" prefWidth="453.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -118,17 +122,17 @@
                </cursor>
                 </Label>
                 <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="46.0" prefHeight="194.0" prefWidth="121.0" spacing="50.0">
-                    <Button fx:id="button_use" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="USE">
+                    <Button fx:id="buttonUse" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="USE">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
                     </Button>
-                    <Button fx:id="button_match" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="MATCH">
+                    <Button fx:id="buttonMatch" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="MATCH">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
                     </Button>
-                    <Button fx:id="button_look" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="LOOK">
+                    <Button fx:id="buttonLook" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="LOOK">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
@@ -138,7 +142,7 @@
         </Tab>
         <Tab closable="false" text="Map">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <GridPane fx:id="gridPane_map" alignment="CENTER" layoutX="80.0" layoutY="66.0" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0" prefHeight="320.0" prefWidth="320.0" style="-fx-border-color: white; -fx-border-width: 3;">
+                <GridPane fx:id="gridPaneMap" alignment="CENTER" layoutX="80.0" layoutY="66.0" maxHeight="320.0" maxWidth="320.0" minHeight="320.0" minWidth="320.0" prefHeight="320.0" prefWidth="320.0" style="-fx-border-color: white; -fx-border-width: 3;">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -168,15 +172,16 @@
             </AnchorPane>
         </Tab>
     </TabPane>
-    <Button fx:id="button_quit" layoutX="1103.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="QUIT">
+    <Button fx:id="buttonQuit" layoutX="1103.0" layoutY="659.0" minHeight="42.0" minWidth="100.0"
+            mnemonicParsing="false" prefHeight="42.0" prefWidth="99.0" text="QUIT" onAction="#buttonQuitAction">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-    <Button fx:id="button_skip" layoutX="913.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="SKIP">
+    <Button fx:id="buttonSkip" layoutX="913.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="SKIP">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="button_help" layoutX="722.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" text="HELP">
+   <Button fx:id="buttonHelp" layoutX="722.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" text="HELP">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

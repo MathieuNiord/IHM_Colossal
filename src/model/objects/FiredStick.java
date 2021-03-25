@@ -7,11 +7,12 @@ import model.others.Script;
 public class FiredStick extends Obj {
 
 
-	// ***** CONSTRUCTOR *****
 
-	public FiredStick(String name, String info) {
-		super(name, info);
+	// ***** CONSTRUCTOR *****
+	public FiredStick(String name, String info, int x, int y) {
+		super(name, info, x, y);
 	}
+
 
 
 	// ***** METHODS *****

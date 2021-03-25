@@ -11,6 +11,7 @@ public class Place {
 
 
 	// ***** ATTRIBUTES *****
+
 	private final String NAME;
 	private final StringProperty NAME_PROPERTY = new SimpleStringProperty();
 	private final boolean infested;

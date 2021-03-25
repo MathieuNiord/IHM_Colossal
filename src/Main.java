@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.others.Game;
 import stage.MyStage;
 
 
@@ -9,9 +10,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        // l'accueil
         MyStage myStage = new MyStage("../view/home.fxml");
         myStage.show();
+
 
     }
 

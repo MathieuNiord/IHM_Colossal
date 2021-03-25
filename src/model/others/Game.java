@@ -63,28 +63,28 @@ public class Game {
 
 
 		// ANIMALS CREATION
-		Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT,2,2);
-		Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT,4,3);
-		Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT,1,5);
+		//Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+		//Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+		//Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
 
 		// OBJECTS CREATION
-		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT,1,2);
-		Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT,2,2);
-		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT,2,2);
-		Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT,2,2);
-		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT,2,2);
-		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT,2,2);
-		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT,2,2);
-		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT,2,2);
-		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT,2,2);
-		Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT,2,2);
-		Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT,2,2);
-		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom,2,2);
-		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,this.hero,2,2);
-		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER,2,2);
-		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER,2,2);
-		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME,2,2);
+		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
+		Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
+		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
+		Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
+		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
+		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
+		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
+		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
+		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
+		Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
+		Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
+		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
+		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,this.hero);
+		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
+		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
 		// DOORS ADDING TO ROOMS

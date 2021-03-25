@@ -5,13 +5,12 @@ import model.others.*;
 
 public class Banana extends Obj {
 
-
-
+	
 	// ***** CONSTRUCTOR *****
-	public Banana(String name, String info, int x, int y) {
-		super(name, info, x, y);
+	
+	public Banana(String name, String info) {
+		super(name, info);
 	}
-
 
 
 	// ***** METHODS *****

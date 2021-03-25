@@ -6,12 +6,11 @@ import model.others.*;
 public class Weapon extends Obj{
 
 
-
 	// ***** CONSTRUCTOR *****
-	public Weapon(String name, String info, int x, int y) {
-		super(name, info, x, y);
-	}
 
+	public Weapon(String name, String info) {
+		super(name, info);
+	}
 
 
 	// ***** METHODS *****

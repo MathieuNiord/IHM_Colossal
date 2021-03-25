@@ -7,10 +7,10 @@ public class Bescherelle extends Obj{
 
 
 	// ***** CONSTRUCTOR *****
-	public Bescherelle(String name, String info, int x, int y) {
-		super(name, info, x, y);
-	}
 
+	public Bescherelle(String name, String info) {
+		super(name, info);
+	}
 
 
 	// ***** METHODS *****

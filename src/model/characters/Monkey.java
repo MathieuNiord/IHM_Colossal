@@ -15,8 +15,8 @@ public class Monkey extends Animal{
 	
 	// ***** CONSTRUCTOR *****
 
-	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc, int x, int y) {
-		super(name, bLevel, noBeschDialog, beschDialog,desc,x,y);
+	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
+		super(name, bLevel, noBeschDialog, beschDialog,desc);
 		this.noHungryDialog = hungryDialog;
 	}
 

@@ -1,5 +1,7 @@
 package model.characters;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import model.others.*;
 import model.interfaces.*;
 
@@ -22,10 +24,10 @@ public class Animal implements Lookable {
 	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc,int x, int y){
 		this.x = x;
 		this.y = y;
-		this.NAME = name;
 		this.beschLevel=bLevel;
-		this.beschDialog = beschDialog;
+		this.NAME = name;
 		this.noBeschDialog = noBeschDialog;
+		this.beschDialog = beschDialog;
 		this.description = desc;
 	}
 

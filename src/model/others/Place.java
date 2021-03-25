@@ -1,5 +1,7 @@
 package model.others;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import model.characters.*;
 import model.doors.*;
 import model.objects.*;
@@ -11,6 +13,7 @@ public class Place {
 	// ***** ATTRIBUTES *****
 
 	private final String NAME;
+	private final StringProperty NAME_PROPERTY = new SimpleStringProperty();
 	private final boolean infested;
 	private boolean enlightened;
 
@@ -28,6 +31,7 @@ public class Place {
 
 	public Place(String NAME, boolean inf, boolean isEnlighted) {
 		this.NAME = NAME;
+		this.NAME_PROPERTY.setValue(NAME);
 		this.infested = inf;
 		this.enlightened = isEnlighted;
 
@@ -52,6 +56,10 @@ public class Place {
 
 	public String getName() {
 		return this.NAME;
+	}
+
+	public StringProperty getNameProperty() {
+		return NAME_PROPERTY;
 	}
 
 	//DOORS

@@ -1,5 +1,7 @@
 package model.characters;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import model.others.*;
 
 public class Monkey extends Animal{
@@ -10,7 +12,6 @@ public class Monkey extends Animal{
 	 got the Objects.Banana that he asked for*/
 	private boolean hungry = true;
 	public final String noHungryDialog;
-	
 	
 	// ***** CONSTRUCTOR *****
 

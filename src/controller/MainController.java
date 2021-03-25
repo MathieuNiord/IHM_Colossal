@@ -17,21 +17,22 @@ import model.others.Script;
 
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainController implements Initializable {
+
+    /*** === ATTRIBUTES === ***/
+
+    // Labels
     @FXML
     private Label label_title;
     @FXML
     private Label label_script;
     @FXML
-    private TabPane tabPane;
-    @FXML
-    private GridPane gridPane_inventory;
-    @FXML
     private Label label_object_name;
     @FXML
     private Label label_object_info;
+
+    // Buttons
     @FXML
     private Button button_use;
     @FXML
@@ -39,15 +40,25 @@ public class MainController implements Initializable {
     @FXML
     private Button button_look;
     @FXML
-    private GridPane gridPane_map;
-    @FXML
     private Button button_quit;
     @FXML
     private Button button_skip;
     @FXML
+    private Button button_help;
+
+    // Panes
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private GridPane gridPane_inventory;
+    @FXML
+    private GridPane gridPane_map;
+    @FXML
     private Pane pane_main;
     @FXML
     private GridPane grid_game;
+
+    // ImageViews
     @FXML
     private MyHeroImageView caveman;
     @FXML
@@ -57,9 +68,12 @@ public class MainController implements Initializable {
     @FXML
     private MyImageView drapeau;
 
+    // HashMap ImageView->Position
     private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
 
+    /*** === METHODS === ***/
 
+    // - this method is used to ... -
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
         int newK = p.getKey();
         int newV = p.getValue();
@@ -71,6 +85,10 @@ public class MainController implements Initializable {
         }
         return new Pair<>(newK,newV);
     }
+
+
+
+    // - this method is called to do the hero interacts with objects -
     @FXML
     private void cavemanInteract(){
         //TODO (Interaction avec un voisin de la position du caveman)
@@ -81,23 +99,28 @@ public class MainController implements Initializable {
 
     }
 
+    // - this method is called to do the hero takes objects -
     @FXML
     private void cavemanTake(){
                 //TODO (Interaction avec un objet voisin à la position du caveman)
     }
+
+    // - manage hero's actions with key pressed -
     @FXML
     private void cavemanEvent(){
+
         pane_main.setOnKeyPressed(event -> {
 
             Pair<Integer,Integer> oldPair = imageViewPairHashMap.get(caveman);
-            Pair<Integer,Integer> newPair=oldPair;
+            Pair<Integer,Integer> newPair = oldPair;
+
             switch (event.getCode()){
-                case Z:newPair = computeNewPair(oldPair,0,-1) ; break;
-                case Q:newPair = computeNewPair(oldPair,-1,0); break;
-                case S:newPair = computeNewPair(oldPair,0,1); break;
-                case D:newPair = computeNewPair(oldPair,1,0); break;
-                case I:cavemanInteract(); break;
-                case T:cavemanTake(); break;
+                case Z : newPair = computeNewPair(oldPair,0,-1) ; break;
+                case Q : newPair = computeNewPair(oldPair,-1,0); break;
+                case S : newPair = computeNewPair(oldPair,0,1); break;
+                case D : newPair = computeNewPair(oldPair,1,0); break;
+                case I : cavemanInteract(); break;
+                case T : cavemanTake(); break;
                 default:break;
             }
             if(!newPair.equals(imageViewPairHashMap.get(cat)))
@@ -108,8 +131,6 @@ public class MainController implements Initializable {
             }
         });
     }
-
-
 
 
     @FXML
@@ -152,15 +173,16 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //Inventaire
-        int row = 0;
-        AtomicInteger column = new AtomicInteger();
+
 
         imageViewPairHashMap = new HashMap<>();
         imageViewPairHashMap.put(caveman,new Pair<>(4,4));
         imageViewPairHashMap.put(cat,new Pair<>(2,2));
         piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT));
         drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER));
+
+        label_title.textProperty().bind(caveman.hero.getPlace().getNameProperty());
+
         //permet de quitter le jeu
         button_quit.setOnAction(event -> { button_quitAction();});
 

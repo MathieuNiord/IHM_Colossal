@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.others.Script;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

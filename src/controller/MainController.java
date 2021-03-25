@@ -144,7 +144,7 @@ public class MainController implements Initializable {
     @FXML
     private void setGridPane_mapBackground() {
         BackgroundImage backgroundImage= new BackgroundImage(
-                new Image("ressource/pictures/floor.png"),
+                new Image("assets/images/place/floor.png"),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         grid_game.setBackground(new Background(backgroundImage));
     }

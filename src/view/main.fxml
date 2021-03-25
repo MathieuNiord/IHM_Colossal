@@ -44,19 +44,19 @@
       </rowConstraints>
         <MyHeroImageView fx:id="caveman" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                          GridPane.columnIndex="4" GridPane.rowIndex="4">
-            <Image url="@../ressource/pictures/caveman.gif"/>
+            <Image url="@../assets/images/characters/caveman.gif"/>
         </MyHeroImageView>
         <MyImageView fx:id="cat" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="2" GridPane.rowIndex="2">
-            <Image url="@../ressource/pictures/cat.gif"/>
+            <Image url="@../assets/images/characters/cat.gif"/>
         </MyImageView>
         <MyImageView fx:id="piece" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="3" GridPane.rowIndex="3">
-            <Image url="@../ressource/pictures/cat.gif"/>
+            <Image url="@../assets/images/characters/cat.gif"/>
         </MyImageView>
         <MyImageView fx:id="drapeau" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="3" GridPane.rowIndex="0">
-            <Image url="@../ressource/pictures/NazisPoster.png"/>
+            <Image url="@../assets/images/objects/NazisPoster.png"/>
         </MyImageView>
       <cursor>
          <Cursor fx:constant="CROSSHAIR" />

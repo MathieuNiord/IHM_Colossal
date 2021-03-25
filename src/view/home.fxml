@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1260.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <ImageView fx:id="homeBG" fitHeight="720.0" fitWidth="1280.0">
-      <Image url="/ressource/pictures/Background.jpg" />
+      <Image url="/assets/images/background/Background.jpg" />
       <cursor>
          <Cursor fx:constant="DEFAULT" />
       </cursor>

@@ -10,9 +10,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import model.characters.Animal;
 import model.doors.Door;
 import model.objects.Banana;
 import model.objects.NaziPoster;
+import model.objects.Obj;
 import model.others.Game;
 import model.others.Place;
 import model.others.Script;
@@ -72,6 +74,8 @@ public class MainController implements Initializable {
     private MyImageView drapeau;
     @FXML
     private MyImageView porte;
+    @FXML
+    private MyImageView test;
 
 
     // HashMap ImageView->Position
@@ -79,7 +83,7 @@ public class MainController implements Initializable {
 
     /*** === METHODS === ***/
 
-    // - this method is used to ... -
+    // - this method is used to create bounds -
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
         int newK = p.getKey();
         int newV = p.getValue();
@@ -98,16 +102,14 @@ public class MainController implements Initializable {
         gridGame.setOnMousePressed(event -> {
             try{
                 MyImageView im = (MyImageView)event.getTarget();
-                if(im.obj != null) gridPaneInventory.getChildren().add(im);
-                if(im.animal != null) labelScript.setText(im.animal.description);
-                if (im.monkey != null) labelScript.setText(im.monkey.description);
-                if(im.enemy != null) labelScript.setText(im.enemy.NAME);
-                if(im.door != null) labelScript.setText(im.door.toString());
-            } catch (Exception ignored){}
-
-
+                if(im.obj != null && im.obj.getClass().getSimpleName().equals("ElectricityMeter")) gridPaneInventory.getChildren().add(im);
+                else if(im.animal != null) labelScript.setText(im.animal.description);
+                else if (im.monkey != null) labelScript.setText(im.monkey.description);
+                else if(im.enemy != null) labelScript.setText(im.enemy.NAME);
+                else if(im.door != null) labelScript.setText(im.door.toString());
+            }
+            catch (Exception ignored){labelScript.setText("");}
         });
-
     }
 
 
@@ -193,14 +195,16 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         final Game game = new Game("heroName");
-        game.
 
         imageViewPairHashMap = new HashMap<>();
         imageViewPairHashMap.put(caveman,new Pair<>(4,4));
         imageViewPairHashMap.put(cat,new Pair<>(2,2));
-        piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT,2,2));
-        drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER,3,5));
-        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true),2,2));
+        imageViewPairHashMap.put(test, new Pair<>(5, 5));
+        cat.setAnimal(new Animal("cat", 1, Script.CAT_TEXT01, Script.CAT_TEXT02, Script.CAT_DESCRIPT));
+        piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT));
+        drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER));
+        test.setObj(new Banana("Electric Meter", Script.ELECTRICMETER_DESCRIPT));
+        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true)));
 
         labelTitle.textProperty().bind(caveman.hero.getPlace().getNameProperty());
 

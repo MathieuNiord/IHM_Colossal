@@ -46,10 +46,14 @@
                          GridPane.columnIndex="4" GridPane.rowIndex="4">
             <Image url="@../assets/images/characters/caveman.gif"/>
         </MyHeroImageView>
-        <MyImageView fx:id="cat" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
+        <MyImageView fx:id="cat" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="2" GridPane.rowIndex="2">
             <Image url="@../assets/images/characters/cat.gif"/>
         </MyImageView>
+        <MyImageView fx:id="test" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
+                                   GridPane.columnIndex="5" GridPane.rowIndex="5">
+        <Image url="@../assets/images/characters/cat.gif"/>
+    </MyImageView>
         <MyImageView fx:id="piece" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true"
                      GridPane.columnIndex="3" GridPane.rowIndex="3">
             <Image url="@../assets/images/characters/cat.gif"/>

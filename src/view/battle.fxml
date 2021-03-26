@@ -21,7 +21,7 @@
             </ImageView>
             <ImageView fx:id="image_enemy" fitHeight="87.0" fitWidth="82.0" layoutX="303.0" layoutY="77.0">
                <image>
-                  <Image url="@../assets/images/characters/ZombiNazi.PNG" />
+                  <Image url="@../assets/images/characters/ZombiNazi.png" />
                </image>
             </ImageView>
             <Label fx:id="label_enemy_name" layoutX="540.0" layoutY="45.0" text="Enemy" />

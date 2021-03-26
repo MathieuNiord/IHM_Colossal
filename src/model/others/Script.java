@@ -170,36 +170,36 @@ public class Script {
     // === OBJECTS ===
     
     //Names
-    public static final String DEFAULT_CLUB_NAME = "club";
-    public static final String DEFAULT_KEY1_NAME = "key_01";
-    public static final String DEFAULT_KEY2_NAME = "exit_key";
-    public static final String DEFAULT_FUSE_NAME = "missing_fuse";
-    public static final String DEFAULT_STICK_NAME = "stick";
-    public static final String DEFAULT_FLINT_NAME = "flint";
-    public static final String DEFAULT_POTION_NAME = "potion";
-    public static final String DEFAULT_BANANA_NAME = "banana";
-    public static final String DEFAULT_LOCKER_NAME = "locker";
-    public static final String DEFAULT_WALKMAN_NAME = "walkman";
-    public static final String DEFAULT_FIREDSTICK_NAME = "fired_stick";
-    public static final String DEFAULT_NAZIPOSTER_NAME = "nazi_poster";
-    public static final String DEFAULT_SEXYPOSTER_NAME = "sexy_poster";
-    public static final String DEFAULT_BESCHERELLE_NAME = "bescherelle";
-    public static final String DEFAULT_ELECTRICMETER_NAME = "electric_meter";
+    public static final String DEFAULT_CLUB_NAME = "Club";
+    public static final String DEFAULT_KEY1_NAME = "Key";
+    public static final String DEFAULT_KEY2_NAME = "Exit Key";
+    public static final String DEFAULT_FUSE_NAME = "Missing_fuse";
+    public static final String DEFAULT_STICK_NAME = "Stick";
+    public static final String DEFAULT_FLINT_NAME = "Flint";
+    public static final String DEFAULT_POTION_NAME = "Potion";
+    public static final String DEFAULT_BANANA_NAME = "Banana";
+    public static final String DEFAULT_LOCKER_NAME = "Locker";
+    public static final String DEFAULT_WALKMAN_NAME = "Walkman";
+    public static final String DEFAULT_FIREDSTICK_NAME = "Fired Stick";
+    public static final String DEFAULT_NAZIPOSTER_NAME = "Nazi Poster";
+    public static final String DEFAULT_SEXYPOSTER_NAME = "Sexy Poster";
+    public static final String DEFAULT_BESCHERELLE_NAME = "Bescherelle";
+    public static final String DEFAULT_ELECTRICMETER_NAME = "Electric Meter";
 
     //Descriptions
-    public static final String KEY_DESCRIPT = "It's just a key...which can open model.doors or something, basic !\n";
-    public static final String POTION_DESCRIPT = "It looks like a mystic solution.\n";
-    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation\n";
-    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.\n";
-    public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.\n";
-    public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.\n";
-    public static final String CLUB_DESCRIPT = "Wow ! Thanks this you're gonna destroy all those creepies\n";
-    public static final String SEXY_POSTER = "A poster of a seeexy woman. Yum, what a beauty !\n";
-    public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter\n";
-    public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...\n";
-    public static final String NAZI_POSTER = "You are looking at this poster. What a ugly Nazi face...\n";
-    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...\n";
-    public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?\n";
+    public static final String KEY_DESCRIPT = "It's just a key...which can open model.doors or something, basic !";
+    public static final String POTION_DESCRIPT = "It looks like a mystic solution.";
+    public static final String ELECTRICMETER_DESCRIPT ="This electric meter is in operation";
+    public static final String BANANA_DESCRIPT = "Looks like a banana straight from the 70s.";
+    public static final String BESCH_DESCRIPT = "An artifact that holds the greatest of powers.";
+    public static final String FLINT_DESCRIPT = "Just a stone that fell out of your underpants.";
+    public static final String CLUB_DESCRIPT = "Wow ! Thanks this you're gonna destroy all those creepies";
+    public static final String SEXY_POSTER = "A poster of a seeexy woman. Yum, what a beauty !";
+    public static final String ELECTRICMETER_MISSING_DESCRIPT ="A fuse is missing on this electric meter";
+    public static final String FUSE_DESCRIPT = "It should allow you to restore the power, if only you know how...";
+    public static final String NAZI_POSTER = "You are looking at this poster. What a ugly Nazi face...";
+    public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
+    public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?";
     
     
     // === HELP COMMANDS ===

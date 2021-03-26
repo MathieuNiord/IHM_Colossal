@@ -89,11 +89,6 @@ public class GameRessources {
     public final Enemy superNazi = new Enemy("super-nazi", 100, 8, k2,
             Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
-
-    public final MyImageView zombieNaziIm = new MyImageView(zombieNazi,"../assets/images/characters/ZombieNazi.png",5,5);
-
-
-
     public GameRessources(){
         // DOORS ADDING TO ROOMS
         animalRoom.addDoor(animAndTransf, "up");

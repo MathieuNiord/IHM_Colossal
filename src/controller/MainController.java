@@ -6,18 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import model.characters.Animal;
-import model.doors.Door;
-import model.objects.Banana;
-import model.objects.NaziPoster;
-import model.objects.Obj;
-import model.others.Game;
-import model.others.Place;
-import model.others.Script;
+import model.GameRessources;
 import stage.MyStage;
 
 import java.net.URL;
@@ -36,6 +28,7 @@ public class MainController implements Initializable {
     private Label labelObjectName;
     @FXML
     private Label labelObjectInfo;
+
 
     // Buttons
     @FXML
@@ -63,25 +56,35 @@ public class MainController implements Initializable {
     @FXML
     private GridPane gridGame;
 
-    // ImageViews
-    @FXML
-    private MyHeroImageView caveman;
-    @FXML
-    private MyImageView cat;
-    @FXML
-    private MyImageView piece;
-    @FXML
-    private MyImageView drapeau;
-    @FXML
-    private MyImageView porte;
-    @FXML
-    private MyImageView test;
+    // === TEST
+    // GameRessources
+    private GameRessources game = new GameRessources();
 
+    // Hero
+    private MyHeroImageView hero = new MyHeroImageView(game.hero, "assets/images/characters/caveman.gif");
+
+    // Animaux
+    private MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);
+
+    // Objets
+    private MyImageView naziPosteIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+
+    // Portes
+
+    // Enemy
 
     // HashMap ImageView->Position
-    private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
+    //private HashMap<ImageView,Pair<Integer,Integer>> imageViewPairHashMap;
+    private Pair<Integer, Integer> cavemanPos = new Pair<>(4, 4);
+
+    // === FIN TEST
 
     /*** === METHODS === ***/
+
+    // - this method is used to add an ImageView in the GridPane -
+    private void addGame(MyImageView im) {
+        gridGame.add(im, im.x, im.y);
+    }
 
     // - this method is used to create bounds -
     private Pair<Integer,Integer> computeNewPair(Pair<Integer,Integer> p,int x, int y){
@@ -102,7 +105,7 @@ public class MainController implements Initializable {
         gridGame.setOnMousePressed(event -> {
             try{
                 MyImageView im = (MyImageView)event.getTarget();
-                if(im.obj != null && im.obj.getClass().getSimpleName().equals("ElectricityMeter")) gridPaneInventory.getChildren().add(im);
+                if(im.obj != null && !(im.obj.getClass().getSimpleName().equals("ElectricityMeter"))) gridPaneInventory.getChildren().add(im);
                 else if(im.animal != null) labelScript.setText(im.animal.description);
                 else if (im.monkey != null) labelScript.setText(im.monkey.description);
                 else if(im.enemy != null) labelScript.setText(im.enemy.NAME);
@@ -114,15 +117,15 @@ public class MainController implements Initializable {
 
 
     // - this method is called to do the hero interacts with objects -
-    @FXML
+    /*@FXML
     private void cavemanInteract(){
         //TODO (Interaction avec un voisin de la position du caveman)
-        Pair<Integer, Integer> p = imageViewPairHashMap.get(caveman);
+        Pair<Integer, Integer> p = imageViewPairHashMap.get(hero);
 
         int k = p.getKey();
         int v = p.getValue();
 
-    }
+    }*/
 
     // - this method is called to do the hero takes objects -
     @FXML
@@ -136,23 +139,22 @@ public class MainController implements Initializable {
 
         paneMain.setOnKeyPressed(event -> {
 
-            Pair<Integer,Integer> oldPair = imageViewPairHashMap.get(caveman);
-            Pair<Integer,Integer> newPair = oldPair;
+            /*Pair<Integer,Integer> oldPair = new Pair<>(hero.x, hero.y);
+            cavemanPos = oldPair;*/
 
             switch (event.getCode()){
-                case Z : newPair = computeNewPair(oldPair,0,-1) ; break;
-                case Q : newPair = computeNewPair(oldPair,-1,0); break;
-                case S : newPair = computeNewPair(oldPair,0,1); break;
-                case D : newPair = computeNewPair(oldPair,1,0); break;
-                case I : cavemanInteract(); break;
+                case Z : cavemanPos = computeNewPair(cavemanPos,0,-1) ; break;
+                case Q : cavemanPos = computeNewPair(cavemanPos,-1,0); break;
+                case S : cavemanPos = computeNewPair(cavemanPos,0,1); break;
+                case D : cavemanPos = computeNewPair(cavemanPos,1,0); break;
+                //case I : cavemanInteract(); break;
                 case T : cavemanTake(); break;
                 default:break;
             }
-            if(!newPair.equals(imageViewPairHashMap.get(cat)))
+            if(!cavemanPos.equals(new Pair<>(catIm.x, catIm.y)))
             {
-                imageViewPairHashMap.replace(caveman,newPair);
-                gridGame.getChildren().remove(caveman);
-                gridGame.add(caveman,newPair.getKey(),newPair.getValue());
+                gridGame.getChildren().remove(hero);
+                gridGame.add(hero,cavemanPos.getKey(),cavemanPos.getValue());
             }
         });
     }
@@ -176,8 +178,10 @@ public class MainController implements Initializable {
                 stage.close();
                 MyStage s = new MyStage("../view/home.fxml");
                 s.show();
-            }catch (Exception ignored){}
-        } else if (result.get() == b2) {
+            }
+            catch (Exception ignored){}
+        }
+        else if (result.get() == b2) {
             Stage stage = (Stage) buttonQuit.getScene().getWindow();
             stage.close();
         }
@@ -194,23 +198,19 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        final Game game = new Game("heroName");
-
-        imageViewPairHashMap = new HashMap<>();
-        imageViewPairHashMap.put(caveman,new Pair<>(4,4));
-        imageViewPairHashMap.put(cat,new Pair<>(2,2));
-        imageViewPairHashMap.put(test, new Pair<>(5, 5));
-        cat.setAnimal(new Animal("cat", 1, Script.CAT_TEXT01, Script.CAT_TEXT02, Script.CAT_DESCRIPT));
-        piece.setObj(new Banana("Banana", Script.BANANA_DESCRIPT));
+        /*piece = (new Banana("Banana", Script.BANANA_DESCRIPT));
         drapeau.setObj(new NaziPoster("Nazi's Poster", Script.NAZI_POSTER));
         test.setObj(new Banana("Electric Meter", Script.ELECTRICMETER_DESCRIPT));
-        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true)));
+        porte.setDoor(new Door(new Place("test", false, true),new Place("test1", false, true)));*/
 
-        labelTitle.textProperty().bind(caveman.hero.getPlace().getNameProperty());
+        addGame(catIm);
+        addGame(naziPosteIm);
+        gridGame.add(hero, cavemanPos.getKey(), cavemanPos.getValue());
 
-
+        labelTitle.textProperty().bind(hero.hero.getPlace().getNameProperty());
 
         setGridPane_mapBackground();
+
         cavemanEvent();
         gridGameSetOnMousePressedEvent();
 
@@ -221,13 +221,10 @@ public class MainController implements Initializable {
                     labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
                     labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
                 }
-                else{
-                    labelObjectName.setText("");
-                    labelObjectInfo.setText("");
-                }//Ne fonctionne pas
-            } catch (Exception ignored){}
-
-
+            } catch (Exception ignored){
+                labelObjectName.setText("");
+                labelObjectInfo.setText("");
+            }
         });
 
 

@@ -15,10 +15,10 @@ public class MyHeroImageView extends ImageView {
 
     /*** CONSTRUCTOR ***/
 
-    public MyHeroImageView(){
+    public MyHeroImageView(Hero hero, String path){
 
         // - Constructor call -
-        super();
+        super(path);
 
         // - Initialization of a hero in a room named 'TEST' -
         this.hero = new Hero("caveman", place);

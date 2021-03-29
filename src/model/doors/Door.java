@@ -13,11 +13,16 @@ public class Door implements Crossable {
 
 	protected boolean open;
 	private final HashMap<String, Place> places;
+	private final Place dest;
 
 
 	// ***** CONSTRUCTORS *****
-
+	public Door(Place p1){
+		this.dest = p1;
+		this.places = null;
+	}
 	public Door(Place p1, Place p2){
+		this.dest=null;
 		this.open = true;
 		this.places = new HashMap<>();
 		this.places.put(p1.getName(), p1);

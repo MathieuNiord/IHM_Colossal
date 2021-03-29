@@ -1,7 +1,5 @@
 package controller;
 
-import model_bis.MyHeroImageView;
-import model_bis.MyImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -9,8 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import model_bis.GameRessources;
 import model.doors.SecretCodeDoor;
+import model_bis.GameRessources;
+import model_bis.MyHeroImageView;
+import model_bis.MyImageView;
 import stage.MyStage;
 
 import java.net.URL;
@@ -59,19 +59,19 @@ public class MainController implements Initializable {
 
     // === TEST
     // GameRessources
-    private GameRessources game = new GameRessources();
+    private final GameRessources game = new GameRessources();
 
     // Hero
-    private MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");//, game.hero);//game.heroTEST;//
+    private final MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");
 
     // Animals
-    private MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);
+    private final MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);
 
     // Objects
-    private MyImageView naziPosteIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    private final MyImageView naziPosteIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
 
     // Doors
-    private MyImageView doorTestIm = new MyImageView(game.animAndTransf, "assets/images/place/BasicDoor.png", 5, 0);
+    private final MyImageView doorTestIm = new MyImageView(game.animAndTransf, "assets/images/place/BasicDoor.png", 5, 0);
 
     // Enemy
 

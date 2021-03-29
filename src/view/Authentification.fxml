@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="button_submit" layoutX="350.0" layoutY="146.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="186.0" text="Submit" />
       <Label layoutX="50.0" layoutY="34.0" prefHeight="31.0" prefWidth="221.0" text="First, put your gamer tag above :" />

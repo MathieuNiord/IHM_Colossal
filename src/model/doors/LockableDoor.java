@@ -9,7 +9,11 @@ public abstract class LockableDoor extends Door {
 	// ***** ATTRIBUTES *****
 
 	private boolean lock;
-
+	LockableDoor(Place p1){
+		super(p1);
+		this.open = false;
+		this.lock = true;
+	}
 
 	// ***** CONSTRUCTORS ****
 

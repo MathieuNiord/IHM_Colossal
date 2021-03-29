@@ -6,7 +6,10 @@ import model.others.*;
 public class CondemnedDoor extends Door {
 
 	// ***** CONSTRUCTOR *****
-
+	public CondemnedDoor(Place p1){
+		super(p1);
+		this.open = false;
+	}
 	public CondemnedDoor(Place p1, Place p2){
 		super(p1, p2);
 		this.open = false;

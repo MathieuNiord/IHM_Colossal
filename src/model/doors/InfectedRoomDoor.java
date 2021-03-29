@@ -7,7 +7,9 @@ public class InfectedRoomDoor extends LockableDoor{
 
 
     // ***** CONSTRUCTOR *****
-
+    public InfectedRoomDoor(Place p1){
+        super(p1);
+    }
     public InfectedRoomDoor(Place p1, Place p2){
         super(p1, p2);
     }

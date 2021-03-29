@@ -15,6 +15,10 @@ public class SecretCodeDoor extends LockableDoor {
 
 	// ***** CONSTRUCTOR *****
 
+	public SecretCodeDoor(String code, Place p1){
+		super(p1);
+		this.CODE = code;
+	}
 	public SecretCodeDoor(String code, Place p1, Place p2){
 		super(p1, p2);
 		this.CODE = code;

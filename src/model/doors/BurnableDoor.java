@@ -5,10 +5,12 @@ import model.others.*;
 
 public class BurnableDoor extends LockableDoor{
 	
-	// ***** CONSTRUCTOR *****
-	public BurnableDoor(Place p1) {
-		super(p1);
+	// ***** CONSTRUCTORS *****
+
+	public BurnableDoor(Place dest) {
+		super(dest);
 	}
+
 	public BurnableDoor(Place p1, Place p2) {
 		super(p1, p2);
 	}

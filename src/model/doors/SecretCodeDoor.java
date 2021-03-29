@@ -13,13 +13,15 @@ public class SecretCodeDoor extends LockableDoor {
 	private final String CODE;
 
 
-	// ***** CONSTRUCTOR *****
+	// ***** CONSTRUCTORS *****
 
-	public SecretCodeDoor(String code, Place p1){
-		super(p1);
+	public SecretCodeDoor(String code, Place dest) {
+		super(dest);
 		this.CODE = code;
+		System.out.println("SecretDoor " + dest.getName() + "initialized");
 	}
-	public SecretCodeDoor(String code, Place p1, Place p2){
+
+	public SecretCodeDoor(String code, Place p1, Place p2) {
 		super(p1, p2);
 		this.CODE = code;
 	}

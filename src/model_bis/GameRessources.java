@@ -1,6 +1,5 @@
 package model_bis;
 
-
 import javafx.scene.image.Image;
 import model.characters.Animal;
 import model.characters.Enemy;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class GameRessources {
 
 
-        // ROOMS CREATION
+    // ROOMS CREATION
     public final Place animalRoom = new Place("animal room", false, true);
     public final Place transferRoom = new Place("transfer room", false, true);
     public final Place changingRoom = new Place("changing room", false, true);
@@ -35,7 +34,8 @@ public class GameRessources {
     public final Place exit = new Place("exit", false, true);
 
 
-        // DOORS CREATION
+    // DOORS CREATION
+    /*
     public final Door secretPassage = new BurnableDoor(archivesRoom);
     public final Door experimToConda = new InfectedRoomDoor(condamnedSAS);
     public final Door condaToExperim = new Door(experimentsRoom);
@@ -45,8 +45,10 @@ public class GameRessources {
     public final Door transfToMeet = new LockedKeyDoor(1, meetingRoom);
     public final Door meetToTransf = new LockedKeyDoor(1, transferRoom);
     public final Door decontToExit = new LockedKeyDoor(2, exit);
-    public final Door animToTransf = new SecretCodeDoor("IT", transferRoom);
+
+    public final Door animToTransf = new Door(transferRoom);//new SecretCodeDoor("IT", transferRoom);
     public final Door transfToanim = new Door(animalRoom);
+
     public final Door experimToReserv = new SecretCodeDoor("S A GREAT",productsReserve);
     public final Door reservToExperim = new Door(experimentsRoom);
     public final Door experimToDirty = new SecretCodeDoor("GAME",dirtyChangingRoom);
@@ -65,6 +67,30 @@ public class GameRessources {
     public final Door garbToCold = new Door(coldRoom);
     public final Door dirtToDecon = new Door(decontaminationRoom);
     public final Door deconToDirt = new Door(dirtyChangingRoom);
+    */
+
+
+
+
+    // DOORS CREATION
+    public final Door secretPassage = new BurnableDoor(archivesRoom, null);
+    public final Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
+    public final Door changAndEntry = new CondemnedDoor(changingRoom, entry);
+    public final Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
+    public final Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
+    public final Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
+    public final Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
+    public final Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
+    public final Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
+    public final Door transfAndChang = new Door(transferRoom, changingRoom);
+    public final Door transfAndExper = new Door(transferRoom, experimentsRoom);
+    public final Door experimAndMort = new Door(experimentsRoom, morgue);
+    public final Door condaAndDesert = new Door(condamnedSAS, desertedRoom);
+    public final Door experimAndCold = new Door(experimentsRoom, coldRoom);
+    public final Door coldAndGarb = new Door(coldRoom, garbageRoom);
+    public final Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
+
+
 
 
     // ANIMALS CREATION
@@ -103,7 +129,7 @@ public class GameRessources {
     //TEST MYPLACE =================================================================================================================
     private final MyImageView enemy = new MyImageView(zombieNazi, "assets/images/characters/ZombiNazi.png", 4, 4);
 
-    private ArrayList<MyImageView> objectsTest = new ArrayList<>();
+    private final ArrayList<MyImageView> objectsTest = new ArrayList<>();
 
     public final MyPlace TEST = new MyPlace(
             "Test Room",
@@ -113,15 +139,16 @@ public class GameRessources {
     //FIN TEST =================================================================================================================
 
     // HERO CREATION
-    public final Hero hero = new Hero("hero", desertedRoom);
+    public final Hero hero = new Hero("hero", animalRoom);
     //public final MyHeroImageView heroTEST = new MyHeroImageView(hero, "assets/images/characters/CavemanFix.png", TEST);
 
     public GameRessources(){
+        /*
         // DOORS ADDING TO ROOMS
         animalRoom.addDoor(animToTransf, "up");
+        transferRoom.addDoor(transfToanim, "down");
         changingRoom.addDoor(changToTransf, "up");
         changingRoom.addDoor(changToEntry, "down");
-        transferRoom.addDoor(transfToanim, "down");
         transferRoom.addDoor(transfToChang, "down");
         transferRoom.addDoor(transfToMeet, "right");
         transferRoom.addDoor(transfToExper, "up");
@@ -147,6 +174,46 @@ public class GameRessources {
         dirtyChangingRoom.addDoor(dirtToDecon, "left");
         decontaminationRoom.addDoor(deconToDirt, "right");
         decontaminationRoom.addDoor(decontToExit, "left");
+
+ */
+
+
+
+
+
+        // DOORS ADDING TO ROOMS
+        animalRoom.addDoor(animAndTransf, "up");
+        changingRoom.addDoor(transfAndChang, "up");
+        changingRoom.addDoor(changAndEntry, "down");
+        entry.addDoor(changAndEntry, "up"); // doit on vraiment lui ajouter la porte ?
+        transferRoom.addDoor(animAndTransf, "down");
+        transferRoom.addDoor(transfAndChang, "down");
+        transferRoom.addDoor(transfAndMeet, "right");
+        transferRoom.addDoor(transfAndExper, "up");
+        meetingRoom.addDoor(transfAndMeet, "left");
+        meetingRoom.addDoor(meetAndArch, "right");
+        archivesRoom.addDoor(meetAndArch, "left");
+        experimentsRoom.addDoor(transfAndExper, "down");
+        experimentsRoom.addDoor(experimAndMort, "right");
+        experimentsRoom.addDoor(experimAndConda, "up");
+        experimentsRoom.addDoor(experimAndReserv, "up");
+        experimentsRoom.addDoor(experimAndCold, "left");
+        experimentsRoom.addDoor(experimAndDirty, "left");
+        morgue.addDoor(experimAndMort, "left");
+        morgue.addDoor(secretPassage, "down");
+        condamnedSAS.addDoor(experimAndConda, "down");
+        condamnedSAS.addDoor(condaAndDesert, "up");
+        desertedRoom.addDoor(condaAndDesert, "down");
+        productsReserve.addDoor(experimAndReserv, "down");
+        coldRoom.addDoor(experimAndCold, "right");
+        coldRoom.addDoor(coldAndGarb, "up");
+        garbageRoom.addDoor(coldAndGarb, "down");
+        dirtyChangingRoom.addDoor(experimAndDirty, "right");
+        dirtyChangingRoom.addDoor(dirtAndDecon, "left");
+        decontaminationRoom.addDoor(dirtAndDecon, "right");
+        decontaminationRoom.addDoor(decontAndExit, "left");
+        exit.addDoor(decontAndExit, "right");  // doit on vraiment lui ajouter la porte ?
+
 
 
         // ANIMALS ADDING TO ROOMS

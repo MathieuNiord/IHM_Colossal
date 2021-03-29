@@ -14,7 +14,7 @@ public class MyHeroImageView extends ImageView {
     // TEST
     public final GameRessources game = new GameRessources();
     public final Place place = game.animalRoom;
-    public final Door test = game.experimAndCold;
+    public final Door test = game.experimToCold;
     // END TEST
 
     /*** CONSTRUCTOR ***/

@@ -1,4 +1,4 @@
-package imageView;
+package model_bis;
 
 import javafx.scene.image.ImageView;
 import model.characters.Animal;

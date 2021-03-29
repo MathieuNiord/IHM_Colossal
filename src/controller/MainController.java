@@ -1,7 +1,7 @@
 package controller;
 
-import imageView.MyHeroImageView;
-import imageView.MyImageView;
+import model_bis.MyHeroImageView;
+import model_bis.MyImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import model.GameRessources;
+import model_bis.GameRessources;
 import model.doors.SecretCodeDoor;
 import stage.MyStage;
 
@@ -62,7 +62,7 @@ public class MainController implements Initializable {
     private GameRessources game = new GameRessources();
 
     // Hero
-    private MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");
+    private MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");//, game.hero);//game.heroTEST;//
 
     // Animals
     private MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);

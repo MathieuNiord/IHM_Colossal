@@ -18,7 +18,7 @@ public class Enemy implements Lookable {
     private final String opening;
     private final String attack;
     private final String defeat;
-    private final String description;
+    public final String DESCRIPTION;
 
     // ***** CONSTRUCTOR *****
 
@@ -31,7 +31,7 @@ public class Enemy implements Lookable {
         this.opening = op;
         this.attack = atk;
         this.defeat = dft;
-        this.description=desc;
+        this.DESCRIPTION=desc;
     
     }
 
@@ -102,7 +102,7 @@ public class Enemy implements Lookable {
     // === COMMANDS ===
 
     public void look() {
-        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
+        Game.printLetterByLetter(this.DESCRIPTION, Script.DEFAULT_NARRATOR);
     }
 
 
@@ -121,7 +121,7 @@ public class Enemy implements Lookable {
     }
 
     public void descript() {
-        Game.printLetterByLetter(this.description, Script.DEFAULT_NARRATOR);
+        Game.printLetterByLetter(this.DESCRIPTION, Script.DEFAULT_NARRATOR);
     }
 
 }

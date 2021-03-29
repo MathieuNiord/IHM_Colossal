@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <GridPane fx:id="gridGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -71,14 +71,6 @@
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
                 </GridPane>
-                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="14.0" layoutY="288.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
-                </Label>
                 <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="46.0" prefHeight="194.0" prefWidth="121.0" spacing="50.0">
                     <Button fx:id="buttonUse" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="USE">
                         <cursor>
@@ -96,9 +88,29 @@
                         </cursor>
                     </Button>
                 </VBox>
-            <Pane layoutX="15.0" layoutY="334.0" prefHeight="99.0" prefWidth="451.0" style="-fx-background-color: #3d3131; -fx-background-radius: 15;">
+            <Pane layoutX="15.0" layoutY="334.0" prefHeight="99.0" prefWidth="451.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;">
                <children>
-                      <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="27.0" layoutY="8.0" prefHeight="83.0" prefWidth="398.0" textFill="WHITE" wrapText="true">
+                      <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="16.0" layoutY="8.0" prefHeight="83.0" prefWidth="420.0" textFill="WHITE" wrapText="true">
+                          <font>
+                              <Font size="24.0" />
+                          </font>
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor>
+                      </Label>
+                  <Label fx:id="labelObjectInfo1" alignment="TOP_LEFT" layoutX="13.0" layoutY="8.0" prefHeight="83.0" prefWidth="427.0" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="NONE" />
+                     </cursor>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="15.0" layoutY="284.0" prefHeight="42.0" prefWidth="192.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;">
+               <children>
+                      <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="13.0" layoutY="4.0" prefHeight="32.0" prefWidth="166.0" textFill="WHITE">
                           <font>
                               <Font size="24.0" />
                           </font>
@@ -157,7 +169,7 @@
    </Button>
    <Pane layoutX="723.0" layoutY="533.0" prefHeight="99.0" prefWidth="480.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 15;">
       <children>
-          <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="16.0" layoutY="4.0" prefHeight="91.0" prefWidth="449.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+          <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="16.0" layoutY="11.0" prefHeight="77.0" prefWidth="449.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
             <font>
                <Font size="18.0" />
             </font>

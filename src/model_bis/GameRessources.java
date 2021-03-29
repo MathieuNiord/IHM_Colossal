@@ -1,7 +1,8 @@
-package model;
+package model_bis;
 
 
-import imageView.MyImageView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.characters.Animal;
 import model.characters.Enemy;
 import model.characters.Hero;
@@ -10,6 +11,8 @@ import model.doors.*;
 import model.objects.*;
 import model.others.Place;
 import model.others.Script;
+
+import java.util.ArrayList;
 
 public class GameRessources {
 
@@ -52,10 +55,6 @@ public class GameRessources {
     public final Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
 
 
-    // HERO CREATION
-    public final Hero hero = new Hero("hero",animalRoom);
-
-
     // ANIMALS CREATION
     public final Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
     public final Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
@@ -75,7 +74,7 @@ public class GameRessources {
     public final Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
     public final Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
     public final ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
-    public final Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,hero);
+    //public final Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,hero);
     public final NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
     public final SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
     public final Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
@@ -88,6 +87,22 @@ public class GameRessources {
 
     public final Enemy superNazi = new Enemy("super-nazi", 100, 8, k2,
             Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
+
+    //TEST MYPLACE =================================================================================================================
+    private final MyImageView enemy = new MyImageView(zombieNazi, "assets/images/characters/ZombiNazi.png", 4, 4);
+
+    private ArrayList<MyImageView> objectsTest = new ArrayList<>();
+
+    public final MyPlace TEST = new MyPlace(
+            "Test Room",
+            false, true,
+            new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, objectsTest);
+    //FIN TEST =================================================================================================================
+
+    // HERO CREATION
+    public final Hero hero = new Hero("hero", desertedRoom);
+    //public final MyHeroImageView heroTEST = new MyHeroImageView(hero, "assets/images/characters/CavemanFix.png", TEST);
 
     public GameRessources(){
         // DOORS ADDING TO ROOMS
@@ -135,8 +150,8 @@ public class GameRessources {
         transferRoom.addObject(flint);
         transferRoom.addObject(electricityMeter);
         changingRoom.addObject(sexyPoster);
-        changingRoom.addObject(locker);
-        locker.addObj(walkman);
+        //changingRoom.addObject(locker);
+        //locker.addObj(walkman);
         experimentsRoom.addObject(naziPoster);
         coldRoom.addObject(banana);
         garbageRoom.addObject(stick);
@@ -148,7 +163,11 @@ public class GameRessources {
 
         // ENEMIES ADDING TO ROOMS
         //meetingRoom.addAndCreateEnemy(accountGuy);
-        //desertedRoom.addAndCreateEnemy(zombieNazi);
+        desertedRoom.addAndCreateEnemy("zombie nazi", 60, 4, fuse,
+                Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
         //decontaminationRoom.addAndCreateEnemy(superNazi);
+
+        //TEST
+        //objectsTest.add(enemy);
     }
 }

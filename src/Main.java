@@ -6,7 +6,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        MyStage myStage = new MyStage("../view/home.fxml");
+        MyStage myStage = new MyStage("../view/main.fxml");
         myStage.show();
     }
 

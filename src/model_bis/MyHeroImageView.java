@@ -14,7 +14,7 @@ public class MyHeroImageView extends ImageView {
     // TEST
     public final GameRessources game = new GameRessources();
     public final Place place = game.animalRoom;
-    public final Door test = game.experimToCold;
+    //public final Door test = game.experimToCold;
     // END TEST
 
     /*** CONSTRUCTOR ***/
@@ -29,6 +29,7 @@ public class MyHeroImageView extends ImageView {
 
         // - Initialization of a hero in a room named 'TEST' -
         this.hero = new Hero("caveman", place);
+        System.out.println("MyHeroImageView initialized");
     }
 
     public MyPlace getMyPlace() {

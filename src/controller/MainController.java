@@ -11,6 +11,7 @@ import model.doors.SecretCodeDoor;
 import model_bis.GameRessources;
 import model_bis.MyHeroImageView;
 import model_bis.MyImageView;
+import model_bis.Test;
 import stage.MyStage;
 
 import java.net.URL;
@@ -61,17 +62,20 @@ public class MainController implements Initializable {
     // GameRessources
     private final GameRessources game = new GameRessources();
 
+    //Test
+    private final Test gameTest = new Test();
+
     // Hero
-    private final MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");
+    private final MyHeroImageView cavemanIm = new MyHeroImageView(gameTest.hero, "assets/images/characters/CavemanFix.png");
 
     // Animals
     private final MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);
 
     // Objects
-    private final MyImageView naziPosteIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    private final MyImageView naziPosterIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
 
     // Doors
-    private final MyImageView doorTestIm = new MyImageView(game.animAndTransf, "assets/images/place/BasicDoor.png", 5, 0);
+    private final MyImageView doorTestIm = new MyImageView(gameTest.animToTransf, "assets/images/place/BasicDoorUp.png", 5, 0);
 
     // Enemy
 
@@ -102,16 +106,16 @@ public class MainController implements Initializable {
     }
 
     // - This method is used to affect bounds on player -
-    private Pair<Integer,Integer> computeNewPair(Pair<Integer, Integer> p, int x, int y){
+    private Pair<Integer, Integer> computeNewPair(Pair<Integer, Integer> p, int x, int y){
         int newK = p.getKey();
         int newV = p.getValue();
-        if(!(newK+x<1 || newK+x>7)){
-            newK+=x;
+        if(!(newK + x < 1 || newK + x > 7)){
+            newK += x;
         }
-        if(!(newV+y<1 || newV+y>7)){
-            newV+=y;
+        if(!(newV + y < 1 || newV + y > 7)){
+            newV += y;
         }
-        return new Pair<>(newK,newV);
+        return new Pair<>(newK, newV);
     }
 
     // - Mouse clicked on the game display -
@@ -124,7 +128,7 @@ public class MainController implements Initializable {
                 else if(im.animal != null) labelScript.setText(im.animal.description);
                 else if (im.monkey != null) labelScript.setText(im.monkey.description);
                 else if(im.enemy != null) labelScript.setText(im.enemy.NAME);
-                else if(im.door != null) cavemanGo(im);//labelScript.setText(im.door.toString());
+                else if(im.door != null) cavemanGo_aux(im);//labelScript.setText(im.door.toString());
             }
             catch (Exception ignored){labelScript.setText("");}
         });
@@ -146,36 +150,70 @@ public class MainController implements Initializable {
 
     // - This method is used to open a door and go in the other room -
     private void cavemanGo(MyImageView im) {
-        for (String key : im.door.getPlaces().keySet()) {
-            if (!(cavemanIm.hero.getPlace().getName().equals(key)) && key != null) {
-                if (im.door instanceof model.doors.SecretCodeDoor) {
-                    // Cast
-                    SecretCodeDoor secretCodeDoor = (SecretCodeDoor)im.door;
+        if (im.door.getPlaces() != null) {
+            for (String key : im.door.getPlaces().keySet()) {
+                if (!(cavemanIm.hero.getPlace().getName().equals(key)) && key != null) {
+                    if (im.door instanceof model.doors.SecretCodeDoor) {
+                        // Cast
+                        SecretCodeDoor secretCodeDoor = (SecretCodeDoor) im.door;
 
-                    if (!secretCodeDoor.isUnlock()) {
+                        if (!secretCodeDoor.isUnlock()) {
 
-                        // TextInputDialog Composant
-                        TextInputDialog code = new TextInputDialog();
-                        code.setHeaderText("NEED A CODE");
-                        code.getEditor().setPromptText("CODE");
-                        code.showAndWait();
-                        System.out.println(code.getResult());
+                            // TextInputDialog Component
+                            TextInputDialog code = new TextInputDialog();
+                            code.setHeaderText("NEED A CODE");
+                            code.getEditor().setPromptText("CODE");
+                            code.showAndWait();
+                            System.out.println(code.getResult());
 
-                        // Unlock and open the door
-                        secretCodeDoor.unlock(code.getResult());
-                    }
+                            // Unlock and open the door
+                            secretCodeDoor.unlock(code.getResult());
+                        }
 
-                    if (secretCodeDoor.isUnlock()) {
-                        cavemanIm.hero.setPlace(secretCodeDoor.getPlaces().get(key));
-                        // Room Title
-                        labelTitle.setText(key);
-                        // Label Info
-                        labelScript.setText("You entered in " + cavemanIm.hero.getPlace().getName());
-                    }
+                        if (secretCodeDoor.isUnlock()) {
+                            cavemanIm.hero.setPlace(secretCodeDoor.getPlaces().get(key));
+                            // Room Title
+                            labelTitle.setText(key);
+                            // Label Info
+                            labelScript.setText("You entered in " + cavemanIm.hero.getPlace().getName());
+                        }
+                    } else cavemanIm.hero.go(key);
+                    break;
                 }
-                else cavemanIm.hero.go(key);
-                break;
             }
+        }
+    }
+
+    // - This method is used to open a door and go in the other room -
+    private void cavemanGo_aux(MyImageView im) {
+        if (im.door.getDest() != null) {
+
+            if (im.door instanceof model.doors.SecretCodeDoor) {
+
+                // Cast
+                SecretCodeDoor secretCodeDoor = (SecretCodeDoor) im.door;
+
+                if (!secretCodeDoor.isUnlock()) {
+
+                    // TextInputDialog Component
+                    TextInputDialog code = new TextInputDialog();
+                    code.setHeaderText("NEED A CODE");
+                    code.getEditor().setPromptText("CODE");
+                    code.showAndWait();
+                    System.out.println(code.getResult());
+
+                    // Unlock and open the door
+                    secretCodeDoor.unlock(code.getResult());
+                }
+
+                if (secretCodeDoor.isUnlock()) {
+                    cavemanIm.hero.setPlace(secretCodeDoor.getDest());
+                    // Room Title
+                    labelTitle.setText(secretCodeDoor.getDest().getName());
+                    // Label Info
+                    labelScript.setText("You entered in " + cavemanIm.hero.getPlace().getName());
+                }
+            } else cavemanIm.hero.go(im.door.getDest().getName());
         }
     }
 
@@ -225,7 +263,7 @@ public class MainController implements Initializable {
         });
     }
 
-    // --- COMPOSANT ACTIONS ---
+    // --- COMPONENT ACTIONS ---
 
     @FXML
     private void buttonQuitAction(){
@@ -258,7 +296,18 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        System.out.println("GameRessources Initialized");
+
         labelTitle.setText(cavemanIm.hero.getPlace().getName());
+
+        // GridMap ===
+
+        // - Background
+        BackgroundImage backgroundImage= new BackgroundImage(
+                new Image("assets/images/background/Mini-Map.png"),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        gridPaneMap.setBackground(new Background(backgroundImage));
+
 
         // GridGame ===
 
@@ -267,11 +316,12 @@ public class MainController implements Initializable {
 
         // - Layout
         addGame(catIm);
-        addGame(naziPosteIm);
+        addGame(naziPosterIm);
         addGame(doorTestIm);
         gridGame.add(cavemanIm, cavemanPos.getKey(), cavemanPos.getValue());
 
         gridGameSetOnMousePressedEvent();
+
 
         // Caveman ===
 
@@ -288,6 +338,7 @@ public class MainController implements Initializable {
 
         cavemanEvent();
 
+
         // Inventory ===
 
         gridPaneInventory.setOnMousePressed(event -> {
@@ -302,6 +353,8 @@ public class MainController implements Initializable {
                 labelObjectInfo.setText("");
             }
         });
+
+        System.out.println("Main initialized");
     }
 
 }

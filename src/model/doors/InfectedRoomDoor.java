@@ -6,11 +6,13 @@ import model.others.*;
 public class InfectedRoomDoor extends LockableDoor{
 
 
-    // ***** CONSTRUCTOR *****
-    public InfectedRoomDoor(Place p1){
-        super(p1);
+    // ***** CONSTRUCTORS *****
+
+    public InfectedRoomDoor(Place dest) {
+        super(dest);
     }
-    public InfectedRoomDoor(Place p1, Place p2){
+
+    public InfectedRoomDoor(Place p1, Place p2) {
         super(p1, p2);
     }
 
@@ -21,7 +23,7 @@ public class InfectedRoomDoor extends LockableDoor{
     // === OTHER ===
 
     @Override
-    public void cross(Hero hero, String s){
+    public void cross(Hero hero, String s) {
         s = s.toLowerCase();
         if(!this.isUnlock()){
             if(hero.isImmun()) {

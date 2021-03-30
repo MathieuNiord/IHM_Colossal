@@ -35,17 +35,19 @@ public class Place {
 		this.infested = inf;
 		this.enlightened = isEnlighted;
 
-		//We add animals, model.objects or enemies thanks to addAndCreate()
+		//We add animals, objects or enemies thanks to addAndCreate()
 		this.animals = null;
 		this.objs = null;
 		this.enemy = null;
 
-		//We'll have to add the model.doors afterwards thanks to addDoors()
+		//We'll have to add the doors afterwards thanks to addDoors()
 		this.doors = null;
 		this.left = null;
 		this.right = null;
 		this.up = null;
 		this.down = null;
+
+		System.out.println("Place " + this.getName() + "initialized");
 	}
 
 
@@ -172,7 +174,7 @@ public class Place {
 	}
 
 	public void addDoor(Door d, String where) {
-		if(d != null  && where != null) {
+		if(d != null && where != null) {
 			if (this.doors == null) {
 				this.doors = new HashMap<>();
 			}
@@ -205,6 +207,19 @@ public class Place {
 					}
 					this.right.put(destName, d);
 				}
+			}
+		}
+	}
+
+	public void addSimpleDoor(Door d) {
+		if(d != null) {
+			if (this.doors == null) {
+				this.doors = new HashMap<>();
+			}
+			if (!this.doors.containsValue(d)) {
+				// On récupère le nom de la destination en fonction du sens où on emprunte la porte
+				String destName = d.getDest().getName();
+				this.doors.put(destName, d);
 			}
 		}
 	}

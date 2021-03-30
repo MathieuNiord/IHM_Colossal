@@ -35,44 +35,6 @@ public class GameRessources {
 
 
     // DOORS CREATION
-    /*
-    public final Door secretPassage = new BurnableDoor(archivesRoom);
-    public final Door experimToConda = new InfectedRoomDoor(condamnedSAS);
-    public final Door condaToExperim = new Door(experimentsRoom);
-    public final Door changToEntry = new CondemnedDoor(entry);
-    public final Door meetToArch = new DestructableDoor(archivesRoom);
-    public final Door archTomeet = new DestructableDoor(meetingRoom);
-    public final Door transfToMeet = new LockedKeyDoor(1, meetingRoom);
-    public final Door meetToTransf = new LockedKeyDoor(1, transferRoom);
-    public final Door decontToExit = new LockedKeyDoor(2, exit);
-
-    public final Door animToTransf = new Door(transferRoom);//new SecretCodeDoor("IT", transferRoom);
-    public final Door transfToanim = new Door(animalRoom);
-
-    public final Door experimToReserv = new SecretCodeDoor("S A GREAT",productsReserve);
-    public final Door reservToExperim = new Door(experimentsRoom);
-    public final Door experimToDirty = new SecretCodeDoor("GAME",dirtyChangingRoom);
-    public final Door dirtyToExperim = new Door( experimentsRoom);
-    public final Door transfToChang = new Door(changingRoom);
-    public final Door changToTransf = new Door(transferRoom);
-    public final Door transfToExper = new Door(experimentsRoom);
-    public final Door experToTransf = new Door(transferRoom);
-    public final Door experimToMorg = new Door(morgue);
-    public final Door morgToExperim = new Door(experimentsRoom);
-    public final Door condaToDesert = new Door(desertedRoom);
-    public final Door desertToConda = new Door(condamnedSAS);
-    public final Door experimToCold = new Door(coldRoom);
-    public final Door coldToExperim = new Door(experimentsRoom);
-    public final Door coldToGarb = new Door(garbageRoom);
-    public final Door garbToCold = new Door(coldRoom);
-    public final Door dirtToDecon = new Door(decontaminationRoom);
-    public final Door deconToDirt = new Door(dirtyChangingRoom);
-    */
-
-
-
-
-    // DOORS CREATION
     public final Door secretPassage = new BurnableDoor(archivesRoom, null);
     public final Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
     public final Door changAndEntry = new CondemnedDoor(changingRoom, entry);
@@ -89,8 +51,6 @@ public class GameRessources {
     public final Door experimAndCold = new Door(experimentsRoom, coldRoom);
     public final Door coldAndGarb = new Door(coldRoom, garbageRoom);
     public final Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
-
-
 
 
     // ANIMALS CREATION
@@ -117,69 +77,20 @@ public class GameRessources {
     public final SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
     public final Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
-    public final Enemy accountGuy = new Enemy("account guy", 45, 1, k1,
+
+    //ENEMIES CREATION
+    public final Enemy accountGuy = new Enemy("Account Guy", 45, 1, k1,
     Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-
-    public final Enemy zombieNazi = new Enemy("zombie nazi", 60, 4, fuse,
+    public final Enemy zombieNazi = new Enemy("Naz Zombie", 60, 4, fuse,
             Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-
-    public final Enemy superNazi = new Enemy("super-nazi", 100, 8, k2,
+    public final Enemy superNazi = new Enemy("Super-Nazi", 100, 8, k2,
             Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
-    //TEST MYPLACE =================================================================================================================
-    private final MyImageView enemy = new MyImageView(zombieNazi, "assets/images/characters/ZombiNazi.png", 4, 4);
-
-    private final ArrayList<MyImageView> objectsTest = new ArrayList<>();
-
-    public final MyPlace TEST = new MyPlace(
-            "Test Room",
-            false, true,
-            new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, objectsTest);
-    //FIN TEST =================================================================================================================
 
     // HERO CREATION
     public final Hero hero = new Hero("hero", animalRoom);
-    //public final MyHeroImageView heroTEST = new MyHeroImageView(hero, "assets/images/characters/CavemanFix.png", TEST);
 
     public GameRessources(){
-        /*
-        // DOORS ADDING TO ROOMS
-        animalRoom.addDoor(animToTransf, "up");
-        transferRoom.addDoor(transfToanim, "down");
-        changingRoom.addDoor(changToTransf, "up");
-        changingRoom.addDoor(changToEntry, "down");
-        transferRoom.addDoor(transfToChang, "down");
-        transferRoom.addDoor(transfToMeet, "right");
-        transferRoom.addDoor(transfToExper, "up");
-        meetingRoom.addDoor(meetToTransf, "left");
-        meetingRoom.addDoor(meetToArch, "right");
-        archivesRoom.addDoor(archTomeet, "left");
-        experimentsRoom.addDoor(experToTransf, "down");
-        experimentsRoom.addDoor(experimToMorg, "right");
-        experimentsRoom.addDoor(experimToConda, "up");
-        experimentsRoom.addDoor(experimToReserv, "up");
-        experimentsRoom.addDoor(experimToCold, "left");
-        experimentsRoom.addDoor(experimToDirty, "left");
-        morgue.addDoor(morgToExperim, "left");
-        morgue.addDoor(secretPassage, "down");
-        condamnedSAS.addDoor(condaToExperim, "down");
-        condamnedSAS.addDoor(condaToDesert, "up");
-        desertedRoom.addDoor(desertToConda, "down");
-        productsReserve.addDoor(reservToExperim, "down");
-        coldRoom.addDoor(coldToExperim, "right");
-        coldRoom.addDoor(coldToGarb, "up");
-        garbageRoom.addDoor(garbToCold, "down");
-        dirtyChangingRoom.addDoor(dirtyToExperim, "right");
-        dirtyChangingRoom.addDoor(dirtToDecon, "left");
-        decontaminationRoom.addDoor(deconToDirt, "right");
-        decontaminationRoom.addDoor(decontToExit, "left");
-
- */
-
-
-
-
 
         // DOORS ADDING TO ROOMS
         animalRoom.addDoor(animAndTransf, "up");

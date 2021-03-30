@@ -11,6 +11,7 @@ import model.doors.SecretCodeDoor;
 import model_bis.GameRessources;
 import model_bis.MyHeroImageView;
 import model_bis.MyImageView;
+import model_bis.Test;
 import stage.MyStage;
 
 import java.net.URL;
@@ -61,8 +62,11 @@ public class MainController implements Initializable {
     // GameRessources
     private final GameRessources game = new GameRessources();
 
+    //Test
+    private final Test gameTest = new Test();
+
     // Hero
-    private final MyHeroImageView cavemanIm = new MyHeroImageView(game.hero, "assets/images/characters/CavemanFix.png");
+    private final MyHeroImageView cavemanIm = new MyHeroImageView(gameTest.hero, "assets/images/characters/CavemanFix.png");
 
     // Animals
     private final MyImageView catIm = new MyImageView(game.cat, "assets/images/characters/cat.gif", 2, 2, 45);
@@ -71,7 +75,7 @@ public class MainController implements Initializable {
     private final MyImageView naziPosterIm = new MyImageView(game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
 
     // Doors
-    private final MyImageView doorTestIm = new MyImageView(game.animAndTransf, "assets/images/place/BasicDoorUp.png", 5, 0);
+    private final MyImageView doorTestIm = new MyImageView(gameTest.animToTransf, "assets/images/place/BasicDoorUp.png", 5, 0);
 
     // Enemy
 
@@ -124,7 +128,7 @@ public class MainController implements Initializable {
                 else if(im.animal != null) labelScript.setText(im.animal.description);
                 else if (im.monkey != null) labelScript.setText(im.monkey.description);
                 else if(im.enemy != null) labelScript.setText(im.enemy.NAME);
-                else if(im.door != null) cavemanGo(im);//labelScript.setText(im.door.toString());
+                else if(im.door != null) cavemanGo_aux(im);//labelScript.setText(im.door.toString());
             }
             catch (Exception ignored){labelScript.setText("");}
         });
@@ -177,6 +181,39 @@ public class MainController implements Initializable {
                     break;
                 }
             }
+        }
+    }
+
+    // - This method is used to open a door and go in the other room -
+    private void cavemanGo_aux(MyImageView im) {
+        if (im.door.getDest() != null) {
+
+            if (im.door instanceof model.doors.SecretCodeDoor) {
+
+                // Cast
+                SecretCodeDoor secretCodeDoor = (SecretCodeDoor) im.door;
+
+                if (!secretCodeDoor.isUnlock()) {
+
+                    // TextInputDialog Component
+                    TextInputDialog code = new TextInputDialog();
+                    code.setHeaderText("NEED A CODE");
+                    code.getEditor().setPromptText("CODE");
+                    code.showAndWait();
+                    System.out.println(code.getResult());
+
+                    // Unlock and open the door
+                    secretCodeDoor.unlock(code.getResult());
+                }
+
+                if (secretCodeDoor.isUnlock()) {
+                    cavemanIm.hero.setPlace(secretCodeDoor.getDest());
+                    // Room Title
+                    labelTitle.setText(secretCodeDoor.getDest().getName());
+                    // Label Info
+                    labelScript.setText("You entered in " + cavemanIm.hero.getPlace().getName());
+                }
+            } else cavemanIm.hero.go(im.door.getDest().getName());
         }
     }
 

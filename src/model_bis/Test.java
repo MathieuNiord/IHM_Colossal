@@ -1,11 +1,14 @@
+
 package model_bis;
 
-import javafx.scene.image.Image;
+
+
 import model.characters.Enemy;
 import model.characters.Hero;
 import model.doors.*;
 import model.others.Place;
 import model.others.Script;
+import view.MyImageView;
 
 import java.util.ArrayList;
 
@@ -74,11 +77,6 @@ public class Test {
 
     private final ArrayList<MyImageView> objectsTest = new ArrayList<>();
 
-    public final MyPlace TEST = new MyPlace(
-            "Test Room",
-            false, true,
-            new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, objectsTest);
     //FIN TEST =================================================================================================================
 
     // HERO CREATION

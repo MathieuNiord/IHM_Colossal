@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -57,6 +58,40 @@ public class MainController implements Initializable {
     private Pane paneMain;
     @FXML
     private GridPane gridGame;
+    
+    // ImageView
+    @FXML
+    public ImageView deserted_room;
+    @FXML
+    public ImageView condamned_sas;
+    @FXML
+    public ImageView mortuary;
+    @FXML
+    public ImageView product_reserve;
+    @FXML
+    public ImageView garbage_room;
+    @FXML
+    public ImageView experiments_room;
+    @FXML
+    public ImageView cold_room;
+    @FXML
+    public ImageView dirty_changing_room;
+    @FXML
+    public ImageView transfer_room;
+    @FXML
+    public ImageView meeting_room;
+    @FXML
+    public ImageView archives_room;
+    @FXML
+    public ImageView animal_room;
+    @FXML
+    public ImageView changing_room;
+    @FXML
+    public ImageView entry;
+    @FXML
+    public ImageView decontamination_room;
+    @FXML
+    public ImageView exit;
 
     // === TEST
     // GameRessources

@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.image.ImageView;
 import view.MyGridPane;
 import view.MyImageView;
 import javafx.fxml.FXML;
@@ -55,6 +56,40 @@ public class MainController implements Initializable {
     private Pane paneMain;
     @FXML
     private MyGridPane gridGame;
+
+    // ImageViews
+    @FXML
+    public ImageView deserted_room;
+    @FXML
+    public ImageView condamned_sas;
+    @FXML
+    public ImageView mortuary;
+    @FXML
+    public ImageView product_reserve;
+    @FXML
+    public ImageView garbage_room;
+    @FXML
+    public ImageView experiments_room;
+    @FXML
+    public ImageView cold_room;
+    @FXML
+    public ImageView dirty_changing_room;
+    @FXML
+    public ImageView transfer_room;
+    @FXML
+    public ImageView meeting_room;
+    @FXML
+    public ImageView archives_room;
+    @FXML
+    public ImageView animal_room;
+    @FXML
+    public ImageView changing_room;
+    @FXML
+    public ImageView entry;
+    @FXML
+    public ImageView decontamination_room;
+    @FXML
+    public ImageView exit;
 
     // === TEST
     // GameRessources

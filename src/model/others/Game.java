@@ -12,80 +12,74 @@ public class Game {
 
 	// ***** ATTRIBUTES *****
 
-	private final Hero hero;
+
 	private int party = 1;
 
 	// ***** CONSTRUCTORS *****
+	public static final Place animalRoom = new Place("animal room", false, true);
+	public static final Place transferRoom = new Place("transfer room", false, true);
+	public static final Place changingRoom = new Place("changing room", false, true);
+	public static final Place entry = new Place("entry", false, true);
+	public static final Place meetingRoom = new Place("meeting room", false, true);
+	public static final Place archivesRoom = new Place("archives room", false, true);
+	public static final Place experimentsRoom = new Place("experiments room", false, true);
+	public static final Place morgue = new Place("morgue", false, true); // on éclaire la pièce ?
+	public static final Place condamnedSAS = new Place("condamned sas", true, true);
+	public static final Place desertedRoom = new Place("deserted room", false, true);
+	public static final Place productsReserve = new Place("products reserve", false, true);
+	public static final Place garbageRoom = new Place("garbage room", false, true);
+	public static final Place coldRoom = new Place("cold room", false, false);
+	public static final Place dirtyChangingRoom = new Place("dirty changingroom", false, true); // est ce qu'on pourrait pas l'enlever ?
+	public static final Place decontaminationRoom = new Place("decontamination room", false, true);
+	public static final Place exit = new Place("exit", false, true);
+
+	public static final Door secretPassage = new BurnableDoor(archivesRoom, null);
+	public static final Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
+	public static final Door changAndEntry = new CondemnedDoor(changingRoom, entry);
+	public static final Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
+	public static final Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
+	public static final Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
+	public static final Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
+	public static final Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
+	public static final Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
+	public static final Door transfAndChang = new Door(transferRoom, changingRoom);
+	public static final Door transfAndExper = new Door(transferRoom, experimentsRoom);
+	public static final Door experimAndMort = new Door(experimentsRoom, morgue);
+	public static final Door condaAndDesert = new Door(condamnedSAS, desertedRoom);
+	public static final Door experimAndCold = new Door(experimentsRoom, coldRoom);
+	public static final Door coldAndGarb = new Door(coldRoom, garbageRoom);
+	public static final Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
+
+	public static final Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+	public static final Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+	public static final Monkey monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+
+	public static final Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
+	public static final Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
+	public static final Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
+	public static final Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
+	public static final Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
+	public static final Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
+	public static final Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
+	public static final Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
+	public static final Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
+	public static final Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
+	public static final Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
+	public static final ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
+
+	public static final NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
+	public static final SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+	public static final Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
+
+
+	public final static Hero hero = new Hero("name", animalRoom);
+
+	public static final Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,hero);
+
+
 
 	public Game(String heroName)
 	{
-
-		// ROOMS CREATION
-		Place animalRoom = new Place("animal room", false, true);
-		Place transferRoom = new Place("transfer room", false, true);
-		Place changingRoom = new Place("changing room", false, true);
-		Place entry = new Place("entry", false, true);
-		Place meetingRoom = new Place("meeting room", false, true);
-		Place archivesRoom = new Place("archives room", false, true);
-		Place experimentsRoom = new Place("experiments room", false, true);
-		Place morgue = new Place("morgue", false, true); // on éclaire la pièce ?
-		Place condamnedSAS = new Place("condamned sas", true, true);
-		Place desertedRoom = new Place("deserted room", false, true);
-		Place productsReserve = new Place("products reserve", false, true);
-		Place garbageRoom = new Place("garbage room", false, true);
-		Place coldRoom = new Place("cold room", false, false);
-		Place dirtyChangingRoom = new Place("dirty changingroom", false, true); // est ce qu'on pourrait pas l'enlever ?
-		Place decontaminationRoom = new Place("decontamination room", false, true);
-		Place exit = new Place("exit", false, true);
-
-
-		// DOORS CREATION
-		Door secretPassage = new BurnableDoor(archivesRoom, null);
-		Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
-		Door changAndEntry = new CondemnedDoor(changingRoom, entry);
-		Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
-		Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
-		Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
-		Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
-		Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
-		Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
-		Door transfAndChang = new Door(transferRoom, changingRoom);
-		Door transfAndExper = new Door(transferRoom, experimentsRoom);
-		Door experimAndMort = new Door(experimentsRoom, morgue);
-		Door condaAndDesert = new Door(condamnedSAS, desertedRoom);
-		Door experimAndCold = new Door(experimentsRoom, coldRoom);
-		Door coldAndGarb = new Door(coldRoom, garbageRoom);
-		Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
-
-
-		// HERO CREATION
-		this.hero = new Hero(heroName, animalRoom);
-
-
-		// ANIMALS CREATION
-		//Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
-		//Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-		//Animal monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
-
-
-		// OBJECTS CREATION
-		Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
-		Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
-		Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
-		Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
-		Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
-		Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
-		Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
-		Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
-		Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
-		Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
-		Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
-		ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
-		Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,this.hero);
-		NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
-		SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
-		Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
-
 
 		// DOORS ADDING TO ROOMS
 		animalRoom.addDoor(animAndTransf, "up");
@@ -122,9 +116,9 @@ public class Game {
 
 
 		// ANIMALS ADDING TO ROOMS
-		//animalRoom.addAnimal(cat);
-		//experimentsRoom.addAnimal(monkey);
-		//experimentsRoom.addAnimal(mouse);
+		animalRoom.addAnimal(cat);
+		experimentsRoom.addAnimal(monkey);
+		experimentsRoom.addAnimal(mouse);
 
 
 		// OBJECTS ADDING TO ROOMS

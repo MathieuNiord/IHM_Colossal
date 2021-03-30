@@ -1,5 +1,7 @@
 package model.characters;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;

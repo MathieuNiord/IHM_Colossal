@@ -63,8 +63,8 @@ public class BattleController implements Initializable {
 
     @FXML
     private void lifeDisplay() {
-        label_enemy_life.setText(String.valueOf(game.hero.getPlace().getEnemies().getHP()));
-        label_hero_life.setText(String.valueOf(game.hero.getHP()));
+        label_enemy_life.setText(String.valueOf(game.heroIm.hero.getPlace().getEnemies().getHP()));
+        label_hero_life.setText(String.valueOf(game.heroIm.hero.getHP()));
 
         hLife = new SimpleIntegerProperty(Integer.parseInt(label_hero_life.getText()));
         eLife = new SimpleIntegerProperty(Integer.parseInt(label_enemy_life.getText()));
@@ -77,9 +77,9 @@ public class BattleController implements Initializable {
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
             if (playerTurn) {
-                game.hero.attack(game.hero.getPlace().getEnemies());
+                game.heroIm.hero.attack(game.heroIm.hero.getPlace().getEnemies());
 
-                if (!game.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("Yeah ! Kill him ! " + game.hero.getPlace().getEnemies().NAME + " lost 20 HP");
+                if (!game.heroIm.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("Yeah ! Kill him ! " + game.heroIm.hero.getPlace().getEnemies().NAME + " lost 20 HP");
 
                 button_attack.setDisable(true);
                 button_heal.setDisable(true);
@@ -95,7 +95,7 @@ public class BattleController implements Initializable {
     private void setButton_heal() {
         button_heal.setOnAction( event -> {
             if (playerTurn) {
-                game.hero.heal();
+                game.heroIm.hero.heal();
                 button_attack.setDisable(true);
                 button_heal.setDisable(true);
                 System.out.println("heal - playerTurn false");
@@ -114,14 +114,14 @@ public class BattleController implements Initializable {
             Random rand = new Random();
             int eHeal = rand.nextInt(10 + 1);  //Enemy heal
 
-            if (!game.hero.getPlace().getEnemies().isDefeat()) {
+            if (!game.heroIm.hero.getPlace().getEnemies().isDefeat()) {
 
                 if (eHeal == 1) {
-                    game.hero.getPlace().getEnemies().heal(10);
-                    label_commentary.setText(game.hero.getPlace().getEnemies().NAME + " healed itself");
+                    game.heroIm.hero.getPlace().getEnemies().heal(10);
+                    label_commentary.setText(game.heroIm.hero.getPlace().getEnemies().NAME + " healed itself");
                 } else {
-                    game.hero.getPlace().getEnemies().attack();
-                    game.hero.setLife(game.hero.getPlace().getEnemies().getDamage());
+                    game.heroIm.hero.getPlace().getEnemies().attack();
+                    game.heroIm.hero.setLife(game.heroIm.hero.getPlace().getEnemies().getDamage());
                     label_commentary.setText("Ouch ! You took several damages... Get up and beat this Nazi Crap !");
                 }
                 button_attack.setDisable(false);
@@ -142,18 +142,18 @@ public class BattleController implements Initializable {
 
         //ProgressBars
 
-        progress_bar_hero = new ProgressBar((double) game.hero.getHP());
-        progress_bar_enemy = new ProgressBar((double) game.hero.getPlace().getEnemies().getHP());
+        progress_bar_hero = new ProgressBar((double) game.heroIm.hero.getHP());
+        progress_bar_enemy = new ProgressBar((double) game.heroIm.hero.getPlace().getEnemies().getHP());
 
         //IntegerProperties
 
         hLife = new SimpleIntegerProperty();
-        hLife.setValue(game.hero.getHP());
+        hLife.setValue(game.heroIm.hero.getHP());
         eLife = new SimpleIntegerProperty();
-        eLife.setValue(game.hero.getPlace().getEnemies().getHP());
+        eLife.setValue(game.heroIm.hero.getPlace().getEnemies().getHP());
 
         //Labels
-        label_enemy_name.setText(game.hero.getPlace().getEnemies().NAME);
+        label_enemy_name.setText(game.heroIm.hero.getPlace().getEnemies().NAME);
 
         //Image
         image_enemy.setImage(new Image("assets/images/characters/ZombiNazi.png"));
@@ -164,18 +164,18 @@ public class BattleController implements Initializable {
         setButton_heal();
 
         // -- Battle opening
-        label_commentary.setText(game.hero.getPlace().getEnemies().DESCRIPTION);
+        label_commentary.setText(game.heroIm.hero.getPlace().getEnemies().DESCRIPTION);
 
         // -- Battle area
 
-        if (!(game.hero.getHP() == 0 && game.hero.getPlace().getEnemies().isDefeat())) {
+        if (!(game.heroIm.hero.getHP() == 0 && game.heroIm.hero.getPlace().getEnemies().isDefeat())) {
             //if (!playerTurn)
                 enemyTurn();
             System.out.println("enemyTurn - playerTurn = " + String.valueOf(playerTurn));
         }
 
         // -- Battle is over
-        if (game.hero.getHP() == 0) label_commentary.setText("You loose");
-        else if (game.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
+        if (game.heroIm.hero.getHP() == 0) label_commentary.setText("You loose");
+        else if (game.heroIm.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
     }
 }

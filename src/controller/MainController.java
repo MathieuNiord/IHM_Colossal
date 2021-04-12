@@ -123,7 +123,7 @@ public class MainController implements Initializable {
                 if(im.obj != null && !(im.obj.getClass().getSimpleName().equals("ElectricityMeter"))){
                     gridPaneInventory.getChildren().add(im);
                     gridGame.getMyPlace().getImages().remove(im);
-                    game.hero.take(im.obj.NAME);
+                    game.heroIm.hero.take(im.obj.NAME);
                 }
                 else if(im.animal != null) labelScript.setText(im.animal.description);
                 else if (im.monkey != null) labelScript.setText(im.monkey.description);

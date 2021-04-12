@@ -425,20 +425,7 @@ public class Game {
 	//Display effect for dialogs
 	public static void printLetterByLetter(String s, String whom) {
 		System.out.print("\n" + whom.toUpperCase() + " : ");															//Display the character who talks
-		int len = s.length();
-		try {
-			for (int i = 0 ; i < len; i++) {
-				char c = s.charAt(i);
-				System.out.print(c);
-				if ( c=='.' || c=='?' || c==',') {
-					Thread.sleep(500);
-				}
-				Thread.sleep(20);
-			}
-		}
-		catch (Exception e) {
-			System.out.println("Error");
-		}
+		System.out.println(s);
 	}
 
 	//To clean the prompt

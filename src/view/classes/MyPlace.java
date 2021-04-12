@@ -64,4 +64,8 @@ public class MyPlace {
     public ArrayList<MyImageView> getImages() {
         return images;
     }
+
+    public Place getPlace() {
+        return place;
+    }
 }

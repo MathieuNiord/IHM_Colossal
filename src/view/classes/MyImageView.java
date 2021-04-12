@@ -11,11 +11,11 @@ public class MyImageView extends ImageView {
 
     /*** ATTRIBUTES ***/
     public final int x,y;
-    private Animal animal;
-    private Door door;
-    private Enemy enemy;
-    private Monkey monkey;
-    private Obj obj;
+    public Animal animal;
+    public Door door;
+    public Enemy enemy;
+    public Monkey monkey;
+    public Obj obj;
 
     /*** CONSTRUCTOR ***/
 

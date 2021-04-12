@@ -1,8 +1,11 @@
 package controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -11,10 +14,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.others.Game;
+import model.others.Script;
 import stage.MyStage;
 import view.classes.MyGridPane;
+import view.classes.MyImageView;
 import view.ressources.GameRessources;
+import view.ressources.ImageRessources;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -134,17 +142,78 @@ public class MainController implements Initializable {
         }
     }
 
-    //fonction de déplacement du personnage
-    private void heroMove(){
+    //fonction qui initialise les listeners
+    private void initListener(){
+        GameRessources.heroIm.x.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                boolean containObject = false; //new pos contain an entity/object
+
+                for (MyImageView im: gridPaneGame.getMyPlace().getImages()) {
+                    if(im.x==newValue.intValue() && im.y == GameRessources.heroIm.y.getValue()){
+                        containObject = true;
+                        if(im.animal!=null){
+                            im.animal.talk(GameRessources.heroIm.hero);
+                        }
+                        if(im.obj!=null){
+                            im.obj.take(GameRessources.heroIm.hero);
+                            gridPaneGame.getChildren().remove(im);
+                            flowPaneInventory.getChildren().add(im);
+                        }
+                        break;
+                    }
+                }
+
+                if(newValue.intValue()<gridPaneGame.getMyPlace().getMaxXBound() &&
+                        newValue.intValue()>gridPaneGame.getMyPlace().getMinXBound() && !containObject){
+                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
+                    gridPaneGame.add(GameRessources.heroIm,newValue.intValue(),GameRessources.heroIm.y.getValue());
+                }
+                else{
+                    GameRessources.heroIm.x.setValue(oldValue);
+                }
+            }
+        });
+        GameRessources.heroIm.y.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                boolean containObject = false; //new pos contain an entity/object
+
+                    int x = GameRessources.heroIm.x.getValue();
+                    int y = newValue.intValue();
+                    MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
+                    if(im!=null){
+
+                    }
+
+
+                if(newValue.intValue()<gridPaneGame.getMyPlace().getMaxYBound() &&
+                        newValue.intValue()>gridPaneGame.getMyPlace().getMinYBound() && !containObject){
+                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
+                    gridPaneGame.add(GameRessources.heroIm,GameRessources.heroIm.x.getValue(),newValue.intValue());
+                }
+                else{
+                    GameRessources.heroIm.y.setValue(oldValue);
+                }
+            }
+        });
     }
 
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
         switch (event.getCode()){
-            case Z:GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()-1); break;
+            case Z:
+                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()-1);
+                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
+                break;
             case Q:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()-1); break;
-            case S:GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()+1); break;
+            case S:
+                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()+1);
+                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
+                break;
             case D:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()+1); break;
+            case T:
         }
     }
 
@@ -161,6 +230,11 @@ public class MainController implements Initializable {
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
+        initListener();
+        System.setOut(new PrintStream(new OutputStream() {
+                    @Override
+                    public void write(int b) {labelScript.setText(labelScript.getText() + (char) b); }}));
+
     }
 }
 

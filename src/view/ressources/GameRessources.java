@@ -32,7 +32,7 @@ public class GameRessources {
     public final static MyImageView stickIm = new MyImageView(Game.stick, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView flintIm = new MyImageView(Game.flint, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView fuseIm = new MyImageView(Game.fuse, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView catBIm = new MyImageView(Game.catB, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    public final static MyImageView catBIm = new MyImageView(Game.catB, "assets/images/objects/NazisPoster.png", 3, 7, 40);
     public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView k1Im = new MyImageView(Game.k1, "assets/images/objects/NazisPoster.png", 3, 0, 40);
@@ -142,6 +142,7 @@ public class GameRessources {
     public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8,exitImList);
 
+    public final static MyGridPane ezMoula = new MyGridPane();
     public GameRessources(){
         // DOORS ADDING TO ROOMS
         animalRoomImList.add(animToTransfIm);
@@ -196,5 +197,7 @@ public class GameRessources {
         desertedRoomImList.add(monkeyBIm);
         dirtyChangingRoomImList.add(sexyPosterIm);
 
+
+        ezMoula.setMyPlace(myArchivesRoom);
     }
 }

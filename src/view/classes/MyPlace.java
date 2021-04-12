@@ -1,4 +1,4 @@
-package view;
+package view.classes;
 
 import javafx.scene.image.Image;
 import model.others.Place;
@@ -8,17 +8,18 @@ import java.util.ArrayList;
 public class MyPlace {
 
     /*** === ATTRIBUTES === ***/
-    private ArrayList<MyImageView> images;
+    private final ArrayList<MyImageView> images;
+
     private final Place place;
-    private int minX;
-    private int maxX;
-    private int minY;
-    private int maxY;
+
+    private final int minX,maxX,minY,maxY;
+
     private MyImageView enemy;
-    private Image backgroundImage;
+    private final Image backgroundImage;
 
     /*** === CONSTRUCTOR === ***/
-    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY, ArrayList<MyImageView> images) {
+    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
+                   ArrayList<MyImageView> images) {
         this.place = place;
         backgroundImage = bg;
         minX = minBoundX;
@@ -29,7 +30,8 @@ public class MyPlace {
         this.enemy = null;
 
     }
-    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY, ArrayList<MyImageView> images, MyImageView enemy) {
+    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY
+            , int maxBoundY, ArrayList<MyImageView> images, MyImageView enemy) {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images);
        this.enemy = enemy;
     }

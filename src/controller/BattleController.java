@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import view.GameRessources;
+import view.ressources.GameRessources;
 import java.net.URL;
 import java.util.*;
 

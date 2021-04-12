@@ -24,7 +24,7 @@ public class HomeController implements Initializable {
 
         Stage currentStage = (Stage) button_play.getScene().getWindow();
         currentStage.close();
-        MyStage myStage = new MyStage("../view/main.fxml");
+        MyStage myStage = new MyStage("../view/fxml/main.fxml");
         myStage.show();
     }
 
@@ -33,7 +33,7 @@ public class HomeController implements Initializable {
 
         Stage currentStage = (Stage) button_credit.getScene().getWindow();
         currentStage.close();
-        MyStage myStage = new MyStage("../view/credit.fxml");
+        MyStage myStage = new MyStage("../view/fxml/credit.fxml");
         myStage.show();
     }
 

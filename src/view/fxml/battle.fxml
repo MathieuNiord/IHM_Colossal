@@ -16,12 +16,12 @@
          <children>
             <ImageView layoutX="214.0" layoutY="93.0">
                <image>
-                  <Image url="@../assets/images/characters/caveman.gif" />
+                  <Image url="@../../assets/images/characters/caveman.gif" />
                </image>
             </ImageView>
             <ImageView fx:id="image_enemy" fitHeight="87.0" fitWidth="82.0" layoutX="303.0" layoutY="77.0">
                <image>
-                  <Image url="@../assets/images/characters/ZombiNazi.png" />
+                  <Image url="@../../assets/images/characters/ZombiNazi.png" />
                </image>
             </ImageView>
             <Label fx:id="label_enemy_name" alignment="TOP_RIGHT" layoutX="420.0" layoutY="45.0" prefHeight="21.0" prefWidth="164.0" text="Enemy" />

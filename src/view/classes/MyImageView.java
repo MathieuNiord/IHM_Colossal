@@ -1,4 +1,4 @@
-package view;
+package view.classes;
 
 import javafx.scene.image.ImageView;
 import model.characters.Animal;
@@ -10,12 +10,12 @@ import model.objects.Obj;
 public class MyImageView extends ImageView {
 
     /*** ATTRIBUTES ***/
-    public int x,y;
-    public Animal animal;
-    public Door door;
-    public Enemy enemy;
-    public Monkey monkey;
-    public Obj obj;
+    private final int x,y;
+    private Animal animal;
+    private Door door;
+    private Enemy enemy;
+    private Monkey monkey;
+    private Obj obj;
 
     /*** CONSTRUCTOR ***/
 

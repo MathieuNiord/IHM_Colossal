@@ -9,14 +9,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-    <GridPane fx:id="gridGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
+<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+    <GridPane fx:id="gridPaneGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,73 +54,27 @@
     <TabPane fx:id="tabPane" layoutX="722.0" layoutY="29.0" prefHeight="486.0" prefWidth="480.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <Tab closable="false" text="Inventory">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="256.0">
-                <GridPane fx:id="gridPaneInventory" layoutX="14.0" layoutY="15.0" prefHeight="256.0" prefWidth="272.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15;">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-               <cursor>
-                  <Cursor fx:constant="CROSSHAIR" />
-               </cursor>
-                </GridPane>
-                <VBox alignment="TOP_CENTER" layoutX="322.0" layoutY="46.0" prefHeight="194.0" prefWidth="121.0" spacing="50.0">
-                    <Button fx:id="buttonUse" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="USE">
-                        <cursor>
-                            <Cursor fx:constant="HAND" />
-                        </cursor>
-                    </Button>
-                    <Button fx:id="buttonMatch" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="MATCH">
-                        <cursor>
-                            <Cursor fx:constant="HAND" />
-                        </cursor>
-                    </Button>
-                    <Button fx:id="buttonLook" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="75.0" text="LOOK">
-                        <cursor>
-                            <Cursor fx:constant="HAND" />
-                        </cursor>
-                    </Button>
-                </VBox>
-            <Pane layoutX="15.0" layoutY="334.0" prefHeight="99.0" prefWidth="451.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;">
-               <children>
-                      <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="16.0" layoutY="8.0" prefHeight="83.0" prefWidth="420.0" textFill="WHITE" wrapText="true">
-                          <font>
-                              <Font size="24.0" />
-                          </font>
-                     <cursor>
-                        <Cursor fx:constant="NONE" />
-                     </cursor>
-                      </Label>
-                  <Label fx:id="labelObjectInfo1" alignment="TOP_LEFT" layoutX="13.0" layoutY="8.0" prefHeight="83.0" prefWidth="427.0" textFill="WHITE" wrapText="true">
-                     <font>
+                <Label fx:id="labelObjectName" alignment="CENTER" layoutX="157.0" layoutY="313.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textAlignment="CENTER" textFill="WHITE">
+                    <font>
                         <Font size="24.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="NONE" />
-                     </cursor>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="15.0" layoutY="284.0" prefHeight="42.0" prefWidth="192.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;">
-               <children>
-                      <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="13.0" layoutY="4.0" prefHeight="32.0" prefWidth="166.0" textFill="WHITE">
-                          <font>
-                              <Font size="24.0" />
-                          </font>
-                     <cursor>
-                        <Cursor fx:constant="NONE" />
-                     </cursor>
-                      </Label>
-               </children>
-            </Pane>
+                    </font>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+                </Label>
+            <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="28.0" layoutY="354.0" prefHeight="83.0" prefWidth="427.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </Label>
+            <FlowPane fx:id="flowPaneInventory" hgap="16.0" layoutX="74.0" layoutY="33.0" prefHeight="256.0" prefWidth="336.0" vgap="16.0">
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
+            </FlowPane>
             </AnchorPane>
         </Tab>
         <Tab closable="false" text="Map">
@@ -168,34 +122,26 @@
             </AnchorPane>
         </Tab>
     </TabPane>
-    <Button fx:id="buttonQuit" layoutX="1103.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonQuitAction" prefHeight="42.0" prefWidth="99.0" text="QUIT">
+    <Button fx:id="buttonQuit" layoutX="1103.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonQuitOnAction" prefHeight="42.0" prefWidth="99.0" text="QUIT">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-    <Button fx:id="buttonSkip" layoutX="913.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="100.0" text="SKIP">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
-   <Button fx:id="buttonHelp" layoutX="722.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" text="HELP">
+   <Button fx:id="buttonHelp" layoutX="722.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonHelpOnAction" text="HELP">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Pane layoutX="723.0" layoutY="533.0" prefHeight="99.0" prefWidth="480.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 15;">
-      <children>
-          <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="16.0" layoutY="11.0" prefHeight="77.0" prefWidth="449.0" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <cursor>
-               <Cursor fx:constant="NONE" />
-            </cursor>
-         </Label>
-      </children>
-   </Pane>
+    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="738.0" layoutY="553.0" prefHeight="77.0" prefWidth="449.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2; -fx-background-radius: 5;" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <cursor>
+         <Cursor fx:constant="NONE" />
+      </cursor>
+   </Label>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>

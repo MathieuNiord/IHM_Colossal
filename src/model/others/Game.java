@@ -72,7 +72,7 @@ public class Game {
 	public static final Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
-	public final static Hero hero = new Hero("name", animalRoom);
+	public final static Hero hero = new Hero(animalRoom);
 
 	public static final Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,hero);
 
@@ -80,7 +80,7 @@ public class Game {
 
 	public Game(String heroName)
 	{
-
+		hero.setName(heroName);
 		// DOORS ADDING TO ROOMS
 		animalRoom.addDoor(animAndTransf, "up");
 		changingRoom.addDoor(transfAndChang, "up");
@@ -293,7 +293,7 @@ public class Game {
 						this.help(); 																					//show commandsbreak;
 						break;
 					case "quit":
-						this.hero.quit(this.hero.PLAYERNAME); 																//exit prompt
+						this.hero.quit(this.hero.getName()); 																//exit prompt
 						break;
 					case "inventory":
 						this.hero.showInventory();
@@ -363,7 +363,7 @@ public class Game {
 				this.Play();																							//You return where you were before die
 			}
 			else{
-				this.hero.quit(this.hero.PLAYERNAME);
+				this.hero.quit(this.hero.getName());
 			}
 		}
 
@@ -384,11 +384,11 @@ public class Game {
 			sleep(5000);
 
 			pressAnyKeyToContinue();
-			this.hero.quit(this.hero.PLAYERNAME);
+			this.hero.quit(this.hero.getName());
 		}
 		//ONLY QUIT
 		else {
-			this.hero.quit(this.hero.PLAYERNAME);
+			this.hero.quit(this.hero.getName());
 		}
 	}
 

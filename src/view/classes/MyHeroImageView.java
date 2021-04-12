@@ -1,4 +1,4 @@
-package view;
+package view.classes;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,7 +10,7 @@ public class MyHeroImageView extends ImageView {
 
     /*** ATTRIBUTES ***/
     public final Hero hero;
-    public int x,y;
+    public int x,y; //
 
 
     /*** CONSTRUCTOR ***/

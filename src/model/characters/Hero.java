@@ -23,7 +23,7 @@ public class Hero {
 	public final static int DEFAULT_HEAL = 20;
 
 	// ***** ATTRIBUTES *****
-	public final String PLAYERNAME;
+	private String name;
 	private int hp;
 	private int keyLevel;
 	private int lvlBescherelle;
@@ -35,9 +35,8 @@ public class Hero {
 
 	// ***** CONSTRUCTOR *****
 
-	public Hero(String name, Place place) {
+	public Hero(Place place) {
 
-		this.PLAYERNAME = name;
 		this.hp = DEFAULT_HP;
 		this.keyLevel = DEFAULT_KEY_LEVEL;
 		this.lvlBescherelle = DEFAULT_BESCHERELLE_LEVEL;
@@ -51,6 +50,9 @@ public class Hero {
 
 
 	// === GETTER ===
+	public String getName(){
+		return this.name;
+	}
 
 	public int getHP() {
 		return this.hp;
@@ -86,6 +88,9 @@ public class Hero {
 
 
 	// === SETTER ===
+	public void setName(String name){
+		this.name = name;
+	}
 
 	public void increaseBescherelle() {
 		this.lvlBescherelle++;
@@ -187,7 +192,7 @@ public class Hero {
 		}
 		else {
 			Game.printLetterByLetter("You're locked in this room...No escape\n", Script.DEFAULT_NARRATOR);
-			this.quit(this.PLAYERNAME);
+			this.quit(this.getName());
 		}
 	}
 

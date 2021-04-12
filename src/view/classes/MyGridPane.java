@@ -6,16 +6,20 @@ import javafx.scene.layout.*;
 public class MyGridPane extends GridPane {
 
     /*** ATTRIBUTES ***/
-    private final MyPlace myPlace;
+    private MyPlace myPlace;
 
     /*** CONSTRUCTOR ***/
-    public MyGridPane(MyPlace myPlace){
+    public MyGridPane(){
+        super();
+    }
+
+    public void setMyPlace(MyPlace myPlace) {
+        if(this.myPlace!=null){
+            this.getChildren().removeAll(this.myPlace.getImages());
+        }
         this.myPlace = myPlace;
-        this.getChildren().addAll(myPlace.getImages());
-        BackgroundImage backgroundImage= new BackgroundImage(
-                new Image("assets/images/place/floor.png"),
-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(backgroundImage));
+        for (MyImageView im: myPlace.getImages()) {this.add(im,im.x,im.y); }
+        this.setStyle("-fx-border-color: red");
     }
 
     /*** === METHODS === ***/

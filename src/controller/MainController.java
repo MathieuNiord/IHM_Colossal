@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.others.Game;
 import stage.MyStage;
+import view.classes.MyGridPane;
 import view.ressources.GameRessources;
 
 import java.net.URL;
@@ -24,7 +25,7 @@ public class MainController implements Initializable {
     private Pane paneMain;
 
     @FXML
-    private GridPane gridPaneGame;
+    private MyGridPane gridPaneGame;
 
     @FXML
     private Label labelTitle;
@@ -150,7 +151,8 @@ public class MainController implements Initializable {
 
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
-        gridPaneGame = GameRessources.gridPaneAnimalRoom;
+        gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
+        gridPaneGame.add(GameRessources.heroIm,GameRessources.heroIm.x,GameRessources.heroIm.y);
     }
 }
 

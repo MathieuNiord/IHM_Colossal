@@ -10,7 +10,7 @@ import model.objects.Obj;
 public class MyImageView extends ImageView {
 
     /*** ATTRIBUTES ***/
-    private final int x,y;
+    public final int x,y;
     private Animal animal;
     private Door door;
     private Enemy enemy;

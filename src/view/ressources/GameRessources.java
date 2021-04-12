@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class GameRessources {
 
     // HERO CREATION
-    public final MyHeroImageView heroIm = new MyHeroImageView(Game.hero, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
+    public final static MyHeroImageView heroIm = new MyHeroImageView(Game.hero, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
 
 
     // Animals
@@ -142,11 +142,6 @@ public class GameRessources {
     public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8,exitImList);
 
-
-    public final static MyGridPane gridPaneAnimalRoom = new MyGridPane(myAnimalRoom);
-
-
-
     public GameRessources(){
         // DOORS ADDING TO ROOMS
         animalRoomImList.add(animToTransfIm);
@@ -200,5 +195,6 @@ public class GameRessources {
         productsReserveImList.add(potionIm);
         desertedRoomImList.add(monkeyBIm);
         dirtyChangingRoomImList.add(sexyPosterIm);
+
     }
 }

@@ -134,9 +134,18 @@ public class MainController implements Initializable {
         }
     }
 
+    //fonction de déplacement du personnage
+    private void heroMove(){
+    }
+
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
-
+        switch (event.getCode()){
+            case Z:GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()-1); break;
+            case Q:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()-1); break;
+            case S:GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()+1); break;
+            case D:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()+1); break;
+        }
     }
 
     private Optional<String> inputDialogUserName(){
@@ -152,7 +161,6 @@ public class MainController implements Initializable {
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
-        gridPaneGame.add(GameRessources.heroIm,GameRessources.heroIm.x,GameRessources.heroIm.y);
     }
 }
 

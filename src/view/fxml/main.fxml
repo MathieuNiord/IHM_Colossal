@@ -46,7 +46,7 @@
          <Cursor fx:constant="CROSSHAIR" />
       </cursor>
     </MyGridPane>
-    <Label fx:id="labelTitle" alignment="CENTER" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" text="ROOM" textAlignment="CENTER" textFill="WHITE">
+    <Label fx:id="labelTitle" alignment="CENTER" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" textAlignment="CENTER" textFill="WHITE">
         <font>
           <Font name="Arial" size="36.0" />
         </font>
@@ -60,7 +60,7 @@
     <TabPane fx:id="tabPane" layoutX="722.0" layoutY="29.0" prefHeight="486.0" prefWidth="480.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <Tab closable="false" text="Inventory">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="256.0">
-                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="28.0" layoutY="312.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" text="Firedstick" textFill="WHITE">
+                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="28.0" layoutY="312.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -71,7 +71,7 @@
                   <Insets left="5.0" />
                </padding>
                 </Label>
-            <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="28.0" layoutY="354.0" prefHeight="83.0" prefWidth="427.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" text="test" textFill="WHITE" wrapText="true">
+            <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="28.0" layoutY="354.0" prefHeight="83.0" prefWidth="427.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -134,7 +134,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="722.0" layoutY="533.0" prefHeight="97.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2; -fx-background-radius: 5;" text="test" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="722.0" layoutY="533.0" prefHeight="97.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2; -fx-background-radius: 5;" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
       <font>
          <Font size="18.0" />
       </font>

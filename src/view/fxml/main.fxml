@@ -15,11 +15,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
 <?import view.classes.MyGridPane?>
-
 <?import view.classes.MiniMap?>
-<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+
+<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <MyGridPane fx:id="gridPaneGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -47,36 +46,45 @@
          <Cursor fx:constant="CROSSHAIR" />
       </cursor>
     </MyGridPane>
-    <Label fx:id="labelTitle" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" textFill="WHITE">
+    <Label fx:id="labelTitle" alignment="CENTER" layoutX="51.0" layoutY="29.0" prefHeight="42.0" prefWidth="576.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4; -fx-border-radius: 15; -fx-background-radius: 15;" text="ROOM" textAlignment="CENTER" textFill="WHITE">
         <font>
           <Font name="Arial" size="36.0" />
         </font>
       <cursor>
          <Cursor fx:constant="NONE" />
       </cursor>
+      <padding>
+         <Insets bottom="5.0" />
+      </padding>
     </Label>
     <TabPane fx:id="tabPane" layoutX="722.0" layoutY="29.0" prefHeight="486.0" prefWidth="480.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <Tab closable="false" text="Inventory">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="256.0">
-                <Label fx:id="labelObjectName" alignment="CENTER" layoutX="157.0" layoutY="313.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textAlignment="CENTER" textFill="WHITE">
+                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="28.0" layoutY="312.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" text="Firedstick" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
                <cursor>
                   <Cursor fx:constant="NONE" />
                </cursor>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
                 </Label>
-            <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="28.0" layoutY="354.0" prefHeight="83.0" prefWidth="427.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" textFill="WHITE" wrapText="true">
+            <Label fx:id="labelObjectInfo" alignment="TOP_LEFT" layoutX="28.0" layoutY="354.0" prefHeight="83.0" prefWidth="427.0" style="-fx-background-color: #3d3131; -fx-background-radius: 5;" text="test" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="NONE" />
                </cursor>
-            </Label>
-            <FlowPane fx:id="flowPaneInventory" hgap="16.0" layoutX="74.0" layoutY="33.0" onMousePressed="#flowPaneInventorySetOnMousePressedEvent" prefHeight="256.0" prefWidth="336.0" vgap="16.0">
                <padding>
-                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <FlowPane fx:id="flowPaneInventory" hgap="16.0" layoutX="29.0" layoutY="31.0" onMousePressed="#flowPaneInventorySetOnMousePressedEvent" prefHeight="264.0" prefWidth="423.0" style="-fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 15;" vgap="16.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </FlowPane>
             </AnchorPane>
@@ -88,28 +96,32 @@
                   <Image url="@../../assets/images/background/mini_map_background.png" />
                </image>
             </ImageView>
-                <MiniMap fx:id="gridPaneMap" alignment="CENTER" layoutX="90.0" layoutY="53.0" maxHeight="350.0" maxWidth="300.0" minHeight="350.0" minWidth="300.0" prefHeight="350.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-width: 3;">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-               <cursor>
-                  <Cursor fx:constant="CROSSHAIR" />
-               </cursor>
-                </MiniMap>
+            <Pane layoutX="25.0" layoutY="23.0" prefHeight="411.0" prefWidth="431.0" style="-fx-border-color: white; -fx-border-width: 3;">
+               <children>
+                      <MiniMap fx:id="gridPaneMap" alignment="CENTER" layoutX="66.0" layoutY="31.0" maxHeight="350.0" maxWidth="300.0" minHeight="350.0" minWidth="300.0" prefHeight="350.0" prefWidth="300.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                     <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                     </cursor>
+                      </MiniMap>
+               </children>
+            </Pane>
             </AnchorPane>
         </Tab>
     </TabPane>
@@ -122,7 +134,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="738.0" layoutY="553.0" prefHeight="77.0" prefWidth="449.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2; -fx-background-radius: 5;" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+    <Label fx:id="labelScript" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="722.0" layoutY="533.0" prefHeight="97.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2; -fx-background-radius: 5;" text="test" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
       <font>
          <Font size="18.0" />
       </font>
@@ -132,6 +144,9 @@
       <cursor>
          <Cursor fx:constant="NONE" />
       </cursor>
+      <padding>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+      </padding>
    </Label>
    <cursor>
       <Cursor fx:constant="DEFAULT" />

@@ -15,10 +15,6 @@ public class LockedKeyDoor extends LockableDoor{
 
 	// ***** CONSTRUCTORS *****
 
-	public LockedKeyDoor(int key, Place dest) {
-		super(dest);
-		this.KEY_LVL_NEED = key;
-	}
 
 	public LockedKeyDoor(int key, Place p1, Place p2) {
 		super(p1, p2);

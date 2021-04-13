@@ -7,10 +7,6 @@ public class BurnableDoor extends LockableDoor{
 	
 	// ***** CONSTRUCTORS *****
 
-	public BurnableDoor(Place dest) {
-		super(dest);
-	}
-
 	public BurnableDoor(Place p1, Place p2) {
 		super(p1, p2);
 	}

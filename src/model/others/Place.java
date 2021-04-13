@@ -211,18 +211,6 @@ public class Place {
 		}
 	}
 
-	public void addSimpleDoor(Door d) {
-		if(d != null) {
-			if (this.doors == null) {
-				this.doors = new HashMap<>();
-			}
-			if (!this.doors.containsValue(d)) {
-				// On récupère le nom de la destination en fonction du sens où on emprunte la porte
-				String destName = d.getDest().getName();
-				this.doors.put(destName, d);
-			}
-		}
-	}
 
 
 	// === DISPLAY ===

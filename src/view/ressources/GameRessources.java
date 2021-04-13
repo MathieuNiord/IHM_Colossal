@@ -3,12 +3,14 @@ package view.ressources;
 
 import javafx.scene.image.Image;
 import model.others.Game;
+import model.others.Place;
 import view.classes.MyGridPane;
 import view.classes.MyHeroImageView;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameRessources {
 
@@ -142,7 +144,9 @@ public class GameRessources {
     public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8,exitImList);
 
-    public final static MyGridPane ezMoula = new MyGridPane();
+
+    public final static HashMap<Place,MyPlace> placeToMyPlace = new HashMap<>();
+
     public GameRessources(){
         // DOORS ADDING TO ROOMS
         animalRoomImList.add(animToTransfIm);
@@ -197,7 +201,25 @@ public class GameRessources {
         desertedRoomImList.add(monkeyBIm);
         dirtyChangingRoomImList.add(sexyPosterIm);
 
+        placeToMyPlace.put(Game.animalRoom,myAnimalRoom);
+        placeToMyPlace.put(Game.transferRoom,myTransferRoom1);
+        placeToMyPlace.put(Game.transferRoom,myTransferRoom2);
+        placeToMyPlace.put(Game.changingRoom,myChangingRoom);
+        placeToMyPlace.put(Game.meetingRoom,myMeetingRoom);
+        placeToMyPlace.put(Game.archivesRoom,myArchivesRoom);
+        placeToMyPlace.put(Game.experimentsRoom,myExperimentsRoom1);
+        placeToMyPlace.put(Game.experimentsRoom,myExperimentsRoom2);
+        placeToMyPlace.put(Game.experimentsRoom,myExperimentsRoom3);
+        placeToMyPlace.put(Game.experimentsRoom,myExperimentsRoom4);
+        placeToMyPlace.put(Game.morgue,myMorgue);
+        placeToMyPlace.put(Game.condamnedSAS,myCondamnedSAS);
+        placeToMyPlace.put(Game.desertedRoom,myDesertedRoom);
+        placeToMyPlace.put(Game.productsReserve,myProductsReserve);
+        placeToMyPlace.put(Game.garbageRoom,myGarbageRoom);
+        placeToMyPlace.put(Game.coldRoom,myColdRoom);
+        placeToMyPlace.put(Game.dirtyChangingRoom,myDirtyChangingRoom);
+        placeToMyPlace.put(Game.decontaminationRoom,myDecontaminationRoom);
+        placeToMyPlace.put(Game.exit,myExit);
 
-        ezMoula.setMyPlace(myArchivesRoom);
     }
 }

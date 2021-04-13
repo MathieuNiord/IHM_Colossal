@@ -13,11 +13,6 @@ public abstract class LockableDoor extends Door {
 
 	// ***** CONSTRUCTORS ****
 
-	LockableDoor(Place dest) {
-		super(dest);
-		this.open = false;
-		this.lock = true;
-	}
 
 	LockableDoor(Place p1, Place p2) {
 		super(p1, p2);

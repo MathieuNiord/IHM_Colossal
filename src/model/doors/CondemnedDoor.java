@@ -7,10 +7,6 @@ public class CondemnedDoor extends Door {
 
 	// ***** CONSTRUCTORS *****
 
-	public CondemnedDoor(Place dest) {
-		super(dest);
-		this.open = false;
-	}
 
 	public CondemnedDoor(Place p1, Place p2) {
 		super(p1, p2);

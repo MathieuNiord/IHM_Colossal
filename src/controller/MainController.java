@@ -5,7 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -13,6 +12,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.characters.Hero;
+import model.doors.SecretCodeDoor;
 import model.others.Game;
 import model.others.Script;
 import stage.MyStage;
@@ -148,27 +149,16 @@ public class MainController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-                boolean containObject = false; //new pos contain an entity/object
-
-                for (MyImageView im: gridPaneGame.getMyPlace().getImages()) {
-                    if(im.x==newValue.intValue() && im.y == GameRessources.heroIm.y.getValue()){
-                        containObject = true;
-                        if(im.animal!=null){
-                            im.animal.talk(GameRessources.heroIm.hero);
-                        }
-                        if(im.obj!=null){
-                            im.obj.take(GameRessources.heroIm.hero);
-                            gridPaneGame.getChildren().remove(im);
-                            flowPaneInventory.getChildren().add(im);
-                        }
-                        break;
-                    }
+                int x = newValue.intValue();
+                int y = GameRessources.heroIm.y.getValue();
+                MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
+                if(im!=null){
+                    heroInteractWithIm(im);
                 }
 
-                if(newValue.intValue()<gridPaneGame.getMyPlace().getMaxXBound() &&
-                        newValue.intValue()>gridPaneGame.getMyPlace().getMinXBound() && !containObject){
+                if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound()){
                     gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,newValue.intValue(),GameRessources.heroIm.y.getValue());
+                    gridPaneGame.add(GameRessources.heroIm,x,y);
                 }
                 else{
                     GameRessources.heroIm.x.setValue(oldValue);
@@ -178,26 +168,75 @@ public class MainController implements Initializable {
         GameRessources.heroIm.y.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                boolean containObject = false; //new pos contain an entity/object
 
                     int x = GameRessources.heroIm.x.getValue();
                     int y = newValue.intValue();
                     MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                     if(im!=null){
-
+                        heroInteractWithIm(im);
                     }
 
-
-                if(newValue.intValue()<gridPaneGame.getMyPlace().getMaxYBound() &&
-                        newValue.intValue()>gridPaneGame.getMyPlace().getMinYBound() && !containObject){
+                if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound()){
                     gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,GameRessources.heroIm.x.getValue(),newValue.intValue());
+                    gridPaneGame.add(GameRessources.heroIm,x,y);
                 }
                 else{
                     GameRessources.heroIm.y.setValue(oldValue);
                 }
             }
         });
+    }
+
+
+
+    private void heroInteractWithIm(MyImageView im) {
+        Hero hero = GameRessources.heroIm.hero;
+        if(im.animal!=null){ //interaction avec animal
+            im.animal.talk(hero);
+        }
+        if(im.obj!=null){ //interaction avec objet
+            im.obj.take(hero);
+            //l'objet eletricMeter n'est pas prennable
+            if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
+                gridPaneGame.getChildren().remove(im);
+                flowPaneInventory.getChildren().add(im);
+            }
+        }
+        if(im.door!=null){//interaction avec des portes
+            if(im.door instanceof SecretCodeDoor){ //cas particulier de la SecretCodeDoor
+                SecretCodeDoor d = (SecretCodeDoor) im.door;
+                if(!d.isUnlock()){
+                    // TextInputDialog Component
+                    TextInputDialog code = new TextInputDialog();
+                    code.setHeaderText("NEED A CODE");
+                    code.getEditor().setPromptText("CODE");
+                    code.showAndWait();
+
+                    // Unlock and open the door
+                    d.unlock(code.getResult());
+                }
+                if (d.isUnlock()) {
+                    heroCrossDoor(im, hero);
+                }
+            }
+            else  {
+                heroCrossDoor(im, hero);
+            }
+        }
+    }
+
+    private void heroCrossDoor(MyImageView im, Hero hero) {
+        String dest = null;
+        for(String s : im.door.getPlaces().keySet()) {
+            if(!s.equals(hero.getPlace().getName())){
+                dest = s;
+                break;
+            }
+        }
+        if(dest!=null){
+            im.door.cross(hero,dest);
+            gridPaneGame.setMyPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+        }
     }
 
     @FXML
@@ -229,7 +268,7 @@ public class MainController implements Initializable {
 
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
-        gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
+        gridPaneGame.setMyPlace(GameRessources.myExperimentsRoom2);
         new GameRessoursesController();
         initListener();
         System.setOut(new PrintStream(new OutputStream() {

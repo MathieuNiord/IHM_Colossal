@@ -8,9 +8,6 @@ public class InfectedRoomDoor extends LockableDoor{
 
     // ***** CONSTRUCTORS *****
 
-    public InfectedRoomDoor(Place dest) {
-        super(dest);
-    }
 
     public InfectedRoomDoor(Place p1, Place p2) {
         super(p1, p2);

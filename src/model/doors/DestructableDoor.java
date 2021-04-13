@@ -7,9 +7,6 @@ public class DestructableDoor extends LockableDoor {
 
     // ***** CONSTRUCTORS *****
 
-    public DestructableDoor(Place dest) {
-        super(dest);
-    }
 
     public DestructableDoor(Place p1, Place p2) {
         super(p1, p2);

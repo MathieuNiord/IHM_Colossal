@@ -18,6 +18,7 @@ import model.doors.SecretCodeDoor;
 import model.others.Game;
 import model.others.Script;
 import stage.MyStage;
+import view.classes.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
 import view.ressources.GameRessources;
@@ -53,55 +54,7 @@ public class MainController implements Initializable {
     private FlowPane flowPaneInventory;
 
     @FXML
-    private GridPane gridPaneMap;
-
-    @FXML
-    private ImageView deserted_room;
-
-    @FXML
-    private ImageView condamned_sas;
-
-    @FXML
-    private ImageView mortuary;
-
-    @FXML
-    private ImageView product_reserve;
-
-    @FXML
-    private ImageView garbage_room;
-
-    @FXML
-    private ImageView experiments_room;
-
-    @FXML
-    private ImageView cold_room;
-
-    @FXML
-    private ImageView dirty_changing_room;
-
-    @FXML
-    private ImageView transfer_room;
-
-    @FXML
-    private ImageView meeting_room;
-
-    @FXML
-    private ImageView archives_room;
-
-    @FXML
-    private ImageView animal_room;
-
-    @FXML
-    private ImageView changing_room;
-
-    @FXML
-    private ImageView entry;
-
-    @FXML
-    private ImageView decontamination_room;
-
-    @FXML
-    private ImageView exit;
+    private MiniMap gridPaneMap;
 
     @FXML
     private Button buttonQuit;
@@ -301,5 +254,7 @@ public class MainController implements Initializable {
                     @Override
                     public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }}));
     }
+
+
 }
 

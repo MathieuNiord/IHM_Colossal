@@ -99,39 +99,55 @@ public class GameRessources {
     private static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
     private static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
+    public final static Integer[][] animal_room_map_positions = {{2,5}};
+    public final static Integer[][] transfer_room_map_positions = {{2,4}, {3,4}};
+    public final static Integer[][] changing_room_map_positions = {{3,5}};
+    public final static Integer[][] entry_room_map_positions = {{3,6}};
+    public final static Integer[][] meeting_room_map_positions = {{4,4}};
+    public final static Integer[][] archives_room_map_positions = {{5,4}};
+    public final static Integer[][] experiments_room_map_positions = {{3, 2}, {4, 2}, {3, 3}, {4, 3}};
+    public final static Integer[][] morgue_map_positions = {{5,2}};
+    public final static Integer[][] condamned_sas_map_positions = {{4,1}};
+    public final static Integer[][] deserted_room_map_positions = {{4,0}};
+    public final static Integer[][] products_reserve_map_positions = {{3,1}};
+    public final static Integer[][] garbage_room_map_positions = {{2,1}};
+    public final static Integer[][] cold_room_map_positions = {{2,2}};
+    public final static Integer[][] dirty_changing_room_map_positions = {{2,3}};
+    public final static Integer[][] decontamination_room_map_positions = {{1,3}};
+    public final static Integer[][] exit_map_positions = {{0,3}};
 
     public final static MyPlace myAnimalRoom = new MyPlace(Game.animalRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,animalRoomImList);
+            0, 8, 0, 8, animalRoomImList, animal_room_map_positions);
     public final static MyPlace  myTransferRoom =new MyPlace(Game.transferRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,transferRoomImList); //LEFT
+            0, 8, 0, 8, transferRoomImList, transfer_room_map_positions); //LEFT
     public final static MyPlace  myChangingRoom= new MyPlace(Game.changingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,changingRoomImList);
+            0, 8, 0, 8, changingRoomImList, changing_room_map_positions);
     public final static MyPlace  myEntryIm= new MyPlace(Game.entry, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,entryImList);
+            0, 8, 0, 8, entryImList, entry_room_map_positions);
     public final static MyPlace  myMeetingRoom = new MyPlace(Game.meetingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,meetingRoomImList);
+            0, 8, 0, 8, meetingRoomImList, meeting_room_map_positions);
     public final static MyPlace  myArchivesRoom = new MyPlace(Game.archivesRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,archivesRoomImList);
+            0, 8, 0, 8, archivesRoomImList, archives_room_map_positions);
     public final static MyPlace  myExperimentsRoom = new MyPlace(Game.experimentsRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,experimentsRoomImList);
+            0, 8, 0, 8, experimentsRoomImList, experiments_room_map_positions);
     public final static MyPlace  myMorgue = new MyPlace(Game.morgue, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,morgueImList);
+            0, 8, 0, 8, morgueImList, morgue_map_positions);
     public final static MyPlace  myCondamnedSAS = new MyPlace(Game.condamnedSAS, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,condamnedSASImList);
+            0, 8, 0, 8, condamnedSASImList, condamned_sas_map_positions);
     public final static MyPlace  myDesertedRoom = new MyPlace(Game.desertedRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,desertedRoomImList);
+            0, 8, 0, 8, desertedRoomImList, deserted_room_map_positions);
     public final static MyPlace  myProductsReserve = new MyPlace(Game.productsReserve, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,productsReserveImList);
+            0, 8, 0, 8, productsReserveImList, products_reserve_map_positions);
     public final static MyPlace  myGarbageRoom = new MyPlace(Game.garbageRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,garbageRoomImList);
+            0, 8, 0, 8, garbageRoomImList, garbage_room_map_positions);
     public final static MyPlace  myColdRoom = new MyPlace(Game.coldRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,coldRoomImList);
+            0, 8, 0, 8, coldRoomImList, cold_room_map_positions);
     public final static MyPlace  myDirtyChangingRoom = new MyPlace(Game.dirtyChangingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,dirtyChangingRoomImList);
+            0, 8, 0, 8, dirtyChangingRoomImList, dirty_changing_room_map_positions);
     public final static MyPlace  myDecontaminationRoom =new MyPlace(Game.decontaminationRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,decontaminationRoomImList);
+            0, 8, 0, 8, decontaminationRoomImList, decontamination_room_map_positions);
     public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,exitImList);
+            0, 8, 0, 8, exitImList, exit_map_positions);
 
 
     public final static HashMap<Place,MyPlace> placeToMyPlace = new HashMap<>();

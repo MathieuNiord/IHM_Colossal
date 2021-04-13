@@ -17,22 +17,25 @@ public class MyPlace {
     private MyImageView enemy;
     private final Image backgroundImage;
 
+    private final Integer[][] positions_map;
+
     /*** === CONSTRUCTOR === ***/
     public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
-                   ArrayList<MyImageView> images) {
+                   ArrayList<MyImageView> images, Integer[][] positions_map) {
         this.place = place;
-        backgroundImage = bg;
-        minX = minBoundX;
-        maxX = maxBoundX;
-        minY = minBoundY;
-        maxY = maxBoundY;
+        this.backgroundImage = bg;
+        this.minX = minBoundX;
+        this.maxX = maxBoundX;
+        this.minY = minBoundY;
+        this.maxY = maxBoundY;
         this.images = images;
+        this.positions_map = positions_map;
         this.enemy = null;
 
     }
     public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY
-            , int maxBoundY, ArrayList<MyImageView> images, MyImageView enemy) {
-       this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images);
+            , int maxBoundY, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
+       this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
        this.enemy = enemy;
     }
     /*** === METHODS === ***/
@@ -68,4 +71,6 @@ public class MyPlace {
     public Place getPlace() {
         return place;
     }
+
+    public Integer[][] getPositions_map() {return positions_map;}
 }

@@ -3,14 +3,19 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
+import model.others.Game;
 import stage.MyStage;
 
 public class HomeController implements Initializable {
+
+    // === ATTRIBUTES ===
+
     public ImageView homeBG;
     @FXML
     private Button button_play;
@@ -19,13 +24,27 @@ public class HomeController implements Initializable {
     @FXML
     private Button button_quit;
 
+    // === METHODS ===
+
+    // --- Events ---
+
+    // - Create a TextInputDialog and return a string which corresponds to the gamer tag -
     @FXML
     private void button_playAction(){
 
-        Stage currentStage = (Stage) button_play.getScene().getWindow();
-        currentStage.close();
-        MyStage myStage = new MyStage("../view/fxml/main.fxml");
-        myStage.show();
+        //TextInputDialog configuration
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Choose your name please");
+        dialog.setContentText("Please enter your name:");
+        dialog.showAndWait();
+
+        if (dialog.getResult() != null && !dialog.getResult().equals("")) {
+            new Game(dialog.getResult());
+            Stage currentStage = (Stage) button_play.getScene().getWindow();
+            currentStage.close();
+            MyStage myStage = new MyStage("../view/fxml/main.fxml");
+            myStage.show();
+        }
     }
 
     @FXML
@@ -44,6 +63,7 @@ public class HomeController implements Initializable {
         stage.close();
     }
 
+    // --- Initialization of the controller ---
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

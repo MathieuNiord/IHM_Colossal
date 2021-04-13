@@ -230,6 +230,7 @@ public class MainController implements Initializable {
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
+        new GameRessoursesController();
         initListener();
         System.setOut(new PrintStream(new OutputStream() {
                     @Override

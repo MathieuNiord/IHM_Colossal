@@ -31,17 +31,18 @@ public class Monkey extends Animal{
 
 	// === SETTER ===
 
+	public void setHungry(boolean hungry) { this.hungry = hungry;}
 
 	// === COMMANDS ===
 	
 	@Override
 	public void talk(Hero h) {
-
+		/*
 		if(h.getObjs().containsKey(Script.DEFAULT_BANANA_NAME)){
 			h.getObjs().remove(Script.DEFAULT_BANANA_NAME);
-			
+
 			this.hungry = false;
-		}
+		}*/
 
 		if(this.beschLevel>h.getBLevel()){
 			Game.printLetterByLetter(this.noBeschDialog, this.NAME);

@@ -2,6 +2,7 @@ package view.ressources;
 
 
 import javafx.scene.image.Image;
+import model.characters.Enemy;
 import model.others.Game;
 import model.others.Place;
 import view.classes.MyGridPane;
@@ -17,14 +18,15 @@ public class GameRessources {
     // HERO CREATION
     public final static MyHeroImageView heroIm = new MyHeroImageView(Game.hero, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
 
-
     // Animals
     public final static MyImageView catIm = new MyImageView(Game.cat, IMAGE_CAT, 2, 6, 45);
     public final static MyImageView monkeyIm = new MyImageView(Game.monkey, IMAGE_MONKEY, 4, 2, 45);
     public final static MyImageView mouseIm = new MyImageView(Game.mouse, IMAGE_MOUSE, 7, 6, 45);
 
-
-
+    // Enemies
+    public final static MyImageView accountGuyIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView naziZombieIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView bossIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
 
     // Objects
     public final static MyImageView naziPosterIm = new MyImageView(Game.naziPoster, IMAGE_NAZIS_POSTER, 3, 0, 40);
@@ -44,8 +46,6 @@ public class GameRessources {
     public final static MyImageView sexyPosterIm = new MyImageView(Game.sexyPoster, IMAGE_HEART, 2, 0, 40);
     public final static MyImageView walkmanIm = new MyImageView(Game.walkman, IMAGE_HEART, 0, 0, 40);
     public final static MyImageView firedstickIm = new MyImageView(Game.firedStick, IMAGE_TORCH, 0, 0, 40);
-
-
 
 
     // Doors
@@ -204,6 +204,11 @@ public class GameRessources {
         productsReserveImList.add(potionIm);
         desertedRoomImList.add(monkeyBIm);
         dirtyChangingRoomImList.add(sexyPosterIm);
+
+        // ENEMIES ADDING TO ROOM
+        meetingRoomImList.add(accountGuyIm);
+        desertedRoomImList.add(naziZombieIm);
+        exitImList.add(bossIm);
 
         placeToMyPlace.put(Game.animalRoom,myAnimalRoom);
         placeToMyPlace.put(Game.transferRoom,myTransferRoom);

@@ -48,24 +48,24 @@ public class BattleController implements Initializable {
     private ImageView image_enemy;
 
     //Enemy life
-    private final int eLife = GameRessources.heroIm.hero.getPlace().getEnemies().getHP();
+    private final int eLife = GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP();
 
     /*** === METHODS === ***/
 
     @FXML
     private void lifeDisplay() {
-        label_enemy_life.setText(String.valueOf(GameRessources.heroIm.hero.getPlace().getEnemies().getHP()));
-        label_hero_life.setText(String.valueOf(GameRessources.heroIm.hero.getHP()));
-        progress_bar_hero.setProgress((double) (GameRessources.heroIm.hero.getHP()/100));
-        progress_bar_enemy.setProgress((double) (GameRessources.heroIm.hero.getPlace().getEnemies().getHP()/this.eLife));
+        label_enemy_life.setText(String.valueOf(GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP()));
+        label_hero_life.setText(String.valueOf(GameRessources.HERO_IM.hero.getHP()));
+        progress_bar_hero.setProgress((double) (GameRessources.HERO_IM.hero.getHP()/100));
+        progress_bar_enemy.setProgress((double) (GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP()/this.eLife));
     }
 
     @FXML
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
-            GameRessources.heroIm.hero.attack(GameRessources.heroIm.hero.getPlace().getEnemies());
+            GameRessources.HERO_IM.hero.attack(GameRessources.HERO_IM.hero.getPlace().getEnemies());
 
-            if (!GameRessources.heroIm.hero.getPlace().getEnemies().isDefeat()) {
+            if (!GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
                 //label_commentary.setText("Yeah ! Kill him ! " + GameRessources.heroIm.hero.getPlace().getEnemies().NAME + " lost 20 HP");
                 enemyTurn();
             }
@@ -81,7 +81,7 @@ public class BattleController implements Initializable {
     @FXML
     private void setButton_heal() {
         button_heal.setOnAction( event -> {
-            GameRessources.heroIm.hero.heal();
+            GameRessources.HERO_IM.hero.heal();
             button_attack.setDisable(true);
             button_heal.setDisable(true);
             System.out.println("heal");
@@ -96,14 +96,14 @@ public class BattleController implements Initializable {
         Random rand = new Random();
         int eHeal = rand.nextInt(10 + 1);  //Enemy heal
 
-        if (!GameRessources.heroIm.hero.getPlace().getEnemies().isDefeat()) {
+        if (!GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
 
             if (eHeal == 1) {
-                GameRessources.heroIm.hero.getPlace().getEnemies().heal(10);
-                label_commentary.setText(GameRessources.heroIm.hero.getPlace().getEnemies().NAME + " healed itself");
+                GameRessources.HERO_IM.hero.getPlace().getEnemies().heal(10);
+                label_commentary.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().NAME + " healed itself");
             } else {
-                GameRessources.heroIm.hero.getPlace().getEnemies().attack();
-                GameRessources.heroIm.hero.setLife(GameRessources.heroIm.hero.getPlace().getEnemies().getDamage());
+                GameRessources.HERO_IM.hero.getPlace().getEnemies().attack();
+                GameRessources.HERO_IM.hero.setLife(GameRessources.HERO_IM.hero.getPlace().getEnemies().getDamage());
                 label_commentary.setText("Ouch ! You took several damages... Get up and beat this Nazi Crap !");
             }
             button_attack.setDisable(false);
@@ -118,11 +118,11 @@ public class BattleController implements Initializable {
         //Initialization
 
         //ProgressBars
-        progress_bar_hero = new ProgressBar((double) GameRessources.heroIm.hero.getHP());
-        progress_bar_enemy = new ProgressBar((double) GameRessources.heroIm.hero.getPlace().getEnemies().getHP());
+        progress_bar_hero = new ProgressBar((double) GameRessources.HERO_IM.hero.getHP());
+        progress_bar_enemy = new ProgressBar((double) GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP());
 
         //Labels
-        label_enemy_name.setText(GameRessources.heroIm.hero.getPlace().getEnemies().NAME);
+        label_enemy_name.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().NAME);
 
         //Image
         image_enemy.setImage(new Image("assets/images/characters/ZombiNazi.png"));
@@ -133,10 +133,10 @@ public class BattleController implements Initializable {
         setButton_heal();
 
         // -- Battle opening
-        label_commentary.setText(GameRessources.heroIm.hero.getPlace().getEnemies().DESCRIPTION);
+        label_commentary.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().DESCRIPTION);
 
         // -- Battle is over
-        if (GameRessources.heroIm.hero.getHP() == 0) label_commentary.setText("You loose");
-        else if (GameRessources.heroIm.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
+        if (GameRessources.HERO_IM.hero.getHP() == 0) label_commentary.setText("You loose");
+        else if (GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
     }
 }

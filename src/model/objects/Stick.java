@@ -36,7 +36,7 @@ public class Stick extends Obj {
 				if (h.getObjs().containsKey(s)) {
 					h.getObjs().remove(s);
 					h.getObjs().remove(this.NAME);
-					FiredStick firedStick = Game.firedStick;
+					FiredStick firedStick = Game.FIRED_STICK;
 					h.getObjs().put(firedStick.NAME, firedStick);
 					Game.printLetterByLetter("With your knowledge of caveman, you managed to create fire with your flint and your stick, a fired stick.\n", Script.DEFAULT_NARRATOR);
 				}

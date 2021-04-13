@@ -6,30 +6,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
-import model.others.Game;
 import model.others.Script;
 import stage.MyStage;
 import view.classes.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
-import view.ressources.GameRessources;
 import view.ressources.ImageRessources;
-
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static view.ressources.GameRessources.*;
 /* ========================================================================================================
    === The main controller : regroups all game interactions and controls the view (display) of the game ===
    ======================================================================================================== */
@@ -112,12 +108,12 @@ public class MainController implements Initializable {
     // - Initialization of controller's listeners -
     private void initListener(){
 
-        GameRessources.heroIm.x.addListener(new ChangeListener<Number>() {
+        HERO_IM.x.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 boolean collision =false;
                 int x = newValue.intValue();
-                int y = GameRessources.heroIm.y.getValue();
+                int y = HERO_IM.y.getValue();
                 MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                 if(im!=null){
                     heroInteractWithIm(im);
@@ -126,19 +122,19 @@ public class MainController implements Initializable {
                 }
 
                 if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
-                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,x,y);
+                    gridPaneGame.getChildren().remove(HERO_IM);
+                    gridPaneGame.add(HERO_IM,x,y);
                 }
                 else{
-                    GameRessources.heroIm.x.setValue(oldValue);
+                    HERO_IM.x.setValue(oldValue);
                 }
             }
         });
-        GameRessources.heroIm.y.addListener(new ChangeListener<Number>() {
+        HERO_IM.y.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 boolean collision =false;
-                int x = GameRessources.heroIm.x.getValue();
+                int x = HERO_IM.x.getValue();
                 int y = newValue.intValue();
                 MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                 if(im!=null){
@@ -148,11 +144,11 @@ public class MainController implements Initializable {
                 }
 
                 if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
-                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,x,y);
+                    gridPaneGame.getChildren().remove(HERO_IM);
+                    gridPaneGame.add(HERO_IM,x,y);
                 }
                 else{
-                    GameRessources.heroIm.y.setValue(oldValue);
+                    HERO_IM.y.setValue(oldValue);
                 }
             }
         });
@@ -162,14 +158,17 @@ public class MainController implements Initializable {
 
     // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
-        Hero hero = GameRessources.heroIm.hero;
+        Hero hero = HERO_IM.hero;
         if(im.animal!=null){ //interaction avec animal
             im.animal.talk(hero);
         }
         if(im.obj!=null){ //interaction avec objet
             im.obj.take(hero);
             //l'objet eletricMeter n'est pas prennable
-            if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
+            if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
+
+            }
+            else if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
             }
@@ -190,13 +189,13 @@ public class MainController implements Initializable {
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
-                    gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+                    gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
-                gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+                gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
         }
     }
@@ -213,7 +212,7 @@ public class MainController implements Initializable {
         }
         if(dest!=null){
             im.door.cross(hero,dest);
-            gridPaneGame.setMyPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+            gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
         }
     }
 
@@ -222,15 +221,17 @@ public class MainController implements Initializable {
     void paneMainOnKeyPressed(KeyEvent event) {
         switch (event.getCode()){
             case Z:
-                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()-1);
-                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
+                HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
                 break;
-            case Q:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()-1); break;
+            case Q:
+                HERO_IM.x.setValue(HERO_IM.x.getValue()-1); break;
             case S:
-                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()+1);
-                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
+                HERO_IM.y.setValue(HERO_IM.y.getValue()+1);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
                 break;
-            case D:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()+1); break;
+            case D:
+                HERO_IM.x.setValue(HERO_IM.x.getValue()+1); break;
             case T:
         }
     }
@@ -250,14 +251,32 @@ public class MainController implements Initializable {
         }
     }
 
+    // - Look action :
+    @FXML
+    private void gridPaneGameSetOnMousePressedEvent(MouseEvent event){
+        try{
+            MyImageView im = (MyImageView)event.getTarget();
+            if(im.obj != null){
+                if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
+                    flowPaneInventory.getChildren().add(WALKMAN_IM);
+                }
+                im.obj.look();
+            }
+            if(im.animal != null) im.animal.look();
+            if(im.monkey != null) im.monkey.look();
+            if(im.enemy!=null) im.enemy.look();
+        } catch (Exception ignored){
+            labelObjectName.setText("");
+            labelObjectInfo.setText("");
+        }
+    }
     // --- Initialization of the controller ---
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(GameRessources.heroIm.hero.getName());
-        new GameRessources();
-        gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
-        gridPaneMap.revealPlace(GameRessources.myAnimalRoom);
+        System.out.println(HERO_IM.hero.getName());
+        gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
+        gridPaneMap.revealPlace(MY_ANIMAL_ROOM);
         new GameRessoursesController(flowPaneInventory);
         initListener();
         System.setOut(new PrintStream(new OutputStream() {

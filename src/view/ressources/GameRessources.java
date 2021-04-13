@@ -2,82 +2,82 @@ package view.ressources;
 
 
 import javafx.scene.image.Image;
-import model.characters.Enemy;
-import model.others.Game;
 import model.others.Place;
-import view.classes.MyGridPane;
 import view.classes.MyHeroImageView;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+
+import static model.others.Game.*;
 import static view.ressources.ImageRessources.*;
 public class GameRessources {
 
     // HERO CREATION
-    public final static MyHeroImageView heroIm = new MyHeroImageView(Game.hero, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
+    public final static MyHeroImageView HERO_IM = new MyHeroImageView(HERO, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
 
     // Animals
-    public final static MyImageView catIm = new MyImageView(Game.cat, IMAGE_CAT, 2, 6, 45);
-    public final static MyImageView monkeyIm = new MyImageView(Game.monkey, IMAGE_MONKEY, 4, 2, 45);
-    public final static MyImageView mouseIm = new MyImageView(Game.mouse, IMAGE_MOUSE, 7, 6, 45);
+    public final static MyImageView CAT_IM = new MyImageView(CAT, IMAGE_CAT, 2, 6, 45);
+    public final static MyImageView MONKEY_IM = new MyImageView(MONKEY, IMAGE_MONKEY, 4, 2, 45);
+    public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
     // Enemies
-    public final static MyImageView accountGuyIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
-    public final static MyImageView naziZombieIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
-    public final static MyImageView bossIm = new MyImageView(Game.desertedRoom.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(DESERTED_ROOM.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView NAZI_ZOMBIE_IM = new MyImageView(DESERTED_ROOM.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView BOSS_IM = new MyImageView(DESERTED_ROOM.getEnemies(), IMAGE_NAZI_ZOMBIE, 2, 6);
 
     // Objects
-    public final static MyImageView naziPosterIm = new MyImageView(Game.naziPoster, IMAGE_NAZIS_POSTER, 3, 0, 40);
-    public final static MyImageView clubIm = new MyImageView(Game.club, IMAGE_HEART, 3, 5, 40);
-    public final static MyImageView potionIm =new MyImageView(Game.potion, IMAGE_HEART, 4, 4, 40);
-    public final static MyImageView bananaIm = new MyImageView(Game.banana, IMAGE_BANANA, 6, 7, 40);
-    public final static MyImageView stickIm = new MyImageView(Game.stick, IMAGE_STICK, 3, 1, 40);
-    public final static MyImageView flintIm = new MyImageView(Game.flint, IMAGE_FLINT, 7, 4, 40);
-    public final static MyImageView fuseIm = new MyImageView(Game.fuse, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView catBIm = new MyImageView(Game.catB, IMAGE_BESCHERELLE, 3, 7, 40);
-    public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, IMAGE_BESCHERELLE, 6, 1, 40);
-    public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, IMAGE_BESCHERELLE, 5, 1, 40);
-    public final static MyImageView k1Im = new MyImageView(Game.k1, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView k2Im = new MyImageView(Game.k2, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView electricityMeterIm = new MyImageView(Game.electricityMeter, IMAGE_HEART, 7, 1, 40);
-    public final static MyImageView lockerIm = new MyImageView(Game.locker, IMAGE_HEART, 7, 3, 40);
-    public final static MyImageView sexyPosterIm = new MyImageView(Game.sexyPoster, IMAGE_HEART, 2, 0, 40);
-    public final static MyImageView walkmanIm = new MyImageView(Game.walkman, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView firedstickIm = new MyImageView(Game.firedStick, IMAGE_TORCH, 0, 0, 40);
+    public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
+    public final static MyImageView CLUB_IM = new MyImageView(CLUB, IMAGE_HEART, 3, 5, 40);
+    public final static MyImageView POTION_IM =new MyImageView(POTION, IMAGE_HEART, 4, 4, 40);
+    public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 6, 7, 40);
+    public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1, 40);
+    public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4, 40);
+    public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_BESCHERELLE, 3, 7, 40);
+    public final static MyImageView MOUSE_B_IM =new MyImageView(MOUSE_B, IMAGE_BESCHERELLE, 6, 1, 40);
+    public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1, 40);
+    public final static MyImageView K_1_IM = new MyImageView(K_1, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView K_2_IM = new MyImageView(K_2, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(ELECTRICITY_METER, IMAGE_HEART, 7, 1, 40);
+    public final static MyImageView LOCKER_IM = new MyImageView(LOCKER, IMAGE_HEART, 7, 3, 40);
+    public final static MyImageView SEXY_POSTER_IM = new MyImageView(SEXY_POSTER, IMAGE_HEART, 2, 0, 40);
+    public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView FIREDSTICK_IM = new MyImageView(FIRED_STICK, IMAGE_TORCH, 0, 0, 40);
 
 
     // Doors
-    public final static MyImageView secretPassageIm = new MyImageView(Game.secretPassage, IMAGE_DOOR_UP, 4, 8);
-    public final static MyImageView experimToCondaIm = new MyImageView(Game.experimAndConda, IMAGE_DOOR_UP, 6, 0);
-    public final static MyImageView condaToExperimIm = new MyImageView(Game.experimAndConda, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView changToEntryIm = new MyImageView(Game.changAndEntry, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView meetToArchIm = new MyImageView(Game.changAndEntry, IMAGE_DOOR_RIGHT, 8, 4);
-    public final static MyImageView archTomeetIm = new MyImageView(Game.meetAndArch, IMAGE_DOOR_LEFT, 0, 4);
-    public final static MyImageView transfToMeetIm = new MyImageView(Game.transfAndMeet, IMAGE_DOOR_RIGHT, 8, 4);
-    public final static MyImageView meetToTransfIm = new MyImageView(Game.transfAndMeet, IMAGE_DOOR_LEFT, 0, 4);
-    public final static MyImageView decontToExitIm = new MyImageView(Game.decontAndExit, IMAGE_DOOR_LEFT, 0, 4);
-    public final static MyImageView animToTransfIm = new MyImageView(Game.animAndTransf, IMAGE_DOOR_UP, 4, 0);
-    public final static MyImageView transfToanimIm = new MyImageView(Game.animAndTransf, IMAGE_DOOR_DOWN, 2, 8);
-    public final static MyImageView experimToReservIm = new MyImageView(Game.experimAndReserv, IMAGE_DOOR_UP, 2, 0);
-    public final static MyImageView reservToExperimIm = new MyImageView(Game.experimAndReserv, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView experimToDirtyIm = new MyImageView(Game.experimAndDirty, IMAGE_DOOR_LEFT, 0, 6);
-    public final static MyImageView dirtyToExperimIm = new MyImageView(Game.experimAndDirty, IMAGE_DOOR_RIGHT, 8, 4);
-    public final static MyImageView transfToChangIm = new MyImageView(Game.transfAndChang, IMAGE_DOOR_DOWN, 6, 8);
-    public final static MyImageView changToTransfIm = new MyImageView(Game.transfAndChang, IMAGE_DOOR_UP, 4, 0);
-    public final static MyImageView transfToExperIm = new MyImageView(Game.transfAndExper, IMAGE_DOOR_UP, 4, 0);
-    public final static MyImageView experToTransfIm = new MyImageView(Game.transfAndExper, IMAGE_DOOR_DOWN, 2, 8);
-    public final static MyImageView experimToMorgIm = new MyImageView(Game.experimAndMort, IMAGE_DOOR_RIGHT, 8, 2);
-    public final static MyImageView morgToExperimIm = new MyImageView(Game.experimAndMort, IMAGE_DOOR_UP, 0, 4);
-    public final static MyImageView condaToDesertIm = new MyImageView(Game.condaAndDesert, IMAGE_DOOR_UP, 4, 0);
-    public final static MyImageView desertToCondaIm = new MyImageView(Game.condaAndDesert, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView experimToColdIm = new MyImageView(Game.experimAndCold, IMAGE_DOOR_LEFT, 0, 2);
-    public final static MyImageView coldToExperimIm = new MyImageView(Game.experimAndCold, IMAGE_DOOR_RIGHT, 8, 4);
-    public final static MyImageView coldToGarbIm = new MyImageView(Game.coldAndGarb, IMAGE_DOOR_UP, 4, 0);
-    public final static MyImageView garbToColdIm = new MyImageView(Game.coldAndGarb, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView dirtToDeconIm = new MyImageView(Game.dirtAndDecon, IMAGE_DOOR_LEFT, 0, 4);
-    public final static MyImageView deconToDirtIm =new MyImageView(Game.dirtAndDecon, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(SECRET_PASSAGE, IMAGE_DOOR_UP, 4, 8);
+    public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_UP, 6, 0);
+    public final static MyImageView CONDA_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView CHANG_TO_ENTRY_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView ARCH_TOMEET_IM = new MyImageView(MEET_AND_ARCH, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView TRANSF_TO_MEET_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView MEET_TO_TRANSF_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView DECONT_TO_EXIT_IM = new MyImageView(DECONT_AND_EXIT, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView ANIM_TO_TRANSF_IM = new MyImageView(ANIM_AND_TRANSF, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView TRANSF_TOANIM_IM = new MyImageView(ANIM_AND_TRANSF, IMAGE_DOOR_DOWN, 2, 8);
+    public final static MyImageView EXPERIM_TO_RESERV_IM = new MyImageView(EXPERIM_AND_RESERV, IMAGE_DOOR_UP, 2, 0);
+    public final static MyImageView RESERV_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_RESERV, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView EXPERIM_TO_DIRTY_IM = new MyImageView(EXPERIM_AND_DIRTY, IMAGE_DOOR_LEFT, 0, 6);
+    public final static MyImageView DIRTY_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_DIRTY, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView TRANSF_TO_CHANG_IM = new MyImageView(TRANSF_AND_CHANG, IMAGE_DOOR_DOWN, 6, 8);
+    public final static MyImageView CHANG_TO_TRANSF_IM = new MyImageView(TRANSF_AND_CHANG, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView TRANSF_TO_EXPER_IM = new MyImageView(TRANSF_AND_EXPER, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView EXPER_TO_TRANSF_IM = new MyImageView(TRANSF_AND_EXPER, IMAGE_DOOR_DOWN, 2, 8);
+    public final static MyImageView EXPERIM_TO_MORG_IM = new MyImageView(EXPERIM_AND_MORT, IMAGE_DOOR_RIGHT, 8, 2);
+    public final static MyImageView MORG_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_MORT, IMAGE_DOOR_UP, 0, 4);
+    public final static MyImageView CONDA_TO_DESERT_IM = new MyImageView(CONDA_AND_DESERT, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView DESERT_TO_CONDA_IM = new MyImageView(CONDA_AND_DESERT, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView EXPERIM_TO_COLD_IM = new MyImageView(EXPERIM_AND_COLD, IMAGE_DOOR_LEFT, 0, 2);
+    public final static MyImageView COLD_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_COLD, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView COLD_TO_GARB_IM = new MyImageView(COLD_AND_GARB, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView GARB_TO_COLD_IM = new MyImageView(COLD_AND_GARB, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView DIRT_TO_DECON_IM = new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView DECON_TO_DIRT_IM =new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_RIGHT, 8, 4);
 
 
 
@@ -98,134 +98,136 @@ public class GameRessources {
     private static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
     private static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
-    public final static Integer[][] animal_room_map_positions = {{2,5}};
-    public final static Integer[][] transfer_room_map_positions = {{2,4}, {3,4}};
-    public final static Integer[][] changing_room_map_positions = {{3,5}};
-    public final static Integer[][] entry_room_map_positions = {{3,6}};
-    public final static Integer[][] meeting_room_map_positions = {{4,4}};
-    public final static Integer[][] archives_room_map_positions = {{5,4}};
-    public final static Integer[][] experiments_room_map_positions = {{3, 2}, {4, 2}, {3, 3}, {4, 3}};
-    public final static Integer[][] morgue_map_positions = {{5,2}};
-    public final static Integer[][] condamned_sas_map_positions = {{4,1}};
-    public final static Integer[][] deserted_room_map_positions = {{4,0}};
-    public final static Integer[][] products_reserve_map_positions = {{3,1}};
-    public final static Integer[][] garbage_room_map_positions = {{2,1}};
-    public final static Integer[][] cold_room_map_positions = {{2,2}};
-    public final static Integer[][] dirty_changing_room_map_positions = {{2,3}};
-    public final static Integer[][] decontamination_room_map_positions = {{1,3}};
-    public final static Integer[][] exit_map_positions = {{0,3}};
+    public final static Integer[][] ANIMAL_ROOM_MAP_POSITIONS = {{2,5}};
+    public final static Integer[][] TRANSFER_ROOM_MAP_POSITIONS = {{2,4}, {3,4}};
+    public final static Integer[][] CHANGING_ROOM_MAP_POSITIONS = {{3,5}};
+    public final static Integer[][] ENTRY_ROOM_MAP_POSITIONS = {{3,6}};
+    public final static Integer[][] MEETING_ROOM_MAP_POSITIONS = {{4,4}};
+    public final static Integer[][] ARCHIVES_ROOM_MAP_POSITIONS = {{5,4}};
+    public final static Integer[][] EXPERIMENTS_ROOM_MAP_POSITIONS = {{3, 2}, {4, 2}, {3, 3}, {4, 3}};
+    public final static Integer[][] MORGUE_MAP_POSITIONS = {{5,2}};
+    public final static Integer[][] CONDAMNED_SAS_MAP_POSITIONS = {{4,1}};
+    public final static Integer[][] DESERTED_ROOM_MAP_POSITIONS = {{4,0}};
+    public final static Integer[][] PRODUCTS_RESERVE_MAP_POSITIONS = {{3,1}};
+    public final static Integer[][] GARBAGE_ROOM_MAP_POSITIONS = {{2,1}};
+    public final static Integer[][] COLD_ROOM_MAP_POSITIONS = {{2,2}};
+    public final static Integer[][] DIRTY_CHANGING_ROOM_MAP_POSITIONS = {{2,3}};
+    public final static Integer[][] DECONTAMINATION_ROOM_MAP_POSITIONS = {{1,3}};
+    public final static Integer[][] EXIT_MAP_POSITIONS = {{0,3}};
 
-    public final static MyPlace myAnimalRoom = new MyPlace(Game.animalRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, animalRoomImList, animal_room_map_positions);
-    public final static MyPlace  myTransferRoom =new MyPlace(Game.transferRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, transferRoomImList, transfer_room_map_positions); //LEFT
-    public final static MyPlace  myChangingRoom= new MyPlace(Game.changingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, changingRoomImList, changing_room_map_positions);
-    public final static MyPlace  myEntryIm= new MyPlace(Game.entry, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, entryImList, entry_room_map_positions);
-    public final static MyPlace  myMeetingRoom = new MyPlace(Game.meetingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, meetingRoomImList, meeting_room_map_positions);
-    public final static MyPlace  myArchivesRoom = new MyPlace(Game.archivesRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, archivesRoomImList, archives_room_map_positions);
-    public final static MyPlace  myExperimentsRoom = new MyPlace(Game.experimentsRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, experimentsRoomImList, experiments_room_map_positions);
-    public final static MyPlace  myMorgue = new MyPlace(Game.morgue, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, morgueImList, morgue_map_positions);
-    public final static MyPlace  myCondamnedSAS = new MyPlace(Game.condamnedSAS, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, condamnedSASImList, condamned_sas_map_positions);
-    public final static MyPlace  myDesertedRoom = new MyPlace(Game.desertedRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, desertedRoomImList, deserted_room_map_positions);
-    public final static MyPlace  myProductsReserve = new MyPlace(Game.productsReserve, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, productsReserveImList, products_reserve_map_positions);
-    public final static MyPlace  myGarbageRoom = new MyPlace(Game.garbageRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, garbageRoomImList, garbage_room_map_positions);
-    public final static MyPlace  myColdRoom = new MyPlace(Game.coldRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, coldRoomImList, cold_room_map_positions);
-    public final static MyPlace  myDirtyChangingRoom = new MyPlace(Game.dirtyChangingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, dirtyChangingRoomImList, dirty_changing_room_map_positions);
-    public final static MyPlace  myDecontaminationRoom =new MyPlace(Game.decontaminationRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, decontaminationRoomImList, decontamination_room_map_positions);
-    public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, exitImList, exit_map_positions);
+    public final static MyPlace MY_ANIMAL_ROOM = new MyPlace(ANIMAL_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, animalRoomImList, ANIMAL_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_TRANSFER_ROOM =new MyPlace(TRANSFER_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, transferRoomImList, TRANSFER_ROOM_MAP_POSITIONS); //LEFT
+    public final static MyPlace MY_CHANGING_ROOM = new MyPlace(CHANGING_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, changingRoomImList, CHANGING_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_ENTRY_IM = new MyPlace(ENTRY, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, entryImList, ENTRY_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_MEETING_ROOM = new MyPlace(MEETING_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, meetingRoomImList, MEETING_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_ARCHIVES_ROOM = new MyPlace(ARCHIVES_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, archivesRoomImList, ARCHIVES_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_EXPERIMENTS_ROOM = new MyPlace(EXPERIMENTS_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, experimentsRoomImList, EXPERIMENTS_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, morgueImList, MORGUE_MAP_POSITIONS);
+    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
+    public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_PRODUCTS_RESERVE = new MyPlace(PRODUCTS_RESERVE, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, productsReserveImList, PRODUCTS_RESERVE_MAP_POSITIONS);
+    public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, garbageRoomImList, GARBAGE_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_COLD_ROOM = new MyPlace(COLD_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, coldRoomImList, COLD_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, dirtyChangingRoomImList, DIRTY_CHANGING_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS);
+    public final static MyPlace MY_EXIT = new MyPlace(EXIT, new Image("assets/images/place/floor.png"),
+            0, 8, 0, 8, exitImList, EXIT_MAP_POSITIONS);
 
 
-    public final static HashMap<Place,MyPlace> placeToMyPlace = new HashMap<>();
+    public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
-    public GameRessources(){
+    private final GameRessources gameRessources = new GameRessources();
+
+    private GameRessources(){
         // DOORS ADDING TO ROOMS
-        animalRoomImList.add(animToTransfIm);
-        changingRoomImList.add(changToTransfIm);
-        changingRoomImList.add(changToEntryIm);
-        transferRoomImList.add(transfToanimIm);
-        transferRoomImList.add(transfToChangIm);
-        transferRoomImList.add(transfToMeetIm);
-        transferRoomImList.add(transfToExperIm);
-        meetingRoomImList.add(meetToArchIm);
-        meetingRoomImList.add(meetToTransfIm);
-        archivesRoomImList.add(archTomeetIm);
-        experimentsRoomImList.add(experimToColdIm);
-        experimentsRoomImList.add(experimToReservIm);
-        experimentsRoomImList.add(experimToCondaIm);
-        experimentsRoomImList.add(experimToMorgIm);
-        experimentsRoomImList.add(experimToDirtyIm);
-        experimentsRoomImList.add(experToTransfIm);
-        morgueImList.add(morgToExperimIm);
-        morgueImList.add(secretPassageIm);
-        condamnedSASImList.add(condaToExperimIm);
-        condamnedSASImList.add(condaToDesertIm);
-        desertedRoomImList.add(desertToCondaIm);
-        productsReserveImList.add(reservToExperimIm);
-        coldRoomImList.add(coldToExperimIm);
-        coldRoomImList.add(coldToGarbIm);
-        garbageRoomImList.add(garbToColdIm);
-        dirtyChangingRoomImList.add(dirtToDeconIm);
-        dirtyChangingRoomImList.add(dirtyToExperimIm);
-        decontaminationRoomImList.add(deconToDirtIm);
-        decontaminationRoomImList.add(decontToExitIm);
+        animalRoomImList.add(ANIM_TO_TRANSF_IM);
+        changingRoomImList.add(CHANG_TO_TRANSF_IM);
+        changingRoomImList.add(CHANG_TO_ENTRY_IM);
+        transferRoomImList.add(TRANSF_TOANIM_IM);
+        transferRoomImList.add(TRANSF_TO_CHANG_IM);
+        transferRoomImList.add(TRANSF_TO_MEET_IM);
+        transferRoomImList.add(TRANSF_TO_EXPER_IM);
+        meetingRoomImList.add(MEET_TO_ARCH_IM);
+        meetingRoomImList.add(MEET_TO_TRANSF_IM);
+        archivesRoomImList.add(ARCH_TOMEET_IM);
+        experimentsRoomImList.add(EXPERIM_TO_COLD_IM);
+        experimentsRoomImList.add(EXPERIM_TO_RESERV_IM);
+        experimentsRoomImList.add(EXPERIM_TO_CONDA_IM);
+        experimentsRoomImList.add(EXPERIM_TO_MORG_IM);
+        experimentsRoomImList.add(EXPERIM_TO_DIRTY_IM);
+        experimentsRoomImList.add(EXPER_TO_TRANSF_IM);
+        morgueImList.add(MORG_TO_EXPERIM_IM);
+        morgueImList.add(SECRET_PASSAGE_IM);
+        condamnedSASImList.add(CONDA_TO_EXPERIM_IM);
+        condamnedSASImList.add(CONDA_TO_DESERT_IM);
+        desertedRoomImList.add(DESERT_TO_CONDA_IM);
+        productsReserveImList.add(RESERV_TO_EXPERIM_IM);
+        coldRoomImList.add(COLD_TO_EXPERIM_IM);
+        coldRoomImList.add(COLD_TO_GARB_IM);
+        garbageRoomImList.add(GARB_TO_COLD_IM);
+        dirtyChangingRoomImList.add(DIRT_TO_DECON_IM);
+        dirtyChangingRoomImList.add(DIRTY_TO_EXPERIM_IM);
+        decontaminationRoomImList.add(DECON_TO_DIRT_IM);
+        decontaminationRoomImList.add(DECONT_TO_EXIT_IM);
 
 
         // ANIMALS ADDING TO ROOMS
-        animalRoomImList.add(catIm);
-        experimentsRoomImList.add(monkeyIm);
-        experimentsRoomImList.add(mouseIm);
+        animalRoomImList.add(CAT_IM);
+        experimentsRoomImList.add(MONKEY_IM);
+        experimentsRoomImList.add(MOUSE_IM);
 
 
         // OBJECTS ADDING TO ROOMS
-        animalRoomImList.add(catBIm);
-        transferRoomImList.add(flintIm);
-        transferRoomImList.add(electricityMeterIm);
-        changingRoomImList.add(sexyPosterIm);
-        changingRoomImList.add(lockerIm);
-        experimentsRoomImList.add(naziPosterIm);
-        coldRoomImList.add(bananaIm);
-        garbageRoomImList.add(stickIm);
-        archivesRoomImList.add(clubIm);
-        archivesRoomImList.add(mouseBIm);
-        productsReserveImList.add(potionIm);
-        desertedRoomImList.add(monkeyBIm);
-        dirtyChangingRoomImList.add(sexyPosterIm);
+        animalRoomImList.add(CAT_B_IM);
+        transferRoomImList.add(FLINT_IM);
+        transferRoomImList.add(ELECTRICITY_METER_IM);
+        changingRoomImList.add(SEXY_POSTER_IM);
+        changingRoomImList.add(LOCKER_IM);
+        experimentsRoomImList.add(NAZI_POSTER_IM);
+        coldRoomImList.add(BANANA_IM);
+        garbageRoomImList.add(STICK_IM);
+        archivesRoomImList.add(CLUB_IM);
+        archivesRoomImList.add(MOUSE_B_IM);
+        productsReserveImList.add(POTION_IM);
+        desertedRoomImList.add(MONKEY_B_IM);
+        dirtyChangingRoomImList.add(SEXY_POSTER_IM);
 
         // ENEMIES ADDING TO ROOM
-        meetingRoomImList.add(accountGuyIm);
-        desertedRoomImList.add(naziZombieIm);
-        exitImList.add(bossIm);
+        meetingRoomImList.add(ACCOUNT_GUY_IM);
+        desertedRoomImList.add(NAZI_ZOMBIE_IM);
+        exitImList.add(BOSS_IM);
 
-        placeToMyPlace.put(Game.animalRoom,myAnimalRoom);
-        placeToMyPlace.put(Game.transferRoom,myTransferRoom);
-        placeToMyPlace.put(Game.transferRoom,myTransferRoom);
-        placeToMyPlace.put(Game.changingRoom,myChangingRoom);
-        placeToMyPlace.put(Game.meetingRoom,myMeetingRoom);
-        placeToMyPlace.put(Game.archivesRoom,myArchivesRoom);
-        placeToMyPlace.put(Game.experimentsRoom,myExperimentsRoom);
-        placeToMyPlace.put(Game.morgue,myMorgue);
-        placeToMyPlace.put(Game.condamnedSAS,myCondamnedSAS);
-        placeToMyPlace.put(Game.desertedRoom,myDesertedRoom);
-        placeToMyPlace.put(Game.productsReserve,myProductsReserve);
-        placeToMyPlace.put(Game.garbageRoom,myGarbageRoom);
-        placeToMyPlace.put(Game.coldRoom,myColdRoom);
-        placeToMyPlace.put(Game.dirtyChangingRoom,myDirtyChangingRoom);
-        placeToMyPlace.put(Game.decontaminationRoom,myDecontaminationRoom);
-        placeToMyPlace.put(Game.exit,myExit);
+        PLACE_TO_MY_PLACE.put(ANIMAL_ROOM, MY_ANIMAL_ROOM);
+        PLACE_TO_MY_PLACE.put(TRANSFER_ROOM, MY_TRANSFER_ROOM);
+        PLACE_TO_MY_PLACE.put(TRANSFER_ROOM, MY_TRANSFER_ROOM);
+        PLACE_TO_MY_PLACE.put(CHANGING_ROOM, MY_CHANGING_ROOM);
+        PLACE_TO_MY_PLACE.put(MEETING_ROOM, MY_MEETING_ROOM);
+        PLACE_TO_MY_PLACE.put(ARCHIVES_ROOM, MY_ARCHIVES_ROOM);
+        PLACE_TO_MY_PLACE.put(EXPERIMENTS_ROOM, MY_EXPERIMENTS_ROOM);
+        PLACE_TO_MY_PLACE.put(MORGUE, MY_MORGUE);
+        PLACE_TO_MY_PLACE.put(CONDAMNED_SAS, MY_CONDAMNED_SAS);
+        PLACE_TO_MY_PLACE.put(DESERTED_ROOM, MY_DESERTED_ROOM);
+        PLACE_TO_MY_PLACE.put(PRODUCTS_RESERVE, MY_PRODUCTS_RESERVE);
+        PLACE_TO_MY_PLACE.put(GARBAGE_ROOM, MY_GARBAGE_ROOM);
+        PLACE_TO_MY_PLACE.put(COLD_ROOM, MY_COLD_ROOM);
+        PLACE_TO_MY_PLACE.put(DIRTY_CHANGINGROOM, MY_DIRTY_CHANGING_ROOM);
+        PLACE_TO_MY_PLACE.put(DECONTAMINATION_ROOM, MY_DECONTAMINATION_ROOM);
+        PLACE_TO_MY_PLACE.put(EXIT, MY_EXIT);
 
     }
 }

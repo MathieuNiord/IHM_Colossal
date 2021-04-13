@@ -24,6 +24,8 @@ public class ImageRessources {
     public final static Image IMAGE_BOSS = new Image("assets/images/characters/ZombiNazi.png");
 
     // - Objects -
+    public final static Image IMAGE_BANANA = new Image("assets/images/objects/Banana.png");
+    public final static Image IMAGE_BESCHERELLE = new Image("assets/images/objects/Bescherelle.png");
     public final static Image IMAGE_TORCH = new Image("assets/images/place/Torch.gif");
     public final static Image IMAGE_NAZIS_POSTER = new Image("assets/images/objects/NazisPoster.png");
     public final static Image IMAGE_FLINT = new Image("assets/images/objects/Flint.png");

@@ -190,11 +190,13 @@ public class MainController implements Initializable {
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
+                    gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
+                gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
             }
         }
     }
@@ -255,6 +257,7 @@ public class MainController implements Initializable {
         System.out.println(GameRessources.heroIm.hero.getName());
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
+        gridPaneMap.revealPlace(GameRessources.myAnimalRoom);
         new GameRessoursesController(flowPaneInventory);
         initListener();
         System.setOut(new PrintStream(new OutputStream() {

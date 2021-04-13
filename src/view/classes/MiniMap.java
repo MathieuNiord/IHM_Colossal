@@ -6,6 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import model.others.Game;
+
+import java.util.ArrayList;
 
 public class MiniMap extends GridPane {
 
@@ -15,7 +18,6 @@ public class MiniMap extends GridPane {
     public MiniMap() {
         super();
         this.fillAllCells(NB_COLS, NB_ROWS);
-        this.setPadding(new Insets(5));
     }
 
     public void fillAllCells(int cols, int rows){
@@ -40,12 +42,21 @@ public class MiniMap extends GridPane {
         return null;
     }
 
-    public void revealPlace(int col, int row){
+    public void revealCell(int col, int row){
         Node cell = this.getCellFromGridPane(col, row);
         if(cell != null){
             if(cell instanceof HBox){
                 ((HBox) cell).setBackground(null);
             }
+        }
+    }
+    
+    public void revealPlace(MyPlace place){
+        Integer[][] positions = place.getPositions_map();
+        for (Integer[] position : positions) {
+            System.out.println(position[0]);
+            System.out.println(position[1]);
+            this.revealCell(position[0], position[1]);
         }
     }
 

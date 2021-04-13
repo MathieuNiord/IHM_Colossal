@@ -11,7 +11,7 @@ import view.classes.MyPlace;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import static view.ressources.ImageRessources.*;
 public class GameRessources {
 
     // HERO CREATION
@@ -19,66 +19,65 @@ public class GameRessources {
 
 
     // Animals
-    public final static MyImageView catIm = new MyImageView(Game.cat, "assets/images/characters/cat.gif", 2, 6, 45);
-    public final static MyImageView monkeyIm = new MyImageView(Game.monkey, "assets/images/characters/cat.gif", 4, 2, 45);
-    public final static MyImageView mouseIm = new MyImageView(Game.mouse, "assets/images/characters/cat.gif", 7, 6, 45);
+    public final static MyImageView catIm = new MyImageView(Game.cat, IMAGE_CAT, 2, 6, 45);
+    public final static MyImageView monkeyIm = new MyImageView(Game.monkey, IMAGE_MONKEY, 4, 2, 45);
+    public final static MyImageView mouseIm = new MyImageView(Game.mouse, IMAGE_MOUSE, 7, 6, 45);
 
 
 
 
     // Objects
-    public final static MyImageView naziPosteIm = new MyImageView(Game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView clubIm = new MyImageView(Game.club, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView potionIm =new MyImageView(Game.potion, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView bananaIm = new MyImageView(Game.banana, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView stickIm = new MyImageView(Game.stick, "assets/images/objects/Stick.png", 3, 0, 40);
-    public final static MyImageView flintIm = new MyImageView(Game.flint, "assets/images/objects/Flint.png", 3, 0, 40);
-    public final static MyImageView fuseIm = new MyImageView(Game.fuse, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView catBIm = new MyImageView(Game.catB, "assets/images/objects/NazisPoster.png", 3, 7, 40);
-    public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView k1Im = new MyImageView(Game.k1, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView k2Im = new MyImageView(Game.k2, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView electricityMeterIm = new MyImageView(Game.electricityMeter, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView lockerIm = new MyImageView(Game.locker, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView naziPosterIm =new MyImageView(Game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView sexyPosterIm = new MyImageView(Game.sexyPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView walkmanIm = new MyImageView(Game.walkman, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView firedstickIm = new MyImageView(Game.firedStick, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    public final static MyImageView naziPosterIm = new MyImageView(Game.naziPoster, IMAGE_NAZIS_POSTER, 3, 0, 40);
+    public final static MyImageView clubIm = new MyImageView(Game.club, IMAGE_HEART, 3, 5, 40);
+    public final static MyImageView potionIm =new MyImageView(Game.potion, IMAGE_HEART, 4, 4, 40);
+    public final static MyImageView bananaIm = new MyImageView(Game.banana, IMAGE_HEART, 6, 7, 40);
+    public final static MyImageView stickIm = new MyImageView(Game.stick, IMAGE_STICK, 3, 1, 40);
+    public final static MyImageView flintIm = new MyImageView(Game.flint, IMAGE_FLINT, 7, 4, 40);
+    public final static MyImageView fuseIm = new MyImageView(Game.fuse, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView catBIm = new MyImageView(Game.catB, IMAGE_HEART, 3, 7, 40);
+    public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, IMAGE_HEART, 6, 1, 40);
+    public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, IMAGE_HEART, 5, 1, 40);
+    public final static MyImageView k1Im = new MyImageView(Game.k1, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView k2Im = new MyImageView(Game.k2, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView electricityMeterIm = new MyImageView(Game.electricityMeter, IMAGE_HEART, 7, 1, 40);
+    public final static MyImageView lockerIm = new MyImageView(Game.locker, IMAGE_HEART, 7, 3, 40);
+    public final static MyImageView sexyPosterIm = new MyImageView(Game.sexyPoster, IMAGE_HEART, 2, 0, 40);
+    public final static MyImageView walkmanIm = new MyImageView(Game.walkman, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView firedstickIm = new MyImageView(Game.firedStick, IMAGE_TORCH, 0, 0, 40);
 
 
 
 
     // Doors
-    public final static MyImageView secretPassageIm = new MyImageView(Game.secretPassage, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView experimToCondaIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 6, 0);
-    public final static MyImageView condaToExperimIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView changToEntryIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView meetToArchIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 8, 4);
-    public final static MyImageView archTomeetIm = new MyImageView(Game.meetAndArch, "assets/images/place/BasicDoor.png", 0, 4);
-    public final static MyImageView transfToMeetIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 8, 4);
-    public final static MyImageView meetToTransfIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 0, 4);
-    public final static MyImageView decontToExitIm = new MyImageView(Game.decontAndExit, "assets/images/place/BasicDoor.png", 0, 4);
-    public final static MyImageView animToTransfIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 4, 0);
-    public final static MyImageView transfToanimIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 2, 8);
-    public final static MyImageView experimToReservIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 2, 0);
-    public final static MyImageView reservToExperimIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView experimToDirtyIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 0, 6);
-    public final static MyImageView dirtyToExperimIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 8, 4);
-    public final static MyImageView transfToChangIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 6, 8);
-    public final static MyImageView changToTransfIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 4, 0);
-    public final static MyImageView transfToExperIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 4, 0);
-    public final static MyImageView experToTransfIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 2, 8);
-    public final static MyImageView experimToMorgIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 8, 2);
-    public final static MyImageView morgToExperimIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 0, 4);
-    public final static MyImageView condaToDesertIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 4, 0);
-    public final static MyImageView desertToCondaIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView experimToColdIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 0, 2);
-    public final static MyImageView coldToExperimIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 8, 4);
-    public final static MyImageView coldToGarbIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 4, 0);
-    public final static MyImageView garbToColdIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 4, 8);
-    public final static MyImageView dirtToDeconIm = new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 0, 4);
-    public final static MyImageView deconToDirtIm =new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView secretPassageIm = new MyImageView(Game.secretPassage, IMAGE_DOOR_UP, 4, 8);
+    public final static MyImageView experimToCondaIm = new MyImageView(Game.experimAndConda, IMAGE_DOOR_UP, 6, 0);
+    public final static MyImageView condaToExperimIm = new MyImageView(Game.experimAndConda, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView changToEntryIm = new MyImageView(Game.changAndEntry, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView meetToArchIm = new MyImageView(Game.changAndEntry, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView archTomeetIm = new MyImageView(Game.meetAndArch, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView transfToMeetIm = new MyImageView(Game.transfAndMeet, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView meetToTransfIm = new MyImageView(Game.transfAndMeet, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView decontToExitIm = new MyImageView(Game.decontAndExit, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView animToTransfIm = new MyImageView(Game.animAndTransf, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView transfToanimIm = new MyImageView(Game.animAndTransf, IMAGE_DOOR_DOWN, 2, 8);
+    public final static MyImageView experimToReservIm = new MyImageView(Game.experimAndReserv, IMAGE_DOOR_UP, 2, 0);
+    public final static MyImageView reservToExperimIm = new MyImageView(Game.experimAndReserv, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView experimToDirtyIm = new MyImageView(Game.experimAndDirty, IMAGE_DOOR_LEFT, 0, 6);
+    public final static MyImageView dirtyToExperimIm = new MyImageView(Game.experimAndDirty, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView transfToChangIm = new MyImageView(Game.transfAndChang, IMAGE_DOOR_DOWN, 6, 8);
+    public final static MyImageView changToTransfIm = new MyImageView(Game.transfAndChang, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView transfToExperIm = new MyImageView(Game.transfAndExper, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView experToTransfIm = new MyImageView(Game.transfAndExper, IMAGE_DOOR_DOWN, 2, 8);
+    public final static MyImageView experimToMorgIm = new MyImageView(Game.experimAndMort, IMAGE_DOOR_RIGHT, 8, 2);
+    public final static MyImageView morgToExperimIm = new MyImageView(Game.experimAndMort, IMAGE_DOOR_UP, 0, 4);
+    public final static MyImageView condaToDesertIm = new MyImageView(Game.condaAndDesert, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView desertToCondaIm = new MyImageView(Game.condaAndDesert, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView experimToColdIm = new MyImageView(Game.experimAndCold, IMAGE_DOOR_LEFT, 0, 2);
+    public final static MyImageView coldToExperimIm = new MyImageView(Game.experimAndCold, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView coldToGarbIm = new MyImageView(Game.coldAndGarb, IMAGE_DOOR_UP, 4, 0);
+    public final static MyImageView garbToColdIm = new MyImageView(Game.coldAndGarb, IMAGE_DOOR_DOWN, 4, 8);
+    public final static MyImageView dirtToDeconIm = new MyImageView(Game.dirtAndDecon, IMAGE_DOOR_LEFT, 0, 4);
+    public final static MyImageView deconToDirtIm =new MyImageView(Game.dirtAndDecon, IMAGE_DOOR_RIGHT, 8, 4);
 
 
 
@@ -99,39 +98,55 @@ public class GameRessources {
     private static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
     private static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
+    public final static Integer[][] animal_room_map_positions = {{2,5}};
+    public final static Integer[][] transfer_room_map_positions = {{2,4}, {3,4}};
+    public final static Integer[][] changing_room_map_positions = {{3,5}};
+    public final static Integer[][] entry_room_map_positions = {{3,6}};
+    public final static Integer[][] meeting_room_map_positions = {{4,4}};
+    public final static Integer[][] archives_room_map_positions = {{5,4}};
+    public final static Integer[][] experiments_room_map_positions = {{3, 2}, {4, 2}, {3, 3}, {4, 3}};
+    public final static Integer[][] morgue_map_positions = {{5,2}};
+    public final static Integer[][] condamned_sas_map_positions = {{4,1}};
+    public final static Integer[][] deserted_room_map_positions = {{4,0}};
+    public final static Integer[][] products_reserve_map_positions = {{3,1}};
+    public final static Integer[][] garbage_room_map_positions = {{2,1}};
+    public final static Integer[][] cold_room_map_positions = {{2,2}};
+    public final static Integer[][] dirty_changing_room_map_positions = {{2,3}};
+    public final static Integer[][] decontamination_room_map_positions = {{1,3}};
+    public final static Integer[][] exit_map_positions = {{0,3}};
 
     public final static MyPlace myAnimalRoom = new MyPlace(Game.animalRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,animalRoomImList);
+            0, 8, 0, 8, animalRoomImList, animal_room_map_positions);
     public final static MyPlace  myTransferRoom =new MyPlace(Game.transferRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,transferRoomImList); //LEFT
+            0, 8, 0, 8, transferRoomImList, transfer_room_map_positions); //LEFT
     public final static MyPlace  myChangingRoom= new MyPlace(Game.changingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,changingRoomImList);
+            0, 8, 0, 8, changingRoomImList, changing_room_map_positions);
     public final static MyPlace  myEntryIm= new MyPlace(Game.entry, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,entryImList);
+            0, 8, 0, 8, entryImList, entry_room_map_positions);
     public final static MyPlace  myMeetingRoom = new MyPlace(Game.meetingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,meetingRoomImList);
+            0, 8, 0, 8, meetingRoomImList, meeting_room_map_positions);
     public final static MyPlace  myArchivesRoom = new MyPlace(Game.archivesRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,archivesRoomImList);
+            0, 8, 0, 8, archivesRoomImList, archives_room_map_positions);
     public final static MyPlace  myExperimentsRoom = new MyPlace(Game.experimentsRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,experimentsRoomImList);
+            0, 8, 0, 8, experimentsRoomImList, experiments_room_map_positions);
     public final static MyPlace  myMorgue = new MyPlace(Game.morgue, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,morgueImList);
+            0, 8, 0, 8, morgueImList, morgue_map_positions);
     public final static MyPlace  myCondamnedSAS = new MyPlace(Game.condamnedSAS, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,condamnedSASImList);
+            0, 8, 0, 8, condamnedSASImList, condamned_sas_map_positions);
     public final static MyPlace  myDesertedRoom = new MyPlace(Game.desertedRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,desertedRoomImList);
+            0, 8, 0, 8, desertedRoomImList, deserted_room_map_positions);
     public final static MyPlace  myProductsReserve = new MyPlace(Game.productsReserve, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,productsReserveImList);
+            0, 8, 0, 8, productsReserveImList, products_reserve_map_positions);
     public final static MyPlace  myGarbageRoom = new MyPlace(Game.garbageRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,garbageRoomImList);
+            0, 8, 0, 8, garbageRoomImList, garbage_room_map_positions);
     public final static MyPlace  myColdRoom = new MyPlace(Game.coldRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,coldRoomImList);
+            0, 8, 0, 8, coldRoomImList, cold_room_map_positions);
     public final static MyPlace  myDirtyChangingRoom = new MyPlace(Game.dirtyChangingRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,dirtyChangingRoomImList);
+            0, 8, 0, 8, dirtyChangingRoomImList, dirty_changing_room_map_positions);
     public final static MyPlace  myDecontaminationRoom =new MyPlace(Game.decontaminationRoom, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,decontaminationRoomImList);
+            0, 8, 0, 8, decontaminationRoomImList, decontamination_room_map_positions);
     public final static MyPlace  myExit = new MyPlace(Game.exit, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8,exitImList);
+            0, 8, 0, 8, exitImList, exit_map_positions);
 
 
     public final static HashMap<Place,MyPlace> placeToMyPlace = new HashMap<>();

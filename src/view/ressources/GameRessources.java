@@ -32,13 +32,13 @@ public class GameRessources {
     public final static MyImageView naziPosterIm = new MyImageView(Game.naziPoster, IMAGE_NAZIS_POSTER, 3, 0, 40);
     public final static MyImageView clubIm = new MyImageView(Game.club, IMAGE_HEART, 3, 5, 40);
     public final static MyImageView potionIm =new MyImageView(Game.potion, IMAGE_HEART, 4, 4, 40);
-    public final static MyImageView bananaIm = new MyImageView(Game.banana, IMAGE_HEART, 6, 7, 40);
+    public final static MyImageView bananaIm = new MyImageView(Game.banana, IMAGE_BANANA, 6, 7, 40);
     public final static MyImageView stickIm = new MyImageView(Game.stick, IMAGE_STICK, 3, 1, 40);
     public final static MyImageView flintIm = new MyImageView(Game.flint, IMAGE_FLINT, 7, 4, 40);
     public final static MyImageView fuseIm = new MyImageView(Game.fuse, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView catBIm = new MyImageView(Game.catB, IMAGE_HEART, 3, 7, 40);
-    public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, IMAGE_HEART, 6, 1, 40);
-    public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, IMAGE_HEART, 5, 1, 40);
+    public final static MyImageView catBIm = new MyImageView(Game.catB, IMAGE_BESCHERELLE, 3, 7, 40);
+    public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, IMAGE_BESCHERELLE, 6, 1, 40);
+    public final static MyImageView monkeyBIm = new MyImageView(Game.monkeyB, IMAGE_BESCHERELLE, 5, 1, 40);
     public final static MyImageView k1Im = new MyImageView(Game.k1, IMAGE_HEART, 0, 0, 40);
     public final static MyImageView k2Im = new MyImageView(Game.k2, IMAGE_HEART, 0, 0, 40);
     public final static MyImageView electricityMeterIm = new MyImageView(Game.electricityMeter, IMAGE_HEART, 7, 1, 40);

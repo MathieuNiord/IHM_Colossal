@@ -151,7 +151,7 @@ public class GameRessources {
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
-    private final GameRessources gameRessources = new GameRessources();
+    private final static GameRessources GAME_RESSOURCES = new GameRessources();
 
     private GameRessources(){
         // DOORS ADDING TO ROOMS

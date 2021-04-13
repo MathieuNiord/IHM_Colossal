@@ -18,7 +18,10 @@ import stage.MyStage;
 import view.classes.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
+import view.classes.MyOutputStream;
 import view.ressources.ImageRessources;
+
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.URL;
@@ -83,14 +86,14 @@ public class MainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Leave the game ?");
         alert.setContentText("Are you sure you want to leave ? ");
-        ButtonType b1 = new ButtonType("Menu");
+        //ButtonType b1 = new ButtonType("Menu");
         ButtonType b2 = new ButtonType("Quit");
         ButtonType b3 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        alert.getButtonTypes().setAll(b1, b2, b3);
+        alert.getButtonTypes().setAll( b2, b3);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == b1){
+        /*if (result.get() == b1){
             try{
                 Stage stage = (Stage) buttonQuit.getScene().getWindow();
                 stage.close();
@@ -99,7 +102,8 @@ public class MainController implements Initializable {
             }
             catch (Exception ignored){}
         }
-        else if (result.get() == b2) {
+        else */
+        if (result.get() == b2) {
             Stage stage = (Stage) buttonQuit.getScene().getWindow();
             stage.close();
         }
@@ -150,6 +154,13 @@ public class MainController implements Initializable {
                 else{
                     HERO_IM.y.setValue(oldValue);
                 }
+            }
+        });
+
+        MyOutputStream.SIMPLE_STRING_PROPERTY.addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                labelScript.setText(newValue);
             }
         });
     }
@@ -274,18 +285,10 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(HERO_IM.hero.getName());
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.revealPlace(MY_ANIMAL_ROOM);
         new GameRessoursesController(flowPaneInventory);
         initListener();
-        System.setOut(new PrintStream(new OutputStream() {
-                    @Override
-                    public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }
-                })
-        );
     }
-
-
 }
 

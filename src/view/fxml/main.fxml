@@ -15,11 +15,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+
+
 <?import view.classes.MyGridPane?>
 <?import view.classes.MiniMap?>
-
 <Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-    <MyGridPane fx:id="gridPaneGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0">
+    <MyGridPane fx:id="gridPaneGame" alignment="CENTER" layoutX="51.0" layoutY="104.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" prefHeight="576.0" prefWidth="576.0" onMousePressed="#gridPaneGameSetOnMousePressedEvent">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

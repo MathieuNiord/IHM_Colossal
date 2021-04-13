@@ -38,7 +38,7 @@ public class ImageRessources {
     // - Doors -
     public final static Image IMAGE_DOOR_UP = new Image("assets/images/place/BasicDoorUp.png");
     public final static Image IMAGE_DOOR_LEFT = new Image("assets/images/place/BasicDoorLeft.png");
-    public final static Image IMAGE_DOOR_RIGHT = new Image("assets/images/place/BasicDoorRight.jpg");
+    public final static Image IMAGE_DOOR_RIGHT = new Image("assets/images/place/BasicDoorRight.png");
     public final static Image IMAGE_DOOR_DOWN = new Image("assets/images/place/BasicDoorDown.jpg");
 
 

@@ -11,12 +11,15 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	public final String NAME;
 	public final String INFO;
 
+	private boolean draggable;
+
 
 	// ***** CONSTRUCTOR *****
 
 	public Obj(String name, String info) {
 		this.NAME = name;
 		this.INFO = info;
+		this.draggable = false;
 	}
 
 
@@ -38,5 +41,11 @@ public abstract class Obj implements Lookable, Usable, Takable {
 	public String toString() {
 		return this.NAME;
 	}
+
+	// === Get/set ===
+
+	public boolean getDraggable(){ return this.draggable; }
+
+	public void setDraggableTrue(){ this.draggable = true; }
 	
 }

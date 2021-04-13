@@ -71,7 +71,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Label>
-            <FlowPane fx:id="flowPaneInventory" hgap="16.0" layoutX="74.0" layoutY="33.0" prefHeight="256.0" prefWidth="336.0" vgap="16.0">
+            <FlowPane fx:id="flowPaneInventory" hgap="16.0" layoutX="74.0" layoutY="33.0" prefHeight="256.0" prefWidth="336.0" vgap="16.0" onMousePressed="#flowPaneInventorySetOnMousePressedEvent">
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                </padding>

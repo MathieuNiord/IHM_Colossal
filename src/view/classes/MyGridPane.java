@@ -20,6 +20,7 @@ public class MyGridPane extends GridPane {
     public void myRemove(MyImageView im){
         this.getChildren().remove(im);
         this.positions.remove(im.y*8+im.x);
+        this.myPlace.getImages().remove(im);
     }
     public void setMyPlace(MyPlace myPlace) {
         if(this.myPlace!=null){

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -272,6 +273,21 @@ public class MainController implements Initializable {
         return dialog.showAndWait();
     }
 
+
+
+    @FXML
+    private void flowPaneInventorySetOnMousePressedEvent(MouseEvent event){
+        try{
+            MyImageView im = (MyImageView)event.getTarget();
+            if(im.obj != null){
+                labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
+                labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+            }
+        } catch (Exception ignored){
+            labelObjectName.setText("");
+            labelObjectInfo.setText("");
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -282,8 +298,7 @@ public class MainController implements Initializable {
         initListener();
         System.setOut(new PrintStream(new OutputStream() {
                     @Override
-                    public void write(int b) {
-                        labelScript.setText(labelScript.getText() + (char) b); }}));
+                    public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }}));
     }
 }
 

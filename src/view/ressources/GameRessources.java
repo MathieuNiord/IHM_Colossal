@@ -49,35 +49,35 @@ public class GameRessources {
 
 
     // Doors
-    public final static MyImageView secretPassageIm = new MyImageView(Game.secretPassage, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView experimToCondaIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView condaToExperimIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView changToEntryIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView meetToArchIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView archTomeetIm = new MyImageView(Game.meetAndArch, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView transfToMeetIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView meetToTransfIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView decontToExitIm = new MyImageView(Game.decontAndExit, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView animToTransfIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 5, 0);
-    public final static MyImageView transfToanimIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 3, 8);
-    public final static MyImageView experimToReservIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView reservToExperimIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView experimToDirtyIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView dirtyToExperimIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView transfToChangIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView changToTransfIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView transfToExperIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView experToTransfIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView experimToMorgIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView morgToExperimIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView condaToDesertIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView desertToCondaIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView experimToColdIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView coldToExperimIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView coldToGarbIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView garbToColdIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView dirtToDeconIm = new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 3, 0);
-    public final static MyImageView deconToDirtIm =new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 3, 0);
+    public final static MyImageView secretPassageIm = new MyImageView(Game.secretPassage, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView experimToCondaIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView condaToExperimIm = new MyImageView(Game.experimAndConda, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView changToEntryIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView meetToArchIm = new MyImageView(Game.changAndEntry, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView archTomeetIm = new MyImageView(Game.meetAndArch, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView transfToMeetIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView meetToTransfIm = new MyImageView(Game.transfAndMeet, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView decontToExitIm = new MyImageView(Game.decontAndExit, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView animToTransfIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView transfToanimIm = new MyImageView(Game.animAndTransf, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView experimToReservIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView reservToExperimIm = new MyImageView(Game.experimAndReserv, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView experimToDirtyIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView dirtyToExperimIm = new MyImageView(Game.experimAndDirty, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView transfToChangIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView changToTransfIm = new MyImageView(Game.transfAndChang, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView transfToExperIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView experToTransfIm = new MyImageView(Game.transfAndExper, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView experimToMorgIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView morgToExperimIm = new MyImageView(Game.experimAndMort, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView condaToDesertIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView desertToCondaIm = new MyImageView(Game.condaAndDesert, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView experimToColdIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView coldToExperimIm = new MyImageView(Game.experimAndCold, "assets/images/place/BasicDoor.png", 8, 4);
+    public final static MyImageView coldToGarbIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 4, 0);
+    public final static MyImageView garbToColdIm = new MyImageView(Game.coldAndGarb, "assets/images/place/BasicDoor.png", 4, 8);
+    public final static MyImageView dirtToDeconIm = new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 0, 4);
+    public final static MyImageView deconToDirtIm =new MyImageView(Game.dirtAndDecon, "assets/images/place/BasicDoor.png", 8, 4);
 
 
 
@@ -150,7 +150,7 @@ public class GameRessources {
     public GameRessources(){
         // DOORS ADDING TO ROOMS
         animalRoomImList.add(animToTransfIm);
-        changingRoomImList.add(transfToChangIm);
+        changingRoomImList.add(changToTransfIm);
         changingRoomImList.add(changToEntryIm);
         transferRoomImList1.add(transfToanimIm);
         transferRoomImList2.add(transfToChangIm);

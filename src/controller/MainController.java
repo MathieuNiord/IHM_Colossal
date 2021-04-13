@@ -145,18 +145,22 @@ public class MainController implements Initializable {
 
     //fonction qui initialise les listeners
     private void initListener(){
+
+
         GameRessources.heroIm.x.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
+                boolean collision =false;
                 int x = newValue.intValue();
                 int y = GameRessources.heroIm.y.getValue();
                 MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                 if(im!=null){
                     heroInteractWithIm(im);
+                    collision=true;
+
                 }
 
-                if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound()){
+                if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
                     gridPaneGame.getChildren().remove(GameRessources.heroIm);
                     gridPaneGame.add(GameRessources.heroIm,x,y);
                 }
@@ -168,15 +172,17 @@ public class MainController implements Initializable {
         GameRessources.heroIm.y.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                boolean collision =false;
+                int x = GameRessources.heroIm.x.getValue();
+                int y = newValue.intValue();
+                MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
+                if(im!=null){
+                    heroInteractWithIm(im);
+                    collision =true;
 
-                    int x = GameRessources.heroIm.x.getValue();
-                    int y = newValue.intValue();
-                    MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
-                    if(im!=null){
-                        heroInteractWithIm(im);
-                    }
+                }
 
-                if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound()){
+                if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
                     gridPaneGame.getChildren().remove(GameRessources.heroIm);
                     gridPaneGame.add(GameRessources.heroIm,x,y);
                 }
@@ -198,7 +204,7 @@ public class MainController implements Initializable {
             im.obj.take(hero);
             //l'objet eletricMeter n'est pas prennable
             if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
-                gridPaneGame.getChildren().remove(im);
+                gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
             }
         }
@@ -217,10 +223,12 @@ public class MainController implements Initializable {
                 }
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
+                    labelTitle.setText(hero.getPlace().getName());
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
+                labelTitle.setText(hero.getPlace().getName());
             }
         }
     }
@@ -230,6 +238,7 @@ public class MainController implements Initializable {
         for(String s : im.door.getPlaces().keySet()) {
             if(!s.equals(hero.getPlace().getName())){
                 dest = s;
+                System.out.println(dest);
                 break;
             }
         }
@@ -268,13 +277,13 @@ public class MainController implements Initializable {
 
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
-        gridPaneGame.setMyPlace(GameRessources.myExperimentsRoom2);
+        gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
         new GameRessoursesController();
         initListener();
         System.setOut(new PrintStream(new OutputStream() {
                     @Override
-                    public void write(int b) {labelScript.setText(labelScript.getText() + (char) b); }}));
-
+                    public void write(int b) {
+                        labelScript.setText(labelScript.getText() + (char) b); }}));
     }
 }
 

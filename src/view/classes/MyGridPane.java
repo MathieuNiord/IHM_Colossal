@@ -15,9 +15,12 @@ public class MyGridPane extends GridPane {
         super();
         positions = new HashMap<>();
         this.add(GameRessources.heroIm,GameRessources.heroIm.x.getValue(),GameRessources.heroIm.y.getValue());
-
     }
 
+    public void myRemove(MyImageView im){
+        this.getChildren().remove(im);
+        this.positions.remove(im.y*8+im.x);
+    }
     public void setMyPlace(MyPlace myPlace) {
         if(this.myPlace!=null){
             this.getChildren().removeAll(this.myPlace.getImages());

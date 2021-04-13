@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
+import javafx.scene.layout.FlowPane;
 import model.objects.Banana;
 import view.classes.MyImageView;
 import view.ressources.GameRessources;
@@ -13,9 +14,10 @@ public class GameRessoursesController {
         monkeyIm.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                if (event.getSource() == bananaIm &&
+                if (event.getDragboard().getString().equals(bananaIm.obj.NAME) &&
                         event.getDragboard().hasString()) {
                     event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+
                 }
                 event.consume();
             }
@@ -28,13 +30,13 @@ public class GameRessoursesController {
                 // data dropped
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if (db.hasString()) {
+                if(db.hasString()){
                     success = true;
                     monkeyIm.monkey.setHungry(false);
                     heroIm.hero.getObjs().remove(bananaIm.obj.NAME);
+                    inventory.getChildren().remove(bananaIm);
                 }
                 event.setDropCompleted(success);
-
                 event.consume();
             }
         });
@@ -48,7 +50,7 @@ public class GameRessoursesController {
         });
     }
 
-    private void torcheDrag(){
+    private void firedStickDrag(){
         //sources
         stickIm.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
@@ -103,6 +105,9 @@ public class GameRessoursesController {
             heroIm.hero.getObjs().remove(flintIm.obj.NAME);
             heroIm.hero.getObjs().remove(stickIm.obj.NAME);
             heroIm.hero.getObjs().put(firedstickIm.obj.NAME, firedstickIm.obj);
+            this.inventory.getChildren().remove(flintIm);
+            this.inventory.getChildren().remove(stickIm);
+            this.inventory.getChildren().add(firedstickIm);
         }
         event.setDropCompleted(success);
 
@@ -110,7 +115,7 @@ public class GameRessoursesController {
     }
 
     private void objHandleOver(DragEvent event, MyImageView target){
-        if (event.getSource() == target &&
+        if ((event.getDragboard().getString().equals(target.obj.NAME)) &&
                 event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
@@ -129,9 +134,11 @@ public class GameRessoursesController {
         event.consume();
     }
 
+    private FlowPane inventory;
 
-    public GameRessoursesController (){
+    public GameRessoursesController (FlowPane inventory){
+        this.inventory = inventory;
         monkeyDrag();
-        torcheDrag();
+        firedStickDrag();
     }
 }

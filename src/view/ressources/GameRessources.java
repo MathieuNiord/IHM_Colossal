@@ -31,8 +31,8 @@ public class GameRessources {
     public final static MyImageView clubIm = new MyImageView(Game.club, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView potionIm =new MyImageView(Game.potion, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView bananaIm = new MyImageView(Game.banana, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView stickIm = new MyImageView(Game.stick, "assets/images/objects/NazisPoster.png", 3, 0, 40);
-    public final static MyImageView flintIm = new MyImageView(Game.flint, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    public final static MyImageView stickIm = new MyImageView(Game.stick, "assets/images/objects/Stick.png", 3, 0, 40);
+    public final static MyImageView flintIm = new MyImageView(Game.flint, "assets/images/objects/Flint.png", 3, 0, 40);
     public final static MyImageView fuseIm = new MyImageView(Game.fuse, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView catBIm = new MyImageView(Game.catB, "assets/images/objects/NazisPoster.png", 3, 7, 40);
     public final static MyImageView mouseBIm =new MyImageView(Game.mouseB, "assets/images/objects/NazisPoster.png", 3, 0, 40);

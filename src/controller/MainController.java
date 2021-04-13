@@ -112,6 +112,7 @@ public class MainController implements Initializable {
     @FXML
     private Label labelScript;
 
+
     @FXML
     void buttonHelpOnAction(ActionEvent event) {
         //TODO popup help
@@ -294,7 +295,7 @@ public class MainController implements Initializable {
         inputDialogUserName().ifPresent(Game::new);
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
-        new GameRessoursesController();
+        new GameRessoursesController(flowPaneInventory);
         initListener();
         System.setOut(new PrintStream(new OutputStream() {
                     @Override

@@ -26,11 +26,12 @@ public class MyImageView extends ImageView {
         this.y = y;
         fitImage(fitImage);
     }
-    public MyImageView(Monkey m, String path,int x,int y){
+    public MyImageView(Monkey m, String path,int x,int y, Integer fitImage){
         super(path);
         this.monkey = m;
         this.x = x;
         this.y = y;
+        fitImage(fitImage);
     }
     public MyImageView(Obj o, String path,int x,int y, Integer fitImage){
         super(path);

@@ -31,7 +31,7 @@ public class Monkey extends Animal{
 
 	// === SETTER ===
 
-	public void setHungry(boolean hungry) { this.hungry = hungry;}
+	public void setHungry(boolean state) { this.hungry = state;}
 
 	// === COMMANDS ===
 	

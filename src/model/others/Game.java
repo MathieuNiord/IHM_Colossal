@@ -66,6 +66,7 @@ public class Game {
 	public static final Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
 	public static final Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
 	public static final ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
+	public static final FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
 
 	public static final NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
 	public static final SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);

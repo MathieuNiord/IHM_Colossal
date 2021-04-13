@@ -5,9 +5,6 @@ import javafx.scene.input.*;
 import model.objects.Banana;
 import view.classes.MyImageView;
 import view.ressources.GameRessources;
-
-import static view.ressources.GameRessources.bananaIm;
-import static view.ressources.GameRessources.monkeyIm;
 import static view.ressources.GameRessources.*;
 
 public class GameRessoursesController {
@@ -52,7 +49,72 @@ public class GameRessoursesController {
     }
 
     private void torcheDrag(){
+        //sources
+        stickIm.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                objHandleDetected(event, stickIm);
+            }
+        });
 
+        flintIm.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                objHandleDetected(event, flintIm);
+            }
+        });
+
+        // target
+        flintIm.setOnDragOver(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                objHandleOver(event, stickIm);
+            }
+        });
+
+        flintIm.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                firedStickHandleDrop(event);
+            }
+        });
+
+        stickIm.setOnDragOver(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                objHandleOver(event, flintIm);
+            }
+        });
+
+        stickIm.setOnDragDropped(new EventHandler<DragEvent>() {
+             @Override
+             public void handle(DragEvent event) {
+                 firedStickHandleDrop(event);
+             }
+         });
+    }
+
+    private void firedStickHandleDrop(DragEvent event){
+        // data dropped
+        Dragboard db = event.getDragboard();
+        boolean success = false;
+        if (db.hasString()) {
+            success = true;
+            heroIm.hero.getObjs().remove(flintIm.obj.NAME);
+            heroIm.hero.getObjs().remove(stickIm.obj.NAME);
+            heroIm.hero.getObjs().put(firedstickIm.obj.NAME, firedstickIm.obj);
+        }
+        event.setDropCompleted(success);
+
+        event.consume();
+    }
+
+    private void objHandleOver(DragEvent event, MyImageView target){
+        if (event.getSource() == target &&
+                event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+        }
+        event.consume();
     }
 
     private void objHandleDetected(MouseEvent event, MyImageView source){
@@ -70,5 +132,6 @@ public class GameRessoursesController {
 
     public GameRessoursesController (){
         monkeyDrag();
+        torcheDrag();
     }
 }

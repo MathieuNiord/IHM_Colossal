@@ -44,6 +44,7 @@ public class GameRessources {
     public final static MyImageView naziPosterIm =new MyImageView(Game.naziPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView sexyPosterIm = new MyImageView(Game.sexyPoster, "assets/images/objects/NazisPoster.png", 3, 0, 40);
     public final static MyImageView walkmanIm = new MyImageView(Game.walkman, "assets/images/objects/NazisPoster.png", 3, 0, 40);
+    public final static MyImageView firedstickIm = new MyImageView(Game.firedStick, "assets/images/objects/NazisPoster.png", 3, 0, 40);
 
 
 

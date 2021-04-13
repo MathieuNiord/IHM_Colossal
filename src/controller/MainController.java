@@ -30,7 +30,13 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/* ========================================================================================================
+   === The main controller : regroups all game interactions and controls the view (display) of the game ===
+   ======================================================================================================== */
+
 public class MainController implements Initializable {
+
+    // === ATTRIBUTES ===
 
     @FXML
     private Pane paneMain;
@@ -65,14 +71,19 @@ public class MainController implements Initializable {
     @FXML
     private Label labelScript;
 
+    // === METHODS ===
 
+    // --- Events ---
+
+    // - The "HELP" button event -
     @FXML
-    void buttonHelpOnAction(ActionEvent event) {
+    private void buttonHelpOnAction(ActionEvent event) {
         //TODO popup help
     }
 
+    // - The "QUIT" button event -
     @FXML
-    void buttonQuitOnAction(ActionEvent event) {
+    private void buttonQuitOnAction(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Leave the game ?");
         alert.setContentText("Are you sure you want to leave ? ");
@@ -87,7 +98,7 @@ public class MainController implements Initializable {
             try{
                 Stage stage = (Stage) buttonQuit.getScene().getWindow();
                 stage.close();
-                MyStage s = new MyStage("../view/home.fxml");
+                MyStage s = new MyStage("../view/fxml/home.fxml");
                 s.show();
             }
             catch (Exception ignored){}
@@ -98,9 +109,8 @@ public class MainController implements Initializable {
         }
     }
 
-    //fonction qui initialise les listeners
+    // - Initialization of controller's listeners -
     private void initListener(){
-
 
         GameRessources.heroIm.x.addListener(new ChangeListener<Number>() {
             @Override
@@ -148,8 +158,9 @@ public class MainController implements Initializable {
         });
     }
 
+    // --- Player ---
 
-
+    // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
         Hero hero = GameRessources.heroIm.hero;
         if(im.animal!=null){ //interaction avec animal
@@ -190,6 +201,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // - This function permits the player to cross doors -
     private void heroCrossDoor(MyImageView im, Hero hero) {
         String dest = null;
         for(String s : im.door.getPlaces().keySet()) {
@@ -205,6 +217,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // - Here we got all actions the player can make during the game -
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
         switch (event.getCode()){
@@ -222,15 +235,7 @@ public class MainController implements Initializable {
         }
     }
 
-    private Optional<String> inputDialogUserName(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Choose your name please");
-        dialog.setContentText("Please enter your name:");
-        return dialog.showAndWait();
-    }
-
-
-
+    // - Manage events in the Inventory -
     @FXML
     private void flowPaneInventorySetOnMousePressedEvent(MouseEvent event){
         try{
@@ -244,10 +249,12 @@ public class MainController implements Initializable {
             labelObjectInfo.setText("");
         }
     }
+
+    // --- Initialization of the controller ---
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        inputDialogUserName().ifPresent(Game::new);
+        System.out.println(GameRessources.heroIm.hero.getName());
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
         gridPaneMap.revealPlace(GameRessources.myAnimalRoom);
@@ -255,7 +262,9 @@ public class MainController implements Initializable {
         initListener();
         System.setOut(new PrintStream(new OutputStream() {
                     @Override
-                    public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }}));
+                    public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }
+                })
+        );
     }
 
 

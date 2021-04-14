@@ -18,6 +18,7 @@ public class MyPlace {
     private final Image backgroundImage;
 
     private final Integer[][] positions_map;
+    private boolean visited;
 
     /*** === CONSTRUCTOR === ***/
     public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
@@ -30,6 +31,7 @@ public class MyPlace {
         this.maxY = maxBoundY;
         this.images = images;
         this.positions_map = positions_map;
+        this.visited = false;
         this.enemy = null;
 
     }
@@ -73,4 +75,8 @@ public class MyPlace {
     }
 
     public Integer[][] getPositions_map() {return positions_map;}
+
+    public boolean isVisited(){return this.visited;}
+
+    public void makeVisited(){this.visited = true;}
 }

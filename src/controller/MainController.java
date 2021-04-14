@@ -206,13 +206,13 @@ public class MainController implements Initializable {
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
-                    gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
+                    gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
-                gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
+                gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
         }
     }
@@ -303,7 +303,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
-        gridPaneMap.revealPlace(MY_ANIMAL_ROOM);
+        gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         new GameRessoursesController(flowPaneInventory);
         initListener();
     }

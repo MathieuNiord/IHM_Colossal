@@ -34,10 +34,13 @@ public class MyPlace {
         this.enemy = null;
 
     }
+
     public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY
             , int maxBoundY, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
        this.enemy = enemy;
+       //Add to the list of images to display the enemy in the room
+       this.images.add(enemy);
     }
 
 

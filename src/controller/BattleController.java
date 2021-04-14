@@ -1,10 +1,12 @@
 package controller;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.image.Image;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import model.characters.Hero;
 import model.others.Game;
 import view.ressources.GameRessources;
 import java.net.URL;
@@ -36,9 +38,9 @@ public class BattleController implements Initializable {
 
     //ProgressBars
     @FXML
-    private ProgressBar progress_bar_hero;
+    private ProgressBar progress_bar_hero = new ProgressBar(1.0);
     @FXML
-    private ProgressBar progress_bar_enemy;
+    private ProgressBar progress_bar_enemy = new ProgressBar(1.0);
 
     //Buttons
     @FXML
@@ -51,7 +53,10 @@ public class BattleController implements Initializable {
     private ImageView image_enemy;
 
     //Enemy life
-    //private final int eLife = HERO_IM.hero.getPlace().getEnemies().getHP();
+    private int eLife;
+
+    //String for the label commentary
+    private String commentary = "";
 
     /*** === METHODS === ***/
 
@@ -59,24 +64,28 @@ public class BattleController implements Initializable {
     private void lifeDisplay() {
         label_enemy_life.setText(String.valueOf(HERO_IM.hero.getPlace().getEnemies().getHP()));
         label_hero_life.setText(String.valueOf(HERO_IM.hero.getHP()));
-        progress_bar_hero.setProgress((double) (HERO_IM.hero.getHP()/100));
-        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemies().getHP()/60));
+        progress_bar_hero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
+        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemies().getHP()) / (double) (this.eLife));
     }
 
     @FXML
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
+
             HERO_IM.hero.attack(HERO_IM.hero.getPlace().getEnemies());
 
             if (!HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
-                //label_commentary.setText("Yeah ! Kill him ! " + GameRessources.heroIm.hero.getPlace().getEnemies().NAME + " lost 20 HP");
+                label_commentary.setText("");
+                this.commentary = "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " took damages [-" + Hero.DEFAULT_DAMAGE + " HP]\n";
                 enemyTurn();
             }
 
-            button_attack.setDisable(true);
-            button_heal.setDisable(true);
-
-            System.out.println("attack");
+            else {
+                lifeDisplay();
+                label_commentary.setText("YOU WON THE BATTLE ! Good game HOUGA BOUGA !");
+                button_attack.setDisable(true);
+                button_heal.setDisable(true);
+            }
         });
     }
 
@@ -85,9 +94,9 @@ public class BattleController implements Initializable {
     private void setButton_heal() {
         button_heal.setOnAction( event -> {
             HERO_IM.hero.heal();
-            button_attack.setDisable(true);
-            button_heal.setDisable(true);
-            System.out.println("heal");
+            label_commentary.setText("");
+            this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
+            enemyTurn();
         });
     }
 
@@ -95,7 +104,7 @@ public class BattleController implements Initializable {
     @FXML
     private void enemyTurn() {
 
-        // -- Variables
+        //Variables
         Random rand = new Random();
         int eHeal = rand.nextInt(10 + 1);  //Enemy heal
 
@@ -103,14 +112,20 @@ public class BattleController implements Initializable {
 
             if (eHeal == 1) {
                 HERO_IM.hero.getPlace().getEnemies().heal(10);
-                label_commentary.setText(HERO_IM.hero.getPlace().getEnemies().NAME + " healed itself");
-            } else {
+                this.commentary += "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " healed itself [+10 HP]";
+            }
+
+            else {
                 HERO_IM.hero.getPlace().getEnemies().attack();
                 HERO_IM.hero.setLife(HERO_IM.hero.getPlace().getEnemies().getDamage());
-                label_commentary.setText("Ouch ! You took several damages... Get up and beat this Nazi Crap !");
+                this.commentary +=
+                        "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " attacked you [-" +
+                        HERO_IM.hero.getPlace().getEnemies().getDamage() + " HP]\n" +
+                        "Ouch ! You took several damages... Get up and beat this Nazi Crap !";
             }
-            button_attack.setDisable(false);
-            button_heal.setDisable(false);
+
+            label_commentary.setText(this.commentary);
+            lifeDisplay();
         }
     }
 
@@ -120,38 +135,22 @@ public class BattleController implements Initializable {
 
         //Initialization
         new Game("Test");
-        //Image enemyIm = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().getImage();
-        System.out.println("Test");
-        System.out.println(HERO_IM.hero.getPlace().getEnemies().getHP());
-
-        //ProgressBars
-        progress_bar_hero = new ProgressBar((double) HERO_IM.hero.getHP());
-        progress_bar_enemy = new ProgressBar((double) HERO_IM.hero.getPlace().getEnemies().getHP());
-        System.out.println("ProgressBar");
+        this.eLife = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().enemy.getHP();
 
         //Labels
         label_enemy_name.setText(HERO_IM.hero.getPlace().getEnemies().NAME);
-        System.out.println("Label enemy");
         System.out.println(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().enemy.NAME);
 
         //Image
-        //image_enemy.setImage(enemyIm);
-        System.out.println("Image enemy");
+        image_enemy.setImage(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().getImage());
 
         lifeDisplay();
-        System.out.println("Life Display");
 
         setButton_attack();
         setButton_heal();
-        System.out.println("Buttons");
 
         // -- Battle opening
         label_commentary.setText(HERO_IM.hero.getPlace().getEnemies().DESCRIPTION);
         System.out.println("Label Opening");
-
-        // -- Battle is over
-        if (HERO_IM.hero.getHP() == 0) label_commentary.setText("You loose");
-        else if (HERO_IM.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
-        System.out.println("osef");
     }
 }

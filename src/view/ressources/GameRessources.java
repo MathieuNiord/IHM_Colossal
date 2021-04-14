@@ -125,7 +125,7 @@ public class GameRessources {
     public final static MyPlace MY_ENTRY_IM = new MyPlace(ENTRY, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, entryImList, ENTRY_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_MEETING_ROOM = new MyPlace(MEETING_ROOM, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, meetingRoomImList, MEETING_ROOM_MAP_POSITIONS);
+            0, 8, 0, 8, meetingRoomImList, MEETING_ROOM_MAP_POSITIONS, ACCOUNT_GUY_IM);
     public final static MyPlace MY_ARCHIVES_ROOM = new MyPlace(ARCHIVES_ROOM, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, archivesRoomImList, ARCHIVES_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_EXPERIMENTS_ROOM = new MyPlace(EXPERIMENTS_ROOM, new Image("assets/images/place/floor.png"),
@@ -135,7 +135,7 @@ public class GameRessources {
     public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
     public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS);
+            0, 8, 0, 8, desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);
     public final static MyPlace MY_PRODUCTS_RESERVE = new MyPlace(PRODUCTS_RESERVE, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, productsReserveImList, PRODUCTS_RESERVE_MAP_POSITIONS);
     public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, new Image("assets/images/place/floor.png"),
@@ -147,14 +147,15 @@ public class GameRessources {
     public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_EXIT = new MyPlace(EXIT, new Image("assets/images/place/floor.png"),
-            0, 8, 0, 8, exitImList, EXIT_MAP_POSITIONS);
+            0, 8, 0, 8, exitImList, EXIT_MAP_POSITIONS, BOSS_IM);
 
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
     private final static GameRessources GAME_RESSOURCES = new GameRessources();
 
-    private GameRessources(){
+    private GameRessources() {
+
         // ADD DOORS TO ROOMS
         animalRoomImList.add(ANIM_TO_TRANSF_IM);
         changingRoomImList.add(CHANG_TO_TRANSF_IM);
@@ -193,6 +194,9 @@ public class GameRessources {
         experimentsRoomImList.add(MOUSE_IM);
 
 
+        // - Add enemies
+
+
         // ADD OBJECTS TO ROOMS
         animalRoomImList.add(CAT_B_IM);
         transferRoomImList.add(FLINT_IM);
@@ -207,11 +211,6 @@ public class GameRessources {
         productsReserveImList.add(POTION_IM);
         desertedRoomImList.add(MONKEY_B_IM);
         dirtyChangingRoomImList.add(SEXY_POSTER_IM);
-
-        // ADD ENEMIES TO ROOM
-        meetingRoomImList.add(ACCOUNT_GUY_IM);
-        desertedRoomImList.add(NAZI_ZOMBIE_IM);
-        exitImList.add(BOSS_IM);
 
         // ADD SAME PLACES AND MYPLACES
         PLACE_TO_MY_PLACE.put(ANIMAL_ROOM, MY_ANIMAL_ROOM);

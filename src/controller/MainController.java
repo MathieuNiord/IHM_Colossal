@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -14,11 +15,9 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
-import stage.MyStage;
 import view.classes.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
-import view.classes.MyOutputStream;
 import view.ressources.ImageRessources;
 
 import java.io.IOException;
@@ -68,7 +67,7 @@ public class MainController implements Initializable {
     private Button buttonHelp;
 
     @FXML
-    private Label labelScript;
+    private TextArea textAreaScript;
 
     // === METHODS ===
 
@@ -157,12 +156,18 @@ public class MainController implements Initializable {
             }
         });
 
-        MyOutputStream.SIMPLE_STRING_PROPERTY.addListener(new ChangeListener<String>() {
+       //textAreaScript :
+        OutputStream o = new OutputStream() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                labelScript.setText(newValue);
+            public void write(int b) throws IOException {
+                textAreaScript.appendText(String.valueOf((char)b));
             }
-        });
+        };
+        System.setOut(new PrintStream(o));
+
+        textAreaScript.textProperty().addListener((observable, oldValue, newValue) ->{
+            textAreaScript.setScrollTop(Double.MAX_VALUE);
+        } );
     }
 
     // --- Player ---
@@ -173,6 +178,7 @@ public class MainController implements Initializable {
         if(im.animal!=null){ //interaction avec animal
             im.animal.talk(hero);
         }
+        if(im.monkey!=null)im.monkey.talk(hero);
         if(im.obj!=null){ //interaction avec objet
             im.obj.take(hero);
             //l'objet eletricMeter n'est pas prennable
@@ -249,12 +255,20 @@ public class MainController implements Initializable {
 
     // - Manage events in the Inventory -
     @FXML
-    private void flowPaneInventorySetOnMousePressedEvent(MouseEvent event){
+    private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event){
         try{
             MyImageView im = (MyImageView)event.getTarget();
-            if(im.obj != null){
-                labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
-                labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+            if(event.getClickCount()==2) {
+                if (im.obj != null) {
+                    im.obj.use(HERO_IM.hero);
+                }
+            }
+
+            else {
+                if (im.obj != null) {
+                    labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
+                    labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+                }
             }
         } catch (Exception ignored){
             labelObjectName.setText("");
@@ -264,9 +278,10 @@ public class MainController implements Initializable {
 
     // - Look action :
     @FXML
-    private void gridPaneGameSetOnMousePressedEvent(MouseEvent event){
+    private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
         try{
             MyImageView im = (MyImageView)event.getTarget();
+            System.out.println(event.getClickCount());
             if(im.obj != null){
                 if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
                     flowPaneInventory.getChildren().add(WALKMAN_IM);
@@ -276,6 +291,8 @@ public class MainController implements Initializable {
             if(im.animal != null) im.animal.look();
             if(im.monkey != null) im.monkey.look();
             if(im.enemy!=null) im.enemy.look();
+
+
         } catch (Exception ignored){
             labelObjectName.setText("");
             labelObjectInfo.setText("");

@@ -54,8 +54,6 @@ public class MiniMap extends GridPane {
     public void revealPlace(MyPlace place){
         Integer[][] positions = place.getPositions_map();
         for (Integer[] position : positions) {
-            System.out.println(position[0]);
-            System.out.println(position[1]);
             this.revealCell(position[0], position[1]);
         }
     }

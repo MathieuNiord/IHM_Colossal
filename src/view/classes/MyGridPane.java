@@ -7,21 +7,30 @@ import java.util.HashMap;
 public class MyGridPane extends GridPane {
 
     /*** ATTRIBUTES ***/
-    private MyPlace myPlace;
 
+    private MyPlace myPlace;
     private final HashMap<Integer,MyImageView> positions;
+
+
     /*** CONSTRUCTOR ***/
+
     public MyGridPane(){
         super();
         positions = new HashMap<>();
         this.add(GameRessources.HERO_IM,GameRessources.HERO_IM.x.getValue(),GameRessources.HERO_IM.y.getValue());
     }
 
+
+    /*** === METHODS === ***/
+
     public void myRemove(MyImageView im){
         this.getChildren().remove(im);
         this.positions.remove(im.y*8+im.x);
         this.myPlace.getImages().remove(im);
     }
+
+    // --- SETTER ---
+
     public void setMyPlace(MyPlace myPlace) {
         if(this.myPlace!=null){
             this.getChildren().removeAll(this.myPlace.getImages());
@@ -38,7 +47,8 @@ public class MyGridPane extends GridPane {
         this.setBackground(new Background(backgroundImage));
     }
 
-    /*** === METHODS === ***/
+    // --- GETTER ---
+
     public MyPlace getMyPlace() {
         return myPlace;
     }

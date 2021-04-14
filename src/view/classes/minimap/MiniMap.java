@@ -1,12 +1,18 @@
-package view.classes;
+package view.classes.minimap;
 
 import javafx.scene.Node;
 import javafx.scene.layout.*;
+import view.classes.MyPlace;
 
 public class MiniMap extends GridPane {
 
+    /** ATTRIBUTES **/
+
     private int posx_hero;
     private int posy_hero;
+
+
+    /** CONSTRUCTORS **/
 
     public MiniMap() {
         super();
@@ -15,15 +21,10 @@ public class MiniMap extends GridPane {
         this.fillAllCells(NB_COLS, NB_ROWS);
     }
 
-    // fill all the mini-map with MiniMapCells
-    public void fillAllCells(int cols, int rows){
-        for(int i=0; i<cols; i++){
-            for(int j=0; j<rows; j++){
-                MiniMapCell cell = new MiniMapCell();
-                this.add(cell, i, j);
-            }
-        }
-    }
+
+    /*** === METHODS === ***/
+
+    // --- GETTER ---
 
     // return a cell of the Mini-map
     private Node getCellFromMiniMap(int col, int row) {
@@ -46,6 +47,20 @@ public class MiniMap extends GridPane {
         return null;
     }
 
+
+    // --- MANAGEMENT OF CELLS ---
+
+    // fill all the mini-map with MiniMapCells
+    public void fillAllCells(int cols, int rows){
+        for(int i=0; i<cols; i++){
+            for(int j=0; j<rows; j++){
+                MiniMapCell cell = new MiniMapCell();
+                this.add(cell, i, j);
+            }
+        }
+    }
+
+
     // reveal a hidden cell of the map
     public void revealCell(int col, int row) {
         MiniMapCell cell = this.getMiniMapCell(col, row);
@@ -64,6 +79,9 @@ public class MiniMap extends GridPane {
             place.makeVisited();
         }
     }
+
+
+    // --- MANAGEMENT OF HERO INDICATOR ---
 
     // place an indicator where is the hero
     public void setPositionHero(MyPlace place){
@@ -91,6 +109,9 @@ public class MiniMap extends GridPane {
             cell.showIndicator();
         }
     }
+
+
+    // --- REFRESH ---
 
     public void refreshMap(MyPlace place){
         this.revealPlace(place);

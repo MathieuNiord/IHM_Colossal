@@ -1,4 +1,4 @@
-package view.classes;
+package view.classes.minimap;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,8 +11,13 @@ import javafx.scene.shape.Circle;
 
 public class MiniMapCell extends HBox {
 
+    /** ATTRIBUTES **/
+
     private final static Background background = new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, new Insets(0)));
     private final Circle indicator = new Circle(5, Color.GREEN);
+
+
+    /** CONSTRUCTORS **/
 
     public MiniMapCell(){
         super();
@@ -21,6 +26,9 @@ public class MiniMapCell extends HBox {
         this.setAlignment(Pos.CENTER);
         this.hideIndicator();
     }
+
+
+    /** METHODS **/
 
     public void fillBackground(){
         this.setBackground(background);

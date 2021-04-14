@@ -8,19 +8,18 @@ import java.util.ArrayList;
 public class MyPlace {
 
     /*** === ATTRIBUTES === ***/
+
     private final ArrayList<MyImageView> images;
-
     private final Place place;
-
     private final int minX,maxX,minY,maxY;
-
     private MyImageView enemy;
     private final Image backgroundImage;
-
     private final Integer[][] positions_map;
     private boolean visited;
 
+
     /*** === CONSTRUCTOR === ***/
+
     public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
                    ArrayList<MyImageView> images, Integer[][] positions_map) {
         this.place = place;
@@ -40,7 +39,11 @@ public class MyPlace {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
        this.enemy = enemy;
     }
+
+
     /*** === METHODS === ***/
+
+    // --- GETTER ---
 
     public Image getBackgroundImage() {
         return backgroundImage;
@@ -77,6 +80,8 @@ public class MyPlace {
     public Integer[][] getPositions_map() {return positions_map;}
 
     public boolean isVisited(){return this.visited;}
+
+    // --- SETTER ---
 
     public void makeVisited(){this.visited = true;}
 }

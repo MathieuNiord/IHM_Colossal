@@ -11,12 +11,14 @@ import model.objects.Obj;
 public class MyImageView extends ImageView {
 
     /*** ATTRIBUTES ***/
+
     public final int x,y;
     public Animal animal;
     public Door door;
     public Enemy enemy;
     public Monkey monkey;
     public Obj obj;
+
 
     /*** CONSTRUCTOR ***/
 
@@ -53,6 +55,7 @@ public class MyImageView extends ImageView {
         this.x = x;
         this.y = y;
     }
+
 
     /*** === METHODS === ***/
 

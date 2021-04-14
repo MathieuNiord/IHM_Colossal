@@ -53,7 +53,7 @@ public class GameRessources {
     public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_UP, 6, 0);
     public final static MyImageView CONDA_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView CHANG_TO_ENTRY_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(MEET_AND_ARCH, IMAGE_DOOR_RIGHT, 8, 4);
     public final static MyImageView ARCH_TOMEET_IM = new MyImageView(MEET_AND_ARCH, IMAGE_DOOR_LEFT, 0, 4);
     public final static MyImageView TRANSF_TO_MEET_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_RIGHT, 8, 4);
     public final static MyImageView MEET_TO_TRANSF_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_LEFT, 0, 4);

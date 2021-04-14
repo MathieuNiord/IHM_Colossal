@@ -237,11 +237,15 @@ public class MainController implements Initializable {
     // - Manage events in the Inventory -
     @FXML
     private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event){
-        try{
+        try {
             MyImageView im = (MyImageView)event.getTarget();
             if(event.getClickCount()==2) {
                 if (im.obj != null) {
                     im.obj.use(HERO_IM.hero);
+                    if (im.obj.NAME.equals(Script.DEFAULT_POTION_NAME) ||
+                        im.obj.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
+                        im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_NAME)
+                    ) flowPaneInventory.getChildren().remove(im);
                 }
             }
 
@@ -251,6 +255,7 @@ public class MainController implements Initializable {
                     labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
                 }
             }
+
         } catch (Exception ignored){
             labelObjectName.setText("");
             labelObjectInfo.setText("");

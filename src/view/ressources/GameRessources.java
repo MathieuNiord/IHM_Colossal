@@ -1,6 +1,5 @@
 package view.ressources;
 
-
 import javafx.scene.image.Image;
 import model.others.Place;
 import view.classes.MyHeroImageView;
@@ -10,9 +9,9 @@ import view.classes.MyPlace;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 import static model.others.Game.*;
 import static view.ressources.ImageRessources.*;
+
 public class GameRessources {
 
     // HERO CREATION
@@ -47,13 +46,12 @@ public class GameRessources {
     public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_HEART, 0, 0, 40);
     public final static MyImageView FIREDSTICK_IM = new MyImageView(FIRED_STICK, IMAGE_TORCH, 0, 0, 40);
 
-
     // Doors
     public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(SECRET_PASSAGE, IMAGE_DOOR_UP, 4, 8);
     public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_UP, 6, 0);
     public final static MyImageView CONDA_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView CHANG_TO_ENTRY_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(MEET_AND_ARCH, IMAGE_DOOR_RIGHT, 8, 4);
     public final static MyImageView ARCH_TOMEET_IM = new MyImageView(MEET_AND_ARCH, IMAGE_DOOR_LEFT, 0, 4);
     public final static MyImageView TRANSF_TO_MEET_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_RIGHT, 8, 4);
     public final static MyImageView MEET_TO_TRANSF_IM = new MyImageView(TRANSF_AND_MEET, IMAGE_DOOR_LEFT, 0, 4);
@@ -78,7 +76,6 @@ public class GameRessources {
     public final static MyImageView GARB_TO_COLD_IM = new MyImageView(COLD_AND_GARB, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView DIRT_TO_DECON_IM = new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_LEFT, 0, 4);
     public final static MyImageView DECON_TO_DIRT_IM =new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_RIGHT, 8, 4);
-
 
     // Liste des images des lieux
     private final static ArrayList<MyImageView> animalRoomImList = new ArrayList<>();

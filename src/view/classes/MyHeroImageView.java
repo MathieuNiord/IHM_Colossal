@@ -5,8 +5,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.characters.Hero;
-import model.doors.Door;
-import model.others.Place;
 
 public class MyHeroImageView extends ImageView {
 

@@ -25,7 +25,7 @@ public class MyGridPane extends GridPane {
 
     public void myRemove(MyImageView im){
         this.getChildren().remove(im);
-        this.positions.remove(im.y*8+im.x);
+        this.positions.remove(im.y * 8 + im.x);
         this.myPlace.getImages().remove(im);
     }
 
@@ -37,9 +37,9 @@ public class MyGridPane extends GridPane {
             this.positions.clear();
         }
         this.myPlace = myPlace;
-        for (MyImageView im: myPlace.getImages()) {
-            this.add(im,im.x,im.y);
-            this.positions.put((im.y)*8+ im.x,im);
+        for (MyImageView im : myPlace.getImages()) {
+            this.add(im, im.x, im.y);
+            this.positions.put((im.y) * 8 + im.x, im);
         }
         BackgroundImage backgroundImage= new BackgroundImage(
                 myPlace.getBackgroundImage(),

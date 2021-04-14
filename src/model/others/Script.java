@@ -204,15 +204,13 @@ public class Script {
     
     // === HELP COMMANDS ===
 
-    public static final String HELP_DEFAULT = "List of commands :" +
-            "\n- go (location)" +
-            "\n- help" +
-            "\n- look (Object)" +
-            "\n- take (Object)" +
-            "\n- use (Object)" +
-            "\n- use (Object) (Object)" +
-            "\n- talk (Somebody)" +
-            "\n- quit";
+    public static final String HELP_DEFAULT = "Vous devez vous échappez d'ici : Trouvez la sortie !\n" +
+            "- Parlez aux animaux pour trouver des indices\n" +
+            "- trouvez tous les objets, ils vous seront utiles\n" +
+            "- double-cliquez pour utiliser un objet\n" +
+            "- certains objets sont fusionnables, essayez de les associer\n" +
+            "- marchez sur un objet pour le récupérer\n" +
+            "- marchez sur les animaux pour leur parler\n";
 
     public static String doSpaces(String size){
         int spaces = size.length() + 3;

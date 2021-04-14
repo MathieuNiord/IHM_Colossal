@@ -64,7 +64,7 @@ public class MainController implements Initializable {
     // - The "HELP" button event -
     @FXML
     private void buttonHelpOnAction(ActionEvent event) {
-        //TODO popup help
+        textAreaScript.appendText(Script.HELP_DEFAULT);
     }
 
     // - The "QUIT" button event -

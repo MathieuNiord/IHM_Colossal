@@ -46,8 +46,6 @@ public class Place {
 		this.right = null;
 		this.up = null;
 		this.down = null;
-
-		System.out.println("Place " + this.getName() + "initialized");
 	}
 
 

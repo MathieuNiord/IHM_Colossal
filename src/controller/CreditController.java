@@ -20,7 +20,7 @@ public class CreditController implements Initializable {
         button_menu.setOnAction( event -> {
             Stage currentStage = (Stage) button_menu.getScene().getWindow();
             currentStage.close();
-            MyStage myStage = new MyStage("../view/home.fxml");
+            MyStage myStage = new MyStage("../view/fxml/home.fxml");
             myStage.show();
         });
     }

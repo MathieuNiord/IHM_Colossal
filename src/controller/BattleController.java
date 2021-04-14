@@ -1,7 +1,5 @@
 package controller;
 import javafx.scene.image.Image;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -49,44 +47,33 @@ public class BattleController implements Initializable {
     @FXML
     private ImageView image_enemy;
 
-    //GameRessources
-    private final GameRessources game = new GameRessources();
-
-    //IntegerProperty
-    private IntegerProperty hLife;
-    private IntegerProperty eLife;
-
-    //Boolean Turns
-    private boolean playerTurn;
+    //Enemy life
+    private final int eLife = GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP();
 
     /*** === METHODS === ***/
 
     @FXML
     private void lifeDisplay() {
-        label_enemy_life.setText(String.valueOf(game.heroIm.hero.getPlace().getEnemies().getHP()));
-        label_hero_life.setText(String.valueOf(game.heroIm.hero.getHP()));
-
-        hLife = new SimpleIntegerProperty(Integer.parseInt(label_hero_life.getText()));
-        eLife = new SimpleIntegerProperty(Integer.parseInt(label_enemy_life.getText()));
-
-        progress_bar_hero.progressProperty().bind(hLife);
-        progress_bar_enemy.progressProperty().bind(eLife);
+        label_enemy_life.setText(String.valueOf(GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP()));
+        label_hero_life.setText(String.valueOf(GameRessources.HERO_IM.hero.getHP()));
+        progress_bar_hero.setProgress((double) (GameRessources.HERO_IM.hero.getHP()/100));
+        progress_bar_enemy.setProgress((double) (GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP()/this.eLife));
     }
 
     @FXML
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
-            if (playerTurn) {
-                game.heroIm.hero.attack(game.heroIm.hero.getPlace().getEnemies());
+            GameRessources.HERO_IM.hero.attack(GameRessources.HERO_IM.hero.getPlace().getEnemies());
 
-                if (!game.heroIm.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("Yeah ! Kill him ! " + game.heroIm.hero.getPlace().getEnemies().NAME + " lost 20 HP");
-
-                button_attack.setDisable(true);
-                button_heal.setDisable(true);
-
-                System.out.println("attack - playerTurn false");
-                playerTurn = false;
+            if (!GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
+                //label_commentary.setText("Yeah ! Kill him ! " + GameRessources.heroIm.hero.getPlace().getEnemies().NAME + " lost 20 HP");
+                enemyTurn();
             }
+
+            button_attack.setDisable(true);
+            button_heal.setDisable(true);
+
+            System.out.println("attack");
         });
     }
 
@@ -94,13 +81,10 @@ public class BattleController implements Initializable {
     @FXML
     private void setButton_heal() {
         button_heal.setOnAction( event -> {
-            if (playerTurn) {
-                game.heroIm.hero.heal();
-                button_attack.setDisable(true);
-                button_heal.setDisable(true);
-                System.out.println("heal - playerTurn false");
-                playerTurn = false;
-            }
+            GameRessources.HERO_IM.hero.heal();
+            button_attack.setDisable(true);
+            button_heal.setDisable(true);
+            System.out.println("heal");
         });
     }
 
@@ -108,26 +92,22 @@ public class BattleController implements Initializable {
     @FXML
     private void enemyTurn() {
 
-        if (!playerTurn) {
+        // -- Variables
+        Random rand = new Random();
+        int eHeal = rand.nextInt(10 + 1);  //Enemy heal
 
-            // -- Variables
-            Random rand = new Random();
-            int eHeal = rand.nextInt(10 + 1);  //Enemy heal
+        if (!GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
 
-            if (!game.heroIm.hero.getPlace().getEnemies().isDefeat()) {
-
-                if (eHeal == 1) {
-                    game.heroIm.hero.getPlace().getEnemies().heal(10);
-                    label_commentary.setText(game.heroIm.hero.getPlace().getEnemies().NAME + " healed itself");
-                } else {
-                    game.heroIm.hero.getPlace().getEnemies().attack();
-                    game.heroIm.hero.setLife(game.heroIm.hero.getPlace().getEnemies().getDamage());
-                    label_commentary.setText("Ouch ! You took several damages... Get up and beat this Nazi Crap !");
-                }
-                button_attack.setDisable(false);
-                button_heal.setDisable(false);
-                playerTurn = true;
+            if (eHeal == 1) {
+                GameRessources.HERO_IM.hero.getPlace().getEnemies().heal(10);
+                label_commentary.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().NAME + " healed itself");
+            } else {
+                GameRessources.HERO_IM.hero.getPlace().getEnemies().attack();
+                GameRessources.HERO_IM.hero.setLife(GameRessources.HERO_IM.hero.getPlace().getEnemies().getDamage());
+                label_commentary.setText("Ouch ! You took several damages... Get up and beat this Nazi Crap !");
             }
+            button_attack.setDisable(false);
+            button_heal.setDisable(false);
         }
     }
 
@@ -135,25 +115,14 @@ public class BattleController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // -- Initialization
-
-        //Booleans
-        playerTurn = false;
+        //Initialization
 
         //ProgressBars
-
-        progress_bar_hero = new ProgressBar((double) game.heroIm.hero.getHP());
-        progress_bar_enemy = new ProgressBar((double) game.heroIm.hero.getPlace().getEnemies().getHP());
-
-        //IntegerProperties
-
-        hLife = new SimpleIntegerProperty();
-        hLife.setValue(game.heroIm.hero.getHP());
-        eLife = new SimpleIntegerProperty();
-        eLife.setValue(game.heroIm.hero.getPlace().getEnemies().getHP());
+        progress_bar_hero = new ProgressBar((double) GameRessources.HERO_IM.hero.getHP());
+        progress_bar_enemy = new ProgressBar((double) GameRessources.HERO_IM.hero.getPlace().getEnemies().getHP());
 
         //Labels
-        label_enemy_name.setText(game.heroIm.hero.getPlace().getEnemies().NAME);
+        label_enemy_name.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().NAME);
 
         //Image
         image_enemy.setImage(new Image("assets/images/characters/ZombiNazi.png"));
@@ -164,18 +133,10 @@ public class BattleController implements Initializable {
         setButton_heal();
 
         // -- Battle opening
-        label_commentary.setText(game.heroIm.hero.getPlace().getEnemies().DESCRIPTION);
-
-        // -- Battle area
-
-        if (!(game.heroIm.hero.getHP() == 0 && game.heroIm.hero.getPlace().getEnemies().isDefeat())) {
-            //if (!playerTurn)
-                enemyTurn();
-            System.out.println("enemyTurn - playerTurn = " + String.valueOf(playerTurn));
-        }
+        label_commentary.setText(GameRessources.HERO_IM.hero.getPlace().getEnemies().DESCRIPTION);
 
         // -- Battle is over
-        if (game.heroIm.hero.getHP() == 0) label_commentary.setText("You loose");
-        else if (game.heroIm.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
+        if (GameRessources.HERO_IM.hero.getHP() == 0) label_commentary.setText("You loose");
+        else if (GameRessources.HERO_IM.hero.getPlace().getEnemies().isDefeat()) label_commentary.setText("You win !");
     }
 }

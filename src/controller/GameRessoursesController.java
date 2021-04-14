@@ -3,18 +3,17 @@ package controller;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
-import model.objects.Banana;
 import view.classes.MyImageView;
-import view.ressources.GameRessources;
+
 import static view.ressources.GameRessources.*;
 
 public class GameRessoursesController {
     private void monkeyDrag(){
         // target
-        monkeyIm.setOnDragOver(new EventHandler<DragEvent>() {
+        MONKEY_IM.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                if (event.getDragboard().getString().equals(bananaIm.obj.NAME) &&
+                if (event.getDragboard().getString().equals(BANANA_IM.obj.NAME) &&
                         event.getDragboard().hasString()) {
                     event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 
@@ -24,7 +23,7 @@ public class GameRessoursesController {
         });
 
         // target
-        monkeyIm.setOnDragDropped(new EventHandler<DragEvent>() {
+        MONKEY_IM.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
                 // data dropped
@@ -32,9 +31,9 @@ public class GameRessoursesController {
                 boolean success = false;
                 if(db.hasString()){
                     success = true;
-                    monkeyIm.monkey.setHungry(false);
-                    heroIm.hero.getObjs().remove(bananaIm.obj.NAME);
-                    inventory.getChildren().remove(bananaIm);
+                    MONKEY_IM.monkey.setHungry(false);
+                    HERO_IM.hero.getObjs().remove(BANANA_IM.obj.NAME);
+                    inventory.getChildren().remove(BANANA_IM);
                 }
                 event.setDropCompleted(success);
                 event.consume();
@@ -42,53 +41,53 @@ public class GameRessoursesController {
         });
 
         // source
-        bananaIm.setOnDragDetected(new EventHandler<MouseEvent>() {
+        BANANA_IM.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                objHandleDetected(event, bananaIm);
+                objHandleDetected(event, BANANA_IM);
             }
         });
     }
 
     private void firedStickDrag(){
         //sources
-        stickIm.setOnDragDetected(new EventHandler<MouseEvent>() {
+        STICK_IM.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                objHandleDetected(event, stickIm);
+                objHandleDetected(event, STICK_IM);
             }
         });
 
-        flintIm.setOnDragDetected(new EventHandler<MouseEvent>() {
+        FLINT_IM.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                objHandleDetected(event, flintIm);
+                objHandleDetected(event, FLINT_IM);
             }
         });
 
         // target
-        flintIm.setOnDragOver(new EventHandler<DragEvent>() {
+        FLINT_IM.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                objHandleOver(event, stickIm);
+                objHandleOver(event, STICK_IM);
             }
         });
 
-        flintIm.setOnDragDropped(new EventHandler<DragEvent>() {
+        FLINT_IM.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
                 firedStickHandleDrop(event);
             }
         });
 
-        stickIm.setOnDragOver(new EventHandler<DragEvent>() {
+        STICK_IM.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                objHandleOver(event, flintIm);
+                objHandleOver(event, FLINT_IM);
             }
         });
 
-        stickIm.setOnDragDropped(new EventHandler<DragEvent>() {
+        STICK_IM.setOnDragDropped(new EventHandler<DragEvent>() {
              @Override
              public void handle(DragEvent event) {
                  firedStickHandleDrop(event);
@@ -102,12 +101,12 @@ public class GameRessoursesController {
         boolean success = false;
         if (db.hasString()) {
             success = true;
-            heroIm.hero.getObjs().remove(flintIm.obj.NAME);
-            heroIm.hero.getObjs().remove(stickIm.obj.NAME);
-            heroIm.hero.getObjs().put(firedstickIm.obj.NAME, firedstickIm.obj);
-            this.inventory.getChildren().remove(flintIm);
-            this.inventory.getChildren().remove(stickIm);
-            this.inventory.getChildren().add(firedstickIm);
+            HERO_IM.hero.getObjs().remove(FLINT_IM.obj.NAME);
+            HERO_IM.hero.getObjs().remove(STICK_IM.obj.NAME);
+            HERO_IM.hero.getObjs().put(FIREDSTICK_IM.obj.NAME, FIREDSTICK_IM.obj);
+            this.inventory.getChildren().remove(FLINT_IM);
+            this.inventory.getChildren().remove(STICK_IM);
+            this.inventory.getChildren().add(FIREDSTICK_IM);
         }
         event.setDropCompleted(success);
 

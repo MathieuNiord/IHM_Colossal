@@ -14,7 +14,7 @@ public class MyGridPane extends GridPane {
     public MyGridPane(){
         super();
         positions = new HashMap<>();
-        this.add(GameRessources.heroIm,GameRessources.heroIm.x.getValue(),GameRessources.heroIm.y.getValue());
+        this.add(GameRessources.HERO_IM,GameRessources.HERO_IM.x.getValue(),GameRessources.HERO_IM.y.getValue());
     }
 
     public void myRemove(MyImageView im){

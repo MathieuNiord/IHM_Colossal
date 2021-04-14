@@ -16,135 +16,135 @@ public class Game {
 	private int party = 1;
 
 	// ***** CONSTRUCTORS *****
-	public static final Place animalRoom = new Place("animal room", false, true);
-	public static final Place transferRoom = new Place("transfer room", false, true);
-	public static final Place changingRoom = new Place("changing room", false, true);
-	public static final Place entry = new Place("entry", false, true);
-	public static final Place meetingRoom = new Place("meeting room", false, true);
-	public static final Place archivesRoom = new Place("archives room", false, true);
-	public static final Place experimentsRoom = new Place("experiments room", false, true);
-	public static final Place morgue = new Place("morgue", false, true); // on éclaire la pièce ?
-	public static final Place condamnedSAS = new Place("condamned sas", true, true);
-	public static final Place desertedRoom = new Place("deserted room", false, true);
-	public static final Place productsReserve = new Place("products reserve", false, true);
-	public static final Place garbageRoom = new Place("garbage room", false, true);
-	public static final Place coldRoom = new Place("cold room", false, false);
-	public static final Place dirtyChangingRoom = new Place("dirty changingroom", false, true); // est ce qu'on pourrait pas l'enlever ?
-	public static final Place decontaminationRoom = new Place("decontamination room", false, true);
-	public static final Place exit = new Place("exit", false, true);
+	public static final Place ANIMAL_ROOM = new Place("animal room", false, true);
+	public static final Place TRANSFER_ROOM = new Place("transfer room", false, true);
+	public static final Place CHANGING_ROOM = new Place("changing room", false, true);
+	public static final Place ENTRY = new Place("entry", false, true);
+	public static final Place MEETING_ROOM = new Place("meeting room", false, true);
+	public static final Place ARCHIVES_ROOM = new Place("archives room", false, true);
+	public static final Place EXPERIMENTS_ROOM = new Place("experiments room", false, true);
+	public static final Place MORGUE = new Place("morgue", false, true); // on éclaire la pièce ?
+	public static final Place CONDAMNED_SAS = new Place("condamned sas", true, true);
+	public static final Place DESERTED_ROOM = new Place("deserted room", false, true);
+	public static final Place PRODUCTS_RESERVE = new Place("products reserve", false, true);
+	public static final Place GARBAGE_ROOM = new Place("garbage room", false, true);
+	public static final Place COLD_ROOM = new Place("cold room", false, false);
+	public static final Place DIRTY_CHANGINGROOM = new Place("dirty changingroom", false, true); // est ce qu'on pourrait pas l'enlever ?
+	public static final Place DECONTAMINATION_ROOM = new Place("decontamination room", false, true);
+	public static final Place EXIT = new Place("exit", false, true);
 
-	public static final Door secretPassage = new BurnableDoor(archivesRoom, null);
-	public static final Door experimAndConda = new InfectedRoomDoor(experimentsRoom, condamnedSAS);
-	public static final Door changAndEntry = new CondemnedDoor(changingRoom, entry);
-	public static final Door meetAndArch = new DestructableDoor(meetingRoom, archivesRoom);
-	public static final Door transfAndMeet = new LockedKeyDoor(1, transferRoom, meetingRoom);
-	public static final Door decontAndExit = new LockedKeyDoor(2, decontaminationRoom, exit);
-	public static final Door animAndTransf = new SecretCodeDoor("IT", animalRoom, transferRoom);
-	public static final Door experimAndReserv = new SecretCodeDoor("S A GREAT", experimentsRoom, productsReserve);
-	public static final Door experimAndDirty = new SecretCodeDoor("GAME", experimentsRoom, dirtyChangingRoom);
-	public static final Door transfAndChang = new Door(transferRoom, changingRoom);
-	public static final Door transfAndExper = new Door(transferRoom, experimentsRoom);
-	public static final Door experimAndMort = new Door(experimentsRoom, morgue);
-	public static final Door condaAndDesert = new Door(condamnedSAS, desertedRoom);
-	public static final Door experimAndCold = new Door(experimentsRoom, coldRoom);
-	public static final Door coldAndGarb = new Door(coldRoom, garbageRoom);
-	public static final Door dirtAndDecon = new Door(dirtyChangingRoom, decontaminationRoom);
+	public static final Door SECRET_PASSAGE = new BurnableDoor(ARCHIVES_ROOM, null);
+	public static final Door EXPERIM_AND_CONDA = new InfectedRoomDoor(EXPERIMENTS_ROOM, CONDAMNED_SAS);
+	public static final Door CHANG_AND_ENTRY = new CondemnedDoor(CHANGING_ROOM, ENTRY);
+	public static final Door MEET_AND_ARCH = new DestructableDoor(MEETING_ROOM, ARCHIVES_ROOM);
+	public static final Door TRANSF_AND_MEET = new LockedKeyDoor(1, TRANSFER_ROOM, MEETING_ROOM);
+	public static final Door DECONT_AND_EXIT = new LockedKeyDoor(2, DECONTAMINATION_ROOM, EXIT);
+	public static final Door ANIM_AND_TRANSF = new SecretCodeDoor("IT", ANIMAL_ROOM, TRANSFER_ROOM);
+	public static final Door EXPERIM_AND_RESERV = new SecretCodeDoor("S A GREAT", EXPERIMENTS_ROOM, PRODUCTS_RESERVE);
+	public static final Door EXPERIM_AND_DIRTY = new SecretCodeDoor("GAME", EXPERIMENTS_ROOM, DIRTY_CHANGINGROOM);
+	public static final Door TRANSF_AND_CHANG = new Door(TRANSFER_ROOM, CHANGING_ROOM);
+	public static final Door TRANSF_AND_EXPER = new Door(TRANSFER_ROOM, EXPERIMENTS_ROOM);
+	public static final Door EXPERIM_AND_MORT = new Door(EXPERIMENTS_ROOM, MORGUE);
+	public static final Door CONDA_AND_DESERT = new Door(CONDAMNED_SAS, DESERTED_ROOM);
+	public static final Door EXPERIM_AND_COLD = new Door(EXPERIMENTS_ROOM, COLD_ROOM);
+	public static final Door COLD_AND_GARB = new Door(COLD_ROOM, GARBAGE_ROOM);
+	public static final Door DIRT_AND_DECON = new Door(DIRTY_CHANGINGROOM, DECONTAMINATION_ROOM);
 
-	public static final Animal cat = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
-	public static final Animal mouse = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-	public static final Monkey monkey = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+	public static final Animal CAT = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
+	public static final Animal MOUSE = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
+	public static final Monkey MONKEY = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
-	public static final Weapon club = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
-	public static final Potion potion = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
-	public static final Banana banana = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
-	public static final Stick stick = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
-	public static final Flint flint = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
-	public static final Fuse fuse = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
-	public static final Bescherelle catB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
-	public static final Bescherelle mouseB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
-	public static final Bescherelle monkeyB = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
-	public static final Key k1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
-	public static final Key k2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
-	public static final ElectricityMeter electricityMeter = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, coldRoom);
-	public static final FiredStick firedStick = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
+	public static final Weapon CLUB = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
+	public static final Potion POTION = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
+	public static final Banana BANANA = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
+	public static final Stick STICK = new Stick(Script.DEFAULT_STICK_NAME, Script.STICK_DESCRIPT);
+	public static final Flint FLINT = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
+	public static final Fuse FUSE = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
+	public static final Bescherelle CAT_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
+	public static final Bescherelle MOUSE_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
+	public static final Bescherelle MONKEY_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
+	public static final Key K_1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
+	public static final Key K_2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
+	public static final ElectricityMeter ELECTRICITY_METER = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, COLD_ROOM);
+	public static final FiredStick FIRED_STICK = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
 
-	public static final NaziPoster naziPoster = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
-	public static final SexyPoster sexyPoster = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
-	public static final Walkman walkman = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
+	public static final NaziPoster NAZI_POSTER = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
+	public static final SexyPoster SEXY_POSTER = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
-	public final static Hero hero = new Hero(animalRoom);
+	public final static Hero HERO = new Hero(ANIMAL_ROOM);
 
-	public static final Locker locker = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME,hero);
+	public static final Locker LOCKER = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME, HERO);
 
 
 
 	public Game(String heroName)
 	{
-		hero.setName(heroName);
+		HERO.setName(heroName);
 		// DOORS ADDING TO ROOMS
-		animalRoom.addDoor(animAndTransf, "up");
-		changingRoom.addDoor(transfAndChang, "up");
-		changingRoom.addDoor(changAndEntry, "down");
-		entry.addDoor(changAndEntry, "up"); // doit on vraiment lui ajouter la porte ?
-		transferRoom.addDoor(animAndTransf, "down");
-		transferRoom.addDoor(transfAndChang, "down");
-		transferRoom.addDoor(transfAndMeet, "right");
-		transferRoom.addDoor(transfAndExper, "up");
-		meetingRoom.addDoor(transfAndMeet, "left");
-		meetingRoom.addDoor(meetAndArch, "right");
-		archivesRoom.addDoor(meetAndArch, "left");
-		experimentsRoom.addDoor(transfAndExper, "down");
-		experimentsRoom.addDoor(experimAndMort, "right");
-		experimentsRoom.addDoor(experimAndConda, "up");
-		experimentsRoom.addDoor(experimAndReserv, "up");
-		experimentsRoom.addDoor(experimAndCold, "left");
-		experimentsRoom.addDoor(experimAndDirty, "left");
-		morgue.addDoor(experimAndMort, "left");
-		morgue.addDoor(secretPassage, "down");
-		condamnedSAS.addDoor(experimAndConda, "down");
-		condamnedSAS.addDoor(condaAndDesert, "up");
-		desertedRoom.addDoor(condaAndDesert, "down");
-		productsReserve.addDoor(experimAndReserv, "down");
-		coldRoom.addDoor(experimAndCold, "right");
-		coldRoom.addDoor(coldAndGarb, "up");
-		garbageRoom.addDoor(coldAndGarb, "down");
-		dirtyChangingRoom.addDoor(experimAndDirty, "right");
-		dirtyChangingRoom.addDoor(dirtAndDecon, "left");
-		decontaminationRoom.addDoor(dirtAndDecon, "right");
-		decontaminationRoom.addDoor(decontAndExit, "left");
-		exit.addDoor(decontAndExit, "right");  // doit on vraiment lui ajouter la porte ?
+		ANIMAL_ROOM.addDoor(ANIM_AND_TRANSF, "up");
+		CHANGING_ROOM.addDoor(TRANSF_AND_CHANG, "up");
+		CHANGING_ROOM.addDoor(CHANG_AND_ENTRY, "down");
+		ENTRY.addDoor(CHANG_AND_ENTRY, "up"); // doit on vraiment lui ajouter la porte ?
+		TRANSFER_ROOM.addDoor(ANIM_AND_TRANSF, "down");
+		TRANSFER_ROOM.addDoor(TRANSF_AND_CHANG, "down");
+		TRANSFER_ROOM.addDoor(TRANSF_AND_MEET, "right");
+		TRANSFER_ROOM.addDoor(TRANSF_AND_EXPER, "up");
+		MEETING_ROOM.addDoor(TRANSF_AND_MEET, "left");
+		MEETING_ROOM.addDoor(MEET_AND_ARCH, "right");
+		ARCHIVES_ROOM.addDoor(MEET_AND_ARCH, "left");
+		EXPERIMENTS_ROOM.addDoor(TRANSF_AND_EXPER, "down");
+		EXPERIMENTS_ROOM.addDoor(EXPERIM_AND_MORT, "right");
+		EXPERIMENTS_ROOM.addDoor(EXPERIM_AND_CONDA, "up");
+		EXPERIMENTS_ROOM.addDoor(EXPERIM_AND_RESERV, "up");
+		EXPERIMENTS_ROOM.addDoor(EXPERIM_AND_COLD, "left");
+		EXPERIMENTS_ROOM.addDoor(EXPERIM_AND_DIRTY, "left");
+		MORGUE.addDoor(EXPERIM_AND_MORT, "left");
+		MORGUE.addDoor(SECRET_PASSAGE, "down");
+		CONDAMNED_SAS.addDoor(EXPERIM_AND_CONDA, "down");
+		CONDAMNED_SAS.addDoor(CONDA_AND_DESERT, "up");
+		DESERTED_ROOM.addDoor(CONDA_AND_DESERT, "down");
+		PRODUCTS_RESERVE.addDoor(EXPERIM_AND_RESERV, "down");
+		COLD_ROOM.addDoor(EXPERIM_AND_COLD, "right");
+		COLD_ROOM.addDoor(COLD_AND_GARB, "up");
+		GARBAGE_ROOM.addDoor(COLD_AND_GARB, "down");
+		DIRTY_CHANGINGROOM.addDoor(EXPERIM_AND_DIRTY, "right");
+		DIRTY_CHANGINGROOM.addDoor(DIRT_AND_DECON, "left");
+		DECONTAMINATION_ROOM.addDoor(DIRT_AND_DECON, "right");
+		DECONTAMINATION_ROOM.addDoor(DECONT_AND_EXIT, "left");
+		EXIT.addDoor(DECONT_AND_EXIT, "right");  // doit on vraiment lui ajouter la porte ?
 
 
 		// ANIMALS ADDING TO ROOMS
-		animalRoom.addAnimal(cat);
-		experimentsRoom.addAnimal(monkey);
-		experimentsRoom.addAnimal(mouse);
+		ANIMAL_ROOM.addAnimal(CAT);
+		EXPERIMENTS_ROOM.addAnimal(MONKEY);
+		EXPERIMENTS_ROOM.addAnimal(MOUSE);
 
 
 		// OBJECTS ADDING TO ROOMS
-		animalRoom.addObject(catB);
-		transferRoom.addObject(flint);
-		transferRoom.addObject(electricityMeter);
-		changingRoom.addObject(sexyPoster);
-		changingRoom.addObject(locker);
-		locker.addObj(walkman);
-		experimentsRoom.addObject(naziPoster);
-		coldRoom.addObject(banana);
-		garbageRoom.addObject(stick);
-		archivesRoom.addObject(club);
-		archivesRoom.addObject(mouseB);
-		productsReserve.addObject(potion);
-		desertedRoom.addObject(monkeyB);
-		dirtyChangingRoom.addObject(sexyPoster);
+		ANIMAL_ROOM.addObject(CAT_B);
+		TRANSFER_ROOM.addObject(FLINT);
+		TRANSFER_ROOM.addObject(ELECTRICITY_METER);
+		CHANGING_ROOM.addObject(SEXY_POSTER);
+		CHANGING_ROOM.addObject(LOCKER);
+		LOCKER.addObj(WALKMAN);
+		EXPERIMENTS_ROOM.addObject(NAZI_POSTER);
+		COLD_ROOM.addObject(BANANA);
+		GARBAGE_ROOM.addObject(STICK);
+		ARCHIVES_ROOM.addObject(CLUB);
+		ARCHIVES_ROOM.addObject(MOUSE_B);
+		PRODUCTS_RESERVE.addObject(POTION);
+		DESERTED_ROOM.addObject(MONKEY_B);
+		DIRTY_CHANGINGROOM.addObject(SEXY_POSTER);
 
 
 		// ENEMIES ADDING TO ROOMS
-		meetingRoom.addAndCreateEnemy("account guy", 45, 1, k1,
+		MEETING_ROOM.addAndCreateEnemy("account guy", 45, 1, K_1,
 				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		desertedRoom.addAndCreateEnemy("zombie nazi", 60, 4, fuse,
+		DESERTED_ROOM.addAndCreateEnemy("zombie nazi", 60, 4, FUSE,
 				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		decontaminationRoom.addAndCreateEnemy("super-nazi", 100, 8, k2,
+		DECONTAMINATION_ROOM.addAndCreateEnemy("super-nazi", 100, 8, K_2,
 				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 	}
 
@@ -259,7 +259,7 @@ public class Game {
 			sysClear();
 			openingGame();
 		}
-		while(this.hero.isAlive() && !this.hero.getPlace().getName().equals("exit") && !this.hero.isQuit()){
+		while(this.HERO.isAlive() && !this.HERO.getPlace().getName().equals("exit") && !this.HERO.isQuit()){
 			this.PlayATurn();
 		}
 		this.gameOver();
@@ -267,13 +267,13 @@ public class Game {
 
 	public void PlayATurn(){
 		sysClear();
-		if (this.hero.getPlace().isContainsEnemies()) {
-			battle(this.hero, this.hero.getPlace().getEnemies());
+		if (this.HERO.getPlace().isContainsEnemies()) {
+			battle(this.HERO, this.HERO.getPlace().getEnemies());
 		}
 		this.displayEnvironment();
 		cmdPush(2);
-		System.out.print("\nCurrent HP : " + this.hero.getHP() + "\n");
-		this.hero.showInventory();
+		System.out.print("\nCurrent HP : " + this.HERO.getHP() + "\n");
+		this.HERO.showInventory();
 		System.out.print("\n\nCommand :> ");
 		int count; 																										//count of words
 		String input; 																									//input String
@@ -294,10 +294,10 @@ public class Game {
 						this.help(); 																					//show commandsbreak;
 						break;
 					case "quit":
-						this.hero.quit(this.hero.getName()); 																//exit prompt
+						this.HERO.quit(this.HERO.getName()); 																//exit prompt
 						break;
 					case "inventory":
-						this.hero.showInventory();
+						this.HERO.showInventory();
 						break;
 					default: System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -306,19 +306,19 @@ public class Game {
 			case 2:
 				switch (tabInput[0].toLowerCase()) {
 					case "go":
-						this.hero.go(tabInput[1]);
+						this.HERO.go(tabInput[1]);
 						break;
 					case "take":
-						this.hero.take(tabInput[1]);
+						this.HERO.take(tabInput[1]);
 						break;
 					case "use":
-						this.hero.use(tabInput[1]);
+						this.HERO.use(tabInput[1]);
 						break;
 					case "look":
-						this.hero.lookAt(tabInput[1]);
+						this.HERO.lookAt(tabInput[1]);
 						break;
 					case "talk":
-						this.hero.talk(tabInput[1]);
+						this.HERO.talk(tabInput[1]);
 						break;
 					default:  System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -327,13 +327,13 @@ public class Game {
 			case 3:
 				switch (tabInput[0].toLowerCase()) {
 					case "go":
-						this.hero.go(tabInput[1]+" "+tabInput[2]);
+						this.HERO.go(tabInput[1]+" "+tabInput[2]);
 						break;
 					case "look":
-						this.hero.lookAt(tabInput[1]+" "+tabInput[2]);
+						this.HERO.lookAt(tabInput[1]+" "+tabInput[2]);
 						break;
 					case "use":
-						this.hero.use(tabInput[1],tabInput[2]);
+						this.HERO.use(tabInput[1],tabInput[2]);
 						break;
 					default : System.out.println("Wrong input, write \"help\" if you're lost with commands");
 				}
@@ -348,7 +348,7 @@ public class Game {
 	public void gameOver() {
 
 		//LOOSE ENDING
-		if (this.hero.getHP() <= 0) {
+		if (this.HERO.getHP() <= 0) {
 
 			Scanner sc = new Scanner(System.in);
 			String choice;
@@ -360,16 +360,16 @@ public class Game {
 			choice = sc.nextLine();
 			if (choice.equalsIgnoreCase("YES") || choice.equalsIgnoreCase("Y")) {
 				this.party++;
-				this.hero.setLife(-(Hero.DEFAULT_HP));																	//-100 cause setLife() remove life to the Hero, so -(-100) = +100
+				this.HERO.setLife(-(Hero.DEFAULT_HP));																	//-100 cause setLife() remove life to the Hero, so -(-100) = +100
 				this.Play();																							//You return where you were before die
 			}
 			else{
-				this.hero.quit(this.hero.getName());
+				this.HERO.quit(this.HERO.getName());
 			}
 		}
 
 		//WIN ENDING
-		else if (!this.hero.isQuit()){
+		else if (!this.HERO.isQuit()){
 			sysClear();
 			printLetterByLetter(Script.YOU_WIN, Script.DEFAULT_NARRATOR);
 			sleep(10000);
@@ -385,11 +385,11 @@ public class Game {
 			sleep(5000);
 
 			pressAnyKeyToContinue();
-			this.hero.quit(this.hero.getName());
+			this.HERO.quit(this.HERO.getName());
 		}
 		//ONLY QUIT
 		else {
-			this.hero.quit(this.hero.getName());
+			this.HERO.quit(this.HERO.getName());
 		}
 	}
 
@@ -420,7 +420,7 @@ public class Game {
 
 	//Display the environment
 	public void displayEnvironment() {
-		System.out.println("\n" + this.hero.getPlace().toString());
+		System.out.println("\n" + this.HERO.getPlace().toString());
 	}
 
 	//Display effect for dialogs

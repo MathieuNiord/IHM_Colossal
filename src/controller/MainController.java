@@ -6,31 +6,35 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
-import model.others.Game;
 import model.others.Script;
-import stage.MyStage;
 import view.classes.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
-import view.ressources.GameRessources;
 import view.ressources.ImageRessources;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static view.ressources.GameRessources.*;
+/* ========================================================================================================
+   === The main controller : regroups all game interactions and controls the view (display) of the game ===
+   ======================================================================================================== */
+
 public class MainController implements Initializable {
+
+    // === ATTRIBUTES ===
 
     @FXML
     private Pane paneMain;
@@ -63,51 +67,56 @@ public class MainController implements Initializable {
     private Button buttonHelp;
 
     @FXML
-    private Label labelScript;
+    private TextArea textAreaScript;
 
+    // === METHODS ===
 
+    // --- Events ---
+
+    // - The "HELP" button event -
     @FXML
-    void buttonHelpOnAction(ActionEvent event) {
+    private void buttonHelpOnAction(ActionEvent event) {
         //TODO popup help
     }
 
+    // - The "QUIT" button event -
     @FXML
-    void buttonQuitOnAction(ActionEvent event) {
+    private void buttonQuitOnAction(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Leave the game ?");
         alert.setContentText("Are you sure you want to leave ? ");
-        ButtonType b1 = new ButtonType("Menu");
+        //ButtonType b1 = new ButtonType("Menu");
         ButtonType b2 = new ButtonType("Quit");
         ButtonType b3 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        alert.getButtonTypes().setAll(b1, b2, b3);
+        alert.getButtonTypes().setAll( b2, b3);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == b1){
+        /*if (result.get() == b1){
             try{
                 Stage stage = (Stage) buttonQuit.getScene().getWindow();
                 stage.close();
-                MyStage s = new MyStage("../view/home.fxml");
+                MyStage s = new MyStage("../view/fxml/home.fxml");
                 s.show();
             }
             catch (Exception ignored){}
         }
-        else if (result.get() == b2) {
+        else */
+        if (result.get() == b2) {
             Stage stage = (Stage) buttonQuit.getScene().getWindow();
             stage.close();
         }
     }
 
-    //fonction qui initialise les listeners
+    // - Initialization of controller's listeners -
     private void initListener(){
 
-
-        GameRessources.heroIm.x.addListener(new ChangeListener<Number>() {
+        HERO_IM.x.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 boolean collision =false;
                 int x = newValue.intValue();
-                int y = GameRessources.heroIm.y.getValue();
+                int y = HERO_IM.y.getValue();
                 MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                 if(im!=null){
                     heroInteractWithIm(im);
@@ -116,19 +125,19 @@ public class MainController implements Initializable {
                 }
 
                 if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
-                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,x,y);
+                    gridPaneGame.getChildren().remove(HERO_IM);
+                    gridPaneGame.add(HERO_IM,x,y);
                 }
                 else{
-                    GameRessources.heroIm.x.setValue(oldValue);
+                    HERO_IM.x.setValue(oldValue);
                 }
             }
         });
-        GameRessources.heroIm.y.addListener(new ChangeListener<Number>() {
+        HERO_IM.y.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 boolean collision =false;
-                int x = GameRessources.heroIm.x.getValue();
+                int x = HERO_IM.x.getValue();
                 int y = newValue.intValue();
                 MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
                 if(im!=null){
@@ -138,27 +147,45 @@ public class MainController implements Initializable {
                 }
 
                 if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
-                    gridPaneGame.getChildren().remove(GameRessources.heroIm);
-                    gridPaneGame.add(GameRessources.heroIm,x,y);
+                    gridPaneGame.getChildren().remove(HERO_IM);
+                    gridPaneGame.add(HERO_IM,x,y);
                 }
                 else{
-                    GameRessources.heroIm.y.setValue(oldValue);
+                    HERO_IM.y.setValue(oldValue);
                 }
             }
         });
+
+       //textAreaScript :
+        OutputStream o = new OutputStream() {
+            @Override
+            public void write(int b) throws IOException {
+                textAreaScript.appendText(String.valueOf((char)b));
+            }
+        };
+        System.setOut(new PrintStream(o));
+
+        textAreaScript.textProperty().addListener((observable, oldValue, newValue) ->{
+            textAreaScript.setScrollTop(Double.MAX_VALUE);
+        } );
     }
 
+    // --- Player ---
 
-
+    // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
-        Hero hero = GameRessources.heroIm.hero;
+        Hero hero = HERO_IM.hero;
         if(im.animal!=null){ //interaction avec animal
             im.animal.talk(hero);
         }
+        if(im.monkey!=null)im.monkey.talk(hero);
         if(im.obj!=null){ //interaction avec objet
             im.obj.take(hero);
             //l'objet eletricMeter n'est pas prennable
-            if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
+            if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
+
+            }
+            else if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
             }
@@ -179,19 +206,18 @@ public class MainController implements Initializable {
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
-                    gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
-                    //gridPaneMap.setIndicator((GameRessources.placeToMyPlace.get(hero.getPlace())).getPositions_map()[0]);
+                    gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
-                gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
-                //gridPaneMap.setIndicator((GameRessources.placeToMyPlace.get(hero.getPlace())).getPositions_map()[0]);
+                gridPaneMap.revealPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
         }
     }
 
+    // - This function permits the player to cross doors -
     private void heroCrossDoor(MyImageView im, Hero hero) {
         String dest = null;
         for(String s : im.door.getPlaces().keySet()) {
@@ -203,64 +229,83 @@ public class MainController implements Initializable {
         }
         if(dest!=null){
             im.door.cross(hero,dest);
-            gridPaneGame.setMyPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+            gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
         }
     }
 
+    // - Here we got all actions the player can make during the game -
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
         switch (event.getCode()){
             case Z:
-                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()-1);
-                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
+                HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
                 break;
-            case Q:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()-1); break;
+            case Q:
+                HERO_IM.x.setValue(HERO_IM.x.getValue()-1); break;
             case S:
-                GameRessources.heroIm.y.setValue(GameRessources.heroIm.y.getValue()+1);
-                GameRessources.heroIm.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
+                HERO_IM.y.setValue(HERO_IM.y.getValue()+1);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
                 break;
-            case D:GameRessources.heroIm.x.setValue(GameRessources.heroIm.x.getValue()+1); break;
+            case D:
+                HERO_IM.x.setValue(HERO_IM.x.getValue()+1); break;
             case T:
         }
     }
 
-    private Optional<String> inputDialogUserName(){
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Choose your name please");
-        dialog.setContentText("Please enter your name:");
-        return dialog.showAndWait();
-    }
-
-
-
+    // - Manage events in the Inventory -
     @FXML
-    private void flowPaneInventorySetOnMousePressedEvent(MouseEvent event){
+    private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event){
         try{
             MyImageView im = (MyImageView)event.getTarget();
-            if(im.obj != null){
-                labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
-                labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+            if(event.getClickCount()==2) {
+                if (im.obj != null) {
+                    im.obj.use(HERO_IM.hero);
+                }
+            }
+
+            else {
+                if (im.obj != null) {
+                    labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
+                    labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+                }
             }
         } catch (Exception ignored){
             labelObjectName.setText("");
             labelObjectInfo.setText("");
         }
     }
+
+    // - Look action :
+    @FXML
+    private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
+        try{
+            MyImageView im = (MyImageView)event.getTarget();
+            System.out.println(event.getClickCount());
+            if(im.obj != null){
+                if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
+                    flowPaneInventory.getChildren().add(WALKMAN_IM);
+                }
+                im.obj.look();
+            }
+            if(im.animal != null) im.animal.look();
+            if(im.monkey != null) im.monkey.look();
+            if(im.enemy!=null) im.enemy.look();
+
+
+        } catch (Exception ignored){
+            labelObjectName.setText("");
+            labelObjectInfo.setText("");
+        }
+    }
+    // --- Initialization of the controller ---
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        inputDialogUserName().ifPresent(Game::new);
-        new GameRessources();
-        gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
-        gridPaneMap.revealPlace(GameRessources.myAnimalRoom);
-        //gridPaneMap.setIndicator(GameRessources.myAnimalRoom.getPositions_map()[0]);
+        gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
+        gridPaneMap.revealPlace(MY_ANIMAL_ROOM);
         new GameRessoursesController(flowPaneInventory);
         initListener();
-        System.setOut(new PrintStream(new OutputStream() {
-                    @Override
-                    public void write(int b) { labelScript.setText(labelScript.getText() + (char) b); }}));
     }
-
-
 }
 

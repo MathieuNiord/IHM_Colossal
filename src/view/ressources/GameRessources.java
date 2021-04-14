@@ -1,6 +1,7 @@
 package view.ressources;
 
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import model.others.Place;
 import view.classes.MyHeroImageView;
 import view.classes.MyImageView;
@@ -13,6 +14,11 @@ import static model.others.Game.*;
 import static view.ressources.ImageRessources.*;
 
 public class GameRessources {
+
+    //Fonts
+    public final static Font MY_FONT_16 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 16);
+    public final static Font MY_FONT_32 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 32);
+    public final static Font MY_FONT_64 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 64);
 
     // HERO CREATION
     public final static MyHeroImageView HERO_IM = new MyHeroImageView(HERO, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);

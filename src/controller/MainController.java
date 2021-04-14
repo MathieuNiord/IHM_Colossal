@@ -180,12 +180,14 @@ public class MainController implements Initializable {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
                     gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+                    //gridPaneMap.setIndicator((GameRessources.placeToMyPlace.get(hero.getPlace())).getPositions_map()[0]);
                 }
             }
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
                 gridPaneMap.revealPlace(GameRessources.placeToMyPlace.get(hero.getPlace()));
+                //gridPaneMap.setIndicator((GameRessources.placeToMyPlace.get(hero.getPlace())).getPositions_map()[0]);
             }
         }
     }
@@ -251,6 +253,7 @@ public class MainController implements Initializable {
         new GameRessources();
         gridPaneGame.setMyPlace(GameRessources.myAnimalRoom);
         gridPaneMap.revealPlace(GameRessources.myAnimalRoom);
+        //gridPaneMap.setIndicator(GameRessources.myAnimalRoom.getPositions_map()[0]);
         new GameRessoursesController(flowPaneInventory);
         initListener();
         System.setOut(new PrintStream(new OutputStream() {

@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 public class ImageRessources {
 
-    private ImageRessources() {};
+    private ImageRessources() {}
 
     //IMAGES
 

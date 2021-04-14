@@ -180,6 +180,7 @@ public class MainController implements Initializable {
         if(im.monkey!=null)im.monkey.talk(hero);
         if(im.obj!=null){ //interaction avec objet
             im.obj.take(hero);
+            im.obj.setDraggableTrue();
             //l'objet eletricMeter n'est pas prennable
             if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
 

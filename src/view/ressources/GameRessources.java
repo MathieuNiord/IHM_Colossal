@@ -80,24 +80,26 @@ public class GameRessources {
     public final static MyImageView DECON_TO_DIRT_IM =new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_RIGHT, 8, 4);
 
 
+    // Liste des images des lieux
+    private final static ArrayList<MyImageView> animalRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> transferRoomImList = new ArrayList<>(); //LEFT
+    private final static ArrayList<MyImageView> changingRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> entryImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> meetingRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> archivesRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> experimentsRoomImList = new ArrayList<>(); //TOP LEFT
+    private final static ArrayList<MyImageView> morgueImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> condamnedSASImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> desertedRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> productsReserveImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> garbageRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> coldRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> dirtyChangingRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
+    private final static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
-    private static ArrayList<MyImageView> animalRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> transferRoomImList = new ArrayList<>(); //LEFT
-    private static ArrayList<MyImageView> changingRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> entryImList = new ArrayList<>();
-    private static ArrayList<MyImageView> meetingRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> archivesRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> experimentsRoomImList = new ArrayList<>(); //TOP LEFT
-    private static ArrayList<MyImageView> morgueImList = new ArrayList<>();
-    private static ArrayList<MyImageView> condamnedSASImList = new ArrayList<>();
-    private static ArrayList<MyImageView> desertedRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> productsReserveImList = new ArrayList<>();
-    private static ArrayList<MyImageView> garbageRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> coldRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> dirtyChangingRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
-    private static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
+    // Positions des lieux sur la map
     public final static Integer[][] ANIMAL_ROOM_MAP_POSITIONS = {{2,5}};
     public final static Integer[][] TRANSFER_ROOM_MAP_POSITIONS = {{2,4}, {3,4}};
     public final static Integer[][] CHANGING_ROOM_MAP_POSITIONS = {{3,5}};
@@ -115,6 +117,8 @@ public class GameRessources {
     public final static Integer[][] DECONTAMINATION_ROOM_MAP_POSITIONS = {{1,3}};
     public final static Integer[][] EXIT_MAP_POSITIONS = {{0,3}};
 
+
+    // MyPlace
     public final static MyPlace MY_ANIMAL_ROOM = new MyPlace(ANIMAL_ROOM, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, animalRoomImList, ANIMAL_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_TRANSFER_ROOM =new MyPlace(TRANSFER_ROOM, new Image("assets/images/place/floor.png"),
@@ -154,7 +158,7 @@ public class GameRessources {
     private final static GameRessources GAME_RESSOURCES = new GameRessources();
 
     private GameRessources(){
-        // DOORS ADDING TO ROOMS
+        // ADD DOORS TO ROOMS
         animalRoomImList.add(ANIM_TO_TRANSF_IM);
         changingRoomImList.add(CHANG_TO_TRANSF_IM);
         changingRoomImList.add(CHANG_TO_ENTRY_IM);
@@ -186,13 +190,13 @@ public class GameRessources {
         decontaminationRoomImList.add(DECONT_TO_EXIT_IM);
 
 
-        // ANIMALS ADDING TO ROOMS
+        // ADD ANIMALS TO ROOMS
         animalRoomImList.add(CAT_IM);
         experimentsRoomImList.add(MONKEY_IM);
         experimentsRoomImList.add(MOUSE_IM);
 
 
-        // OBJECTS ADDING TO ROOMS
+        // ADD OBJECTS TO ROOMS
         animalRoomImList.add(CAT_B_IM);
         transferRoomImList.add(FLINT_IM);
         transferRoomImList.add(ELECTRICITY_METER_IM);
@@ -207,13 +211,13 @@ public class GameRessources {
         desertedRoomImList.add(MONKEY_B_IM);
         dirtyChangingRoomImList.add(SEXY_POSTER_IM);
 
-        // ENEMIES ADDING TO ROOM
+        // ADD ENEMIES TO ROOM
         meetingRoomImList.add(ACCOUNT_GUY_IM);
         desertedRoomImList.add(NAZI_ZOMBIE_IM);
         exitImList.add(BOSS_IM);
 
+        // ADD SAME PLACES AND MYPLACES
         PLACE_TO_MY_PLACE.put(ANIMAL_ROOM, MY_ANIMAL_ROOM);
-        PLACE_TO_MY_PLACE.put(TRANSFER_ROOM, MY_TRANSFER_ROOM);
         PLACE_TO_MY_PLACE.put(TRANSFER_ROOM, MY_TRANSFER_ROOM);
         PLACE_TO_MY_PLACE.put(CHANGING_ROOM, MY_CHANGING_ROOM);
         PLACE_TO_MY_PLACE.put(MEETING_ROOM, MY_MEETING_ROOM);

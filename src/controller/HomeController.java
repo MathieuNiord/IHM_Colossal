@@ -67,10 +67,10 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        button_play.setOnAction(event -> { button_playAction();});
+        button_play.setOnAction(event -> button_playAction());
 
-        button_credit.setOnAction(event -> { button_creditAction(); });
+        button_credit.setOnAction(event -> button_creditAction());
 
-        button_quit.setOnAction(event -> { button_quitAction(); });
+        button_quit.setOnAction(event -> button_quitAction());
     }
 }

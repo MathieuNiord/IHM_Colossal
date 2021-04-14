@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,48 +25,39 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static view.ressources.GameRessources.*;
-/* ========================================================================================================
-   === The main controller : regroups all game interactions and controls the view (display) of the game ===
-   ======================================================================================================== */
+
+    /* =====================================================================================================
+    === The main controller : regroups all game interactions and controls the view (display) of the game ===
+    ======================================================================================================== */
 
 public class MainController implements Initializable {
 
-    // === ATTRIBUTES ===
+    /** === ATTRIBUTES === **/
 
     @FXML
     private Pane paneMain;
-
     @FXML
     private MyGridPane gridPaneGame;
-
     @FXML
     private Label labelTitle;
-
     @FXML
     private TabPane tabPane;
-
     @FXML
     private Label labelObjectName;
-
     @FXML
     private Label labelObjectInfo;
-
     @FXML
     private FlowPane flowPaneInventory;
-
     @FXML
     private MiniMap gridPaneMap;
-
     @FXML
     private Button buttonQuit;
-
     @FXML
     private Button buttonHelp;
-
     @FXML
     private TextArea textAreaScript;
 
-    // === METHODS ===
+    /** === METHODS === **/
 
     // --- Events ---
 
@@ -110,48 +99,42 @@ public class MainController implements Initializable {
     // - Initialization of controller's listeners -
     private void initListener(){
 
-        HERO_IM.x.addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                boolean collision =false;
-                int x = newValue.intValue();
-                int y = HERO_IM.y.getValue();
-                MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
-                if(im!=null){
-                    heroInteractWithIm(im);
-                    collision=true;
+        HERO_IM.x.addListener((observable, oldValue, newValue) -> {
+            boolean collision =false;
+            int x = newValue.intValue();
+            int y = HERO_IM.y.getValue();
+            MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
+            if(im!=null){
+                heroInteractWithIm(im);
+                collision=true;
 
-                }
+            }
 
-                if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
-                    gridPaneGame.getChildren().remove(HERO_IM);
-                    gridPaneGame.add(HERO_IM,x,y);
-                }
-                else{
-                    HERO_IM.x.setValue(oldValue);
-                }
+            if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
+                gridPaneGame.getChildren().remove(HERO_IM);
+                gridPaneGame.add(HERO_IM,x,y);
+            }
+            else{
+                HERO_IM.x.setValue(oldValue);
             }
         });
-        HERO_IM.y.addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                boolean collision =false;
-                int x = HERO_IM.x.getValue();
-                int y = newValue.intValue();
-                MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
-                if(im!=null){
-                    heroInteractWithIm(im);
-                    collision =true;
+        HERO_IM.y.addListener((observable, oldValue, newValue) -> {
+            boolean collision =false;
+            int x = HERO_IM.x.getValue();
+            int y = newValue.intValue();
+            MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
+            if(im!=null){
+                heroInteractWithIm(im);
+                collision =true;
 
-                }
+            }
 
-                if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
-                    gridPaneGame.getChildren().remove(HERO_IM);
-                    gridPaneGame.add(HERO_IM,x,y);
-                }
-                else{
-                    HERO_IM.y.setValue(oldValue);
-                }
+            if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
+                gridPaneGame.getChildren().remove(HERO_IM);
+                gridPaneGame.add(HERO_IM,x,y);
+            }
+            else{
+                HERO_IM.y.setValue(oldValue);
             }
         });
 
@@ -164,9 +147,7 @@ public class MainController implements Initializable {
         };
         System.setOut(new PrintStream(o));
 
-        textAreaScript.textProperty().addListener((observable, oldValue, newValue) ->{
-            textAreaScript.setScrollTop(Double.MAX_VALUE);
-        } );
+        textAreaScript.textProperty().addListener((observable, oldValue, newValue) -> textAreaScript.setScrollTop(Double.MAX_VALUE));
     }
 
     // --- Player ---
@@ -304,7 +285,7 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
-        new GameRessoursesController(flowPaneInventory);
+        new GameResourcesController(flowPaneInventory);
         initListener();
     }
 }

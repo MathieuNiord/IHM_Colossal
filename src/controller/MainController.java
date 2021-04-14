@@ -64,7 +64,7 @@ public class MainController implements Initializable {
     // - The "HELP" button event -
     @FXML
     private void buttonHelpOnAction(ActionEvent event) {
-        //TODO popup help
+        textAreaScript.appendText(Script.HELP_DEFAULT);
     }
 
     // - The "QUIT" button event -
@@ -100,42 +100,13 @@ public class MainController implements Initializable {
     private void initListener(){
 
         HERO_IM.x.addListener((observable, oldValue, newValue) -> {
-            boolean collision =false;
-            int x = newValue.intValue();
-            int y = HERO_IM.y.getValue();
-            MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
-            if(im!=null){
-                heroInteractWithIm(im);
-                collision=true;
-
-            }
-
-            if(x<gridPaneGame.getMyPlace().getMaxXBound() && x>gridPaneGame.getMyPlace().getMinXBound() && !collision){
-                gridPaneGame.getChildren().remove(HERO_IM);
-                gridPaneGame.add(HERO_IM,x,y);
-            }
-            else{
-                HERO_IM.x.setValue(oldValue);
-            }
+            gridPaneGame.getChildren().remove(HERO_IM);
+            gridPaneGame.add(HERO_IM,newValue.intValue(),HERO_IM.y.getValue());
         });
+
         HERO_IM.y.addListener((observable, oldValue, newValue) -> {
-            boolean collision =false;
-            int x = HERO_IM.x.getValue();
-            int y = newValue.intValue();
-            MyImageView im = gridPaneGame.getPositions().get((y)*8+ x);
-            if(im!=null){
-                heroInteractWithIm(im);
-                collision =true;
-
-            }
-
-            if(y<gridPaneGame.getMyPlace().getMaxYBound() && y>gridPaneGame.getMyPlace().getMinYBound() && !collision){
-                gridPaneGame.getChildren().remove(HERO_IM);
-                gridPaneGame.add(HERO_IM,x,y);
-            }
-            else{
-                HERO_IM.y.setValue(oldValue);
-            }
+            gridPaneGame.getChildren().remove(HERO_IM);
+            gridPaneGame.add(HERO_IM,HERO_IM.x.getValue(),newValue.intValue());
         });
 
        //textAreaScript :
@@ -210,27 +181,62 @@ public class MainController implements Initializable {
         }
         if(dest!=null){
             im.door.cross(hero,dest);
-            gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
+            if(hero.getPlace().getName().equals(dest)){
+                gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
+                HERO_IM.x.setValue(Math.abs(HERO_IM.x.getValue()-8));
+                HERO_IM.y.setValue(Math.abs(HERO_IM.y.getValue()-8));
+            }
         }
+    }
+
+
+
+    private boolean isPositionContainsEntity(int x, int y){
+        boolean ans = false;
+        MyImageView im = gridPaneGame.getPositions().get((y)*9+ x);
+        if(im!=null){
+           ans =true;
+            heroInteractWithIm(im);
+        }
+        if(!(x < gridPaneGame.getMyPlace().getMaxXBound() && x > gridPaneGame.getMyPlace().getMinXBound() &&
+                y < gridPaneGame.getMyPlace().getMaxYBound() && y > gridPaneGame.getMyPlace().getMinYBound())){
+            ans = true;
+        }
+        return ans;
     }
 
     // - Here we got all actions the player can make during the game -
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
+        int x = HERO_IM.x.getValue();
+        int y = HERO_IM.y.getValue();
         switch (event.getCode()){
-            case Z:
-                HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
+            case Z: {
+                if(!isPositionContainsEntity(x,y-1)) {
+                    HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
+                }
                 HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
                 break;
-            case Q:
-                HERO_IM.x.setValue(HERO_IM.x.getValue()-1); break;
-            case S:
-                HERO_IM.y.setValue(HERO_IM.y.getValue()+1);
+            }
+            case Q: {
+                if (!isPositionContainsEntity(x - 1, y)) {
+                    HERO_IM.x.setValue(HERO_IM.x.getValue() - 1);
+                }
+                break;
+            }
+            case S: {
+                if (!isPositionContainsEntity(x , y+1)) {
+                    HERO_IM.y.setValue(HERO_IM.y.getValue() + 1);
+                }
                 HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
                 break;
-            case D:
-                HERO_IM.x.setValue(HERO_IM.x.getValue()+1); break;
-            case T:
+            }
+            case D: {
+                if (!isPositionContainsEntity(x +1, y)) {
+                    HERO_IM.x.setValue(HERO_IM.x.getValue() + 1);
+                }
+                break;
+            }
         }
     }
 
@@ -267,7 +273,6 @@ public class MainController implements Initializable {
     private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
         try{
             MyImageView im = (MyImageView)event.getTarget();
-            System.out.println(event.getClickCount());
             if(im.obj != null){
                 if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
                     flowPaneInventory.getChildren().add(WALKMAN_IM);
@@ -292,6 +297,12 @@ public class MainController implements Initializable {
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         new GameResourcesController(flowPaneInventory);
         initListener();
+        labelTitle.setFont(MY_FONT_64);
+        textAreaScript.setFont(MY_FONT_16);
+        labelObjectInfo.setFont(MY_FONT_32);
+        labelObjectName.setFont(MY_FONT_32);
+        buttonHelp.setFont(MY_FONT_16);
+        buttonQuit.setFont(MY_FONT_16);
     }
 }
 

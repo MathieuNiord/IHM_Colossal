@@ -1,12 +1,7 @@
 package view.classes;
 
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-
 
 public class MiniMap extends GridPane {
 
@@ -40,13 +35,22 @@ public class MiniMap extends GridPane {
         return null;
     }
 
-    // reveal a hidden cell of the map
-    public void revealCell(int col, int row){
+    // return a cell with a cast of MiniMapCell
+    private MiniMapCell getMiniMapCell(int col, int row) {
         Node cell = this.getCellFromMiniMap(col, row);
-        if(cell != null){
-            if(cell instanceof MiniMapCell){
-                ((MiniMapCell) cell).removeBackground();
+        if (cell != null) {
+            if (cell instanceof MiniMapCell) {
+                return (MiniMapCell) cell;
             }
+        }
+        return null;
+    }
+
+    // reveal a hidden cell of the map
+    public void revealCell(int col, int row) {
+        MiniMapCell cell = this.getMiniMapCell(col, row);
+        if(cell!= null) {
+            cell.removeBackground();
         }
     }
 
@@ -74,21 +78,17 @@ public class MiniMap extends GridPane {
 
     // hide the hero-indicator
     public void hideIndicator(int col, int row){
-        Node cell = this.getCellFromMiniMap(col, row);
+        MiniMapCell cell = this.getMiniMapCell(col, row);
         if(cell != null){
-            if(cell instanceof MiniMapCell){
-                ((MiniMapCell) cell).hideIndicator();
-            }
+            cell.hideIndicator();
         }
     }
 
     // show the hero-indicator
     public void showIndicator(int col, int row){
-        Node cell = this.getCellFromMiniMap(col, row);
+        MiniMapCell cell = this.getMiniMapCell(col, row);
         if(cell != null){
-            if(cell instanceof MiniMapCell){
-                ((MiniMapCell) cell).showIndicator();
-            }
+            cell.showIndicator();
         }
     }
 

@@ -41,7 +41,7 @@ public class GameRessources {
     public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1, 40);
     public final static MyImageView K_1_IM = new MyImageView(K_1, IMAGE_HEART, 0, 0, 40);
     public final static MyImageView K_2_IM = new MyImageView(K_2, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(ELECTRICITY_METER, IMAGE_HEART, 7, 1, 40);
+    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(ELECTRICITY_METER, IMAGE_HEART, 1, 1, 40);
     public final static MyImageView LOCKER_IM = new MyImageView(LOCKER, IMAGE_HEART, 7, 3, 40);
     public final static MyImageView SEXY_POSTER_IM = new MyImageView(SEXY_POSTER, IMAGE_HEART, 2, 0, 40);
     public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_HEART, 0, 0, 40);
@@ -103,8 +103,8 @@ public class GameRessources {
     public final static Integer[][] CHANGING_ROOM_MAP_POSITIONS = {{3,5}};
     public final static Integer[][] ENTRY_ROOM_MAP_POSITIONS = {{3,6}};
     public final static Integer[][] MEETING_ROOM_MAP_POSITIONS = {{4,4}};
-    public final static Integer[][] ARCHIVES_ROOM_MAP_POSITIONS = {{5,4}};
-    public final static Integer[][] EXPERIMENTS_ROOM_MAP_POSITIONS = {{3, 2}, {4, 2}, {3, 3}, {4, 3}};
+    public final static Integer[][] ARCHIVES_ROOM_MAP_POSITIONS = {{5,4}, {5,3}};
+    public final static Integer[][] EXPERIMENTS_ROOM_MAP_POSITIONS = {{3,2}, {4,2}, {3,3}, {4,3}};
     public final static Integer[][] MORGUE_MAP_POSITIONS = {{5,2}};
     public final static Integer[][] CONDAMNED_SAS_MAP_POSITIONS = {{4,1}};
     public final static Integer[][] DESERTED_ROOM_MAP_POSITIONS = {{4,0}};

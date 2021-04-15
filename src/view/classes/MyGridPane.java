@@ -34,7 +34,10 @@ public class MyGridPane extends GridPane {
     public void setMyPlace(MyPlace myPlace) {
 
         //remove all children from previous place
-        this.getChildren().clear();
+        if(this.myPlace!=null){
+            this.getChildren().removeAll(this.myPlace.getImages());
+            this.positions.clear();
+        }
 
         //set new place
         this.myPlace = myPlace;
@@ -44,15 +47,14 @@ public class MyGridPane extends GridPane {
             this.add(im, im.x, im.y);
             this.positions.put((im.y) * 9 + im.x, im);
         }
+
+        //adding enemy if the place has one
         if(this.myPlace.getEnemy()!=null){
             this.add(this.myPlace.getEnemy(),this.myPlace.getEnemy().x,this.myPlace.getEnemy().y);
         }
 
-        BackgroundImage backgroundImage= new BackgroundImage(
-                myPlace.getBackgroundImage(),
-                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-
-        this.setBackground(new Background(backgroundImage));
+        //setting the background of the place
+        this.setBackground(this.myPlace.getBackground());
     }
 
     // --- GETTER ---

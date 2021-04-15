@@ -2,7 +2,8 @@ package view.classes;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Pair;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import model.others.Place;
 
 import java.util.ArrayList;
@@ -16,14 +17,14 @@ public class MyPlace {
     private final Place place;
     private final int minX,maxX,minY,maxY;
     private MyImageView enemy;
-    private Image backgroundImage;
+    private Background backgroundImage;
     private final Integer[][] positions_map;
     private boolean visited;
 
 
     /*** === CONSTRUCTOR === ***/
 
-    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
+    public MyPlace(Place place, Background bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
                    ArrayList<MyImageView> images, Integer[][] positions_map) {
         this.place = place;
         this.backgroundImage = bg;
@@ -37,33 +38,31 @@ public class MyPlace {
         this.enemy = null;
     }
 
-    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
+    public MyPlace(Place place, Background bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
                    ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
 
        this.enemy = enemy;
-       //TODO
-       //Add to the list of images to display the enemy in the room
-       //this.images.add(enemy);
     }
 
-    public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map) {
+    public MyPlace(Place place, Background bg, ArrayList<MyImageView> images, Integer[][] positions_map) {
         this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map);
     }
 
-    public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
+    public MyPlace(Place place, Background bg, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
         this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map, enemy);
     }
+
+
 
 
     /*** === METHODS === ***/
 
     // --- GETTER ---
 
-    public Image getBackgroundImage() {
+    public Background getBackground() {
         return backgroundImage;
     }
-
     public int getMinXBound() {
         return minX;
     }
@@ -110,11 +109,11 @@ public class MyPlace {
 
     // --- SETTER ---
 
-    public void makeVisited(){this.visited = true;}
-
-    public void setBackgroundImage(Image backgroundImage){
+    public void setBackgroundImage(Background backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
+
+    public void makeVisited(){this.visited = true;}
 
     public void setImagesVisible(){
         for(ImageView im : this.getImages()){

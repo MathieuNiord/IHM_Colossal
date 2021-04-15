@@ -1,6 +1,7 @@
 package view.ressources;
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
 public class ImageRessources {
 
@@ -34,7 +35,9 @@ public class ImageRessources {
 
     // - Environment -
     public final static Image IMAGE_HEART = new Image("assets/images/environment/Heart.png");
-    public final static Image IMAGE_BACKGROUND = new Image("assets/images/background/Background.jpg");
+    public final static Image IMAGE_BACKGROUND_DEFAULT = new Image("assets/images/place/floor.png");
+    public final static Image IMAGE_BACKGROUND_CORRIDOR = new Image("assets/images/place/corridor.png");
+    public final static Image IMAGE_BACKGROUND_NO_LIGHT = new Image("assets/images/place/floor_no_light.png");
 
     // - Doors -
     public final static Image IMAGE_DOOR_UP = new Image("assets/images/place/BasicDoorUp.png");
@@ -42,5 +45,16 @@ public class ImageRessources {
     public final static Image IMAGE_DOOR_RIGHT = new Image("assets/images/place/BasicDoorRight.png");
     public final static Image IMAGE_DOOR_DOWN = new Image("assets/images/place/BasicDoorDown.png");
 
+    public final static BackgroundImage BACKGROUND_IMAGE_DEFAULT = new BackgroundImage(IMAGE_BACKGROUND_DEFAULT,
+            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
+    public final static BackgroundImage BACKGROUND_IMAGE_CORRIDOR = new BackgroundImage(IMAGE_BACKGROUND_CORRIDOR,
+            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
+    public final static BackgroundImage BACKGROUND_IMAGE_NO_LIGHT = new BackgroundImage(IMAGE_BACKGROUND_NO_LIGHT,
+            BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
+    public final static Background BACKGROUND_DEFAULT = new Background(BACKGROUND_IMAGE_DEFAULT);
+    public final static Background BACKGROUND_CORRIDOR = new Background(BACKGROUND_IMAGE_CORRIDOR);
+    public final static Background BACKGROUND_NO_lIGHT = new Background(BACKGROUND_IMAGE_NO_LIGHT);
 }

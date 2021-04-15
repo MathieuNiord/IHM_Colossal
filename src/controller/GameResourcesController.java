@@ -10,9 +10,9 @@ import model.others.Place;
 import model.others.Script;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
-import view.ressources.GameRessources;
-
+import static view.ressources.ImageRessources.*;
 import static view.ressources.GameRessources.*;
+
 
 public class GameResourcesController {
 
@@ -142,7 +142,7 @@ public class GameResourcesController {
         Place place = obtainPlace(my_place);
         if (place != null) {
             if (place.isEnlightened()) {
-                my_place.setBackgroundImage(new Image("assets/images/place/floor.png"));
+                my_place.setBackgroundImage(BACKGROUND_DEFAULT);
                 my_place.setImagesVisible();
             }
         }

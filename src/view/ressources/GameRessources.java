@@ -1,6 +1,7 @@
 package view.ressources;
 
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
 import javafx.scene.text.Font;
 import model.others.Place;
 import view.classes.MyHeroImageView;
@@ -122,37 +123,37 @@ public class GameRessources {
     public final static Integer[][] EXIT_MAP_POSITIONS = {{0,3}};
 
     // MyPlace
-    public final static MyPlace MY_ANIMAL_ROOM = new MyPlace(ANIMAL_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_ANIMAL_ROOM = new MyPlace(ANIMAL_ROOM, BACKGROUND_DEFAULT,
             animalRoomImList, ANIMAL_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_TRANSFER_ROOM =new MyPlace(TRANSFER_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_TRANSFER_ROOM =new MyPlace(TRANSFER_ROOM, BACKGROUND_DEFAULT,
             transferRoomImList, TRANSFER_ROOM_MAP_POSITIONS); //LEFT
-    public final static MyPlace MY_CHANGING_ROOM = new MyPlace(CHANGING_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_CHANGING_ROOM = new MyPlace(CHANGING_ROOM, BACKGROUND_DEFAULT,
             changingRoomImList, CHANGING_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_ENTRY_IM = new MyPlace(ENTRY, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_ENTRY_IM = new MyPlace(ENTRY, BACKGROUND_DEFAULT,
             entryImList, ENTRY_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_MEETING_ROOM = new MyPlace(MEETING_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_MEETING_ROOM = new MyPlace(MEETING_ROOM, BACKGROUND_DEFAULT,
              meetingRoomImList, MEETING_ROOM_MAP_POSITIONS, ACCOUNT_GUY_IM);
-    public final static MyPlace MY_ARCHIVES_ROOM = new MyPlace(ARCHIVES_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_ARCHIVES_ROOM = new MyPlace(ARCHIVES_ROOM, BACKGROUND_DEFAULT,
              archivesRoomImList, ARCHIVES_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_EXPERIMENTS_ROOM = new MyPlace(EXPERIMENTS_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_EXPERIMENTS_ROOM = new MyPlace(EXPERIMENTS_ROOM, BACKGROUND_DEFAULT,
              experimentsRoomImList, EXPERIMENTS_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, BACKGROUND_DEFAULT,
              morgueImList, MORGUE_MAP_POSITIONS);
-    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/corridor.png"),
+    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, BACKGROUND_CORRIDOR,
              2,6,0,8,condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
-    public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, BACKGROUND_DEFAULT,
              desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);
-    public final static MyPlace MY_PRODUCTS_RESERVE = new MyPlace(PRODUCTS_RESERVE, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_PRODUCTS_RESERVE = new MyPlace(PRODUCTS_RESERVE, BACKGROUND_DEFAULT,
              productsReserveImList, PRODUCTS_RESERVE_MAP_POSITIONS);
-    public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, BACKGROUND_DEFAULT,
              garbageRoomImList, GARBAGE_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_COLD_ROOM = new MyPlace(COLD_ROOM, new Image("assets/images/place/floor_no_light.png"),
+    public final static MyPlace MY_COLD_ROOM = new MyPlace(COLD_ROOM, BACKGROUND_NO_lIGHT,
              coldRoomImList, COLD_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, BACKGROUND_DEFAULT,
              dirtyChangingRoomImList, DIRTY_CHANGING_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, BACKGROUND_DEFAULT,
              decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS, BOSS_IM);
-    public final static MyPlace MY_EXIT = new MyPlace(EXIT, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_EXIT = new MyPlace(EXIT, BACKGROUND_DEFAULT,
              exitImList, EXIT_MAP_POSITIONS);
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();

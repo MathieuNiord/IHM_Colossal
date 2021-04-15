@@ -291,8 +291,13 @@ public class MainController implements Initializable {
 
             else {
                 if (im.obj != null) {
-                    labelObjectName.setText(((MyImageView) event.getTarget()).obj.NAME);
+
+                    String name =((MyImageView) event.getTarget()).obj.NAME;
+                    String capName = name.substring(0, 1).toUpperCase() + name.substring(1);
+
+                    labelObjectName.setText(capName);
                     labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+
                 }
             }
 

@@ -39,7 +39,7 @@ public class GameRessources {
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
     public final static MyImageView CLUB_IM = new MyImageView(CLUB, IMAGE_HEART, 3, 5, 40);
     public final static MyImageView POTION_IM =new MyImageView(POTION, IMAGE_HEART, 4, 4, 40);
-    public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 6, 7, 40);
+    public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 1, 7, 40);
     public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1, 40);
     public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4, 40);
     public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 7, 7, 40);
@@ -146,7 +146,7 @@ public class GameRessources {
              productsReserveImList, PRODUCTS_RESERVE_MAP_POSITIONS);
     public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, new Image("assets/images/place/floor.png"),
              garbageRoomImList, GARBAGE_ROOM_MAP_POSITIONS);
-    public final static MyPlace MY_COLD_ROOM = new MyPlace(COLD_ROOM, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_COLD_ROOM = new MyPlace(COLD_ROOM, new Image("assets/images/place/floor_no_light.png"),
              coldRoomImList, COLD_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, new Image("assets/images/place/floor.png"),
              dirtyChangingRoomImList, DIRTY_CHANGING_ROOM_MAP_POSITIONS);
@@ -246,7 +246,6 @@ public class GameRessources {
         addObject(MY_ARCHIVES_ROOM, MOUSE_B_IM);
         addObject(MY_PRODUCTS_RESERVE, POTION_IM);
         addObject(MY_DESERTED_ROOM, MONKEY_B_IM);
-        addObject(MY_DESERTED_ROOM, FUSE_IM);
         addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM);
     }
 }

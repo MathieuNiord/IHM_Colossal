@@ -141,7 +141,7 @@ public class GameResourcesController {
     private void lightUpRoom(MyPlace my_place) {
         Place place = obtainPlace(my_place);
         if (place != null) {
-            if (!place.isEnlightened()) {
+            if (place.isEnlightened()) {
                 my_place.setBackgroundImage(new Image("assets/images/place/floor.png"));
                 my_place.setImagesVisible();
             }

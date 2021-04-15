@@ -19,7 +19,6 @@ public class WelcomeController implements Initializable {
 
     public Label scriptLabel;
     public Button okButton;
-    public TextArea textScript;
 
     /** === METHODS === **/
 

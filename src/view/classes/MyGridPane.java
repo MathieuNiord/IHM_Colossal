@@ -32,18 +32,26 @@ public class MyGridPane extends GridPane {
     // --- SETTER ---
 
     public void setMyPlace(MyPlace myPlace) {
-        if(this.myPlace!=null){
-            this.getChildren().removeAll(this.myPlace.getImages());
-            this.positions.clear();
-        }
+
+        //remove all children from previous place
+        this.getChildren().clear();
+
+        //set new place
         this.myPlace = myPlace;
+
+        //add all children from the new place
         for (MyImageView im : myPlace.getImages()) {
             this.add(im, im.x, im.y);
             this.positions.put((im.y) * 9 + im.x, im);
         }
+        if(this.myPlace.getEnemy()!=null){
+            this.add(this.myPlace.getEnemy(),this.myPlace.getEnemy().x,this.myPlace.getEnemy().y);
+        }
+
         BackgroundImage backgroundImage= new BackgroundImage(
                 myPlace.getBackgroundImage(),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+
         this.setBackground(new Background(backgroundImage));
     }
 

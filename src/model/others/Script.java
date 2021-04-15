@@ -48,37 +48,31 @@ public class Script {
     public static final String YOU_LOOSE = "I thought this game was easy, you suck on a computer...You remind me of Psychology students...\n";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
-            "\t\t======================== CREDITS ========================\n" +
-            "\t\t=========================================================\n" +
-            "\t\t===  SCENARIO :                                       ===\n" +
-            "\t\t===                                 BENJAMIN CHEVAIS  ===\n" +
-            "\t\t===                                   GAETAN FREJOUX  ===\n" +
-            "\t\t===                                    MATHIEU NIORD  ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===  STORYBOARD :                                     ===\n" +
-            "\t\t===                                 BENJAMIN CHEVAIS  ===\n" +
-            "\t\t===                                   GAETAN FREJOUX  ===\n" +
-            "\t\t===                                    MATHIEU NIORD  ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===  DEVELOPMENT :                                    ===\n" +
-            "\t\t===                                 BENJAMIN CHEVAIS  ===\n" +
-            "\t\t===                                   GAETAN FREJOUX  ===\n" +
-            "\t\t===                                    MATHIEU NIORD  ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===  SPECIAL GUESTS :                                 ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===    IN THE ROLE OF HOUGA BOUGA :             YOU   ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===    IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER  ===\n" +
-            "\t\t===    IN THE ROLE OF THE ZOMBIE NAZI : AFIDA TURNER  ===\n" +
-            "\t\t===    IN THE ROLE OF THE SUPER-NAZI  : AFIDA TURNER  ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t===    ORIGINAL SOUND TRACK :         JONNY HALLIDAY  ===\n" +
-            "\t\t===    COFFEE OFFICER :                        WOMAN  ===\n" +
-            "\t\t===    OPERATIONS DIRECTOR :         THE RENDER DATE  ===\n" +
-            "\t\t===                                                   ===\n" +
-            "\t\t=========================================================\n" +
-            "\t\t=========================================================\n";
+            "======================== CREDITS ========================\n" +
+            "--- SCENARIO ---\n" +
+            "BENJAMIN CHEVAIS\n" +
+            "GAETAN FREJOUX\n" +
+            "MATHIEU NIORD\n" +
+            "THIBAULT RUCHET\n\n" +
+            "--- STORYBOARD ---\n" +
+            "BENJAMIN CHEVAIS\n" +
+            "GAETAN FREJOUX\n" +
+            "MATHIEU NIORD\n" +
+            "THIBAULT RUCHET\n\n" +
+            "--- DEVELOPMENT ---\n" +
+            "BENJAMIN CHEVAIS\n" +
+            "GAETAN FREJOUX\n" +
+            "MATHIEU NIORD\n" +
+            "THIBAULT RUCHET\n\n" +
+            "--- SPECIAL GUESTS ---\n" +
+            "IN THE ROLE OF HOUGA BOUGA :             YOU \n" +
+            "IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER\n" +
+            "IN THE ROLE OF THE ZOMBIE NAZI : AFIDA TURNER\n" +
+            "IN THE ROLE OF THE SUPER-NAZI  : AFIDA TURNER\n" +
+            "ORIGINAL SOUND TRACK :         JONNY HALLIDAY\n" +
+            "COFFEE OFFICER :                        WOMAN\n" +
+            "OPERATIONS DIRECTOR :         THE RENDER DATE\n" +
+            "=========================================================\n";
 
     public static final String THANKING_PLAYER = "...WE THANK YOU FOR PARTICIPATING IN OUR PROJECT\n\n\n";
 

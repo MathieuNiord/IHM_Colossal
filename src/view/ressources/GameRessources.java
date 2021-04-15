@@ -42,7 +42,7 @@ public class GameRessources {
     public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 6, 7, 40);
     public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1, 40);
     public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4, 40);
-    public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 7, 7, 40);
     public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_BESCHERELLE, 3, 7, 40);
     public final static MyImageView MOUSE_B_IM =new MyImageView(MOUSE_B, IMAGE_BESCHERELLE, 6, 1, 40);
     public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1, 40);
@@ -138,7 +138,7 @@ public class GameRessources {
              experimentsRoomImList, EXPERIMENTS_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, new Image("assets/images/place/floor.png"),
              morgueImList, MORGUE_MAP_POSITIONS);
-    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/corridor.png"),
              2,6,0,8,condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
     public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
              desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);
@@ -246,6 +246,7 @@ public class GameRessources {
         addObject(MY_ARCHIVES_ROOM, MOUSE_B_IM);
         addObject(MY_PRODUCTS_RESERVE, POTION_IM);
         addObject(MY_DESERTED_ROOM, MONKEY_B_IM);
+        addObject(MY_DESERTED_ROOM, FUSE_IM);
         addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM);
     }
 }

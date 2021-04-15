@@ -11,7 +11,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
+import model.others.Place;
 import model.others.Script;
+import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
@@ -125,27 +127,36 @@ public class MainController implements Initializable {
 
     // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
+
         Hero hero = HERO_IM.hero;
-        if(im.animal!=null){ //interaction avec animal
-            im.animal.talk(hero);
-        }
-        if(im.monkey!=null)im.monkey.talk(hero);
-        if(im.obj!=null){ //interaction avec objet
+
+        // -- Animals --
+        if(im.animal != null) im.animal.talk(hero);
+
+        if(im.monkey != null) im.monkey.talk(hero);
+
+        // -- Objects --
+        if(im.obj != null) {
+
             im.obj.take(hero);
             im.obj.setDraggableTrue();
-            //l'objet eletricMeter n'est pas prennable
-            if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
 
-            }
-            else if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME)){
+            // if the object isn't the electric meter or the locker, the player can take it in his inventory
+            if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
             }
         }
-        if(im.door!=null){//interaction avec des portes
-            if(im.door instanceof SecretCodeDoor){ //cas particulier de la SecretCodeDoor
+
+        // -- Doors --
+        if(im.door!=null) {
+
+            if(im.door instanceof SecretCodeDoor) { //SecretCodeDoor case
+
                 SecretCodeDoor d = (SecretCodeDoor) im.door;
-                if(!d.isUnlock()){
+
+                if(!d.isUnlock()) {
+
                     // TextInputDialog Component
                     TextInputDialog code = new TextInputDialog();
                     code.setHeaderText("NEED A CODE");
@@ -155,12 +166,14 @@ public class MainController implements Initializable {
                     // Unlock and open the door
                     d.unlock(code.getResult());
                 }
+
                 if (d.isUnlock()) {
                     heroCrossDoor(im, hero);
                     labelTitle.setText(hero.getPlace().getName());
                     gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
             }
+
             else  {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
@@ -175,22 +188,49 @@ public class MainController implements Initializable {
         for(String s : im.door.getPlaces().keySet()) {
             if(!s.equals(hero.getPlace().getName())){
                 dest = s;
-                System.out.println(dest);
+                //System.out.println(dest);
                 break;
             }
         }
         if(dest!=null){
             im.door.cross(hero,dest);
             if(hero.getPlace().getName().equals(dest)){
-                gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(hero.getPlace()));
-                HERO_IM.x.setValue(Math.abs(HERO_IM.x.getValue()-8));
-                HERO_IM.y.setValue(Math.abs(HERO_IM.y.getValue()-8));
+                MyPlace newPlace = PLACE_TO_MY_PLACE.get(hero.getPlace());
+                gridPaneGame.setMyPlace(newPlace);
+                if (dest.equals("archives room")) {
+                    HERO_IM.x.setValue(4);
+                    HERO_IM.y.setValue(1);
+                }
+                else this.heroPosDoor(newPlace, im);
             }
         }
     }
 
+    // - This function set the new position of the player after he crossed a specific door -
+    private void heroPosDoor(MyPlace dest, MyImageView door) {
 
+        double newX = dest.getDoorX(door);
+        double newY = dest.getDoorY(door);
 
+        if (newY == 0) {
+            HERO_IM.x.setValue(newX);
+            HERO_IM.y.setValue(newY + 1);
+        }
+        else if (newY == dest.getMaxYBound()) {
+            HERO_IM.x.setValue(newX);
+            HERO_IM.y.setValue(newY - 1);
+        }
+        else if (newX == dest.getMinXBound()) {
+            HERO_IM.x.setValue(newX + 1);
+            HERO_IM.y.setValue(newY);
+        }
+        else if (newX == dest.getMaxXBound()) {
+            HERO_IM.x.setValue(newX - 1);
+            HERO_IM.y.setValue(newY);
+        }
+    }
+
+    // TODO - -
     private boolean isPositionContainsEntity(int x, int y){
         boolean ans = false;
         MyImageView im = gridPaneGame.getPositions().get((y)*9+ x);
@@ -268,7 +308,7 @@ public class MainController implements Initializable {
         }
     }
 
-    // - Look action :
+    // - Look action -
     @FXML
     private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
         try{
@@ -289,14 +329,19 @@ public class MainController implements Initializable {
             labelObjectInfo.setText("");
         }
     }
-    // --- Initialization of the controller ---
 
+    // --- Initialization of the controller ---
+    
+    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
+        labelTitle.setText(HERO_IM.hero.getPlace().getName());
         new GameResourcesController(flowPaneInventory);
         initListener();
+
+        //Fonts
         labelTitle.setFont(MY_FONT_64);
         textAreaScript.setFont(MY_FONT_16);
         labelObjectInfo.setFont(MY_FONT_32);

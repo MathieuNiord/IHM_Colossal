@@ -1,14 +1,15 @@
 package controller;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.image.Image;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import model.characters.Hero;
 import model.others.Game;
-import view.ressources.GameRessources;
+import stage.MyStage;
+
 import java.net.URL;
 import java.util.*;
 
@@ -47,6 +48,8 @@ public class BattleController implements Initializable {
     private Button button_attack;
     @FXML
     private Button button_heal;
+    @FXML
+    private Button button_quit;
 
     //Imageview
     @FXML
@@ -60,14 +63,9 @@ public class BattleController implements Initializable {
 
     /*** === METHODS === ***/
 
-    @FXML
-    private void lifeDisplay() {
-        label_enemy_life.setText(String.valueOf(HERO_IM.hero.getPlace().getEnemies().getHP()));
-        label_hero_life.setText(String.valueOf(HERO_IM.hero.getHP()));
-        progress_bar_hero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
-        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemies().getHP()) / (double) (this.eLife));
-    }
+    // --- Events ---
 
+    // - Set the action of the "ATTACK" button -
     @FXML
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
@@ -85,11 +83,12 @@ public class BattleController implements Initializable {
                 label_commentary.setText("YOU WON THE BATTLE ! Good game HOUGA BOUGA !");
                 button_attack.setDisable(true);
                 button_heal.setDisable(true);
+                button_quit.setVisible(true);
             }
         });
     }
 
-    // - Set the action of the HEAL button -
+    // - Set the action of the "HEAL" button -
     @FXML
     private void setButton_heal() {
         button_heal.setOnAction( event -> {
@@ -97,6 +96,17 @@ public class BattleController implements Initializable {
             label_commentary.setText("");
             this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
             enemyTurn();
+        });
+    }
+
+    // - Set the action of the "QUIT" button -
+    @FXML
+    private void setButton_quit() {
+        button_quit.setOnAction( event -> {
+            Stage stage = (Stage) button_quit.getScene().getWindow();
+            stage.close();
+            MyStage s = new MyStage("../view/fxml/main.fxml");
+            s.show();
         });
     }
 
@@ -129,6 +139,18 @@ public class BattleController implements Initializable {
         }
     }
 
+    // --- Display ---
+
+    @FXML
+    private void lifeDisplay() {
+        label_enemy_life.setText(String.valueOf(HERO_IM.hero.getPlace().getEnemies().getHP()));
+        label_hero_life.setText(String.valueOf(HERO_IM.hero.getHP()));
+        progress_bar_hero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
+        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemies().getHP()) / (double) (this.eLife));
+    }
+
+    // --- Initialization of the controller ---
+
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -148,6 +170,7 @@ public class BattleController implements Initializable {
 
         setButton_attack();
         setButton_heal();
+        setButton_quit();
 
         // -- Battle opening
         label_commentary.setText(HERO_IM.hero.getPlace().getEnemies().DESCRIPTION);

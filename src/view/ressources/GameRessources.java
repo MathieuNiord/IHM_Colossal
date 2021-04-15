@@ -73,7 +73,7 @@ public class GameRessources {
     public final static MyImageView TRANSF_TO_EXPER_IM = new MyImageView(TRANSF_AND_EXPER, IMAGE_DOOR_UP, 4, 0);
     public final static MyImageView EXPER_TO_TRANSF_IM = new MyImageView(TRANSF_AND_EXPER, IMAGE_DOOR_DOWN, 2, 8);
     public final static MyImageView EXPERIM_TO_MORG_IM = new MyImageView(EXPERIM_AND_MORT, IMAGE_DOOR_RIGHT, 8, 2);
-    public final static MyImageView MORG_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_MORT, IMAGE_DOOR_UP, 0, 4);
+    public final static MyImageView MORG_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_MORT, IMAGE_DOOR_LEFT, 0, 4);
     public final static MyImageView CONDA_TO_DESERT_IM = new MyImageView(CONDA_AND_DESERT, IMAGE_DOOR_UP, 4, 0);
     public final static MyImageView DESERT_TO_CONDA_IM = new MyImageView(CONDA_AND_DESERT, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView EXPERIM_TO_COLD_IM = new MyImageView(EXPERIM_AND_COLD, IMAGE_DOOR_LEFT, 0, 2);
@@ -101,7 +101,6 @@ public class GameRessources {
     private final static ArrayList<MyImageView> decontaminationRoomImList = new ArrayList<>();
     private final static ArrayList<MyImageView> exitImList = new ArrayList<>();
 
-
     // Positions des lieux sur la map
     public final static Integer[][] ANIMAL_ROOM_MAP_POSITIONS = {{2,5}};
     public final static Integer[][] TRANSFER_ROOM_MAP_POSITIONS = {{2,4}, {3,4}};
@@ -119,7 +118,6 @@ public class GameRessources {
     public final static Integer[][] DIRTY_CHANGING_ROOM_MAP_POSITIONS = {{2,3}};
     public final static Integer[][] DECONTAMINATION_ROOM_MAP_POSITIONS = {{1,3}};
     public final static Integer[][] EXIT_MAP_POSITIONS = {{0,3}};
-
 
     // MyPlace
     public final static MyPlace MY_ANIMAL_ROOM = new MyPlace(ANIMAL_ROOM, new Image("assets/images/place/floor.png"),
@@ -154,7 +152,6 @@ public class GameRessources {
             0, 8, 0, 8, decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_EXIT = new MyPlace(EXIT, new Image("assets/images/place/floor.png"),
             0, 8, 0, 8, exitImList, EXIT_MAP_POSITIONS, BOSS_IM);
-
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
@@ -193,15 +190,10 @@ public class GameRessources {
         decontaminationRoomImList.add(DECON_TO_DIRT_IM);
         decontaminationRoomImList.add(DECONT_TO_EXIT_IM);
 
-
         // ADD ANIMALS TO ROOMS
         animalRoomImList.add(CAT_IM);
         experimentsRoomImList.add(MONKEY_IM);
         experimentsRoomImList.add(MOUSE_IM);
-
-
-        // - Add enemies
-
 
         // ADD OBJECTS TO ROOMS
         animalRoomImList.add(CAT_B_IM);

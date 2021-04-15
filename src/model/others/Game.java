@@ -73,7 +73,7 @@ public class Game {
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
-	public final static Hero HERO = new Hero(ANIMAL_ROOM);
+	public final static Hero HERO = new Hero(DESERTED_ROOM);
 
 	public static final Locker LOCKER = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME, HERO);
 

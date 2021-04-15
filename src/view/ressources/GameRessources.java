@@ -136,7 +136,7 @@ public class GameRessources {
              experimentsRoomImList, EXPERIMENTS_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, new Image("assets/images/place/floor.png"),
              morgueImList, MORGUE_MAP_POSITIONS);
-    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/floor.png"),
+    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/corridor.png"),
              2,6,0,8,condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
     public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
              desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);

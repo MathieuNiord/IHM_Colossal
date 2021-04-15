@@ -7,25 +7,20 @@ public class Script {
     // === WELCOME MESSAGES ===
 
     public static final String WELCOME_MESSAGE =
-            "\n\n\n\t\t=========================================  WELCOME  ==========================================" +
-            "\n\t\t==                                                                                          ==" +
-            "\n\t\t==  Hello and welcome to our game The Colossal Caveman Adventure.                           ==" +
-            "\n\t\t==  This game is the product of many hours of work and deserves to be fully appreciated.    ==" +
-            "\n\t\t==  Therefore if you are reluctant to a little dirty humor, if you hate bad scenarios       ==" +
-            "\n\t\t==  or if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !                     ==" +
-            "\n\t\t==  Conversely, we wish you a good game and hope for a good return.                         ==" +
-            "\n\t\t==                                                                                          ==" +
-            "\n\t\t==============================================================================================";
+            "================  WELCOME  ================\n" +
+            "Hello and welcome to our game The Colossal Caveman Adventure.\n" +
+            "This game is the product of many hours of work and deserves to be fully appreciated.\n" +
+            "Therefore if you are reluctant to a little dirty humor, if you hate bad scenarios\n" +
+            "or if you have a heavy history with Nazism: DO NOT PLAY THIS GAME !\n" +
+            "Conversely, we wish you a good game and hope for a good return.\n" +
+            "===========================================\n\n";
 
     public static final String SYNOPSIS =
-            "\n\n\n\t\t=====================================  SYNOPSIS  =======================================" +
-            "\n\t\t==                                                                                    ==" +
-            "\n\t\t== A caveman found frozen in the Arctic during 1984.                                  ==" +
-            "\n\t\t== A team of Nazis researchers thaws it and took him prisoner of their laboratory.    ==" +
-            "\n\t\t== You play this man and your goal is to escape from here alive...                    ==" +
-            "\n\t\t==                                                                                    ==" +
-            "\n\t\t========================================================================================" +
-            "\n\n\t\tWrite : help, and press enter to get the list of available commands\n\n";
+            "================  SYNOPSIS  ================\n" +
+            "A caveman found frozen in the Arctic during 1984.\n" +
+            "A team of Nazis researchers thaws it and took him prisoner of their laboratory.\n" +
+            "You play this man and your goal is to escape from here alive...\n" +
+            "=============================================";
 
     //BEGIN
     public static final String NAZI_BLAHBLAH = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah\n" +

@@ -217,6 +217,7 @@ public class MainController implements Initializable {
             HERO_IM.x.setValue(newX - 1);
             HERO_IM.y.setValue(newY);
         }
+        System.out.println("newX = " + newX + " | newY = " + newY);
     }
 
     private boolean isPositionContainsEntity(int x, int y){

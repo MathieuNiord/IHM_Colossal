@@ -9,6 +9,8 @@ import view.classes.MyPlace;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import static model.others.Game.*;
 import static view.ressources.ImageRessources.*;
@@ -155,6 +157,24 @@ public class GameRessources {
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
+    public static Place obtainPlace(MyPlace place){
+        for(Map.Entry<Place, MyPlace> entry : PLACE_TO_MY_PLACE.entrySet()){
+            if(entry.getValue().equals(place)){
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+    private void addObject(MyPlace my_place, MyImageView obj){
+        Place place = obtainPlace(my_place);
+        if(place != null){
+            if(place.isEnlightened()){
+                my_place.getImages().add(obj);
+            }
+        }
+    }
+
     private final static GameRessources GAME_RESSOURCES = new GameRessources();
 
     private GameRessources() {
@@ -195,21 +215,6 @@ public class GameRessources {
         experimentsRoomImList.add(MONKEY_IM);
         experimentsRoomImList.add(MOUSE_IM);
 
-        // ADD OBJECTS TO ROOMS
-        animalRoomImList.add(CAT_B_IM);
-        transferRoomImList.add(FLINT_IM);
-        transferRoomImList.add(ELECTRICITY_METER_IM);
-        changingRoomImList.add(SEXY_POSTER_IM);
-        changingRoomImList.add(LOCKER_IM);
-        experimentsRoomImList.add(NAZI_POSTER_IM);
-        coldRoomImList.add(BANANA_IM);
-        garbageRoomImList.add(STICK_IM);
-        archivesRoomImList.add(CLUB_IM);
-        archivesRoomImList.add(MOUSE_B_IM);
-        productsReserveImList.add(POTION_IM);
-        desertedRoomImList.add(MONKEY_B_IM);
-        dirtyChangingRoomImList.add(SEXY_POSTER_IM);
-
         // ADD SAME PLACES AND MYPLACES
         PLACE_TO_MY_PLACE.put(ANIMAL_ROOM, MY_ANIMAL_ROOM);
         PLACE_TO_MY_PLACE.put(TRANSFER_ROOM, MY_TRANSFER_ROOM);
@@ -226,6 +231,21 @@ public class GameRessources {
         PLACE_TO_MY_PLACE.put(DIRTY_CHANGINGROOM, MY_DIRTY_CHANGING_ROOM);
         PLACE_TO_MY_PLACE.put(DECONTAMINATION_ROOM, MY_DECONTAMINATION_ROOM);
         PLACE_TO_MY_PLACE.put(EXIT, MY_EXIT);
+
+        // ADD OBJECTS TO ROOMS
+        addObject(MY_ANIMAL_ROOM, CAT_B_IM);
+        addObject(MY_TRANSFER_ROOM, FLINT_IM);
+        addObject(MY_TRANSFER_ROOM, ELECTRICITY_METER_IM);
+        addObject(MY_CHANGING_ROOM, SEXY_POSTER_IM);
+        addObject(MY_CHANGING_ROOM, LOCKER_IM);
+        addObject(MY_EXPERIMENTS_ROOM, NAZI_POSTER_IM);
+        addObject(MY_COLD_ROOM, BANANA_IM);
+        addObject(MY_GARBAGE_ROOM, STICK_IM);
+        addObject(MY_ARCHIVES_ROOM, CLUB_IM);
+        addObject(MY_ARCHIVES_ROOM, MOUSE_B_IM);
+        addObject(MY_PRODUCTS_RESERVE, POTION_IM);
+        addObject(MY_DESERTED_ROOM, MONKEY_B_IM);
+        addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM);
 
     }
 }

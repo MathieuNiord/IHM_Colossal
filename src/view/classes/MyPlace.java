@@ -1,6 +1,7 @@
 package view.classes;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import model.others.Place;
 
@@ -14,7 +15,7 @@ public class MyPlace {
     private final Place place;
     private final int minX,maxX,minY,maxY;
     private MyImageView enemy;
-    private final Image backgroundImage;
+    private Image backgroundImage;
     private final Integer[][] positions_map;
     private boolean visited;
 
@@ -117,5 +118,9 @@ public class MyPlace {
     // --- SETTER ---
 
     public void makeVisited(){this.visited = true;}
+
+    public void setBackgroundImage(Image backgroundImage){
+        this.backgroundImage = backgroundImage;
+    }
 
 }

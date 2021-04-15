@@ -1,12 +1,16 @@
 package controller;
 
+import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
 import model.doors.BurnableDoor;
 import model.objects.ElectricityMeter;
 import model.others.Game;
+import model.others.Place;
 import model.others.Script;
 import view.classes.MyImageView;
+import view.classes.MyPlace;
+import view.ressources.GameRessources;
 
 import static view.ressources.GameRessources.*;
 
@@ -134,6 +138,16 @@ public class GameResourcesController {
         event.consume();
     }
 
+    private void lightUpRoom(MyPlace my_place) {
+        Place place = obtainPlace(my_place);
+        if (place != null) {
+            if (!place.isEnlightened()) {
+                my_place.setBackgroundImage(new Image("assets/images/place/floor.png"));
+                my_place.setImagesVisible();
+            }
+        }
+    }
+
     private void putfuseEleectricMater(){
         // target
         ELECTRICITY_METER_IM.setOnDragOver(event -> {
@@ -156,6 +170,8 @@ public class GameResourcesController {
                 ((ElectricityMeter) ELECTRICITY_METER_IM.obj).setHasFuse();
                 Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
                 ((ElectricityMeter) ELECTRICITY_METER_IM.obj).place.setEnlightened();
+                this.lightUpRoom(MY_COLD_ROOM);
+
             }
             event.setDropCompleted(success);
             event.consume();

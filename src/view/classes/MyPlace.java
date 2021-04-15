@@ -114,4 +114,9 @@ public class MyPlace {
         this.backgroundImage = backgroundImage;
     }
 
+    public void setImagesVisible(){
+        for(ImageView im : this.getImages()){
+            im.setVisible(true);
+        }
+    }
 }

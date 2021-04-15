@@ -11,13 +11,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
-import model.others.Place;
 import model.others.Script;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
-import view.ressources.GameRessources;
 import view.ressources.ImageRessources;
 
 import java.io.IOException;

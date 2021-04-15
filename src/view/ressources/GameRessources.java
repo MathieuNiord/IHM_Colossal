@@ -138,7 +138,7 @@ public class GameRessources {
              experimentsRoomImList, EXPERIMENTS_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_MORGUE = new MyPlace(MORGUE, new Image("assets/images/place/floor.png"),
              morgueImList, MORGUE_MAP_POSITIONS);
-    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/corridor.png"),
+    public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, new Image("assets/images/place/floor.png"),
              2,6,0,8,condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
     public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, new Image("assets/images/place/floor.png"),
              desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);
@@ -169,8 +169,9 @@ public class GameRessources {
     private void addObject(MyPlace my_place, MyImageView obj){
         Place place = obtainPlace(my_place);
         if(place != null){
-            if(place.isEnlightened()){
-                my_place.getImages().add(obj);
+            my_place.getImages().add(obj);
+            if(!place.isEnlightened()){
+                obj.setVisible(false);
             }
         }
     }
@@ -246,6 +247,5 @@ public class GameRessources {
         addObject(MY_PRODUCTS_RESERVE, POTION_IM);
         addObject(MY_DESERTED_ROOM, MONKEY_B_IM);
         addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM);
-
     }
 }

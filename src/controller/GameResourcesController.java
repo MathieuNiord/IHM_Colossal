@@ -3,6 +3,7 @@ package controller;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
 import model.doors.BurnableDoor;
+import model.objects.ElectricityMeter;
 import model.others.Game;
 import model.others.Script;
 import view.classes.MyImageView;
@@ -80,7 +81,6 @@ public class GameResourcesController {
             if(db.hasString()){
                 success = true;
                 BurnableDoor door =(BurnableDoor) SECRET_PASSAGE_IM.door;
-                // TODO print
                 Game.printLetterByLetter("Congrats ! You can now pass !\n", Script.DEFAULT_NARRATOR);
                 door.unlock();
                 door.open();
@@ -133,10 +133,44 @@ public class GameResourcesController {
 
         event.consume();
     }
+
+    private void putfuseEleectricMater(){
+        // target
+        ELECTRICITY_METER_IM.setOnDragOver(event -> {
+            if (event.getDragboard().getString().equals(FUSE_IM.obj.NAME) &&
+                    event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            }
+            event.consume();
+        });
+
+        // target
+        ELECTRICITY_METER_IM.setOnDragDropped(event -> {
+            // data dropped
+            Dragboard db = event.getDragboard();
+            boolean success = false;
+            if(db.hasString()){
+                success = true;
+                HERO_IM.hero.getObjs().remove(Script.DEFAULT_FUSE_NAME);
+                inventory.getChildren().remove(FUSE_IM);
+                ((ElectricityMeter) ELECTRICITY_METER_IM.obj).setHasFuse();
+                Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
+                ((ElectricityMeter) ELECTRICITY_METER_IM.obj).place.setEnlightened();
+            }
+            event.setDropCompleted(success);
+            event.consume();
+        });
+
+        // source
+        FUSE_IM.setOnDragDetected(event -> objHandleDetected(event, FUSE_IM));
+    }
+
+
     public GameResourcesController(FlowPane inventory){
         this.inventory = inventory;
         monkeyDrag();
         firedStickDrag();
         burnedDoor();
+        putfuseEleectricMater();
     }
 }

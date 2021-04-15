@@ -36,9 +36,9 @@ public class MyGridPane extends GridPane {
         //remove all children from previous place
         if(this.myPlace!=null){
             this.getChildren().removeAll(this.myPlace.getImages());
+            this.getChildren().remove(this.myPlace.getEnemy());
             this.positions.clear();
         }
-
         //set new place
         this.myPlace = myPlace;
 

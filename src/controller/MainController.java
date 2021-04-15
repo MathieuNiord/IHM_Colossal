@@ -75,24 +75,13 @@ public class MainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Leave the game ?");
         alert.setContentText("Are you sure you want to leave ? ");
-        //ButtonType b1 = new ButtonType("Menu");
-        ButtonType b2 = new ButtonType("Quit");
-        ButtonType b3 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType b1 = new ButtonType("Quit");
+        ButtonType b2 = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        alert.getButtonTypes().setAll( b2, b3);
+        alert.getButtonTypes().setAll( b1, b2);
 
         Optional<ButtonType> result = alert.showAndWait();
-        /*if (result.get() == b1){
-            try{
-                Stage stage = (Stage) buttonQuit.getScene().getWindow();
-                stage.close();
-                MyStage s = new MyStage("../view/fxml/home.fxml");
-                s.show();
-            }
-            catch (Exception ignored){}
-        }
-        else */
-        if (result.get() == b2) {
+        if (result.get() == b1) {
             Stage stage = (Stage) buttonQuit.getScene().getWindow();
             stage.close();
         }
@@ -209,8 +198,9 @@ public class MainController implements Initializable {
     // - This function set the new position of the player after he crossed a specific door -
     private void heroPosDoor(MyPlace dest, MyImageView door) {
 
-        double newX = dest.getDoorX(door);
-        double newY = dest.getDoorY(door);
+        MyImageView d = dest.getDoor(door);
+        int newX = d.x;
+        int newY =d.y;
 
         if (newY == 0) {
             HERO_IM.x.setValue(newX);
@@ -230,7 +220,6 @@ public class MainController implements Initializable {
         }
     }
 
-    // TODO - -
     private boolean isPositionContainsEntity(int x, int y){
         boolean ans = false;
         MyImageView im = gridPaneGame.getPositions().get((y)*9+ x);
@@ -238,6 +227,7 @@ public class MainController implements Initializable {
            ans =true;
             heroInteractWithIm(im);
         }
+        //Cas out of bound.
         if(!(x < gridPaneGame.getMyPlace().getMaxXBound() && x > gridPaneGame.getMyPlace().getMinXBound() &&
                 y < gridPaneGame.getMyPlace().getMaxYBound() && y > gridPaneGame.getMyPlace().getMinYBound())){
             ans = true;
@@ -248,6 +238,10 @@ public class MainController implements Initializable {
     // - Here we got all actions the player can make during the game -
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
+        try {
+            if(HERO_IM.hero.getPlace().getName().equals("cold room")) Thread.sleep(500);
+        }
+        catch (Exception ignored){};
         int x = HERO_IM.x.getValue();
         int y = HERO_IM.y.getValue();
         switch (event.getCode()){

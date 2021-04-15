@@ -32,6 +32,7 @@ public class WelcomeController implements Initializable {
         dialog.showAndWait();
 
         if (dialog.getResult() != null && !dialog.getResult().equals("")) {
+            new Game(dialog.getResult());
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
             MyStage myStage = new MyStage("../view/fxml/main.fxml");

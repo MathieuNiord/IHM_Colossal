@@ -44,11 +44,13 @@ public class MyPlace {
        this.enemy = enemy;
        //TODO
        //Add to the list of images to display the enemy in the room
-       this.images.add(enemy);
+       //this.images.add(enemy);
     }
+
     public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map) {
         this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map);
     }
+
     public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
         this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map, enemy);
     }

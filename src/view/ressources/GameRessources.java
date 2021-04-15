@@ -151,9 +151,9 @@ public class GameRessources {
     public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, new Image("assets/images/place/floor.png"),
              dirtyChangingRoomImList, DIRTY_CHANGING_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, new Image("assets/images/place/floor.png"),
-             decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS);
+             decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS, BOSS_IM);
     public final static MyPlace MY_EXIT = new MyPlace(EXIT, new Image("assets/images/place/floor.png"),
-             exitImList, EXIT_MAP_POSITIONS, BOSS_IM);
+             exitImList, EXIT_MAP_POSITIONS);
 
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 

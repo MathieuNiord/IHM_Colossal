@@ -31,9 +31,9 @@ public class GameRessources {
     public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
     // Enemies
-    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(MEETING_ROOM.getEnemy(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(MEETING_ROOM.getEnemy(), IMAGE_ACCOUNT_GUY, 2, 6);
     public final static MyImageView NAZI_ZOMBIE_IM = new MyImageView(DESERTED_ROOM.getEnemy(), IMAGE_NAZI_ZOMBIE, 2, 6);
-    public final static MyImageView BOSS_IM = new MyImageView(EXIT.getEnemy(), IMAGE_NAZI_ZOMBIE, 2, 6);
+    public final static MyImageView BOSS_IM = new MyImageView(EXIT.getEnemy(), IMAGE_BOSS, 2, 6);
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
@@ -43,7 +43,7 @@ public class GameRessources {
     public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1, 40);
     public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4, 40);
     public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 7, 7, 40);
-    public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_BESCHERELLE, 3, 7, 40);
+    public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_CAT_BESCHERELLE, 3, 7, 40);
     public final static MyImageView MOUSE_B_IM =new MyImageView(MOUSE_B, IMAGE_BESCHERELLE, 6, 1, 40);
     public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1, 40);
     public final static MyImageView K_1_IM = new MyImageView(K_1, IMAGE_HEART, 0, 0, 40);

@@ -19,13 +19,14 @@ public class ImageRessources {
     public final static Image IMAGE_MOUSE = new Image("assets/images/characters/cat.gif");
 
     // - Enemies -
-    public final static Image IMAGE_ACCOUNT_GUY = new Image("assets/images/characters/ZombiNazi.png");
-    public final static Image IMAGE_NAZI_ZOMBIE = new Image("assets/images/characters/ZombiNazi.png");
-    public final static Image IMAGE_BOSS = new Image("assets/images/characters/ZombiNazi.png");
+    public final static Image IMAGE_ACCOUNT_GUY = new Image("assets/images/characters/AccountGuyDefault.png");
+    public final static Image IMAGE_NAZI_ZOMBIE = new Image("assets/images/characters/NaziZombieDefault.png");
+    public final static Image IMAGE_BOSS = new Image("assets/images/characters/BossDefault.png");
 
     // - Objects -
     public final static Image IMAGE_BANANA = new Image("assets/images/objects/Banana.png");
     public final static Image IMAGE_BESCHERELLE = new Image("assets/images/objects/Bescherelle.png");
+    public final static Image IMAGE_CAT_BESCHERELLE  = new Image("assets/images/objects/CatBescherelle.png");
     public final static Image IMAGE_TORCH = new Image("assets/images/place/Torch.gif");
     public final static Image IMAGE_NAZIS_POSTER = new Image("assets/images/objects/NazisPoster.png");
     public final static Image IMAGE_FLINT = new Image("assets/images/objects/Flint.png");
@@ -39,7 +40,7 @@ public class ImageRessources {
     public final static Image IMAGE_DOOR_UP = new Image("assets/images/place/BasicDoorUp.png");
     public final static Image IMAGE_DOOR_LEFT = new Image("assets/images/place/BasicDoorLeft.png");
     public final static Image IMAGE_DOOR_RIGHT = new Image("assets/images/place/BasicDoorRight.png");
-    public final static Image IMAGE_DOOR_DOWN = new Image("assets/images/place/BasicDoorDown.jpg");
+    public final static Image IMAGE_DOOR_DOWN = new Image("assets/images/place/BasicDoorDown.png");
 
 
 }

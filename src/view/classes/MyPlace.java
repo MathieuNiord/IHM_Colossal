@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class MyPlace {
 
     /*** === ATTRIBUTES === ***/
-
+    public final static int DEFAULT_MIN_BOUND = 0;
+    public final static int DEFAULT_MAX_BOUND = 8;
     private final ArrayList<MyImageView> images;
     private final Place place;
     private final int minX,maxX,minY,maxY;
@@ -35,12 +36,20 @@ public class MyPlace {
         this.enemy = null;
     }
 
-    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY
-            , int maxBoundY, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
+    public MyPlace(Place place, Image bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
+                   ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
+
        this.enemy = enemy;
+       //TODO
        //Add to the list of images to display the enemy in the room
        this.images.add(enemy);
+    }
+    public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map) {
+        this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map);
+    }
+    public MyPlace(Place place, Image bg, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
+        this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map, enemy);
     }
 
 
@@ -84,34 +93,16 @@ public class MyPlace {
 
     public boolean isVisited(){return this.visited;}
 
+
     // - This function get the abscice of a door -
-    public double getDoorX(MyImageView door) {
-
-        double x = 0;
+    public MyImageView getDoor(MyImageView door) {
 
         for (MyImageView im : this.images) {
-            if (im.door == door.door) {
-                x  = im.x;
-                break;
+            if (im.door.equals(door.door)) {
+                return im;
             }
         }
-
-        return x;
-    }
-
-    // - This function get the ordonnee of a door -
-    public double getDoorY(MyImageView door) {
-
-        double y = 0;
-
-        for (MyImageView im : this.images) {
-            if (im.door == door.door) {
-                y  = im.y;
-                break;
-            }
-        }
-
-        return y;
+        return null;
     }
 
     // --- SETTER ---

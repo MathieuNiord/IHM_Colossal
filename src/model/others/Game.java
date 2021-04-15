@@ -61,8 +61,8 @@ public class Game {
 	public static final Flint FLINT = new Flint(Script.DEFAULT_FLINT_NAME, Script.FLINT_DESCRIPT);
 	public static final Fuse FUSE = new Fuse(Script.DEFAULT_FUSE_NAME, Script.FUSE_DESCRIPT);
 	public static final Bescherelle CAT_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
-	public static final Bescherelle MOUSE_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MOUSE_DESCRIPT);
-	public static final Bescherelle MONKEY_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.MONKEY_DESCRIPT);
+	public static final Bescherelle MOUSE_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
+	public static final Bescherelle MONKEY_B = new Bescherelle(Script.DEFAULT_BESCHERELLE_NAME, Script.BESCH_DESCRIPT);
 	public static final Key K_1 = new Key(Script.DEFAULT_KEY1_NAME, Script.KEY_DESCRIPT);
 	public static final Key K_2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
 	public static final ElectricityMeter ELECTRICITY_METER = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, COLD_ROOM);
@@ -73,7 +73,7 @@ public class Game {
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
-	public final static Hero HERO = new Hero(DESERTED_ROOM);
+	public final static Hero HERO = new Hero(ANIMAL_ROOM);
 
 	public static final Locker LOCKER = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME, HERO);
 
@@ -268,7 +268,7 @@ public class Game {
 	public void PlayATurn(){
 		sysClear();
 		if (this.HERO.getPlace().isContainsEnemies()) {
-			battle(this.HERO, this.HERO.getPlace().getEnemies());
+			battle(this.HERO, this.HERO.getPlace().getEnemy());
 		}
 		this.displayEnvironment();
 		cmdPush(2);

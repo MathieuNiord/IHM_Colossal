@@ -70,11 +70,11 @@ public class BattleController implements Initializable {
     private void setButton_attack() {
         button_attack.setOnAction( event -> {
 
-            HERO_IM.hero.attack(HERO_IM.hero.getPlace().getEnemies());
+            HERO_IM.hero.attack(HERO_IM.hero.getPlace().getEnemy());
 
-            if (!HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
+            if (!HERO_IM.hero.getPlace().getEnemy().isDefeat()) {
                 label_commentary.setText("");
-                this.commentary = "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " took damages [-" + Hero.DEFAULT_DAMAGE + " HP]\n";
+                this.commentary = "-" + HERO_IM.hero.getPlace().getEnemy().NAME + " took damages [-" + Hero.DEFAULT_DAMAGE + " HP]\n";
                 enemyTurn();
             }
 
@@ -118,19 +118,19 @@ public class BattleController implements Initializable {
         Random rand = new Random();
         int eHeal = rand.nextInt(10 + 1);  //Enemy heal
 
-        if (!HERO_IM.hero.getPlace().getEnemies().isDefeat()) {
+        if (!HERO_IM.hero.getPlace().getEnemy().isDefeat()) {
 
             if (eHeal == 1) {
-                HERO_IM.hero.getPlace().getEnemies().heal(10);
-                this.commentary += "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " healed itself [+10 HP]";
+                HERO_IM.hero.getPlace().getEnemy().heal(10);
+                this.commentary += "-" + HERO_IM.hero.getPlace().getEnemy().NAME + " healed itself [+10 HP]";
             }
 
             else {
-                HERO_IM.hero.getPlace().getEnemies().attack();
-                HERO_IM.hero.setLife(HERO_IM.hero.getPlace().getEnemies().getDamage());
+                HERO_IM.hero.getPlace().getEnemy().attack();
+                HERO_IM.hero.setLife(HERO_IM.hero.getPlace().getEnemy().getDamage());
                 this.commentary +=
-                        "-" + HERO_IM.hero.getPlace().getEnemies().NAME + " attacked you [-" +
-                        HERO_IM.hero.getPlace().getEnemies().getDamage() + " HP]\n" +
+                        "-" + HERO_IM.hero.getPlace().getEnemy().NAME + " attacked you [-" +
+                        HERO_IM.hero.getPlace().getEnemy().getDamage() + " HP]\n" +
                         "Ouch ! You took several damages... Get up and beat this Nazi Crap !";
             }
 
@@ -143,10 +143,13 @@ public class BattleController implements Initializable {
 
     @FXML
     private void lifeDisplay() {
-        label_enemy_life.setText(String.valueOf(HERO_IM.hero.getPlace().getEnemies().getHP()));
+        //Labels
+        label_enemy_life.setText(String.valueOf(HERO_IM.hero.getPlace().getEnemy().getHP()));
         label_hero_life.setText(String.valueOf(HERO_IM.hero.getHP()));
+
+        //ProgressBars
         progress_bar_hero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
-        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemies().getHP()) / (double) (this.eLife));
+        progress_bar_enemy.setProgress((double) (HERO_IM.hero.getPlace().getEnemy().getHP()) / (double) (this.eLife));
     }
 
     // --- Initialization of the controller ---
@@ -160,8 +163,7 @@ public class BattleController implements Initializable {
         this.eLife = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().enemy.getHP();
 
         //Labels
-        label_enemy_name.setText(HERO_IM.hero.getPlace().getEnemies().NAME);
-        System.out.println(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().enemy.NAME);
+        label_enemy_name.setText(HERO_IM.hero.getPlace().getEnemy().NAME);
 
         //Image
         image_enemy.setImage(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().getImage());
@@ -172,8 +174,7 @@ public class BattleController implements Initializable {
         setButton_heal();
         setButton_quit();
 
-        // -- Battle opening
-        label_commentary.setText(HERO_IM.hero.getPlace().getEnemies().DESCRIPTION);
-        System.out.println("Label Opening");
+        //Battle opening
+        label_commentary.setText(HERO_IM.hero.getPlace().getEnemy().DESCRIPTION);
     }
 }

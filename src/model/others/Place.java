@@ -101,7 +101,7 @@ public class Place {
 	}
 
 	//ENEMIES
-	public Enemy getEnemies() {
+	public Enemy getEnemy() {
 		return this.enemy;
 	}
 

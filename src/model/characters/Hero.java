@@ -1,7 +1,5 @@
 package model.characters;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;
@@ -225,7 +223,7 @@ public class Hero {
 		if(s != null) {
 			s = s.toLowerCase();
 			if (this.getPlace().isContainsEnemies()) {
-				this.getPlace().getEnemies().look();
+				this.getPlace().getEnemy().look();
 			} else {
 				if (this.getPlace().isContainsAnimals() && this.getPlace().getAnimals().containsKey(s)) {
 					this.getPlace().getAnimals().get(s).look();

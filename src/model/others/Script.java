@@ -170,21 +170,21 @@ public class Script {
     // === OBJECTS ===
     
     //Names
-    public static final String DEFAULT_CLUB_NAME = "Club";
-    public static final String DEFAULT_KEY1_NAME = "Key";
-    public static final String DEFAULT_KEY2_NAME = "Exit Key";
-    public static final String DEFAULT_FUSE_NAME = "Missing_fuse";
-    public static final String DEFAULT_STICK_NAME = "Stick";
-    public static final String DEFAULT_FLINT_NAME = "Flint";
-    public static final String DEFAULT_POTION_NAME = "Potion";
-    public static final String DEFAULT_BANANA_NAME = "Banana";
-    public static final String DEFAULT_LOCKER_NAME = "Locker";
-    public static final String DEFAULT_WALKMAN_NAME = "Walkman";
-    public static final String DEFAULT_FIREDSTICK_NAME = "Fired Stick";
-    public static final String DEFAULT_NAZIPOSTER_NAME = "Nazi Poster";
-    public static final String DEFAULT_SEXYPOSTER_NAME = "Sexy Poster";
-    public static final String DEFAULT_BESCHERELLE_NAME = "Bescherelle";
-    public static final String DEFAULT_ELECTRICMETER_NAME = "Electric Meter";
+    public static final String DEFAULT_CLUB_NAME = "club";
+    public static final String DEFAULT_KEY1_NAME = "key";
+    public static final String DEFAULT_KEY2_NAME = "exit key";
+    public static final String DEFAULT_FUSE_NAME = "missing_fuse";
+    public static final String DEFAULT_STICK_NAME = "stick";
+    public static final String DEFAULT_FLINT_NAME = "flint";
+    public static final String DEFAULT_POTION_NAME = "potion";
+    public static final String DEFAULT_BANANA_NAME = "banana";
+    public static final String DEFAULT_LOCKER_NAME = "locker";
+    public static final String DEFAULT_WALKMAN_NAME = "walkman";
+    public static final String DEFAULT_FIREDSTICK_NAME = "fired stick";
+    public static final String DEFAULT_NAZIPOSTER_NAME = "nazi poster";
+    public static final String DEFAULT_SEXYPOSTER_NAME = "sexy poster";
+    public static final String DEFAULT_BESCHERELLE_NAME = "bescherelle";
+    public static final String DEFAULT_ELECTRICMETER_NAME = "electric meter";
 
     //Descriptions
     public static final String KEY_DESCRIPT = "It's just a key...which can open model.doors or something, basic !";

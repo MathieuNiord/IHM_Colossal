@@ -61,7 +61,9 @@ public class MainController implements Initializable {
 
     /** === METHODS === **/
 
-    // --- Events ---
+    // --- -------------- --- //
+    // --- Buttons Events --- //
+    // --- -------------- --- //
 
     // - The "HELP" button event -
     @FXML
@@ -112,7 +114,12 @@ public class MainController implements Initializable {
         textAreaScript.textProperty().addListener((observable, oldValue, newValue) -> textAreaScript.setScrollTop(Double.MAX_VALUE));
     }
 
-    // --- Player ---
+
+    // --- ------ --- //
+    // --- Player --- //
+    // --- ------ --- //
+
+    // --- Player Interaction --- //
 
     // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
@@ -166,14 +173,10 @@ public class MainController implements Initializable {
                 labelTitle.setText(hero.getPlace().getName());
                 gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
-            if (hero.isAlive() && hero.getPlace().getName().equals("exit") && !hero.isQuit()) {
-                Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
-                currentStage.close();
-                MyStage myStage = new MyStage("../view/fxml/end.fxml");
-                myStage.show();
-            }
         }
     }
+
+    // --- Player And Doors --- //
 
     // - This function permits the player to cross doors -
     private void heroCrossDoor(MyImageView im, Hero hero) {
@@ -181,7 +184,6 @@ public class MainController implements Initializable {
         for(String s : im.door.getPlaces().keySet()) {
             if(!s.equals(hero.getPlace().getName())){
                 dest = s;
-                //System.out.println(dest);
                 break;
             }
         }
@@ -195,6 +197,14 @@ public class MainController implements Initializable {
                     HERO_IM.y.setValue(1);
                 }
                 else this.heroPosDoor(newPlace, im);
+            }
+
+            // - check if the hero is in the last room -
+            if (hero.isAlive() && hero.getPlace().getName().equals("exit") && !hero.isQuit()) {
+                Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
+                currentStage.close();
+                MyStage myStage = new MyStage("../view/fxml/end.fxml");
+                myStage.show();
             }
         }
     }
@@ -225,12 +235,13 @@ public class MainController implements Initializable {
         System.out.println("newX = " + newX + " | newY = " + newY);
     }
 
+    // - check if the position contain an entity in the map -
     private boolean isPositionContainsEntity(int x, int y){
         boolean ans = false;
         MyImageView im = gridPaneGame.getPositions().get((y)*9+ x);
         if(im!=null){
            ans =true;
-            heroInteractWithIm(im);
+           heroInteractWithIm(im);
         }
         //Cas out of bound.
         if(!(x < gridPaneGame.getMyPlace().getMaxXBound() && x > gridPaneGame.getMyPlace().getMinXBound() &&
@@ -239,6 +250,10 @@ public class MainController implements Initializable {
         }
         return ans;
     }
+
+    // --- ------------------------- --- //
+    // --- Keyboard and Mouse Events --- //
+    // --- ------------------------- --- //
 
     // - Here we got all actions the player can make during the game -
     @FXML
@@ -278,6 +293,8 @@ public class MainController implements Initializable {
             }
         }
     }
+
+    // --- Inventory --- //
 
     // - Manage events in the Inventory -
     @FXML
@@ -334,8 +351,10 @@ public class MainController implements Initializable {
         }
     }
 
-    // --- Initialization of the controller ---
-    
+    // --- -------------------------------- --- //
+    // --- Initialization of the controller --- //
+    // --- -------------------------------- --- //
+
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {

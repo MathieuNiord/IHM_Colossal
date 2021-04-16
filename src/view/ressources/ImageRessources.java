@@ -7,7 +7,7 @@ public class ImageRessources {
 
     private ImageRessources() {}
 
-    //IMAGES
+    /**** IMAGES ***/
 
     // - Hero -
     public final static Image GIF_CAVEMAN = new Image("assets/images/characters/caveman.gif");
@@ -20,9 +20,23 @@ public class ImageRessources {
     public final static Image IMAGE_MOUSE = new Image("assets/images/characters/cat.gif");
 
     // - Enemies -
-    public final static Image IMAGE_ACCOUNT_GUY = new Image("assets/images/characters/AccountGuyDefault.png");
-    public final static Image IMAGE_NAZI_ZOMBIE = new Image("assets/images/characters/NaziZombieDefault.png");
-    public final static Image IMAGE_BOSS = new Image("assets/images/characters/BossDefault.png");
+    public final static Image IMAGE_ACCOUNT_GUY_DEFAULT = new Image("assets/images/characters/AccountGuyDefault.png");
+    public final static Image IMAGE_ACCOUNT_GUY_BATTLE = new Image("assets/images/characters/AccountGuyDefault.png");
+    public final static Image IMAGE_ACCOUNT_GUY_OPENING = new Image("assets/images/characters/AcountGuyOpening.PNG");
+    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_ANIM = new Image("assets/images/characters/AccountGuyLoose.PNG");
+    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_FIX = new Image("assets/images/characters/AccountGuyLoose.PNG");
+
+    public final static Image IMAGE_NAZI_ZOMBIE_DEFAULT = new Image("assets/images/characters/NaziZombieDefault.png");
+    public final static Image IMAGE_NAZI_ZOMBIE_BATTLE = new Image("assets/images/characters/NaziZombieBattleDefault.PNG");
+    public final static Image IMAGE_NAZI_ZOMBIE_OPENING = new Image("assets/images/characters/NaziZombieOpening.GIF");
+    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM = new Image("assets/images/characters/NaziZombieLoose.GIF");
+    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_FIX = new Image("assets/images/characters/NaziZombieLoose.PNG");
+
+    public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefault.png");
+    public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleFix.PNG");
+    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/AccountGuyDefault.png");
+    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/AccountGuyDefault.png");
+    public final static Image IMAGE_BOSS_DEFEAT_FIX = new Image("assets/images/characters/AccountGuyDefault.png");
 
     // - Objects -
     public final static Image IMAGE_BANANA = new Image("assets/images/objects/Banana.png");

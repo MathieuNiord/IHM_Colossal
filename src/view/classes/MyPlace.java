@@ -53,9 +53,6 @@ public class MyPlace {
         this.enemy = enemy;
     }
 
-
-
-
     /*** === METHODS === ***/
 
     // --- GETTER ---
@@ -129,5 +126,9 @@ public class MyPlace {
         for(ImageView im : this.getImages()){
             im.setVisible(true);
         }
+    }
+
+    public void removeEnemy() {
+        this.enemy = null;
     }
 }

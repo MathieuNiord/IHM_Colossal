@@ -2,21 +2,19 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
 import stage.MyStage;
-import view.classes.BattleDialog;
+import view.classes.Dialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
@@ -64,6 +62,7 @@ public class MainController implements Initializable {
     private TextArea textAreaScript;
 
     /** === METHODS === **/
+
 
     // --- -------------- --- //
     // --- Buttons Events --- //
@@ -119,11 +118,9 @@ public class MainController implements Initializable {
     }
 
 
-    // --- ------ --- //
-    // --- Player --- //
-    // --- ------ --- //
-
-    // --- Player Interaction --- //
+    // --- ------------------- --- //
+    // --- Player Interactions --- //
+    // --- ------------------- --- //
 
     // - This function regroups all interaction's constraints of the player -
     private void heroInteractWithIm(MyImageView im) {
@@ -140,6 +137,7 @@ public class MainController implements Initializable {
 
             im.obj.take(hero);
             im.obj.setDraggableTrue();
+            im.setOnDragEntered(event -> im.setCursor(Cursor.HAND));
 
             // if the object isn't the electric meter or the locker, the player can take it in his inventory
             if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
@@ -180,7 +178,10 @@ public class MainController implements Initializable {
         }
     }
 
-    // --- Player And Doors --- //
+
+    // --- ----- --- //
+    // --- Doors --- //
+    // --- ----- --- //
 
     // - This function permits the player to cross doors -
     private void heroCrossDoor(MyImageView im, Hero hero) {
@@ -213,6 +214,11 @@ public class MainController implements Initializable {
         }
     }
 
+
+    // --- ----- --- //
+    // --- Place --- //
+    // --- ----- --- //
+
     // - This function set the new position of the player after he crossed a specific door -
     private void heroPosDoor(MyPlace dest, MyImageView door) {
 
@@ -236,7 +242,6 @@ public class MainController implements Initializable {
             HERO_IM.x.setValue(newX - 1);
             HERO_IM.y.setValue(newY);
         }
-        System.out.println("newX = " + newX + " | newY = " + newY);
     }
 
     // - check if the position contain an entity in the map -
@@ -259,10 +264,6 @@ public class MainController implements Initializable {
         return ans;
     }
 
-    // --- ------------------------- --- //
-    // --- Keyboard and Mouse Events --- //
-    // --- ------------------------- --- //
-
     // - If the player approach an enemy, there's a battle -
     private boolean isPosContainsEnemy(int x, int y) {
 
@@ -270,25 +271,27 @@ public class MainController implements Initializable {
         MyImageView enemy = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy();
 
         if (enemy != null && (
-                (enemy.x == x + 1 && enemy.y == y) || (enemy.x == x - 1 && enemy.y == y)
-                || (enemy.x == x && enemy.y == y + 1) || (enemy.x == x && enemy.y == y - 1)
+                (enemy.x == x + 2 && enemy.y == y) || (enemy.x == x - 2 && enemy.y == y)
+                || (enemy.x == x && enemy.y == y + 2) || (enemy.x == x && enemy.y == y - 2)
+                || (enemy.x == x + 2 && enemy.y == y + 2) || (enemy.x == x - 2 && enemy.y == y - 2)
+                || (enemy.x == x - 2 && enemy.y == y + 2) || (enemy.x == x + 2 && enemy.y == y - 2)
             )
         ) {
             res = true;
 
-            //TEST
-            //System.out.println(enemy.enemy.NAME);
-            System.out.println(enemy.enemy);
-            System.out.println(enemy);
-
             //Battle
             new BattleController();
-            BattleDialog myStage = new BattleDialog("../fxml/battle.fxml");
+            Dialog myStage = new Dialog("../fxml/battle.fxml");
             myStage.show();
         }
 
         return res;
     }
+
+
+    // --- ------------------------- --- //
+    // --- Keyboard and Mouse Events --- //
+    // --- ------------------------- --- //
 
     // - Here we got all actions the player can make during the game -
     @FXML
@@ -329,7 +332,33 @@ public class MainController implements Initializable {
         }
     }
 
+    // - Look action -
+    // TODO : Quand on clique sur la pièce, alors on affiche une description de la pièce
+    @FXML
+    private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
+        try{
+            MyImageView im = (MyImageView)event.getTarget();
+            if(im.obj != null){
+                if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
+                    flowPaneInventory.getChildren().add(WALKMAN_IM);
+                }
+                im.obj.look();
+            }
+            if(im.animal != null) im.animal.look();
+            if(im.monkey != null) im.monkey.look();
+            if(im.enemy!=null) im.enemy.look();
+
+
+        } catch (Exception ignored){
+            labelObjectName.setText("");
+            labelObjectInfo.setText("");
+        }
+    }
+
+
+    // --- --------- --- //
     // --- Inventory --- //
+    // --- --------- --- //
 
     // - Manage events in the Inventory -
     @FXML
@@ -364,27 +393,6 @@ public class MainController implements Initializable {
         }
     }
 
-    // - Look action -
-    @FXML
-    private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
-        try{
-            MyImageView im = (MyImageView)event.getTarget();
-            if(im.obj != null){
-                if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
-                    flowPaneInventory.getChildren().add(WALKMAN_IM);
-                }
-                im.obj.look();
-            }
-            if(im.animal != null) im.animal.look();
-            if(im.monkey != null) im.monkey.look();
-            if(im.enemy!=null) im.enemy.look();
-
-
-        } catch (Exception ignored){
-            labelObjectName.setText("");
-            labelObjectInfo.setText("");
-        }
-    }
 
     // --- -------------------------------- --- //
     // --- Initialization of the controller --- //
@@ -393,6 +401,8 @@ public class MainController implements Initializable {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //Initialization
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(HERO_IM.hero.getPlace().getName());

@@ -11,13 +11,13 @@ public class Enemy implements Lookable {
 
     public final String NAME;
     private int hp;
-    private final int HP_MAX;
-    private final int damage;
+    public final int HP_MAX;
+    private final int DAMAGE;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
     private boolean state = true; //true = vivant
-    private final String opening;
-    private final String attack;
-    private final String defeat;
+    private final String OPENING_SCRIPT;
+    private final String ATTACK_SCRIPT;
+    private final String DEFEAT_SCRIPT;
     public final String DESCRIPTION;
 
     // ***** CONSTRUCTOR *****
@@ -26,13 +26,12 @@ public class Enemy implements Lookable {
         this.NAME = name;
         this.hp = hp;
         this.HP_MAX = hp;
-        this.damage = dmg;
+        this.DAMAGE = dmg;
         this.item = loot;
-        this.opening = op;
-        this.attack = atk;
-        this.defeat = dft;
+        this.OPENING_SCRIPT = op;
+        this.ATTACK_SCRIPT = atk;
+        this.DEFEAT_SCRIPT = dft;
         this.DESCRIPTION=desc;
-    
     }
 
 
@@ -56,7 +55,7 @@ public class Enemy implements Lookable {
 
     //On souhaite connaître les dégâts d'attaque de l'ennemi
     public int getDamage() {
-        return this.damage;
+        return this.DAMAGE;
     }
 
     //On souhaite connaître l'objet que possède l'ennemi
@@ -95,7 +94,7 @@ public class Enemy implements Lookable {
     }
 
     public void loot(){
-        this.item=null;
+        this.item = null;
     }
 
 
@@ -109,19 +108,31 @@ public class Enemy implements Lookable {
     // === DISPLAY ===
 
     public void opening() {
-        Game.printLetterByLetter(this.opening, this.NAME);
+        Game.printLetterByLetter(this.OPENING_SCRIPT, this.NAME);
     }
 
     public void attack() {
-        Game.printLetterByLetter(this.attack, this.NAME);
+        Game.printLetterByLetter(this.ATTACK_SCRIPT, this.NAME);
     }
 
     public void defeat() {
-        Game.printLetterByLetter(this.defeat, this.NAME);
+        Game.printLetterByLetter(this.DEFEAT_SCRIPT, this.NAME);
     }
 
     public void descript() {
         Game.printLetterByLetter(this.DESCRIPTION, Script.DEFAULT_NARRATOR);
+    }
+
+    public String getOpeningScript() {
+        return this.OPENING_SCRIPT;
+    }
+
+    public String getAttackScript() {
+        return this.ATTACK_SCRIPT;
+    }
+
+    public String getDefeatScript() {
+        return this.DEFEAT_SCRIPT;
     }
 
 }

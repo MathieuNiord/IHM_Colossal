@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import model.others.Game;
 import model.others.Script;
 import stage.MyStage;
+import view.classes.Dialog;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +38,8 @@ public class WelcomeController implements Initializable {
             new Game(dialog.getResult());
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
-            MyStage myStage = new MyStage("../view/fxml/main.fxml");
+            Dialog myStage = new Dialog("../fxml/main.fxml");
+            //MyStage myStage = new MyStage("../view/fxml/main.fxml");
             myStage.show();
         }
     }

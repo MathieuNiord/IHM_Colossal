@@ -29,9 +29,15 @@ public class GameRessources {
     public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
     // Enemies
-    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(ACCOUNT_GUY, IMAGE_ACCOUNT_GUY, 4, 4);
-    public final static MyImageView ZOMBIE_NAZI_IM = new MyImageView(ZOMBIE_NAZI, IMAGE_NAZI_ZOMBIE, 4, 4);
-    public final static MyImageView SUPER_NAZI_IM = new MyImageView(SUPER_NAZI, IMAGE_BOSS, 4, 4);
+    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(ACCOUNT_GUY,
+            IMAGE_ACCOUNT_GUY_DEFAULT, IMAGE_ACCOUNT_GUY_BATTLE, IMAGE_ACCOUNT_GUY_OPENING, IMAGE_ACCOUNT_GUY_DEFEAT_ANIM, IMAGE_ACCOUNT_GUY_DEFEAT_FIX,
+            4, 4);
+    public final static MyImageView ZOMBIE_NAZI_IM = new MyImageView(ZOMBIE_NAZI,
+            IMAGE_NAZI_ZOMBIE_DEFAULT, IMAGE_NAZI_ZOMBIE_BATTLE, IMAGE_NAZI_ZOMBIE_OPENING, IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM, IMAGE_NAZI_ZOMBIE_DEFEAT_FIX,
+            4, 4);
+    public final static MyImageView SUPER_NAZI_IM = new MyImageView(SUPER_NAZI,
+            IMAGE_BOSS_DEFAULT, IMAGE_BOSS_BATTLE, IMAGE_BOSS_OPENING, IMAGE_BOSS_DEFEAT_ANIM, IMAGE_BOSS_DEFEAT_FIX,
+            4, 4);
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
@@ -154,8 +160,12 @@ public class GameRessources {
     public final static MyPlace MY_EXIT = new MyPlace(EXIT, BACKGROUND_DEFAULT,
              exitImList, EXIT_MAP_POSITIONS);
 
+    // - HashMap Place => MyPlace -
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
+    // === METHODS ===
+
+    // - Return a Place thanks the MyPlace -
     public static Place obtainPlace(MyPlace place){
         for(Map.Entry<Place, MyPlace> entry : PLACE_TO_MY_PLACE.entrySet()){
             if(entry.getValue().equals(place)){
@@ -165,6 +175,7 @@ public class GameRessources {
         return null;
     }
 
+    // - Add an object to a room thanks MyPlace -
     private static void addObject(MyPlace my_place, MyImageView obj){
         Place place = obtainPlace(my_place);
         if(place != null){
@@ -175,8 +186,10 @@ public class GameRessources {
         }
     }
 
+    // === INITIALIZATION ===
     private final static GameRessources GAME_RESSOURCES = new GameRessources();
 
+    // === CONSTRUCTOR ===
     private GameRessources() {
 
         // ADD DOORS TO ROOMS

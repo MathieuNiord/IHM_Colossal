@@ -3,7 +3,6 @@ package controller;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import model.others.Game;
@@ -12,6 +11,9 @@ import stage.MyStage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static view.ressources.GameRessources.MY_FONT_16;
+import static view.ressources.GameRessources.MY_FONT_32;
 
 public class WelcomeController implements Initializable {
 
@@ -42,7 +44,9 @@ public class WelcomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.okButton.setOnAction(event -> setOkButtonAction());
+        this.okButton.setFont(MY_FONT_16);
 
         this.scriptLabel.setText(Script.WELCOME_MESSAGE + Script.SYNOPSIS);
+        this.scriptLabel.setFont(MY_FONT_32);
     }
 }

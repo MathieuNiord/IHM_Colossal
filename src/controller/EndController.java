@@ -10,6 +10,8 @@ import stage.MyStage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static view.ressources.GameRessources.MY_FONT_16;
+
 public class EndController implements Initializable {
 
     /** === ATTRIBUTES === **/
@@ -29,7 +31,9 @@ public class EndController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.endButton.setOnAction(event -> endButtonAction());
+        this.endButton.setFont(MY_FONT_16);
 
         this.scriptLabel.setText(Script.CREDITS);
+        this.scriptLabel.setFont(MY_FONT_16);
     }
 }

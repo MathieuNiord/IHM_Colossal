@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
+import stage.MyStage;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
@@ -119,31 +120,31 @@ public class MainController implements Initializable {
         Hero hero = HERO_IM.hero;
 
         // -- Animals --
-        if(im.animal != null) im.animal.talk(hero);
+        if (im.animal != null) im.animal.talk(hero);
 
-        if(im.monkey != null) im.monkey.talk(hero);
+        if (im.monkey != null) im.monkey.talk(hero);
 
         // -- Objects --
-        if(im.obj != null) {
+        if (im.obj != null) {
 
             im.obj.take(hero);
             im.obj.setDraggableTrue();
 
             // if the object isn't the electric meter or the locker, the player can take it in his inventory
-            if(!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
+            if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
             }
         }
 
         // -- Doors --
-        if(im.door!=null) {
+        if (im.door != null) {
 
-            if(im.door instanceof SecretCodeDoor) { //SecretCodeDoor case
+            if (im.door instanceof SecretCodeDoor) { //SecretCodeDoor case
 
                 SecretCodeDoor d = (SecretCodeDoor) im.door;
 
-                if(!d.isUnlock()) {
+                if (!d.isUnlock()) {
 
                     // TextInputDialog Component
                     TextInputDialog code = new TextInputDialog();
@@ -160,12 +161,16 @@ public class MainController implements Initializable {
                     labelTitle.setText(hero.getPlace().getName());
                     gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
-            }
-
-            else  {
+            } else {
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
                 gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
+            }
+            if (hero.isAlive() && hero.getPlace().getName().equals("exit") && !hero.isQuit()) {
+                Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
+                currentStage.close();
+                MyStage myStage = new MyStage("../view/fxml/end.fxml");
+                myStage.show();
             }
         }
     }

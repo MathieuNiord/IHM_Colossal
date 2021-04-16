@@ -85,6 +85,7 @@ public class GameRessources {
     public final static MyImageView GARB_TO_COLD_IM = new MyImageView(COLD_AND_GARB, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView DIRT_TO_DECON_IM = new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_LEFT, 0, 4);
     public final static MyImageView DECON_TO_DIRT_IM =new MyImageView(DIRT_AND_DECON, IMAGE_DOOR_RIGHT, 8, 4);
+    public final static MyImageView EXIT_TO_DECON_IM =new MyImageView(DECONT_AND_EXIT, IMAGE_DOOR_RIGHT, 8, 4);
 
     // Liste des images des lieux
     private final static ArrayList<MyImageView> animalRoomImList = new ArrayList<>();
@@ -211,6 +212,7 @@ public class GameRessources {
         dirtyChangingRoomImList.add(DIRTY_TO_EXPERIM_IM);
         decontaminationRoomImList.add(DECON_TO_DIRT_IM);
         decontaminationRoomImList.add(DECONT_TO_EXIT_IM);
+        exitImList.add(EXIT_TO_DECON_IM);
 
         // ADD ANIMALS TO ROOMS
         animalRoomImList.add(CAT_IM);

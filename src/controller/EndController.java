@@ -21,6 +21,7 @@ public class EndController implements Initializable {
 
     /** === METHODS === **/
 
+    // - redirect to the home page -
     private void endButtonAction(){
         Stage currentStage = (Stage) endButton.getScene().getWindow();
         currentStage.close();

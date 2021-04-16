@@ -261,7 +261,7 @@ public class MainController implements Initializable {
         try {
             if(HERO_IM.hero.getPlace().getName().equals("cold room")) Thread.sleep(500);
         }
-        catch (Exception ignored){};
+        catch (Exception ignored){}
         int x = HERO_IM.x.getValue();
         int y = HERO_IM.y.getValue();
         switch (event.getCode()){

@@ -24,6 +24,7 @@ public class WelcomeController implements Initializable {
 
     /** === METHODS === **/
 
+    // - when ok is pressed we ask the name of the player and redirect to the main.fxml -
     private void setOkButtonAction(){
 
         //TextInputDialog configuration

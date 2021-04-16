@@ -12,7 +12,7 @@ import stage.MyStage;
 
 public class HomeController implements Initializable {
 
-    // === ATTRIBUTES ===
+    /** === ATTRIBUTES === **/
 
     public ImageView homeBG;
     @FXML
@@ -22,7 +22,7 @@ public class HomeController implements Initializable {
     @FXML
     private Button button_quit;
 
-    // === METHODS ===
+    /** === METHODS === **/
 
     // --- Events ---
 
@@ -35,6 +35,7 @@ public class HomeController implements Initializable {
         myStage.show();
     }
 
+    // - redirect to the credits -
     @FXML
     private void button_creditAction(){
 
@@ -44,9 +45,9 @@ public class HomeController implements Initializable {
         myStage.show();
     }
 
+    // - close the game -
     @FXML
     private void button_quitAction(){
-        // on ferme la page home
         Stage stage = (Stage) button_quit.getScene().getWindow();
         stage.close();
     }

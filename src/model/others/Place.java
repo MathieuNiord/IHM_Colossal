@@ -152,9 +152,9 @@ public class Place {
 		}
 	}
 
-	public void addAndCreateEnemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
+	public void addAndCreateEnemy(Enemy enemy) {
 		if(this.enemy == null) {
-			this.enemy = new Enemy(name, hp, dmg, loot, op, atk, dft,desc);
+			this.enemy = enemy;
 		}
 	}
 

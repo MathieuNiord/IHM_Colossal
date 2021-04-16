@@ -78,6 +78,15 @@ public class Game {
 	public static final Locker LOCKER = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME, HERO);
 
 
+	public static final Enemy ACCOUNT_GUY = new Enemy("account guy", 45, 1, K_1,
+	Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
+
+	public static final Enemy ZOMBIE_NAZI = new Enemy("zombie nazi", 60, 4, FUSE,
+			Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
+
+	public static final Enemy SUPER_NAZI = new Enemy("super-nazi", 100, 8, K_2,
+		Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
+
 
 	public Game(String heroName)
 	{
@@ -140,12 +149,9 @@ public class Game {
 
 
 		// ENEMIES ADDING TO ROOMS
-		MEETING_ROOM.addAndCreateEnemy("account guy", 45, 1, K_1,
-				Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
-		DESERTED_ROOM.addAndCreateEnemy("zombie nazi", 60, 4, FUSE,
-				Script.ZOMBIE_DEFAULT, Script.ZOMBIE_ATTACK, Script.ZOMBIE_DEFEAT,Script.ZOMBIEDESCRIPT);
-		DECONTAMINATION_ROOM.addAndCreateEnemy("super-nazi", 100, 8, K_2,
-				Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
+		MEETING_ROOM.addAndCreateEnemy(ACCOUNT_GUY);
+		DESERTED_ROOM.addAndCreateEnemy(ZOMBIE_NAZI);
+		DECONTAMINATION_ROOM.addAndCreateEnemy(SUPER_NAZI);
 	}
 
 

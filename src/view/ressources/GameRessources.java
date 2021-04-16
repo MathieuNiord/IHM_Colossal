@@ -1,7 +1,5 @@
 package view.ressources;
 
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
 import javafx.scene.text.Font;
 import model.others.Place;
 import view.classes.MyHeroImageView;
@@ -11,7 +9,6 @@ import view.classes.MyPlace;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import static model.others.Game.*;
 import static view.ressources.ImageRessources.*;
@@ -32,9 +29,9 @@ public class GameRessources {
     public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
     // Enemies
-    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(MEETING_ROOM.getEnemy(), IMAGE_ACCOUNT_GUY, 4, 4);
-    public final static MyImageView NAZI_ZOMBIE_IM = new MyImageView(DESERTED_ROOM.getEnemy(), IMAGE_NAZI_ZOMBIE, 4, 4);
-    public final static MyImageView BOSS_IM = new MyImageView(DECONTAMINATION_ROOM.getEnemy(), IMAGE_BOSS, 4, 4);
+    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(ACCOUNT_GUY, IMAGE_ACCOUNT_GUY, 4, 4);
+    public final static MyImageView ZOMBIE_NAZI_IM = new MyImageView(ZOMBIE_NAZI, IMAGE_NAZI_ZOMBIE, 4, 4);
+    public final static MyImageView SUPER_NAZI_IM = new MyImageView(SUPER_NAZI, IMAGE_BOSS, 4, 4);
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
@@ -143,7 +140,7 @@ public class GameRessources {
     public final static MyPlace MY_CONDAMNED_SAS = new MyPlace(CONDAMNED_SAS, BACKGROUND_CORRIDOR,
              2,6,0,8,condamnedSASImList, CONDAMNED_SAS_MAP_POSITIONS);
     public final static MyPlace MY_DESERTED_ROOM = new MyPlace(DESERTED_ROOM, BACKGROUND_DEFAULT,
-             desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, NAZI_ZOMBIE_IM);
+             desertedRoomImList, DESERTED_ROOM_MAP_POSITIONS, ZOMBIE_NAZI_IM);
     public final static MyPlace MY_PRODUCTS_RESERVE = new MyPlace(PRODUCTS_RESERVE, BACKGROUND_DEFAULT,
              productsReserveImList, PRODUCTS_RESERVE_MAP_POSITIONS);
     public final static MyPlace MY_GARBAGE_ROOM = new MyPlace(GARBAGE_ROOM, BACKGROUND_DEFAULT,
@@ -153,7 +150,7 @@ public class GameRessources {
     public final static MyPlace MY_DIRTY_CHANGING_ROOM = new MyPlace(DIRTY_CHANGINGROOM, BACKGROUND_DEFAULT,
              dirtyChangingRoomImList, DIRTY_CHANGING_ROOM_MAP_POSITIONS);
     public final static MyPlace MY_DECONTAMINATION_ROOM =new MyPlace(DECONTAMINATION_ROOM, BACKGROUND_DEFAULT,
-             decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS, BOSS_IM);
+             decontaminationRoomImList, DECONTAMINATION_ROOM_MAP_POSITIONS, SUPER_NAZI_IM);
     public final static MyPlace MY_EXIT = new MyPlace(EXIT, BACKGROUND_DEFAULT,
              exitImList, EXIT_MAP_POSITIONS);
 

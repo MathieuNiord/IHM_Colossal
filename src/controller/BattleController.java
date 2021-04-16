@@ -105,8 +105,6 @@ public class BattleController implements Initializable {
         button_quit.setOnAction( event -> {
             Stage stage = (Stage) button_quit.getScene().getWindow();
             stage.close();
-            MyStage s = new MyStage("../view/fxml/main.fxml");
-            s.show();
         });
     }
 

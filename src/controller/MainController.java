@@ -2,17 +2,21 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
 import stage.MyStage;
+import view.classes.BattleDialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
@@ -279,7 +283,7 @@ public class MainController implements Initializable {
 
             //Battle
             new BattleController();
-            MyStage myStage = new MyStage("../view/fxml/battle.fxml");
+            BattleDialog myStage = new BattleDialog("../fxml/battle.fxml");
             myStage.show();
         }
 

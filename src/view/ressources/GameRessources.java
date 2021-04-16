@@ -168,7 +168,7 @@ public class GameRessources {
         return null;
     }
 
-    private void addObject(MyPlace my_place, MyImageView obj){
+    private static void addObject(MyPlace my_place, MyImageView obj){
         Place place = obtainPlace(my_place);
         if(place != null){
             my_place.getImages().add(obj);

@@ -32,9 +32,9 @@ public class GameRessources {
     public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
     // Enemies
-    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(MEETING_ROOM.getEnemy(), IMAGE_ACCOUNT_GUY, 2, 6);
-    public final static MyImageView NAZI_ZOMBIE_IM = new MyImageView(DESERTED_ROOM.getEnemy(), IMAGE_NAZI_ZOMBIE, 2, 6);
-    public final static MyImageView BOSS_IM = new MyImageView(EXIT.getEnemy(), IMAGE_BOSS, 2, 6);
+    public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(MEETING_ROOM.getEnemy(), IMAGE_ACCOUNT_GUY, 4, 4);
+    public final static MyImageView NAZI_ZOMBIE_IM = new MyImageView(DESERTED_ROOM.getEnemy(), IMAGE_NAZI_ZOMBIE, 4, 4);
+    public final static MyImageView BOSS_IM = new MyImageView(DECONTAMINATION_ROOM.getEnemy(), IMAGE_BOSS, 4, 4);
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);

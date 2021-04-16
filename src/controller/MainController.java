@@ -237,23 +237,54 @@ public class MainController implements Initializable {
 
     // - check if the position contain an entity in the map -
     private boolean isPositionContainsEntity(int x, int y){
+
         boolean ans = false;
-        MyImageView im = gridPaneGame.getPositions().get((y)*9+ x);
-        if(im!=null){
+        MyImageView im = gridPaneGame.getPositions().get((y) * 9 + x);
+
+        if(im != null){
            ans =true;
            heroInteractWithIm(im);
         }
-        //Cas out of bound.
+
+        //Out of bounds case
         if(!(x < gridPaneGame.getMyPlace().getMaxXBound() && x > gridPaneGame.getMyPlace().getMinXBound() &&
-                y < gridPaneGame.getMyPlace().getMaxYBound() && y > gridPaneGame.getMyPlace().getMinYBound())){
+                y < gridPaneGame.getMyPlace().getMaxYBound() && y > gridPaneGame.getMyPlace().getMinYBound())) {
             ans = true;
         }
+
         return ans;
     }
 
     // --- ------------------------- --- //
     // --- Keyboard and Mouse Events --- //
     // --- ------------------------- --- //
+
+    // - If the player approach an enemy, there's a battle -
+    private boolean isPosContainsEnemy(int x, int y) {
+
+        boolean res = false;
+        MyImageView enemy = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy();
+
+        if (enemy != null && (
+                (enemy.x == x + 1 && enemy.y == y) || (enemy.x == x - 1 && enemy.y == y)
+                || (enemy.x == x && enemy.y == y + 1) || (enemy.x == x && enemy.y == y - 1)
+            )
+        ) {
+            res = true;
+
+            //TEST
+            //System.out.println(enemy.enemy.NAME);
+            System.out.println(enemy.enemy);
+            System.out.println(enemy);
+
+            //Battle
+            new BattleController();
+            MyStage myStage = new MyStage("../view/fxml/battle.fxml");
+            myStage.show();
+        }
+
+        return res;
+    }
 
     // - Here we got all actions the player can make during the game -
     @FXML
@@ -266,27 +297,27 @@ public class MainController implements Initializable {
         int y = HERO_IM.y.getValue();
         switch (event.getCode()){
             case Z: {
-                if(!isPositionContainsEntity(x,y-1)) {
+                if(!isPositionContainsEntity(x,y-1) && !isPosContainsEnemy(x, y - 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
                 }
                 HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
                 break;
             }
             case Q: {
-                if (!isPositionContainsEntity(x - 1, y)) {
+                if (!isPositionContainsEntity(x - 1, y) && !isPosContainsEnemy(x - 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() - 1);
                 }
                 break;
             }
             case S: {
-                if (!isPositionContainsEntity(x , y+1)) {
+                if (!isPositionContainsEntity(x , y+1) && !isPosContainsEnemy(x, y + 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue() + 1);
                 }
                 HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
                 break;
             }
             case D: {
-                if (!isPositionContainsEntity(x +1, y)) {
+                if (!isPositionContainsEntity(x +1, y) && !isPosContainsEnemy(x + 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() + 1);
                 }
                 break;

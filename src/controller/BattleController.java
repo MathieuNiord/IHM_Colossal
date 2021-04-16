@@ -159,7 +159,7 @@ public class BattleController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Initialization
-        new Game("Test");
+        //new Game("Test");
         this.eLife = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy().enemy.getHP();
 
         //Labels

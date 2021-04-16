@@ -41,7 +41,6 @@ public class MyPlace {
     public MyPlace(Place place, Background bg, int minBoundX, int maxBoundX, int minBoundY, int maxBoundY,
                    ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
        this(place, bg, minBoundX, maxBoundX, minBoundY, maxBoundY, images, positions_map);
-
        this.enemy = enemy;
     }
 
@@ -51,6 +50,7 @@ public class MyPlace {
 
     public MyPlace(Place place, Background bg, ArrayList<MyImageView> images, Integer[][] positions_map, MyImageView enemy) {
         this(place,bg,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,DEFAULT_MIN_BOUND,DEFAULT_MAX_BOUND,images,positions_map, enemy);
+        this.enemy = enemy;
     }
 
 
@@ -95,8 +95,18 @@ public class MyPlace {
 
     public boolean isVisited(){return this.visited;}
 
+    // - Return true if there is an enemy in the room -
+    public boolean battle() {
 
-    // - This function get the abscice of a door -
+        boolean res = false;
+
+        if (this.enemy != null) res = true;
+
+        return res;
+    }
+
+
+    // - This function get the position of a specific door -
     public MyImageView getDoor(MyImageView door) {
 
         for (MyImageView im : this.images) {

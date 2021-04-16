@@ -29,6 +29,7 @@ public class MyImageView extends ImageView {
         this.y = y;
         fitImage(fitImage);
     }
+
     public MyImageView(Monkey m, Image path,int x,int y, Integer fitImage){
         super(path);
         this.monkey = m;
@@ -36,6 +37,7 @@ public class MyImageView extends ImageView {
         this.y = y;
         fitImage(fitImage);
     }
+
     public MyImageView(Obj o, Image path,int x,int y, Integer fitImage){
         super(path);
         this.obj = o;
@@ -43,12 +45,14 @@ public class MyImageView extends ImageView {
         this.y = y;
         fitImage(fitImage);
     }
+
     public MyImageView(Enemy e, Image path,int x,int y){
         super(path);
         this.enemy = e;
         this.x = x;
         this.y = y;
     }
+
     public MyImageView(Door d, Image path, int x, int y){
         super(path);
         this.door = d;

@@ -10,12 +10,13 @@ import java.util.Random;
 public class Game {
 
 
-	// ***** ATTRIBUTES *****
-
+	/*** === ATTRIBUTES === ***/
 
 	private int party = 1;
 
-	// ***** CONSTRUCTORS *****
+	// === INSTANTIATIONS ===
+
+	// - Places -
 	public static final Place ANIMAL_ROOM = new Place("animal room", false, true);
 	public static final Place TRANSFER_ROOM = new Place("transfer room", false, true);
 	public static final Place CHANGING_ROOM = new Place("changing room", false, true);
@@ -33,6 +34,7 @@ public class Game {
 	public static final Place DECONTAMINATION_ROOM = new Place("decontamination room", false, true);
 	public static final Place EXIT = new Place("exit", false, true);
 
+	// - Doors -
 	public static final Door SECRET_PASSAGE = new BurnableDoor(ARCHIVES_ROOM, null);
 	public static final Door EXPERIM_AND_CONDA = new InfectedRoomDoor(EXPERIMENTS_ROOM, CONDAMNED_SAS);
 	public static final Door CHANG_AND_ENTRY = new CondemnedDoor(CHANGING_ROOM, ENTRY);
@@ -50,10 +52,14 @@ public class Game {
 	public static final Door COLD_AND_GARB = new Door(COLD_ROOM, GARBAGE_ROOM);
 	public static final Door DIRT_AND_DECON = new Door(DIRTY_CHANGINGROOM, DECONTAMINATION_ROOM);
 
+
+	// - Animals -
 	public static final Animal CAT = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
 	public static final Animal MOUSE = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
 	public static final Monkey MONKEY = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
 
+
+	// - Objects -
 	public static final Weapon CLUB = new Weapon(Script.DEFAULT_CLUB_NAME, Script.CLUB_DESCRIPT);
 	public static final Potion POTION = new Potion(Script.DEFAULT_POTION_NAME, Script.POTION_DESCRIPT);
 	public static final Banana BANANA = new Banana(Script.DEFAULT_BANANA_NAME, Script.BANANA_DESCRIPT);
@@ -67,17 +73,20 @@ public class Game {
 	public static final Key K_2 = new Key(Script.DEFAULT_KEY2_NAME, Script.KEY_DESCRIPT);
 	public static final ElectricityMeter ELECTRICITY_METER = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, COLD_ROOM);
 	public static final FiredStick FIRED_STICK = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
-
 	public static final NaziPoster NAZI_POSTER = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
 	public static final SexyPoster SEXY_POSTER = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
+	// - Hero -
 	public final static Hero HERO = new Hero(ANIMAL_ROOM);
 
+
+	// - Locker -
 	public static final Locker LOCKER = new Locker(Script.DEFAULT_LOCKER_NAME, Script.DEFAULT_LOCKER_NAME, HERO);
 
 
+	// - Enemies -
 	public static final Enemy ACCOUNT_GUY = new Enemy("account guy", 45, 1, K_1,
 	Script.ACCOUNTGUY_DEFAULT, Script.ACCOUNTGUY_ATTACK, Script.ACCOUNTGUY_DEFEAT,Script.ACCOUNTGUY_DESCRIPT);
 
@@ -88,14 +97,17 @@ public class Game {
 		Script.BOSS_DEFAULT, Script.BOSS_ATTACCK, Script.BOSS_DEFEAT,Script.BOSS_DESCRIPT);
 
 
-	public Game(String heroName)
-	{
+	/*** === CONSTRUCTOR === ***/
+	public Game(String heroName) {
+
+		// HERO INITIALIZATION
 		HERO.setName(heroName);
+
 		// DOORS ADDING TO ROOMS
 		ANIMAL_ROOM.addDoor(ANIM_AND_TRANSF, "up");
 		CHANGING_ROOM.addDoor(TRANSF_AND_CHANG, "up");
 		CHANGING_ROOM.addDoor(CHANG_AND_ENTRY, "down");
-		ENTRY.addDoor(CHANG_AND_ENTRY, "up"); // doit on vraiment lui ajouter la porte ?
+		ENTRY.addDoor(CHANG_AND_ENTRY, "up");
 		TRANSFER_ROOM.addDoor(ANIM_AND_TRANSF, "down");
 		TRANSFER_ROOM.addDoor(TRANSF_AND_CHANG, "down");
 		TRANSFER_ROOM.addDoor(TRANSF_AND_MEET, "right");
@@ -122,14 +134,12 @@ public class Game {
 		DIRTY_CHANGINGROOM.addDoor(DIRT_AND_DECON, "left");
 		DECONTAMINATION_ROOM.addDoor(DIRT_AND_DECON, "right");
 		DECONTAMINATION_ROOM.addDoor(DECONT_AND_EXIT, "left");
-		EXIT.addDoor(DECONT_AND_EXIT, "right");  // doit on vraiment lui ajouter la porte ?
-
+		EXIT.addDoor(DECONT_AND_EXIT, "right");
 
 		// ANIMALS ADDING TO ROOMS
 		ANIMAL_ROOM.addAnimal(CAT);
 		EXPERIMENTS_ROOM.addAnimal(MONKEY);
 		EXPERIMENTS_ROOM.addAnimal(MOUSE);
-
 
 		// OBJECTS ADDING TO ROOMS
 		ANIMAL_ROOM.addObject(CAT_B);
@@ -147,7 +157,6 @@ public class Game {
 		DESERTED_ROOM.addObject(MONKEY_B);
 		DIRTY_CHANGINGROOM.addObject(SEXY_POSTER);
 
-
 		// ENEMIES ADDING TO ROOMS
 		MEETING_ROOM.addAndCreateEnemy(ACCOUNT_GUY);
 		DESERTED_ROOM.addAndCreateEnemy(ZOMBIE_NAZI);
@@ -155,8 +164,7 @@ public class Game {
 	}
 
 
-	// ***** METHODS *****
-
+	/*** === METHODS === ***/
 
 	// === COMMANDS ===
 

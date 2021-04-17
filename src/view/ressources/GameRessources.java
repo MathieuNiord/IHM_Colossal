@@ -1,7 +1,9 @@
 package view.ressources;
 
 import javafx.scene.text.Font;
+import model.objects.Corpse;
 import model.others.Place;
+import model.others.Script;
 import view.classes.MyHeroImageView;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
@@ -20,46 +22,63 @@ public class GameRessources {
     public final static Font MY_FONT_32 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 32);
     public final static Font MY_FONT_64 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 64);
 
-    // HERO CREATION
-    public final static MyHeroImageView HERO_IM = new MyHeroImageView(HERO, ImageRessources.IMAGE_CAVEMAN_FRONT,4,4);
+
+    // Hero
+    public final static MyHeroImageView HERO_IM = new MyHeroImageView(HERO, IMAGE_CAVEMAN_DEFAULT_FRONT,4,4);
+
 
     // Animals
     public final static MyImageView CAT_IM = new MyImageView(CAT, IMAGE_CAT, 2, 6, 45);
     public final static MyImageView MONKEY_IM = new MyImageView(MONKEY, IMAGE_MONKEY, 4, 2, 45);
     public final static MyImageView MOUSE_IM = new MyImageView(MOUSE, IMAGE_MOUSE, 7, 6, 45);
 
+    //Enemies objects
+    public final static MyImageView K_1_IM = new MyImageView(K_1, IMAGE_HEART, 5, 4);
+    public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 5, 4);
+    public final static MyImageView K_2_IM = new MyImageView(K_2, IMAGE_HEART, 5, 4);
+
+    // Enemies corpses
+    private final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+    private final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+    private final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+
+    public final static MyImageView ACCOUNT_GUY_CORPSE_IM = new MyImageView(ACCOUNT_GUY_CORPSE, IMAGE_ACCOUNT_GUY_DEFEAT_FIX, 4, 4);
+    public final static MyImageView NAZI_ZOMBIE_CORPSE_IM = new MyImageView(NAZI_ZOMBIE_CORPSE, IMAGE_NAZI_ZOMBIE_DEFEAT_FIX, 4, 4);
+    public final static MyImageView BOSS_CORPSE_IM = new MyImageView(BOSS_CORPSE, IMAGE_BOSS_DEFEAT_FIX, 4, 4);
+
     // Enemies
     public final static MyImageView ACCOUNT_GUY_IM = new MyImageView(ACCOUNT_GUY,
-            IMAGE_ACCOUNT_GUY_DEFAULT, IMAGE_ACCOUNT_GUY_BATTLE, IMAGE_ACCOUNT_GUY_OPENING, IMAGE_ACCOUNT_GUY_DEFEAT_ANIM, IMAGE_ACCOUNT_GUY_DEFEAT_FIX,
+            IMAGE_ACCOUNT_GUY_DEFAULT, IMAGE_ACCOUNT_GUY_BATTLE, IMAGE_ACCOUNT_GUY_OPENING, IMAGE_ACCOUNT_GUY_DEFEAT_ANIM, ACCOUNT_GUY_CORPSE_IM,
+            K_1_IM,
             4, 4);
     public final static MyImageView ZOMBIE_NAZI_IM = new MyImageView(ZOMBIE_NAZI,
-            IMAGE_NAZI_ZOMBIE_DEFAULT, IMAGE_NAZI_ZOMBIE_BATTLE, IMAGE_NAZI_ZOMBIE_OPENING, IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM, IMAGE_NAZI_ZOMBIE_DEFEAT_FIX,
+            IMAGE_NAZI_ZOMBIE_DEFAULT, IMAGE_NAZI_ZOMBIE_BATTLE, IMAGE_NAZI_ZOMBIE_OPENING, IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM, NAZI_ZOMBIE_CORPSE_IM,
+            FUSE_IM,
             4, 4);
     public final static MyImageView SUPER_NAZI_IM = new MyImageView(SUPER_NAZI,
-            IMAGE_BOSS_DEFAULT, IMAGE_BOSS_BATTLE, IMAGE_BOSS_OPENING, IMAGE_BOSS_DEFEAT_ANIM, IMAGE_BOSS_DEFEAT_FIX,
+            IMAGE_BOSS_DEFAULT, IMAGE_BOSS_BATTLE, IMAGE_BOSS_OPENING, IMAGE_BOSS_DEFEAT_ANIM, BOSS_CORPSE_IM,
+            K_2_IM,
             4, 4);
+
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(NAZI_POSTER, IMAGE_NAZIS_POSTER, 3, 0, 40);
-    public final static MyImageView CLUB_IM = new MyImageView(CLUB, IMAGE_HEART, 3, 5, 40);
-    public final static MyImageView POTION_IM =new MyImageView(POTION, IMAGE_HEART, 4, 4, 40);
-    public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 1, 7, 40);
-    public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1, 40);
-    public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4, 40);
-    public final static MyImageView FUSE_IM = new MyImageView(FUSE, IMAGE_HEART, 7, 7, 40);
-    public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_CAT_BESCHERELLE, 3, 7, 40);
-    public final static MyImageView MOUSE_B_IM =new MyImageView(MOUSE_B, IMAGE_BESCHERELLE, 6, 1, 40);
-    public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1, 40);
-    public final static MyImageView K_1_IM = new MyImageView(K_1, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView K_2_IM = new MyImageView(K_2, IMAGE_HEART, 0, 0, 40);
+    public final static MyImageView CLUB_IM = new MyImageView(CLUB, IMAGE_HEART, 3, 5);
+    public final static MyImageView POTION_IM =new MyImageView(POTION, IMAGE_POTION, 4, 4);
+    public final static MyImageView BANANA_IM = new MyImageView(BANANA, IMAGE_BANANA, 1, 7);
+    public final static MyImageView STICK_IM = new MyImageView(STICK, IMAGE_STICK, 3, 1);
+    public final static MyImageView FLINT_IM = new MyImageView(FLINT, IMAGE_FLINT, 7, 4);
+    public final static MyImageView CAT_B_IM = new MyImageView(CAT_B, IMAGE_CAT_BESCHERELLE, 3, 7);
+    public final static MyImageView MOUSE_B_IM =new MyImageView(MOUSE_B, IMAGE_BESCHERELLE, 6, 1);
+    public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1);
     public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(ELECTRICITY_METER, IMAGE_HEART, 1, 1, 40);
-    public final static MyImageView LOCKER_IM = new MyImageView(LOCKER, IMAGE_HEART, 7, 3, 40);
-    public final static MyImageView SEXY_POSTER_IM = new MyImageView(SEXY_POSTER, IMAGE_HEART, 2, 0, 40);
-    public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_HEART, 0, 0, 40);
-    public final static MyImageView FIREDSTICK_IM = new MyImageView(FIRED_STICK, IMAGE_TORCH, 0, 0, 40);
+    public final static MyImageView LOCKER_IM = new MyImageView(LOCKER, IMAGE_LOCKER_CLOSED, 7, 3);
+    public final static MyImageView SEXY_POSTER_IM = new MyImageView(SEXY_POSTER, IMAGE_SEXY_POSTER, 2, 0);
+    public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_WALKMAN, 0, 0);
+    public final static MyImageView FIREDSTICK_IM = new MyImageView(FIRED_STICK, IMAGE_TORCH, 0, 0);
 
     // Doors
-    public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(SECRET_PASSAGE, IMAGE_DOOR_UP, 4, 8);
+    public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(SECRET_PASSAGE, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_UP, 6, 0);
     public final static MyImageView CONDA_TO_EXPERIM_IM = new MyImageView(EXPERIM_AND_CONDA, IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView CHANG_TO_ENTRY_IM = new MyImageView(CHANG_AND_ENTRY, IMAGE_DOOR_DOWN, 4, 8);

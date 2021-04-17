@@ -1,8 +1,11 @@
 package model.others;
 
+import java.util.Date;
+
 public class Script {
 
     public static final String DEFAULT_NARRATOR = "GUID VOICE";
+    private static final int CURRENT_YEAR = new Date().getYear() + 1900;
 
     // === WELCOME MESSAGES ===
 
@@ -38,13 +41,24 @@ public class Script {
 
     // === ENDING MESSAGES ===
 
+    // - Ending message for the text adventure -
     public static final String YOU_WIN =
                     "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n" +
-                    doSpaces(DEFAULT_NARRATOR) + "36 years later you are the head of the stock exchange, rising star of cinema and president\n" +
+                    doSpaces(DEFAULT_NARRATOR) + (CURRENT_YEAR - 1984) + " years later you are the head of the stock exchange, rising star of cinema and president\n" +
                     doSpaces(DEFAULT_NARRATOR) + "of the United States of America. Women run after you and men envy you, you are voted the\n" +
                     doSpaces(DEFAULT_NARRATOR) + "sexiest man in the world and your four children, Gaëtan, Benjamin, Mathieu and Thibault, have obtained\n" +
                     doSpaces(DEFAULT_NARRATOR) + "a superb rating for their project.\n\n" + "\t(Thanks for them...)\n\n";
 
+    // - End messages for the JavaFx project -
+    public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n";
+    public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you are the head of the stock exchange...";
+    public static final String WIN_ENDING_3 = "... become a rising star of cinema...";
+    public static final String WIN_ENDING_4 = "... and president of the United States of America.";
+    public static final String WIN_ENDING_5 = "Women run after you and men envy you, you are voted the sexiest man in the world !";
+    public static final String WIN_ENDING_6 = "... And potentially your four children, Gaëtan, Benjamin, Mathieu and Thibault, " +
+                                              "have obtained a superb rating for their project.\n(Thanks for them...)";
+
+    // - Other messages -
     public static final String YOU_LOOSE = "I thought this game was easy, you suck on a computer...You remind me of Psychology students...\n";
     public static final String GAME_OVER = "\nYou will quit the game in 5 seconds...\nSee you later ";
     public static final String CREDITS =
@@ -174,6 +188,7 @@ public class Script {
     public static final String DEFAULT_SEXYPOSTER_NAME = "sexy poster";
     public static final String DEFAULT_BESCHERELLE_NAME = "bescherelle";
     public static final String DEFAULT_ELECTRICMETER_NAME = "electric meter";
+    public static final String DEFAULT_CORPSE_NAME = "Corpse";
 
     //Descriptions
     public static final String KEY_DESCRIPT = "It's just a key...which can open model.doors or something, basic !";
@@ -189,6 +204,7 @@ public class Script {
     public static final String NAZI_POSTER = "You are looking at this poster. What a ugly Nazi face...";
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
     public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?";
+    public static final String CORPSE_DESCRIPT = "It's a corpse... What else ?...";
     
     
     // === HELP COMMANDS ===

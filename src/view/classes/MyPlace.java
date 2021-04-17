@@ -1,9 +1,7 @@
 package view.classes;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import model.others.Place;
 
 import java.util.ArrayList;
@@ -129,6 +127,14 @@ public class MyPlace {
     }
 
     public void removeEnemy() {
+
+        //Enemy is defeated so it loots something
+        this.enemy.enemy.loot();
+        //We add the possesed item to the room
+        this.images.add(this.enemy.getPossessedObject());
+        //And the corpse
+        this.images.add(this.enemy.getCorpse());
+        //Finally we remove the enemy
         this.enemy = null;
     }
 }

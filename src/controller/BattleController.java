@@ -114,14 +114,8 @@ public class BattleController implements Initializable {
     private void setButton_quit() {
         buttonQuit.setOnAction(event -> {
 
-            //We got to change the enemy image in the game
-            this.enemyImV.setImage(this.enemyImV.getDefeatFixIm());
-            //And remove the enemy from the place
+            //We remove the enemy from the place
             this.place.removeEnemy();
-
-            //The enemy loot something, it needs to display in the game
-            this.enemy.loot();
-            //TODO
 
             //We can now close the battle stage
             Stage stage = (Stage) buttonQuit.getScene().getWindow();

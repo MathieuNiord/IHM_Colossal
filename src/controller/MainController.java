@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
-import stage.MyStage;
 import view.classes.Dialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
@@ -135,14 +134,28 @@ public class MainController implements Initializable {
         // -- Objects --
         if (im.obj != null) {
 
-            im.obj.take(hero);
-            im.obj.setDraggableTrue();
-            im.setOnDragEntered(event -> im.setCursor(Cursor.HAND));
+            // If the object is a key (specific take() method)
+            if (im.obj.NAME.equals(Script.DEFAULT_KEY1_NAME) || im.obj.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
+                HERO_IM.hero.increaseKey();
+                gridPaneGame.myRemove(im);
+                this.textAreaScript.setText("You found a key");
+            }
 
-            // if the object isn't the electric meter or the locker, the player can take it in his inventory
-            if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
+            // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
+            else if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
+                im.obj.take(hero);
+                im.obj.setDraggableTrue();
+                im.setCursor(Cursor.HAND);
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
+                this.textAreaScript.setText("You found a " + im.obj.NAME);
+            }
+
+            // Else if it is the locker
+            else if (im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
+                LOCKER_IM.setImage(ImageRessources.IMAGE_LOCKER_OPENED);
+                flowPaneInventory.getChildren().add(WALKMAN_IM);
+                this.textAreaScript.setText("You found a walkman");
             }
         }
 
@@ -201,15 +214,18 @@ public class MainController implements Initializable {
                     HERO_IM.x.setValue(4);
                     HERO_IM.y.setValue(1);
                 }
-                else this.heroPosDoor(newPlace, im);
-            }
 
-            // - check if the hero is in the last room -
-            if (hero.isAlive() && hero.getPlace().getName().equals("exit") && !hero.isQuit()) {
-                Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
-                currentStage.close();
-                MyStage myStage = new MyStage("../view/fxml/end.fxml");
-                myStage.show();
+                //Else we check if the hero is in the last room
+                else if (dest.equals("exit")) {
+                    if (hero.isAlive() && !hero.isQuit()) {
+                        Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
+                        currentStage.close();
+                        Dialog end = new Dialog("../fxml/end.fxml");
+                        end.show();
+                    }
+                }
+
+                else this.heroPosDoor(newPlace, im);
             }
         }
     }
@@ -307,26 +323,28 @@ public class MainController implements Initializable {
                 if(!isPositionContainsEntity(x,y-1) && !isPosContainsEnemy(x, y - 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_BACK);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_BACK);
                 break;
             }
             case Q: {
                 if (!isPositionContainsEntity(x - 1, y) && !isPosContainsEnemy(x - 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() - 1);
                 }
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_LEFT);
                 break;
             }
             case S: {
                 if (!isPositionContainsEntity(x , y+1) && !isPosContainsEnemy(x, y + 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue() + 1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_FRONT);
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_FRONT);
                 break;
             }
             case D: {
                 if (!isPositionContainsEntity(x +1, y) && !isPosContainsEnemy(x + 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() + 1);
                 }
+                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_RIGHT);
                 break;
             }
         }
@@ -418,4 +436,3 @@ public class MainController implements Initializable {
         buttonQuit.setFont(MY_FONT_16);
     }
 }
-

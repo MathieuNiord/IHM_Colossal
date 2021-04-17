@@ -18,10 +18,11 @@ public class MyImageView extends ImageView {
     public Enemy enemy;
     public Monkey monkey;
     public Obj obj;
-    private final Image battleDefaultIm;
-    private final Image battleOpeningIm;
-    private final Image battleDefeatIm;
-    private final Image defeatFixIm;
+    private Image battleDefaultIm = null;
+    private Image battleOpeningIm = null;
+    private Image battleDefeatIm = null;
+    private MyImageView defeat = null;
+    private MyImageView possessedObject = null;
 
 
     /*** CONSTRUCTOR ***/
@@ -32,10 +33,6 @@ public class MyImageView extends ImageView {
         this.x = x;
         this.y = y;
         fitImage(fitImage);
-        this.battleDefaultIm = null;
-        this.battleOpeningIm = null;
-        this.battleDefeatIm = null;
-        this.defeatFixIm = null;
     }
 
     public MyImageView(Monkey m, Image path, int x, int y, Integer fitImage){
@@ -44,10 +41,13 @@ public class MyImageView extends ImageView {
         this.x = x;
         this.y = y;
         fitImage(fitImage);
-        this.battleDefaultIm = null;
-        this.battleOpeningIm = null;
-        this.battleDefeatIm = null;
-        this.defeatFixIm = null;
+    }
+
+    public MyImageView(Obj o, Image path, int x, int y){
+        super(path);
+        this.obj = o;
+        this.x = x;
+        this.y = y;
     }
 
     public MyImageView(Obj o, Image path, int x, int y, Integer fitImage){
@@ -56,19 +56,16 @@ public class MyImageView extends ImageView {
         this.x = x;
         this.y = y;
         fitImage(fitImage);
-        this.battleDefaultIm = null;
-        this.battleOpeningIm = null;
-        this.battleDefeatIm = null;
-        this.defeatFixIm = null;
     }
 
-    public MyImageView(Enemy e, Image path, Image battle, Image opening, Image defeatAnim, Image defeatFix, int x, int y){
+    public MyImageView(Enemy e, Image path, Image battle, Image opening, Image defeatAnim, MyImageView defeat, MyImageView possessedObject, int x, int y){
         super(path);
         this.enemy = e;
         this.battleDefaultIm = battle;
         this.battleOpeningIm = opening;
         this.battleDefeatIm = defeatAnim;
-        this.defeatFixIm = defeatFix;
+        this.defeat = defeat;
+        this.possessedObject = possessedObject;
         this.x = x;
         this.y = y;
     }
@@ -77,11 +74,7 @@ public class MyImageView extends ImageView {
         super(path);
         this.door = d;
         this.x = x;
-        this.y = y;
-        this.battleDefaultIm = null;
-        this.battleOpeningIm = null;
-        this.battleDefeatIm = null;
-        this.defeatFixIm = null;
+        this.y = y;;
     }
 
 
@@ -107,8 +100,12 @@ public class MyImageView extends ImageView {
     }
 
     //Defeat Image
-    public Image getDefeatFixIm() {
-        return this.defeatFixIm;
+    public MyImageView getCorpse() {
+        return this.defeat;
+    }
+
+    public MyImageView getPossessedObject() {
+        return this.possessedObject;
     }
 
     // --- SETTER ---

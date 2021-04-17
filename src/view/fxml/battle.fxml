@@ -23,7 +23,7 @@
          <children>
             <ImageView layoutX="214.0" layoutY="93.0">
                <image>
-                  <Image url="@../../assets/images/characters/caveman.gif" />
+                  <Image url="@../../assets/images/characters/Caveman.gif" />
                </image>
             </ImageView>
             <ImageView fx:id="enemyIm" fitHeight="87.0" fitWidth="82.0" layoutX="303.0" layoutY="77.0"/>

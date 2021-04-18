@@ -8,12 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.others.Script;
 import stage.MyStage;
-import view.ressources.ImageRessources;
+import view.ressources.ImageResources;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static view.ressources.GameRessources.MY_FONT_16;
 
 public class EndController implements Initializable {
 
@@ -46,27 +44,27 @@ public class EndController implements Initializable {
             switch (this.count) {
                 case 1 :
                     this.scriptLabel.setText(Script.WIN_ENDING_2);
-                    this.illustrationScene.setImage(ImageRessources.GIF_CAVEMAN);
+                    this.illustrationScene.setImage(ImageResources.GIF_CAVEMAN);
                     break;
 
                 case 2 :
                     this.scriptLabel.setText(Script.WIN_ENDING_3);
-                    this.illustrationScene.setImage(ImageRessources.IMAGE_TORCH);
+                    this.illustrationScene.setImage(ImageResources.IMAGE_TORCH);
                     break;
 
                 case 3 :
                     this.scriptLabel.setText(Script.WIN_ENDING_4);
-                    this.illustrationScene.setImage(ImageRessources.IMAGE_LOCKER_CLOSED);
+                    this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_CLOSED);
                     break;
 
                 case 4 :
                     this.scriptLabel.setText(Script.WIN_ENDING_5);
-                    this.illustrationScene.setImage(ImageRessources.IMAGE_LOCKER_OPENED);
+                    this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_OPENED);
                     break;
 
                 case 5 :
                     this.scriptLabel.setText(Script.WIN_ENDING_6);
-                    this.illustrationScene.setImage(ImageRessources.IMAGE_ACCOUNT_GUY_BATTLE);
+                    this.illustrationScene.setImage(ImageResources.IMAGE_ACCOUNT_GUY_BATTLE);
                     this.continueButton.setText("QUIT");
                     break;
 
@@ -83,7 +81,7 @@ public class EndController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //this.continueButton.setOnAction(event -> continueButtonAction());
         continueButtonAction();
-        this.illustrationScene.setImage(ImageRessources.IMAGE_BOSS_BATTLE);
+        this.illustrationScene.setImage(ImageResources.IMAGE_BOSS_BATTLE);
         this.scriptLabel.setText(Script.WIN_ENDING_1);
     }
 }

@@ -9,8 +9,8 @@ import model.others.Place;
 import model.others.Script;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
-import static view.ressources.ImageRessources.*;
-import static view.ressources.GameRessources.*;
+import static view.ressources.ImageResources.*;
+import static view.ressources.GameResources.*;
 
 
 public class GameResourcesController {

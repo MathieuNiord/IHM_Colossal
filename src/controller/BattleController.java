@@ -7,13 +7,15 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.characters.Enemy;
 import model.characters.Hero;
+import model.others.Script;
+import stage.MyStage;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
 
 import java.net.URL;
 import java.util.*;
 
-import static view.ressources.GameRessources.*;
+import static view.ressources.GameResources.*;
 
     /* =========================================================================================================
     === The battle controller : regroups all battle interactions and controls the view (display) of a battle ===
@@ -59,6 +61,9 @@ public class BattleController implements Initializable {
     //MyPlace
     private MyPlace place;
 
+    //Can the player heal himself/herself/itself ?
+    private boolean canHeal;
+
     //Enemy
     private Enemy enemy;
 
@@ -97,15 +102,26 @@ public class BattleController implements Initializable {
     private void setButton_heal() {
         buttonHeal.setOnAction(event -> {
 
-            //We set the default image
-            this.enemyIm.setImage(this.enemyImV.getBattleDefaultIm());
+            //If the player got all his life
+            if (HERO_IM.hero.getHP() >= Hero.DEFAULT_HP)
+                this.labelCommentary.setText("You better choose another option, you're already full of life dumb !");
 
-            //The player heal himself/herself/itself (no discrimination)
-            HERO_IM.hero.heal();
-            this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
+            else {
 
-            //It's the enemy turn
-            enemyTurn();
+                //We set the default image
+                this.enemyIm.setImage(this.enemyImV.getBattleDefaultIm());
+
+                //The player heal himself/herself/itself (no discrimination)
+                HERO_IM.hero.heal();
+                this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
+
+                //If now the player has nothing to heal
+                if (!HERO_IM.hero.getObjs().containsKey(Script.DEFAULT_SEXYPOSTER_NAME)) {
+                    this.buttonHeal.setDisable(true);
+                    //It's the enemy turn
+                    enemyTurn();
+                }
+            }
         });
     }
 
@@ -114,12 +130,28 @@ public class BattleController implements Initializable {
     private void setButton_quit() {
         buttonQuit.setOnAction(event -> {
 
-            //We remove the enemy from the place
-            this.place.removeEnemy();
+            //If the enemy is dead, the player must return to the game
+            if (this.enemy.isDefeat()) {
+                //We remove the enemy from the place
+                this.place.removeEnemy();
+                //We can now close the battle stage
+                Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
+                stage.close();
+            }
 
-            //We can now close the battle stage
-            Stage stage = (Stage) buttonQuit.getScene().getWindow();
-            stage.close();
+            //Else the game is over
+            else {
+                //We set a new image of the hero
+                // - TODO Hero corpse -
+                //We can now close the battle stage
+                Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
+                stage.close();
+                //TEST ====================================================
+                //We now open the game over view
+                MyStage gameOver = new MyStage("view/fxml/home.fxml");
+                gameOver.show();
+                // ========================================================
+            }
         });
     }
 
@@ -159,12 +191,20 @@ public class BattleController implements Initializable {
             this.commentary = this.enemyImV.enemy.getDefeatScript() + "YOU WON THE BATTLE ! Good game HOUGA BOUGA !";
 
             //Buttons
-            buttonAttack.setDisable(true);
-            buttonHeal.setDisable(true);
-            buttonQuit.setVisible(true);
+            this.buttonAttack.setDisable(true);
+            this.buttonHeal.setDisable(true);
+            this.buttonQuit.setVisible(true);
         }
 
-        labelCommentary.setText(this.commentary);
+        //If the player lost
+        if (!HERO_IM.hero.isAlive()) {
+            this.commentary = "You just succumbed to your wounds\n\nGAME OVER !";
+            this.buttonAttack.setDisable(true);
+            this.buttonHeal.setDisable(true);
+            this.buttonQuit.setVisible(true);
+        }
+
+        this.labelCommentary.setText(this.commentary);
         livesDisplay();
     }
 
@@ -173,12 +213,12 @@ public class BattleController implements Initializable {
     @FXML
     private void livesDisplay() {
         //Labels
-        labelEnemyLife.setText(String.valueOf(this.enemy.getHP()));
-        labelHeroLife.setText(String.valueOf(HERO_IM.hero.getHP()));
+        this.labelEnemyLife.setText(String.valueOf(this.enemy.getHP()));
+        this.labelHeroLife.setText(String.valueOf(HERO_IM.hero.getHP()));
 
         //ProgressBars
-        progressBarHero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
-        progressBarEnemy.setProgress((double) (this.enemy.getHP()) / (double) (this.eLife));
+        this.progressBarHero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
+        this.progressBarEnemy.setProgress((double) (this.enemy.getHP()) / (double) (this.eLife));
     }
 
     // --- Initialization of the controller ---
@@ -192,12 +232,13 @@ public class BattleController implements Initializable {
         this.enemyImV = place.getEnemy();
         this.enemy = this.enemyImV.enemy;
         this.eLife = this.enemy.HP_MAX;
+        this.canHeal = true;
 
         //Labels
-        labelEnemyName.setText(this.enemyImV.enemy.NAME);
+        this.labelEnemyName.setText(this.enemyImV.enemy.NAME);
 
         //Image
-        enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
+        this.enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
 
         livesDisplay();
 
@@ -205,7 +246,13 @@ public class BattleController implements Initializable {
         setButton_heal();
         setButton_quit();
 
+        //Heal button
+       if (!HERO_IM.hero.getObjs().containsKey(Script.DEFAULT_SEXYPOSTER_NAME)) {
+                this.canHeal = false;
+                this.buttonHeal.setDisable(true);
+       }
+
         //Battle opening
-        labelCommentary.setText(this.enemy.DESCRIPTION);
+        this.labelCommentary.setText(this.enemy.DESCRIPTION);
     }
 }

@@ -134,7 +134,8 @@ public class MyPlace {
         this.images.add(this.enemy.getPossessedObject());
         //And the corpse
         this.images.add(this.enemy.getCorpse());
-        //Finally we remove the enemy
+        //Finally we remove the enemy by setting his image at no visible and his value at null
+        this.enemy.setVisible(false);
         this.enemy = null;
     }
 }

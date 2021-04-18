@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="998.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EndController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="998.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EndController">
    <children>
-      <Label fx:id="scriptLabel" alignment="CENTER" contentDisplay="TOP" layoutX="109.0" layoutY="321.0" prefHeight="197.0" prefWidth="781.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="scriptLabel" alignment="CENTER" contentDisplay="TOP" layoutX="117.0" layoutY="401.0" prefHeight="131.0" prefWidth="781.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-width: 4;" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="24.0" />
          </font>
@@ -28,6 +28,6 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <ImageView fx:id="illustrationScene" fitHeight="237.0" fitWidth="460.0" layoutX="270.0" layoutY="41.0" pickOnBounds="true" />
+      <ImageView fx:id="illustrationScene" fitHeight="300.0" fitWidth="500.0" layoutX="257.0" layoutY="50.0" pickOnBounds="true" />
    </children>
 </AnchorPane>

@@ -13,12 +13,13 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
+import stage.MyStage;
 import view.classes.Dialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
 import view.classes.MyImageView;
-import view.ressources.ImageRessources;
+import view.ressources.ImageResources;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -27,7 +28,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static view.ressources.GameRessources.*;
+import static view.ressources.GameResources.*;
 
     /* =====================================================================================================
     === The main controller : regroups all game interactions and controls the view (display) of the game ===
@@ -153,7 +154,7 @@ public class MainController implements Initializable {
 
             // Else if it is the locker
             else if (im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
-                LOCKER_IM.setImage(ImageRessources.IMAGE_LOCKER_OPENED);
+                LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
                 flowPaneInventory.getChildren().add(WALKMAN_IM);
                 this.textAreaScript.setText("You found a walkman");
             }
@@ -323,28 +324,28 @@ public class MainController implements Initializable {
                 if(!isPositionContainsEntity(x,y-1) && !isPosContainsEnemy(x, y - 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_BACK);
+                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_BACK);
                 break;
             }
             case Q: {
                 if (!isPositionContainsEntity(x - 1, y) && !isPosContainsEnemy(x - 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() - 1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_LEFT);
+                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_LEFT);
                 break;
             }
             case S: {
                 if (!isPositionContainsEntity(x , y+1) && !isPosContainsEnemy(x, y + 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue() + 1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_FRONT);
+                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_FRONT);
                 break;
             }
             case D: {
                 if (!isPositionContainsEntity(x +1, y) && !isPosContainsEnemy(x + 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() + 1);
                 }
-                HERO_IM.setImage(ImageRessources.IMAGE_CAVEMAN_DEFAULT_RIGHT);
+                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_RIGHT);
                 break;
             }
         }
@@ -380,23 +381,21 @@ public class MainController implements Initializable {
 
     // - Manage events in the Inventory -
     @FXML
-    private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event){
+    private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event) {
         try {
-            MyImageView im = (MyImageView)event.getTarget();
-            if(event.getClickCount()==2) {
+            MyImageView im = (MyImageView) event.getTarget();
+            if (event.getClickCount() == 2) {
                 if (im.obj != null) {
                     im.obj.use(HERO_IM.hero);
                     if (im.obj.NAME.equals(Script.DEFAULT_POTION_NAME) ||
-                        im.obj.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
-                        im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_NAME)
+                            im.obj.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
+                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_NAME)
                     ) flowPaneInventory.getChildren().remove(im);
                 }
-            }
-
-            else {
+            } else {
                 if (im.obj != null) {
 
-                    String name =((MyImageView) event.getTarget()).obj.NAME;
+                    String name = ((MyImageView) event.getTarget()).obj.NAME;
                     String capName = name.substring(0, 1).toUpperCase() + name.substring(1);
 
                     labelObjectName.setText(capName);
@@ -405,7 +404,7 @@ public class MainController implements Initializable {
                 }
             }
 
-        } catch (Exception ignored){
+        } catch (Exception ignored) {
             labelObjectName.setText("");
             labelObjectInfo.setText("");
         }

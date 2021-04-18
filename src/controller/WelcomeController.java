@@ -7,14 +7,13 @@ import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import model.others.Game;
 import model.others.Script;
-import stage.MyStage;
 import view.classes.Dialog;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static view.ressources.GameRessources.MY_FONT_16;
-import static view.ressources.GameRessources.MY_FONT_32;
+import static view.ressources.GameResources.MY_FONT_16;
+import static view.ressources.GameResources.MY_FONT_32;
 
 public class WelcomeController implements Initializable {
 
@@ -30,16 +29,16 @@ public class WelcomeController implements Initializable {
 
         //TextInputDialog configuration
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Choose your name please");
-        dialog.setContentText("Please enter your name:");
+        dialog.setTitle("Choose a gamer tag");
+        dialog.setContentText("Please enter your name :");
         dialog.showAndWait();
 
         if (dialog.getResult() != null && !dialog.getResult().equals("")) {
             new Game(dialog.getResult());
+            new MainController();
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
             Dialog myStage = new Dialog("../fxml/main.fxml");
-            //MyStage myStage = new MyStage("../view/fxml/main.fxml");
             myStage.show();
         }
     }

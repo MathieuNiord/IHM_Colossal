@@ -1,7 +1,7 @@
 package view.classes;
 
 import javafx.scene.layout.*;
-import view.ressources.GameRessources;
+import view.ressources.GameResources;
 import java.util.HashMap;
 
 public class MyGridPane extends GridPane {
@@ -17,7 +17,7 @@ public class MyGridPane extends GridPane {
     public MyGridPane(){
         super();
         positions = new HashMap<>();
-        this.add(GameRessources.HERO_IM,GameRessources.HERO_IM.x.getValue(),GameRessources.HERO_IM.y.getValue());
+        this.add(GameResources.HERO_IM, GameResources.HERO_IM.x.getValue(), GameResources.HERO_IM.y.getValue());
     }
 
 

@@ -29,6 +29,7 @@ public class HomeController implements Initializable {
     // - Create a TextInputDialog and return a string which corresponds to the gamer tag -
     @FXML
     private void button_playAction(){
+        //GameRessources.reset();
         Stage currentStage = (Stage) button_play.getScene().getWindow();
         currentStage.close();
         MyStage myStage = new MyStage("../view/fxml/welcome.fxml");

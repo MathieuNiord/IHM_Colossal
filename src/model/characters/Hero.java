@@ -1,5 +1,7 @@
 package model.characters;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;
@@ -23,6 +25,7 @@ public class Hero {
 	// ***** ATTRIBUTES *****
 	private String name;
 	private int hp;
+	private IntegerProperty hpProperty;
 	private int keyLevel;
 	private int lvlBescherelle;
 	private boolean immunised;
@@ -36,6 +39,7 @@ public class Hero {
 	public Hero(Place place) {
 
 		this.hp = DEFAULT_HP;
+		this.hpProperty = new SimpleIntegerProperty(this.hp);
 		this.keyLevel = DEFAULT_KEY_LEVEL;
 		this.lvlBescherelle = DEFAULT_BESCHERELLE_LEVEL;
 		this.immunised = DEFAULT_IMMUNISED_VALUE;
@@ -54,6 +58,10 @@ public class Hero {
 
 	public int getHP() {
 		return this.hp;
+	}
+
+	public IntegerProperty getHpProperty() {
+		return this.hpProperty;
 	}
 
 	public int getBLevel() {
@@ -112,6 +120,8 @@ public class Hero {
 			System.out.print("\nYou loose " + damage + " point(s) of your life\n\n");
 			//Game.printLetterByLetter("Ouch ! You loose " + damage + " points of your life ! Take care my man...\n\n", Script.DEFAULT_NARRATOR);
 		}
+		//TEST PROPERTY
+		this.hpProperty.setValue(this.hp);
 	}
 
 	public void setImmunised(){

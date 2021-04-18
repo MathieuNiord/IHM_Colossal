@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static model.others.Game.*;
-import static view.ressources.ImageRessources.*;
+import static view.ressources.ImageResources.*;
 
-public class GameRessources {
+public class GameResources {
 
     //Fonts
     public final static Font MY_FONT_16 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 16);
@@ -205,11 +205,16 @@ public class GameRessources {
         }
     }
 
+    // - Reset GameResources -
+    public static void reset() {
+        // TODO - Reset the GameResources
+    }
+
     // === INITIALIZATION ===
-    private final static GameRessources GAME_RESSOURCES = new GameRessources();
+    private final static GameResources GAME_RESOURCES = new GameResources();
 
     // === CONSTRUCTOR ===
-    private GameRessources() {
+    private GameResources() {
 
         // ADD DOORS TO ROOMS
         animalRoomImList.add(ANIM_TO_TRANSF_IM);

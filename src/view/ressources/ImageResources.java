@@ -3,9 +3,9 @@ package view.ressources;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-public class ImageRessources {
+public class ImageResources {
 
-    private ImageRessources() {}
+    private ImageResources() {}
 
     /**** IMAGES ***/
 

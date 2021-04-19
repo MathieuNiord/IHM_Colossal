@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
-import view.classes.Dialog;
+import view.classes.MyDialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
 import view.classes.MyGridPane;
@@ -223,7 +223,7 @@ public class MainController implements Initializable {
                     if (hero.isAlive() && !hero.isQuit()) {
                         Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
                         currentStage.close();
-                        Dialog end = new Dialog("../fxml/end.fxml");
+                        MyDialog end = new MyDialog("../fxml/end.fxml");
                         end.show();
                     }
                 }
@@ -300,7 +300,7 @@ public class MainController implements Initializable {
 
             //Battle
             new BattleController();
-            Dialog myStage = new Dialog("../fxml/battle.fxml");
+            MyDialog myStage = new MyDialog("../fxml/battle.fxml");
             myStage.show();
         }
 

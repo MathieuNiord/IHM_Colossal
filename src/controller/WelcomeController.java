@@ -7,7 +7,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import model.others.Game;
 import model.others.Script;
-import view.classes.Dialog;
+import view.classes.MyDialog;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +38,7 @@ public class WelcomeController implements Initializable {
             new MainController();
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
-            Dialog myStage = new Dialog("../fxml/main.fxml");
+            MyDialog myStage = new MyDialog("../fxml/main.fxml");
             myStage.show();
         }
     }

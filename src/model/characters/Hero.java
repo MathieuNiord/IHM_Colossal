@@ -207,7 +207,15 @@ public class Hero {
 	public void heal() {
 		int bonus = DEFAULT_HEAL;
 		if (this.hp < DEFAULT_HP) {
-			if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_NAME)){
+			if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_1_NAME) || this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_2_NAME)){
+
+				Obj sexyPoster;
+
+				if (this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_1_NAME))
+					sexyPoster = this.objs.get(Script.DEFAULT_SEXYPOSTER_1_NAME);
+				else
+					sexyPoster = this.objs.get(Script.DEFAULT_SEXYPOSTER_2_NAME);
+
 				if(this.hp + bonus > DEFAULT_HP){
 					bonus = DEFAULT_HP - this.hp;
 					this.hp = DEFAULT_HP;
@@ -217,7 +225,12 @@ public class Hero {
 					this.hpProperty.setValue((this.hp + bonus) / 100.0);
 					this.hp += bonus;
 				}
-				this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);
+				this.objs.remove(sexyPoster.NAME);
+
+				if(this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_1_NAME) || this.objs.containsKey(Script.DEFAULT_SEXYPOSTER_2_NAME))
+					System.out.println("Il reste un poster");
+				else System.out.println("Il ne vous reste plus de Poster");
+
 				Game.printLetterByLetter("No please put this thing away from me ... this is absolutely no time or place for this sort of thing\n", Script.DEFAULT_NARRATOR);
 				System.out.println("\nYou gained " + bonus + " HP\n");
 			}

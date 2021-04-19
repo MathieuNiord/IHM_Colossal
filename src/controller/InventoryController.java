@@ -13,7 +13,7 @@ import static view.ressources.ImageResources.*;
 import static view.ressources.GameResources.*;
 
 
-public class GameResourcesController {
+public class InventoryController {
 
     /** === ATTRIBUTES === **/
     private final FlowPane inventory;
@@ -196,7 +196,7 @@ public class GameResourcesController {
 
     // --- Final --- //
 
-    public GameResourcesController(FlowPane inventory){
+    public InventoryController(FlowPane inventory){
         this.inventory = inventory;
         monkeyDrag();
         firedStickDrag();

@@ -185,7 +185,8 @@ public class Script {
     public static final String DEFAULT_WALKMAN_NAME = "walkman";
     public static final String DEFAULT_FIREDSTICK_NAME = "fired stick";
     public static final String DEFAULT_NAZIPOSTER_NAME = "nazi poster";
-    public static final String DEFAULT_SEXYPOSTER_NAME = "sexy poster";
+    public static final String DEFAULT_SEXYPOSTER_1_NAME = "sexy poster 01";
+    public static final String DEFAULT_SEXYPOSTER_2_NAME = "sexy poster 02";
     public static final String DEFAULT_BESCHERELLE_NAME = "bescherelle";
     public static final String DEFAULT_ELECTRICMETER_NAME = "electric meter";
     public static final String DEFAULT_CORPSE_NAME = "Corpse";

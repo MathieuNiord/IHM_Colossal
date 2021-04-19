@@ -74,8 +74,8 @@ public class Game {
 	public static final ElectricityMeter ELECTRICITY_METER = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, COLD_ROOM);
 	public static final FiredStick FIRED_STICK = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
 	public static final NaziPoster NAZI_POSTER = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
-	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
-	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_1_NAME, Script.SEXY_POSTER);
+	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_2_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 

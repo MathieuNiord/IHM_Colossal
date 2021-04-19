@@ -65,7 +65,6 @@ public class MainController implements Initializable {
 
     /** === METHODS === **/
 
-
     // --- -------------- --- //
     // --- Buttons Events --- //
     // --- -------------- --- //
@@ -301,7 +300,8 @@ public class MainController implements Initializable {
             //Battle
             new BattleController();
             MyDialog myStage = new MyDialog("../fxml/battle.fxml");
-            myStage.show();
+            myStage.showAndWait();
+            this.gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()));
         }
 
         return res;
@@ -383,14 +383,20 @@ public class MainController implements Initializable {
         try {
             MyImageView im = (MyImageView) event.getTarget();
             if (event.getClickCount() == 2) {
+
                 if (im.obj != null) {
+
                     im.obj.use(HERO_IM.hero);
+
                     if (im.obj.NAME.equals(Script.DEFAULT_POTION_NAME) ||
                             im.obj.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
-                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_NAME)
+                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
+                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
                     ) flowPaneInventory.getChildren().remove(im);
                 }
-            } else {
+            }
+
+            else {
                 if (im.obj != null) {
 
                     String name = ((MyImageView) event.getTarget()).obj.NAME;
@@ -398,7 +404,6 @@ public class MainController implements Initializable {
 
                     labelObjectName.setText(capName);
                     labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
-
                 }
             }
 
@@ -421,8 +426,9 @@ public class MainController implements Initializable {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(HERO_IM.hero.getPlace().getName());
-        new GameResourcesController(flowPaneInventory);
+        new InventoryController(flowPaneInventory);
         initListener();
+        HERO_IM.setInv(flowPaneInventory);
 
         //Fonts
         labelTitle.setFont(MY_FONT_64);

@@ -17,12 +17,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <?import view.classes.MyGridPane?>
 <?import view.classes.minimap.MiniMap?>
 
-
-<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneMainOnKeyPressed" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #260944;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <MyGridPane fx:id="gridPaneGame" alignment="CENTER" layoutX="51.0" layoutY="116.0" maxHeight="576.0" maxWidth="576.0" minHeight="576.0" minWidth="576.0" onMousePressed="#gridPaneGameSetOnMouseClickedEvent" prefHeight="576.0" prefWidth="576.0">
       <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -152,8 +150,13 @@
          <Font name="Arial" size="14.0" />
       </font>
    </TextArea>
-   <ProgressBar fx:id="hp_bar" layoutX="38.0" layoutY="680.0" prefHeight="18.0" prefWidth="602.0" progress="0.0" style="-fx-accent: green; -fx-control-inner-background: black;" />
-   <Label layoutX="330.0" layoutY="680.0" text="&lt;3" textAlignment="CENTER" textFill="#ffffffa4" />
+   <ProgressBar fx:id="hp_bar" layoutX="169.0" layoutY="690.0" prefHeight="18.0" prefWidth="272.0" progress="0.0" style="-fx-accent: green; -fx-control-inner-background: black;" />
+   <Label fx:id="labelLife" layoutX="454.0" layoutY="691.0" prefHeight="17.0" prefWidth="43.0" text="&lt;3" textAlignment="CENTER" textFill="#ffffffa4" />
+   <ImageView fx:id="imageHeart" fitHeight="25.0" fitWidth="25.0" layoutX="129.0" layoutY="683.0" pickOnBounds="true" preserveRatio="true">
+       <image>
+           <Image url="@../../assets/images/environment/Heart.png" />
+       </image>
+   </ImageView>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>

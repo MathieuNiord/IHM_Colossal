@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -217,8 +218,8 @@ public class BattleController implements Initializable {
         this.labelHeroLife.setText(String.valueOf(HERO_IM.hero.getHP()));
 
         //ProgressBars
-        this.progressBarHero.setProgress((double) (HERO_IM.hero.getHP()) / (double) (100));
-        this.progressBarEnemy.setProgress((double) (this.enemy.getHP()) / (double) (this.eLife));
+        Bindings.bindBidirectional(this.progressBarHero.progressProperty(), HERO_IM.hero.getHpProperty());
+        Bindings.bindBidirectional(this.progressBarEnemy.progressProperty(), this.enemy.getHp_property());
     }
 
     // --- Initialization of the controller ---

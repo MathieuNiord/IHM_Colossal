@@ -1,7 +1,7 @@
 package model.characters;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;
@@ -25,7 +25,7 @@ public class Hero {
 	// ***** ATTRIBUTES *****
 	private String name;
 	private int hp;
-	private IntegerProperty hpProperty;
+	private DoubleProperty hpProperty;
 	private int keyLevel;
 	private int lvlBescherelle;
 	private boolean immunised;
@@ -39,7 +39,7 @@ public class Hero {
 	public Hero(Place place) {
 
 		this.hp = DEFAULT_HP;
-		this.hpProperty = new SimpleIntegerProperty(this.hp);
+		this.hpProperty = new SimpleDoubleProperty(this.hp / 100.0);
 		this.keyLevel = DEFAULT_KEY_LEVEL;
 		this.lvlBescherelle = DEFAULT_BESCHERELLE_LEVEL;
 		this.immunised = DEFAULT_IMMUNISED_VALUE;
@@ -60,7 +60,7 @@ public class Hero {
 		return this.hp;
 	}
 
-	public IntegerProperty getHpProperty() {
+	public DoubleProperty getHpProperty() {
 		return this.hpProperty;
 	}
 
@@ -121,7 +121,7 @@ public class Hero {
 			//Game.printLetterByLetter("Ouch ! You loose " + damage + " points of your life ! Take care my man...\n\n", Script.DEFAULT_NARRATOR);
 		}
 		//TEST PROPERTY
-		this.hpProperty.setValue(this.hp);
+		this.hpProperty.setValue(this.hp / 100.0);
 	}
 
 	public void setImmunised(){
@@ -211,8 +211,10 @@ public class Hero {
 				if(this.hp + bonus > DEFAULT_HP){
 					bonus = DEFAULT_HP - this.hp;
 					this.hp = DEFAULT_HP;
+					this.hpProperty.setValue(DEFAULT_HP / 100.0);
 				}
 				else {
+					this.hpProperty.setValue((this.hp + bonus) / 100.0);
 					this.hp += bonus;
 				}
 				this.objs.remove(Script.DEFAULT_SEXYPOSTER_NAME);

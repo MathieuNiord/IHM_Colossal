@@ -1,5 +1,7 @@
 package model.characters;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import model.others.*;
 import model.objects.*;
 import model.interfaces.*;
@@ -11,6 +13,7 @@ public class Enemy implements Lookable {
 
     public final String NAME;
     private int hp;
+    private SimpleDoubleProperty hp_property = new SimpleDoubleProperty();
     public final int HP_MAX;
     private final int DAMAGE;
     private Obj item; //C'est l'objet que l'ennemi va loot à la fin du combat
@@ -25,6 +28,7 @@ public class Enemy implements Lookable {
     public Enemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
         this.NAME = name;
         this.hp = hp;
+        this.hp_property.setValue(this.hp);
         this.HP_MAX = hp;
         this.DAMAGE = dmg;
         this.item = loot;
@@ -63,6 +67,8 @@ public class Enemy implements Lookable {
         return this.item;
     }
 
+    public SimpleDoubleProperty getHp_property() {return this.hp_property; }
+
 
     // === SETTER ===
 
@@ -79,15 +85,18 @@ public class Enemy implements Lookable {
             this.state = false;
             this.defeat();
         }
+        this.hp_property.setValue(this.hp / 100.0);
     }
 
     public void heal(int heal) {
         if (this.hp < HP_MAX && this.hp > 0 && this.state) {
             if (this.hp + heal > HP_MAX) {
                 this.hp = HP_MAX;
+                this.hp_property.setValue(this.hp / 100.0);
                 System.out.print("\n" + this.NAME.toUpperCase() + " healed itself. He recovered all his HP\n\n");
             } else {
                 this.hp += heal;
+                this.hp_property.setValue(this.hp / 100.0);
                 System.out.print("\n" + this.NAME.toUpperCase() + " healed itself.\n\n" + this.NAME.toUpperCase() + " gain " + heal + " HP.\n\n");
             }
         }

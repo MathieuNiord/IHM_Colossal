@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +14,6 @@ import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.SecretCodeDoor;
 import model.others.Script;
-import stage.MyStage;
 import view.classes.Dialog;
 import view.classes.MyPlace;
 import view.classes.minimap.MiniMap;
@@ -60,6 +60,8 @@ public class MainController implements Initializable {
     private Button buttonHelp;
     @FXML
     private TextArea textAreaScript;
+    @FXML
+    public ProgressBar hp_bar;
 
     /** === METHODS === **/
 
@@ -313,10 +315,6 @@ public class MainController implements Initializable {
     // - Here we got all actions the player can make during the game -
     @FXML
     void paneMainOnKeyPressed(KeyEvent event) {
-        try {
-            if(HERO_IM.hero.getPlace().getName().equals("cold room")) Thread.sleep(500);
-        }
-        catch (Exception ignored){}
         int x = HERO_IM.x.getValue();
         int y = HERO_IM.y.getValue();
         switch (event.getCode()){
@@ -433,5 +431,7 @@ public class MainController implements Initializable {
         labelObjectName.setFont(MY_FONT_32);
         buttonHelp.setFont(MY_FONT_16);
         buttonQuit.setFont(MY_FONT_16);
+
+        Bindings.bindBidirectional(hp_bar.progressProperty(), HERO_IM.hero.getHpProperty());
     }
 }

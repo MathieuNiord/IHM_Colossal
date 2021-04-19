@@ -74,7 +74,8 @@ public class Game {
 	public static final ElectricityMeter ELECTRICITY_METER = new ElectricityMeter(Script.DEFAULT_ELECTRICMETER_NAME, Script.ELECTRICMETER_DESCRIPT, COLD_ROOM);
 	public static final FiredStick FIRED_STICK = new FiredStick(Script.DEFAULT_FIREDSTICK_NAME, Script.FIRED_STICK_DESCRIPT);
 	public static final NaziPoster NAZI_POSTER = new NaziPoster(Script.DEFAULT_NAZIPOSTER_NAME, Script.NAZI_POSTER);
-	public static final SexyPoster SEXY_POSTER = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
+	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
 
 
@@ -145,7 +146,7 @@ public class Game {
 		ANIMAL_ROOM.addObject(CAT_B);
 		TRANSFER_ROOM.addObject(FLINT);
 		TRANSFER_ROOM.addObject(ELECTRICITY_METER);
-		CHANGING_ROOM.addObject(SEXY_POSTER);
+		CHANGING_ROOM.addObject(SEXY_POSTER_1);
 		CHANGING_ROOM.addObject(LOCKER);
 		LOCKER.addObj(WALKMAN);
 		EXPERIMENTS_ROOM.addObject(NAZI_POSTER);
@@ -155,7 +156,7 @@ public class Game {
 		ARCHIVES_ROOM.addObject(MOUSE_B);
 		PRODUCTS_RESERVE.addObject(POTION);
 		DESERTED_ROOM.addObject(MONKEY_B);
-		DIRTY_CHANGINGROOM.addObject(SEXY_POSTER);
+		DIRTY_CHANGINGROOM.addObject(SEXY_POSTER_2);
 
 		// ENEMIES ADDING TO ROOMS
 		MEETING_ROOM.addAndCreateEnemy(ACCOUNT_GUY);

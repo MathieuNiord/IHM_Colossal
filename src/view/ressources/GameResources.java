@@ -73,7 +73,8 @@ public class GameResources {
     public final static MyImageView MONKEY_B_IM = new MyImageView(MONKEY_B, IMAGE_BESCHERELLE, 5, 1);
     public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(ELECTRICITY_METER, IMAGE_HEART, 1, 1, 40);
     public final static MyImageView LOCKER_IM = new MyImageView(LOCKER, IMAGE_LOCKER_CLOSED, 7, 3);
-    public final static MyImageView SEXY_POSTER_IM = new MyImageView(SEXY_POSTER, IMAGE_SEXY_POSTER, 2, 0);
+    public final static MyImageView SEXY_POSTER_IM_1 = new MyImageView(SEXY_POSTER_1, IMAGE_SEXY_POSTER, 2, 0);
+    public final static MyImageView SEXY_POSTER_IM_2 = new MyImageView(SEXY_POSTER_2, IMAGE_SEXY_POSTER, 2, 0);
     public final static MyImageView WALKMAN_IM = new MyImageView(WALKMAN, IMAGE_WALKMAN, 0, 0);
     public final static MyImageView FIREDSTICK_IM = new MyImageView(FIRED_STICK, IMAGE_TORCH, 0, 0);
 
@@ -274,7 +275,7 @@ public class GameResources {
         addObject(MY_ANIMAL_ROOM, CAT_B_IM);
         addObject(MY_TRANSFER_ROOM, FLINT_IM);
         addObject(MY_TRANSFER_ROOM, ELECTRICITY_METER_IM);
-        addObject(MY_CHANGING_ROOM, SEXY_POSTER_IM);
+        addObject(MY_CHANGING_ROOM, SEXY_POSTER_IM_1);
         addObject(MY_CHANGING_ROOM, LOCKER_IM);
         addObject(MY_EXPERIMENTS_ROOM, NAZI_POSTER_IM);
         addObject(MY_COLD_ROOM, BANANA_IM);
@@ -283,6 +284,6 @@ public class GameResources {
         addObject(MY_ARCHIVES_ROOM, MOUSE_B_IM);
         addObject(MY_PRODUCTS_RESERVE, POTION_IM);
         addObject(MY_DESERTED_ROOM, MONKEY_B_IM);
-        addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM);
+        addObject(MY_DIRTY_CHANGING_ROOM, SEXY_POSTER_IM_2);
     }
 }

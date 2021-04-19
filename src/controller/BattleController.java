@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.characters.Enemy;
 import model.characters.Hero;
-import model.others.Script;
 import stage.MyStage;
 import view.classes.MyImageView;
 import view.classes.MyPlace;
@@ -41,9 +40,9 @@ public class BattleController implements Initializable {
 
     //ProgressBars
     @FXML
-    private ProgressBar progressBarHero = new ProgressBar(1.0);
+    private ProgressBar progressBarHero;
     @FXML
-    private ProgressBar progressBarEnemy = new ProgressBar(1.0);
+    private ProgressBar progressBarEnemy;
 
     //Buttons
     @FXML
@@ -124,7 +123,7 @@ public class BattleController implements Initializable {
             //If now the player has nothing to heal
             if (!HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_1) && !HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_2)) {
                 //The player can't no more heal hisself/herself/itself, we can disable the button
-                //this.buttonHeal.setDisable(true);
+                this.buttonHeal.setDisable(true);
             }
             //It's the enemy turn
             enemyTurn();
@@ -219,8 +218,8 @@ public class BattleController implements Initializable {
         this.labelHeroLife.setText(String.valueOf(HERO_IM.hero.getHP()));
 
         //ProgressBars
-        Bindings.bindBidirectional(this.progressBarHero.progressProperty(), HERO_IM.hero.getHpProperty());
-        Bindings.bindBidirectional(this.progressBarEnemy.progressProperty(), this.enemy.getHp_property());
+        this.progressBarHero.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
+        this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(100.0));
     }
 
     // --- Initialization of the controller ---
@@ -237,15 +236,12 @@ public class BattleController implements Initializable {
 
         //Labels
         this.labelEnemyName.setText(this.enemyImV.enemy.NAME);
+        this.labelCommentary.setText(this.enemy.getOpeningScript() + "\nYou come face to face with " + this.enemy.NAME.toUpperCase());
 
         //Image
         this.enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
 
         livesDisplay();
-
-        //setButton_attack();
-        //setButton_heal();
-        //setButton_quit();
 
         //Heal button
        if (!HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_1) && !HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_2)) {

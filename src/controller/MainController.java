@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -439,5 +441,6 @@ public class MainController implements Initializable {
         buttonQuit.setFont(MY_FONT_16);
 
         Bindings.bindBidirectional(hp_bar.progressProperty(), HERO_IM.hero.getHpProperty());
+
     }
 }

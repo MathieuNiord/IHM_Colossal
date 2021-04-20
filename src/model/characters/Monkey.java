@@ -1,27 +1,26 @@
 package model.characters;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import model.others.*;
 
 public class Monkey extends Animal{
 
-	// ***** ATTRIBUTES *****
-	
-	/*This attribute is used to know if the Characters.Monkey
-	 got the Objects.Banana that he asked for*/
-	private boolean hungry = true;
-	public final String noHungryDialog;
-	
-	// ***** CONSTRUCTOR *****
+	/*** === ATTRIBUTES === ***/
 
+	public final String NO_HUNGRY_DIALOG;
+
+	/* This attribute is used to know if the monkey
+   got the banana that he asked for */
+	private boolean hungry = true;
+
+
+	/*** === CONSTRUCTOR === ***/
 	public Monkey(String name, int bLevel, String noBeschDialog, String beschDialog,String hungryDialog,String desc) {
 		super(name, bLevel, noBeschDialog, beschDialog,desc);
-		this.noHungryDialog = hungryDialog;
+		this.NO_HUNGRY_DIALOG = hungryDialog;
 	}
 
-	
-	// ***** METHODS *****
+
+	/*** === METHODS === ***/
 
 	// === GETTER ===
 
@@ -33,25 +32,38 @@ public class Monkey extends Animal{
 
 	public void setHungry(boolean state) { this.hungry = state;}
 
+	// === DISPLAY ===
+
+	@Override
+	public String dialog(Hero h) {
+
+		String dialog;
+
+		if (h.getBLevel() == BESCHERELLE_LEVEL && !this.hungry)
+			dialog = this.BESCHERELLE_DIALOG;
+
+		else if (h.getBLevel() == BESCHERELLE_LEVEL && this.hungry)
+			dialog = this.NO_HUNGRY_DIALOG;
+
+		else
+			dialog = this.NO_BESCHERELLE_DIALOG;
+
+		return dialog;
+	}
+
 	// === COMMANDS ===
-	
+
 	@Override
 	public void talk(Hero h) {
-		/*
-		if(h.getObjs().containsKey(Script.DEFAULT_BANANA_NAME)){
-			h.getObjs().remove(Script.DEFAULT_BANANA_NAME);
 
-			this.hungry = false;
-		}*/
-
-		if(this.beschLevel>h.getBLevel()){
-			Game.printLetterByLetter(this.noBeschDialog, this.NAME);
+		if(this.BESCHERELLE_LEVEL >h.getBLevel()){
+			Game.printLetterByLetter(this.NO_BESCHERELLE_DIALOG, this.NAME);
 		}
 		else if(this.hungry){
-			Game.printLetterByLetter(this.beschDialog, this.NAME);
+			Game.printLetterByLetter(this.BESCHERELLE_DIALOG, this.NAME);
 		}
 		else{
-			Game.printLetterByLetter(this.noHungryDialog, this.NAME);
+			Game.printLetterByLetter(this.NO_HUNGRY_DIALOG, this.NAME);
 		}
 	}
 

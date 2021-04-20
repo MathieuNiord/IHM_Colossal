@@ -8,9 +8,8 @@ import model.interfaces.*;
 
 public class Enemy implements Lookable {
 
-    
-    // ***** ATTRIBUTES *****
 
+    /*** === ATTRIBUTES === ***/
     public final String NAME;
     private int hp;
     private SimpleDoubleProperty hp_property = new SimpleDoubleProperty();
@@ -23,8 +22,8 @@ public class Enemy implements Lookable {
     private final String DEFEAT_SCRIPT;
     public final String DESCRIPTION;
 
-    // ***** CONSTRUCTOR *****
 
+    /*** === CONSTRUCTOR === ***/
     public Enemy(String name, int hp, int dmg, Obj loot, String op, String atk, String dft, String desc) {
         this.NAME = name;
         this.hp = hp;
@@ -39,12 +38,11 @@ public class Enemy implements Lookable {
     }
 
 
-    // ***** METHODS *****
-
+    /*** === METHODS === ***/
 
     // === GETTER ===
 
-    //On souhaite savoir si l'ennemi a perdu
+    // - Is the enemy defeated ? -
     public boolean isDefeat() {
         if (this.hp <= 0) {
             this.state = false;
@@ -52,26 +50,28 @@ public class Enemy implements Lookable {
         return !this.state;
     }
 
-    //On souhaite connaître les points de vies restants de l'ennemi
+    // - Returns the current HP of the enemy -
     public int getHP() {
         return this.hp;
     }
 
-    //On souhaite connaître les dégâts d'attaque de l'ennemi
+    // - Returns the damages of the enemy -
     public int getDamage() {
         return this.DAMAGE;
     }
 
-    //On souhaite connaître l'objet que possède l'ennemi
+    // - Returns the possessed object of the enemy -
     public Obj getItem() {
         return this.item;
     }
 
-    public SimpleDoubleProperty getHp_property() {return this.hp_property; }
+    // - Returns a DoubleProperty of the current HP of the enemy -
+    public SimpleDoubleProperty getHpProperty() {return this.hp_property; }
 
 
     // === SETTER ===
 
+    // - The enemy takes some damages -
     public void takeDamage(int damage) {
         if (this.hp - damage < 0) {
             this.hp = 0;
@@ -85,18 +85,19 @@ public class Enemy implements Lookable {
             this.state = false;
             this.defeat();
         }
-        this.hp_property.setValue(this.hp / 100.0);
+        this.hp_property.setValue(this.hp);
     }
 
+    // - The enemy heal itself -
     public void heal(int heal) {
         if (this.hp < HP_MAX && this.hp > 0 && this.state) {
             if (this.hp + heal > HP_MAX) {
                 this.hp = HP_MAX;
-                this.hp_property.setValue(this.hp / 100.0);
+                this.hp_property.setValue(this.hp);
                 System.out.print("\n" + this.NAME.toUpperCase() + " healed itself. He recovered all his HP\n\n");
             } else {
                 this.hp += heal;
-                this.hp_property.setValue(this.hp / 100.0);
+                this.hp_property.setValue(this.hp);
                 System.out.print("\n" + this.NAME.toUpperCase() + " healed itself.\n\n" + this.NAME.toUpperCase() + " gain " + heal + " HP.\n\n");
             }
         }
@@ -134,10 +135,6 @@ public class Enemy implements Lookable {
 
     public String getOpeningScript() {
         return this.OPENING_SCRIPT;
-    }
-
-    public String getAttackScript() {
-        return this.ATTACK_SCRIPT;
     }
 
     public String getDefeatScript() {

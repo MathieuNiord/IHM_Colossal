@@ -1,7 +1,9 @@
 package model.characters;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;
@@ -25,7 +27,8 @@ public class Hero {
 	// ***** ATTRIBUTES *****
 	private String name;
 	private int hp;
-	private DoubleProperty hpProperty;
+	private IntegerProperty hpIntegerProperty;
+	private DoubleProperty hpDoubleProperty;
 	private int keyLevel;
 	private int lvlBescherelle;
 	private boolean immunised;
@@ -39,7 +42,8 @@ public class Hero {
 	public Hero(Place place) {
 
 		this.hp = DEFAULT_HP;
-		this.hpProperty = new SimpleDoubleProperty(this.hp / 100.0);
+		this.hpDoubleProperty = new SimpleDoubleProperty(this.hp);
+		this.hpIntegerProperty = new SimpleIntegerProperty(this.hp);
 		this.keyLevel = DEFAULT_KEY_LEVEL;
 		this.lvlBescherelle = DEFAULT_BESCHERELLE_LEVEL;
 		this.immunised = DEFAULT_IMMUNISED_VALUE;
@@ -60,8 +64,12 @@ public class Hero {
 		return this.hp;
 	}
 
-	public DoubleProperty getHpProperty() {
-		return this.hpProperty;
+	public DoubleProperty getHpDoubleProperty() {
+		return this.hpDoubleProperty;
+	}
+
+	public IntegerProperty getHpIntegerProperty() {
+		return this.hpIntegerProperty;
 	}
 
 	public int getBLevel() {
@@ -121,7 +129,8 @@ public class Hero {
 			//Game.printLetterByLetter("Ouch ! You loose " + damage + " points of your life ! Take care my man...\n\n", Script.DEFAULT_NARRATOR);
 		}
 		//TEST PROPERTY
-		this.hpProperty.setValue(this.hp / 100.0);
+		this.hpDoubleProperty.setValue(this.hp);
+		this.hpIntegerProperty.setValue(this.hp);
 	}
 
 	public void setImmunised(){
@@ -219,10 +228,12 @@ public class Hero {
 				if(this.hp + bonus > DEFAULT_HP){
 					bonus = DEFAULT_HP - this.hp;
 					this.hp = DEFAULT_HP;
-					this.hpProperty.setValue(DEFAULT_HP / 100.0);
+					this.hpDoubleProperty.setValue(DEFAULT_HP);
+					this.hpIntegerProperty.setValue(DEFAULT_HP);
 				}
 				else {
-					this.hpProperty.setValue((this.hp + bonus) / 100.0);
+					this.hpDoubleProperty.setValue((this.hp + bonus));
+					this.hpIntegerProperty.setValue((this.hp + bonus));
 					this.hp += bonus;
 				}
 				this.objs.remove(sexyPoster.NAME);

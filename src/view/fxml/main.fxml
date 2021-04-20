@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -62,7 +61,7 @@
     <TabPane fx:id="tabPane" layoutX="722.0" layoutY="29.0" prefHeight="486.0" prefWidth="480.0" side="BOTTOM" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE">
         <Tab closable="false" text="Inventory">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="256.0">
-                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="28.0" layoutY="312.0" prefHeight="32.0" prefWidth="166.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
+                <Label fx:id="labelObjectName" alignment="TOP_LEFT" layoutX="28.0" layoutY="312.0" prefHeight="35.0" prefWidth="249.0" style="-fx-background-color: #3d3a3a; -fx-background-radius: 5;" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -131,32 +130,26 @@
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="buttonHelp" layoutX="722.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonHelpOnAction" text="HELP">
+   <Button fx:id="buttonHelp" layoutX="982.0" layoutY="659.0" minHeight="42.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonHelpOnAction" text="HELP">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-    <TextArea fx:id="textAreaScript" editable="false" focusTraversable="false" layoutX="722.0" layoutY="533.0" prefHeight="100.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-radius: 5; -fx-border-color: white; -fx-border-width: 2;" wrapText="true">
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-      <cursor>
-         <Cursor fx:constant="DEFAULT" />
-      </cursor>
-      <padding>
-         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-      </padding>
-      <font>
-         <Font name="Arial" size="14.0" />
-      </font>
-   </TextArea>
-   <ProgressBar fx:id="hp_bar" layoutX="169.0" layoutY="690.0" prefHeight="18.0" prefWidth="272.0" progress="0.0" style="-fx-accent: green; -fx-control-inner-background: black;" />
-   <Label fx:id="labelLife" layoutX="454.0" layoutY="691.0" prefHeight="17.0" prefWidth="43.0" text="&lt;3" textAlignment="CENTER" textFill="#ffffffa4" />
-   <ImageView fx:id="imageHeart" fitHeight="25.0" fitWidth="25.0" layoutX="129.0" layoutY="683.0" pickOnBounds="true" preserveRatio="true">
+   <ProgressBar fx:id="hp_bar" layoutX="195.0" layoutY="687.0" prefHeight="18.0" prefWidth="272.0" progress="0.0" style="-fx-accent: green; -fx-control-inner-background: black;" />
+   <Label fx:id="labelLife" layoutX="480.0" layoutY="688.0" prefHeight="17.0" prefWidth="43.0" text="&lt;3" textAlignment="CENTER" textFill="#ffffffa4" />
+   <ImageView fx:id="imageHeart" fitHeight="25.0" fitWidth="25.0" layoutX="155.0" layoutY="680.0" pickOnBounds="true" preserveRatio="true">
        <image>
            <Image url="@../../assets/images/environment/Heart.png" />
        </image>
    </ImageView>
+   <Label fx:id="labelGame" alignment="TOP_LEFT" layoutX="722.0" layoutY="529.0" prefHeight="113.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-color: white;" textFill="WHITE" wrapText="true">
+      <font>
+         <Font size="14.0" />
+      </font>
+      <padding>
+         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+      </padding>
+   </Label>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>

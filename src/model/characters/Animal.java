@@ -1,34 +1,33 @@
 package model.characters;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import model.others.*;
 import model.interfaces.*;
 
 public class Animal implements Lookable {
 
-	// ***** ATTRIBUTES *****
+
+	/*** === ATTRIBUTES === ***/
+
 	public final String NAME;
-	
-	//This attribute is used for dialog
-	public final int beschLevel;
-	public final String noBeschDialog;
-	public final String beschDialog;
-	public final String description;
+	public final String DESCRIPTION;
+
+	//These attributes are used for dialog
+	public final int BESCHERELLE_LEVEL;
+	public final String NO_BESCHERELLE_DIALOG;
+	public final String BESCHERELLE_DIALOG;
 
 
-	// ***** CONSTRUCTOR *****
-	
+	/*** === CONSTRUCTOR === ***/
 	public Animal(String name, int bLevel,String noBeschDialog,String beschDialog,String desc){
-		this.beschLevel=bLevel;
+		this.BESCHERELLE_LEVEL =bLevel;
 		this.NAME = name;
-		this.noBeschDialog = noBeschDialog;
-		this.beschDialog = beschDialog;
-		this.description = desc;
+		this.NO_BESCHERELLE_DIALOG = noBeschDialog;
+		this.BESCHERELLE_DIALOG = beschDialog;
+		this.DESCRIPTION = desc;
 	}
 
 
-	// ***** METHODS *****
+	/*** === METHODS === ***/
 
 	// === DISPLAY ===
 
@@ -38,22 +37,36 @@ public class Animal implements Lookable {
 		return this.NAME;
 	}
 
+	//Returns the script according to the bescherelle level of the player (JavaFX)
+	public String dialog(Hero h) {
+
+		String dialog;
+
+		if(h.getBLevel() >= BESCHERELLE_LEVEL)
+			dialog = this.BESCHERELLE_DIALOG;
+
+		else
+			dialog = this.NO_BESCHERELLE_DIALOG;
+
+		return dialog;
+	}
+
 	// === COMMANDS ===
 
 	public void talk(Hero h) {
-		/*If the Objects.Bescherelle level of the hero is egal or higher than
-		the Objects.Bescherelle level needed to talk with this animal*/
-		if(h.getBLevel()>=beschLevel){
-			Game.printLetterByLetter(this.beschDialog, this.NAME);
+		/*If the bescherelle level of the hero is equal or higher than
+		the bescherelle level needed to talk with this animal*/
+		if(h.getBLevel() >= BESCHERELLE_LEVEL){
+			Game.printLetterByLetter(this.BESCHERELLE_DIALOG, this.NAME);
 		}
 		else {
-			Game.printLetterByLetter(this.noBeschDialog, this.NAME);
+			Game.printLetterByLetter(this.NO_BESCHERELLE_DIALOG, this.NAME);
 		}
 	}
 
 	
 	public void look() {
-		Game.printLetterByLetter(this.description, this.NAME);
+		Game.printLetterByLetter(this.DESCRIPTION, this.NAME);
 	}
 }
 

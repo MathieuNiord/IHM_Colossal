@@ -11,21 +11,14 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Hero;
-import model.doors.SecretCodeDoor;
+import model.doors.*;
 import model.others.Script;
-import view.classes.MyDialog;
-import view.classes.MyPlace;
+import view.classes.*;
 import view.classes.minimap.MiniMap;
-import view.classes.MyGridPane;
-import view.classes.MyImageView;
 import view.ressources.ImageResources;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -41,13 +34,9 @@ public class MainController implements Initializable {
     /** === ATTRIBUTES === **/
 
     @FXML
-    private Pane paneMain;
-    @FXML
     private MyGridPane gridPaneGame;
     @FXML
     private Label labelTitle;
-    @FXML
-    private TabPane tabPane;
     @FXML
     private Label labelObjectName;
     @FXML
@@ -61,9 +50,12 @@ public class MainController implements Initializable {
     @FXML
     private Button buttonHelp;
     @FXML
-    private TextArea textAreaScript;
+    private Label labelGame;
     @FXML
-    public ProgressBar hp_bar;
+    private ProgressBar hp_bar;
+    @FXML
+    private Label labelLife;
+
 
     /** === METHODS === **/
 
@@ -74,7 +66,7 @@ public class MainController implements Initializable {
     // - The "HELP" button event -
     @FXML
     private void buttonHelpOnAction(ActionEvent event) {
-        textAreaScript.appendText(Script.HELP_DEFAULT);
+        labelGame.setText(Script.HELP_DEFAULT);
     }
 
     // - The "QUIT" button event -
@@ -109,7 +101,7 @@ public class MainController implements Initializable {
         });
 
        //textAreaScript :
-        OutputStream o = new OutputStream() {
+        /*OutputStream o = new OutputStream() {
             @Override
             public void write(int b) throws IOException {
                 textAreaScript.appendText(String.valueOf((char)b));
@@ -118,6 +110,7 @@ public class MainController implements Initializable {
         System.setOut(new PrintStream(o));
 
         textAreaScript.textProperty().addListener((observable, oldValue, newValue) -> textAreaScript.setScrollTop(Double.MAX_VALUE));
+         */
     }
 
 
@@ -131,42 +124,51 @@ public class MainController implements Initializable {
         Hero hero = HERO_IM.hero;
 
         // -- Animals --
-        if (im.animal != null) im.animal.talk(hero);
-
-        if (im.monkey != null) im.monkey.talk(hero);
+        if (im.animal != null) labelGame.setText(im.animal.NAME.toUpperCase() + " : " + im.animal.dialog(hero));
+        if (im.monkey != null) labelGame.setText(im.monkey.NAME.toUpperCase() + " : " + im.monkey.dialog(hero));
 
         // -- Objects --
         if (im.obj != null) {
 
             // If the object is a key (specific take() method)
             if (im.obj.NAME.equals(Script.DEFAULT_KEY1_NAME) || im.obj.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
+
                 HERO_IM.hero.increaseKey();
                 gridPaneGame.myRemove(im);
-                this.textAreaScript.setText("You found a key");
+
+                this.labelGame.setText("You found a key");
             }
 
             // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
             else if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
+
+                //Banana case when the cold room is unlighted
+                if (!im.isVisible()) im.setVisible(true);
+
                 im.obj.take(hero);
                 im.obj.setDraggableTrue();
                 im.setCursor(Cursor.HAND);
                 gridPaneGame.myRemove(im);
                 flowPaneInventory.getChildren().add(im);
-                this.textAreaScript.setText("You found a " + im.obj.NAME);
+
+                this.labelGame.setText("You found a " + im.obj.NAME);
             }
 
             // Else if it is the locker
             else if (im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
+
                 LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
                 flowPaneInventory.getChildren().add(WALKMAN_IM);
-                this.textAreaScript.setText("You found a walkman");
+
+                this.labelGame.setText("You found a walkman");
             }
         }
 
         // -- Doors --
         if (im.door != null) {
 
-            if (im.door instanceof SecretCodeDoor) { //SecretCodeDoor case
+            //SecretCodeDoor case
+            if (im.door instanceof SecretCodeDoor) {
 
                 SecretCodeDoor d = (SecretCodeDoor) im.door;
 
@@ -187,7 +189,32 @@ public class MainController implements Initializable {
                     labelTitle.setText(hero.getPlace().getName());
                     gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
-            } else {
+                else
+                    labelGame.setText("Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...");
+            }
+
+            else {
+
+                //SecretPassage case
+                if (im.door instanceof BurnableDoor && !hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME))
+                    labelGame.setText("Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?");
+
+                    //Infected room door case
+                else if (im.door instanceof InfectedRoomDoor)
+                    labelGame.setText("You can see gas coming out of this door. Unless you're immune, better not to go in that room.");
+
+                    //Destructable door case
+                else if (im.door instanceof DestructableDoor)
+                    labelGame.setText("It's doomed but it seems like fragile. Maybe you can smash it ?");
+
+                    //Condemned room door case
+                else if (im.door instanceof CondemnedDoor)
+                    labelGame.setText("It's doomed dude ! You can not enter in.");
+
+                    //Locked door case
+                else if (im.door instanceof LockedKeyDoor)
+                    labelGame.setText("The door is locked. You can certainly find a key around stupid caveman.");
+
                 heroCrossDoor(im, hero);
                 labelTitle.setText(hero.getPlace().getName());
                 gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
@@ -202,18 +229,29 @@ public class MainController implements Initializable {
 
     // - This function permits the player to cross doors -
     private void heroCrossDoor(MyImageView im, Hero hero) {
+
         String dest = null;
+
+        //First we get the good place
         for(String s : im.door.getPlaces().keySet()) {
             if(!s.equals(hero.getPlace().getName())){
                 dest = s;
                 break;
             }
         }
-        if(dest!=null){
+
+        if(dest != null) {
+
             im.door.cross(hero,dest);
-            if(hero.getPlace().getName().equals(dest)){
+
+            if (hero.getPlace().getName().equals(dest)) {
+
                 MyPlace newPlace = PLACE_TO_MY_PLACE.get(hero.getPlace());
                 gridPaneGame.setMyPlace(newPlace);
+
+                labelGame.setText("You entered in the " + hero.getPlace().getName());
+
+                //If the new place is the archive room, we set a position to the player
                 if (dest.equals("archives room")) {
                     HERO_IM.x.setValue(4);
                     HERO_IM.y.setValue(1);
@@ -229,6 +267,7 @@ public class MainController implements Initializable {
                     }
                 }
 
+                //Else we compute the new position of the player in the room
                 else this.heroPosDoor(newPlace, im);
             }
         }
@@ -352,25 +391,18 @@ public class MainController implements Initializable {
     }
 
     // - Look action -
-    // TODO : Quand on clique sur la pièce, alors on affiche une description de la pièce
     @FXML
     private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
         try{
-            MyImageView im = (MyImageView)event.getTarget();
-            if(im.obj != null){
-                if(im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)){
-                    flowPaneInventory.getChildren().add(WALKMAN_IM);
-                }
-                im.obj.look();
-            }
-            if(im.animal != null) im.animal.look();
-            if(im.monkey != null) im.monkey.look();
-            if(im.enemy!=null) im.enemy.look();
+            MyImageView im = (MyImageView) event.getTarget();
 
+            if (im.obj != null) labelGame.setText(im.obj.INFO);
+            if (im.animal != null) labelGame.setText(im.animal.DESCRIPTION);
+            if (im.monkey != null) labelGame.setText(im.monkey.DESCRIPTION);
+            if (im.enemy != null) labelGame.setText(im.enemy.DESCRIPTION);
 
         } catch (Exception ignored){
-            labelObjectName.setText("");
-            labelObjectInfo.setText("");
+            labelGame.setText("Hum...Did you just click on nothing ?");
         }
     }
 
@@ -395,6 +427,9 @@ public class MainController implements Initializable {
                             im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
                             im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
                     ) flowPaneInventory.getChildren().remove(im);
+
+                    labelObjectName.setText("");
+                    labelObjectInfo.setText("");
                 }
             }
 
@@ -428,13 +463,17 @@ public class MainController implements Initializable {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(HERO_IM.hero.getPlace().getName());
+        hp_bar.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
+        labelLife.textProperty().bind(HERO_IM.hero.getHpIntegerProperty().asString());
         new InventoryController(flowPaneInventory);
         initListener();
+
+        //Set the inventory of the player
         HERO_IM.setInv(flowPaneInventory);
 
         //Fonts
         labelTitle.setFont(MY_FONT_64);
-        textAreaScript.setFont(MY_FONT_16);
+        labelGame.setFont(MY_FONT_16);
         labelObjectInfo.setFont(MY_FONT_32);
         labelObjectName.setFont(MY_FONT_32);
         buttonHelp.setFont(MY_FONT_16);

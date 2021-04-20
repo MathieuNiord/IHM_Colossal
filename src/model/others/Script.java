@@ -67,17 +67,17 @@ public class Script {
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- STORYBOARD ---\n" +
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- DEVELOPMENT ---\n" +
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- SPECIAL GUESTS ---\n" +
             "IN THE ROLE OF HOUGA BOUGA :             YOU \n" +
             "IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER\n" +

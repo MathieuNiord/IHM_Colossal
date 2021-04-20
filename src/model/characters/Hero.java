@@ -1,9 +1,7 @@
 package model.characters;
 
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import model.others.*;
 import model.objects.*;
 import model.doors.*;
@@ -27,7 +25,6 @@ public class Hero {
 	// ***** ATTRIBUTES *****
 	private String name;
 	private int hp;
-	private IntegerProperty hpIntegerProperty;
 	private DoubleProperty hpDoubleProperty;
 	private int keyLevel;
 	private int lvlBescherelle;
@@ -43,7 +40,6 @@ public class Hero {
 
 		this.hp = DEFAULT_HP;
 		this.hpDoubleProperty = new SimpleDoubleProperty(this.hp);
-		this.hpIntegerProperty = new SimpleIntegerProperty(this.hp);
 		this.keyLevel = DEFAULT_KEY_LEVEL;
 		this.lvlBescherelle = DEFAULT_BESCHERELLE_LEVEL;
 		this.immunised = DEFAULT_IMMUNISED_VALUE;
@@ -66,10 +62,6 @@ public class Hero {
 
 	public DoubleProperty getHpDoubleProperty() {
 		return this.hpDoubleProperty;
-	}
-
-	public IntegerProperty getHpIntegerProperty() {
-		return this.hpIntegerProperty;
 	}
 
 	public int getBLevel() {
@@ -130,7 +122,6 @@ public class Hero {
 		}
 		//TEST PROPERTY
 		this.hpDoubleProperty.setValue(this.hp);
-		this.hpIntegerProperty.setValue(this.hp);
 	}
 
 	public void setImmunised(){
@@ -229,11 +220,9 @@ public class Hero {
 					bonus = DEFAULT_HP - this.hp;
 					this.hp = DEFAULT_HP;
 					this.hpDoubleProperty.setValue(DEFAULT_HP);
-					this.hpIntegerProperty.setValue(DEFAULT_HP);
 				}
 				else {
 					this.hpDoubleProperty.setValue((this.hp + bonus));
-					this.hpIntegerProperty.setValue((this.hp + bonus));
 					this.hp += bonus;
 				}
 				this.objs.remove(sexyPoster.NAME);

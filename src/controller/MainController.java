@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import model.characters.Hero;
 import model.doors.*;
 import model.others.Script;
@@ -463,8 +464,6 @@ public class MainController implements Initializable {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(HERO_IM.hero.getPlace().getName());
-        hp_bar.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
-        labelLife.textProperty().bind(HERO_IM.hero.getHpIntegerProperty().asString());
         new InventoryController(flowPaneInventory);
         initListener();
 
@@ -478,8 +477,11 @@ public class MainController implements Initializable {
         labelObjectName.setFont(MY_FONT_32);
         buttonHelp.setFont(MY_FONT_16);
         buttonQuit.setFont(MY_FONT_16);
+        labelLife.setFont(MY_FONT_16);
 
-        Bindings.bindBidirectional(hp_bar.progressProperty(), HERO_IM.hero.getHpProperty());
+        // bindings
+        hp_bar.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
+        Bindings.bindBidirectional(labelLife.textProperty(), HERO_IM.hero.getHpDoubleProperty(), new NumberStringConverter());
 
     }
 }

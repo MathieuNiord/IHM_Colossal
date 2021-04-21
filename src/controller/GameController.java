@@ -30,8 +30,7 @@ public class GameController {
 
     public void giveBananaToMonkey(){
         MY_MONKEY.monkey_model.setHungry(false);
-        MY_HERO.getModel().getObjs().remove(MY_BANANA.obj_model.NAME);
-        inventory.getChildren().remove(BANANA_IM);
+        MY_HERO.removeObj(MY_BANANA);
     }
 
     // --- ------------------- --- //
@@ -40,10 +39,10 @@ public class GameController {
     // --- ------------------- --- //
 
     public void makeFiredStick(){
-        MY_HERO.removeObj(MY_FLINT);
-        MY_HERO.removeObj(MY_STICK);
         // the object isn't on the board
         MY_HERO.addObj(MY_FIREDSTICK, null);
+        MY_HERO.removeObj(MY_FLINT);
+        MY_HERO.removeObj(MY_STICK);
     }
 
     // --- -------------------------- --- //
@@ -55,8 +54,7 @@ public class GameController {
         Game.printLetterByLetter("Congrats ! You can now pass !\n", Script.DEFAULT_NARRATOR);
         door.unlock();
         door.open();
-        MY_HERO.getModel().getObjs().remove(Script.DEFAULT_FIREDSTICK_NAME);
-        this.inventory.getChildren().remove(FIREDSTICK_IM);
+        MY_HERO.removeObj(MY_FIREDSTICK);
     }
 
     // --- --------------------- --- //

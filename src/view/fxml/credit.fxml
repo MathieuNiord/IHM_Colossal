@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.fxmlController.CreditController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="view.fxmlController.CreditController">
    <children>
-      <Button fx:id="button_menu" layoutX="136.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="BACK TO HOME" />
+      <Button fx:id="button_menu" layoutX="136.0" layoutY="461.0" mnemonicParsing="false" onAction="#quit" prefHeight="25.0" prefWidth="128.0" text="BACK TO HOME" />
       <Label alignment="CENTER" layoutX="136.0" layoutY="14.0" prefHeight="38.0" prefWidth="128.0" text="CREDITS" textFill="WHITE" underline="true" />
       <Label alignment="TOP_LEFT" layoutX="48.0" layoutY="93.0" prefHeight="38.0" prefWidth="103.0" text="SCENARIO :" textFill="WHITE" />
       <Label alignment="TOP_LEFT" layoutX="48.0" layoutY="204.0" prefHeight="38.0" prefWidth="103.0" text="STORYBOARD :" textFill="WHITE" />

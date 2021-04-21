@@ -1,5 +1,6 @@
 package view.fxmlController;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,13 +16,15 @@ public class CreditController implements Initializable {
     private Button button_menu;
 
     @FXML
+    void quit(ActionEvent event) {
+        Stage currentStage = (Stage) button_menu.getScene().getWindow();
+        currentStage.close();
+        MyStage myStage = new MyStage("../view/fxml/home.fxml");
+        myStage.show();
+    }
+
+    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        button_menu.setOnAction( event -> {
-            Stage currentStage = (Stage) button_menu.getScene().getWindow();
-            currentStage.close();
-            MyStage myStage = new MyStage("../view/fxml/home.fxml");
-            myStage.show();
-        });
     }
 }

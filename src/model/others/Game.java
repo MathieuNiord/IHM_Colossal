@@ -56,7 +56,7 @@ public class Game {
 	// - Animals -
 	public static final Animal CAT = new Animal("cat",1,Script.CAT_TEXT01,Script.CAT_TEXT02,Script.CAT_DESCRIPT);
 	public static final Animal MOUSE = new Animal("mouse",2,Script.MOUSE_TEXT01,Script.MOUSE_TEXT02,Script.MOUSE_DESCRIPT);
-	public static final Monkey MONKEY = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT02,Script.MONKEY_TEXT03,Script.MONKEY_DESCRIPT);
+	public static final Monkey MONKEY = new Monkey("monkey",3,Script.MONKEY_TEXT01,Script.MONKEY_TEXT03,Script.MONKEY_TEXT02,Script.MONKEY_DESCRIPT);
 
 
 	// - Objects -

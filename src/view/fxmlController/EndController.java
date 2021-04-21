@@ -1,5 +1,6 @@
 package view.fxmlController;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,52 +36,47 @@ public class EndController implements Initializable {
     /** === METHODS === **/
 
     // - redirect to the home page -
-    private void continueButtonAction(){
+    private void continueButtonAction(ActionEvent event){
+        this.count++;
 
-        this.continueButton.setOnAction(event -> {
+        switch (this.count) {
+            case 1 :
+                this.scriptLabel.setText(Script.WIN_ENDING_2);
+                this.illustrationScene.setImage(ImageResources.GIF_CAVEMAN);
+                break;
 
-            this.count++;
+            case 2 :
+                this.scriptLabel.setText(Script.WIN_ENDING_3);
+                this.illustrationScene.setImage(ImageResources.IMAGE_TORCH);
+                break;
 
-            switch (this.count) {
-                case 1 :
-                    this.scriptLabel.setText(Script.WIN_ENDING_2);
-                    this.illustrationScene.setImage(ImageResources.GIF_CAVEMAN);
-                    break;
+            case 3 :
+                this.scriptLabel.setText(Script.WIN_ENDING_4);
+                this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_CLOSED);
+                break;
 
-                case 2 :
-                    this.scriptLabel.setText(Script.WIN_ENDING_3);
-                    this.illustrationScene.setImage(ImageResources.IMAGE_TORCH);
-                    break;
+            case 4 :
+                this.scriptLabel.setText(Script.WIN_ENDING_5);
+                this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_OPENED);
+                break;
 
-                case 3 :
-                    this.scriptLabel.setText(Script.WIN_ENDING_4);
-                    this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_CLOSED);
-                    break;
+            case 5 :
+                this.scriptLabel.setText(Script.WIN_ENDING_6);
+                this.illustrationScene.setImage(ImageResources.IMAGE_ACCOUNT_GUY_BATTLE);
+                this.continueButton.setText("QUIT");
+                break;
 
-                case 4 :
-                    this.scriptLabel.setText(Script.WIN_ENDING_5);
-                    this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_OPENED);
-                    break;
-
-                case 5 :
-                    this.scriptLabel.setText(Script.WIN_ENDING_6);
-                    this.illustrationScene.setImage(ImageResources.IMAGE_ACCOUNT_GUY_BATTLE);
-                    this.continueButton.setText("QUIT");
-                    break;
-
-                default :
-                    Stage currentStage = (Stage) continueButton.getScene().getWindow();
-                    currentStage.close();
-                    MyStage myStage = new MyStage("../view/fxml/home.fxml");
-                    myStage.show();
-            }
-        });
+            default :
+                Stage currentStage = (Stage) continueButton.getScene().getWindow();
+                currentStage.close();
+                MyStage myStage = new MyStage("../view/fxml/home.fxml");
+                myStage.show();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //this.continueButton.setOnAction(event -> continueButtonAction());
-        continueButtonAction();
+        this.continueButton.setOnAction(event -> continueButtonAction(event));
         this.illustrationScene.setImage(ImageResources.IMAGE_BOSS_BATTLE);
         this.scriptLabel.setText(Script.WIN_ENDING_1);
     }

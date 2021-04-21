@@ -11,15 +11,13 @@ public class MyHeroImageView extends ImageView {
 
     /*** === ATTRIBUTES === ***/
 
-    public final Hero hero;
     public IntegerProperty x,y;
     private FlowPane inv;
 
     /*** === CONSTRUCTOR === ***/
 
-    public MyHeroImageView(Hero hero, Image img, int x, int y) {
+    public MyHeroImageView(Image img, int x, int y) {
         super(img);
-        this.hero = hero;
         this.x = new SimpleIntegerProperty(x);
         this.y = new SimpleIntegerProperty(y);
     }

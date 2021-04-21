@@ -77,6 +77,9 @@ public class Game {
 	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_1_NAME, Script.SEXY_POSTER);
 	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_2_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
+	private final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	private final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	private final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
 
 
 	// - Hero -

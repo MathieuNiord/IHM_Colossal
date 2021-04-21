@@ -138,8 +138,7 @@ public class Script {
             "a m black... r u a f***ing racist ? ... Wait a minute... dat s not food dumbass, " +
             "it's a GOLD BANANA !? eh u know wut, a give u da password but only cause " +
             "a m better than u, u know wut u deserve ? dat a grab ma own shit and throw it " +
-            "in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine " +
-            "not urs ! Pshht, go away !";
+            "in ur face. Password is GAME.";
 
     public static final String MONKEY_DESCRIPT = "Do you know this monkey ? He calls you with great gestures. Maybe he's family ?\n";
 

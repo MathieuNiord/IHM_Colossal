@@ -191,19 +191,19 @@ public class MainController implements Initializable {
             if (entity.door_model instanceof BurnableDoor && !hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME))
                 labelGame.setText("Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?");
 
-                //Infected room door case
+            //Infected room door case
             else if (entity.door_model instanceof InfectedRoomDoor)
                 labelGame.setText("You can see gas coming out of this door. Unless you're immune, better not to go in that room.");
 
-                //Destructable door case
+            //Destructable door case
             else if (entity.door_model instanceof DestructableDoor)
                 labelGame.setText("It's doomed but it seems like fragile. Maybe you can smash it ?");
 
-                //Condemned room door case
+            //Condemned room door case
             else if (entity.door_model instanceof CondemnedDoor)
                 labelGame.setText("It's doomed dude ! You can not enter in.");
 
-                //Locked door case
+            //Locked door case
             else if (entity.door_model instanceof LockedKeyDoor)
                 labelGame.setText("The door is locked. You can certainly find a key around stupid caveman.");
 

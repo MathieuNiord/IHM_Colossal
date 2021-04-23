@@ -32,9 +32,9 @@ public class GameResources {
     public final static MyImageView MOUSE_IM = new MyImageView(IMAGE_MOUSE, 7, 6, 45);
 
     //Enemies objects
-    public final static MyImageView K_1_IM = new MyImageView(IMAGE_HEART, 5, 4);
-    public final static MyImageView FUSE_IM = new MyImageView(IMAGE_HEART, 5, 4);
-    public final static MyImageView K_2_IM = new MyImageView(IMAGE_HEART, 5, 4);
+    public final static MyImageView K_1_IM = new MyImageView(IMAGE_KEY, 5, 4);
+    public final static MyImageView FUSE_IM = new MyImageView(IMAGE_FUSE, 5, 4);
+    public final static MyImageView K_2_IM = new MyImageView(IMAGE_KEY, 5, 4);
 
     // Enemies corpses
     public final static MyImageView ACCOUNT_GUY_CORPSE_IM = new MyImageView(IMAGE_ACCOUNT_GUY_DEFEAT_FIX, 4, 4);
@@ -60,7 +60,7 @@ public class GameResources {
     public final static MyImageView CAT_B_IM = new MyImageView(IMAGE_CAT_BESCHERELLE, 3, 7);
     public final static MyImageView MOUSE_B_IM =new MyImageView(IMAGE_BESCHERELLE, 6, 1);
     public final static MyImageView MONKEY_B_IM = new MyImageView(IMAGE_BESCHERELLE, 5, 1);
-    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(IMAGE_HEART, 1, 1, 40);
+    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(IMAGE_ELECTRIC_METER_MISSINGFUSE, 1, 0, 40);
     public final static MyImageView LOCKER_IM = new MyImageView(IMAGE_LOCKER_CLOSED, 7, 3);
     public final static MyImageView SEXY_POSTER_IM_1 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0);
     public final static MyImageView SEXY_POSTER_IM_2 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0);

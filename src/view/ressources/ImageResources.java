@@ -62,6 +62,10 @@ public class ImageResources {
     public final static Image IMAGE_LOCKER_OPENED = new Image("assets/images/objects/LockerOpen.png");
     public final static Image IMAGE_WALKMAN = new Image("assets/images/objects/Walkman.png");
     public final static Image IMAGE_POTION = new Image("assets/images/objects/Potion.png");
+    public final static Image IMAGE_FUSE = new Image("assets/images/objects/Fuse.png");
+    public final static Image IMAGE_KEY = new Image("assets/images/objects/Key.png");
+    public final static Image IMAGE_ELECTRIC_METER_FIXED = new Image("assets/images/objects/ElectricMeterFixed.png");
+    public final static Image IMAGE_ELECTRIC_METER_MISSINGFUSE = new Image("assets/images/objects/ElectricMeterMissingFuse.GIF");
 
 
     // - Environment -

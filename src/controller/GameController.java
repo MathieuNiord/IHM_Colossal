@@ -11,6 +11,7 @@ import controller.entities.MyPlace;
 import static controller.entities.EntitiesDatas.*;
 import static view.ressources.GameResources.*;
 import static view.ressources.ImageResources.BACKGROUND_DEFAULT;
+import static view.ressources.ImageResources.IMAGE_ELECTRIC_METER_FIXED;
 
 public class GameController {
     /** === ATTRIBUTES === **/
@@ -77,6 +78,7 @@ public class GameController {
         Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
         ((ElectricityMeter) MY_ELECTRICITY_METER.obj_model).place.setEnlightened();
         lightUpRoom(MY_COLD_ROOM);
+        MY_ELECTRICITY_METER.view.setImage(IMAGE_ELECTRIC_METER_FIXED);
     }
 
 }

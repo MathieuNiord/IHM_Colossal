@@ -13,6 +13,7 @@ public class Door implements Crossable {
 
 	protected boolean open;
 	private final HashMap<String, Place> places;
+	private String description;
 
 
 	// ***** CONSTRUCTORS *****
@@ -39,7 +40,7 @@ public class Door implements Crossable {
 		return this.places;
 	}
 
-
+	public String getDescription() { return this.description; }
 
 	// === SETTER ===
 
@@ -47,6 +48,7 @@ public class Door implements Crossable {
 		this.open = true;
 	}
 
+	public void setDescription(String desc) { this.description = desc ;}
 
 	// === OTHER ===
 

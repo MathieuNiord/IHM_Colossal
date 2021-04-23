@@ -25,22 +25,22 @@ public class ImageResources {
 
     // - Animals -
     public final static Image IMAGE_CAT = new Image("assets/images/characters/Cat.gif");
-    public final static Image IMAGE_MONKEY = new Image("assets/images/characters/Cat.gif");
-    public final static Image IMAGE_MOUSE = new Image("assets/images/characters/Cat.gif");
+    public final static Image IMAGE_MONKEY = new Image("assets/images/characters/Monkey.png");
+    public final static Image IMAGE_MOUSE = new Image("assets/images/characters/Mouse.png");
 
 
     // - Enemies -
     public final static Image IMAGE_ACCOUNT_GUY_DEFAULT = new Image("assets/images/characters/AccountGuyDefault.png");
     public final static Image IMAGE_ACCOUNT_GUY_BATTLE = new Image("assets/images/characters/AccountGuyDefault.png");
-    public final static Image IMAGE_ACCOUNT_GUY_OPENING = new Image("assets/images/characters/AcountGuyOpening.PNG");
-    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_ANIM = new Image("assets/images/characters/AccountGuyLoose.PNG");
-    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_FIX = new Image("assets/images/characters/AccountGuyLoose.PNG");
+    public final static Image IMAGE_ACCOUNT_GUY_OPENING = new Image("assets/images/characters/AcountGuyOpening.png");
+    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_ANIM = new Image("assets/images/characters/AccountGuyLoose.png");
+    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_FIX = new Image("assets/images/characters/AccountGuyLoose.png");
 
     public final static Image IMAGE_NAZI_ZOMBIE_DEFAULT = new Image("assets/images/characters/NaziZombieDefault.png");
-    public final static Image IMAGE_NAZI_ZOMBIE_BATTLE = new Image("assets/images/characters/NaziZombieBattleDefault.PNG");
-    public final static Image IMAGE_NAZI_ZOMBIE_OPENING = new Image("assets/images/characters/NaziZombieOpening.GIF");
-    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM = new Image("assets/images/characters/NaziZombieLoose.GIF");
-    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_FIX = new Image("assets/images/characters/NaziZombieLoose.PNG");
+    public final static Image IMAGE_NAZI_ZOMBIE_BATTLE = new Image("assets/images/characters/NaziZombieBattleDefault.png");
+    public final static Image IMAGE_NAZI_ZOMBIE_OPENING = new Image("assets/images/characters/NaziZombieOpening.gif");
+    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM = new Image("assets/images/characters/NaziZombieLoose.gif");
+    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_FIX = new Image("assets/images/characters/NaziZombieLoose.png");
 
     public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefault.png");
     public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleDefault.png");

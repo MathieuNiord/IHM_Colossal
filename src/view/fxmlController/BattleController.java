@@ -219,7 +219,7 @@ public class BattleController implements Initializable {
 
         //ProgressBars
         this.progressBarHero.progressProperty().bind(MY_HERO.getModel().getHpDoubleProperty().divide(100.0));
-        this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(100.0));
+        this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(this.eLife));
     }
 
     // --- Initialization of the controller ---

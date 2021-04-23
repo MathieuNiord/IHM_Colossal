@@ -101,18 +101,6 @@ public class MainController implements Initializable {
             gridPaneGame.getChildren().remove(HERO_IM);
             gridPaneGame.add(HERO_IM,HERO_IM.x.getValue(),newValue.intValue());
         });
-
-       //textAreaScript :
-        /*OutputStream o = new OutputStream() {
-            @Override
-            public void write(int b) throws IOException {
-                textAreaScript.appendText(String.valueOf((char)b));
-            }
-        };
-        System.setOut(new PrintStream(o));
-
-        textAreaScript.textProperty().addListener((observable, oldValue, newValue) -> textAreaScript.setScrollTop(Double.MAX_VALUE));
-         */
     }
 
 
@@ -158,7 +146,6 @@ public class MainController implements Initializable {
 
                 MY_HERO.addObj(MY_WALKMAN, null);
                 LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
-                //flowPaneInventory.getChildren().add(WALKMAN_IM);
 
                 this.labelGame.setText("You found a walkman");
             }

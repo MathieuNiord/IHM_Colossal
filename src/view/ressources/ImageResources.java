@@ -42,11 +42,11 @@ public class ImageResources {
     public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM = new Image("assets/images/characters/NaziZombieLoose.GIF");
     public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_FIX = new Image("assets/images/characters/NaziZombieLoose.PNG");
 
-    public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefaultTest.png");
-    public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleTest.png");
-    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/BossBattleTest.png");
-    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/BossBattleTest.png");
-    public final static Image IMAGE_BOSS_DEFEAT_FIX = new Image("assets/images/characters/BossBattleTest.png");
+    public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefault.png");
+    public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleDefault.png");
+    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/BossBattleDefault.png");
+    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/BossBattleLoose.GIF");
+    public final static Image IMAGE_BOSS_DEFEAT_FIX = new Image("assets/images/characters/BossLoose.png");
 
 
     // - Objects -

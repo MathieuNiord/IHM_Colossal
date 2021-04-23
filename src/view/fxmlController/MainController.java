@@ -101,18 +101,6 @@ public class MainController implements Initializable {
             gridPaneGame.getChildren().remove(HERO_IM);
             gridPaneGame.add(HERO_IM,HERO_IM.x.getValue(),newValue.intValue());
         });
-
-       //textAreaScript :
-        /*OutputStream o = new OutputStream() {
-            @Override
-            public void write(int b) throws IOException {
-                textAreaScript.appendText(String.valueOf((char)b));
-            }
-        };
-        System.setOut(new PrintStream(o));
-
-        textAreaScript.textProperty().addListener((observable, oldValue, newValue) -> textAreaScript.setScrollTop(Double.MAX_VALUE));
-         */
     }
 
 
@@ -126,7 +114,12 @@ public class MainController implements Initializable {
         Hero hero = MY_HERO.getModel();
 
         // -- Animals --
-        if (entity.animal_model != null) labelGame.setText(entity.animal_model.NAME.toUpperCase() + " : " + entity.animal_model.dialog(hero));
+        if (entity.animal_model != null){
+            //Dialog
+            new AnimalScript();
+            MyDialog myStage = new MyDialog("../fxml/animal_script.fxml");
+            myStage.showAndWait();
+        }
         if (entity.monkey_model != null) labelGame.setText(entity.monkey_model.NAME.toUpperCase() + " : " + entity.monkey_model.dialog(hero));
 
         // -- Objects --

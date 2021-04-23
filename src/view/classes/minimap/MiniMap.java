@@ -2,7 +2,7 @@ package view.classes.minimap;
 
 import javafx.scene.Node;
 import javafx.scene.layout.*;
-import view.classes.MyPlace;
+import controller.entities.MyPlace;
 
 public class MiniMap extends GridPane {
 

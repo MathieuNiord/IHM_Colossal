@@ -1,4 +1,4 @@
-package controller;
+package view.fxmlController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,11 +10,12 @@ import model.characters.Enemy;
 import model.characters.Hero;
 import stage.MyStage;
 import view.classes.MyImageView;
-import view.classes.MyPlace;
+import controller.entities.MyPlace;
 
 import java.net.URL;
 import java.util.*;
 
+import static controller.entities.EntitiesDatas.*;
 import static view.ressources.GameResources.*;
 
     /* =========================================================================================================
@@ -82,7 +83,7 @@ public class BattleController implements Initializable {
         this.enemyIm.setImage(this.enemyImV.getBattleDefaultIm());
 
         //The player attack the enemy
-        HERO_IM.hero.attack(this.enemy);
+        MY_HERO.getModel().attack(this.enemy);
 
         //If the enemy is not yet defeated, we add a comment
         if (!this.enemy.isDefeat())
@@ -97,7 +98,7 @@ public class BattleController implements Initializable {
     private void setButton_heal(ActionEvent event) {
 
         //If the player got all his life
-        if (HERO_IM.hero.getHP() >= Hero.DEFAULT_HP)
+        if (MY_HERO.getModel().getHP() >= Hero.DEFAULT_HP)
             this.labelCommentary.setText("You better choose another option, you're already full of life dumb !");
 
         else {
@@ -114,7 +115,7 @@ public class BattleController implements Initializable {
             else sexyPoster = SEXY_POSTER_IM_2;
 
             //The player heal himself/herself/itself (no discrimination)
-            HERO_IM.hero.heal();
+            MY_HERO.getModel().heal();
             //We can remove the object
             HERO_IM.removeInv(sexyPoster);
             this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
@@ -174,7 +175,7 @@ public class BattleController implements Initializable {
 
             else {
                 this.enemy.attack();
-                HERO_IM.hero.setLife(this.enemy.getDamage());
+                MY_HERO.getModel().setLife(this.enemy.getDamage());
                 this.commentary +=
                         "-" + this.enemy.NAME + " attacked you [-" +
                         this.enemy.getDamage() + " HP]\n" +
@@ -189,7 +190,7 @@ public class BattleController implements Initializable {
             this.enemyIm.setImage(this.enemyImV.getBattleDefeatIm());
 
             //Commentary
-            this.commentary = this.enemyImV.enemy.getDefeatScript() + "YOU WON THE BATTLE ! Good game HOUGA BOUGA !";
+            this.commentary = this.enemy.getDefeatScript() + "YOU WON THE BATTLE ! Good game HOUGA BOUGA !";
 
             //Buttons
             this.buttonAttack.setDisable(true);
@@ -198,7 +199,7 @@ public class BattleController implements Initializable {
         }
 
         //If the player lost
-        if (!HERO_IM.hero.isAlive()) {
+        if (!MY_HERO.getModel().isAlive()) {
             this.commentary = "You just succumbed to your wounds\n\nGAME OVER !";
             this.buttonAttack.setDisable(true);
             this.buttonHeal.setDisable(true);
@@ -214,10 +215,10 @@ public class BattleController implements Initializable {
     private void livesDisplay() {
         //Labels
         this.labelEnemyLife.setText(String.valueOf(this.enemy.getHP()));
-        this.labelHeroLife.setText(String.valueOf(HERO_IM.hero.getHP()));
+        this.labelHeroLife.setText(String.valueOf(MY_HERO.getModel().getHP()));
 
         //ProgressBars
-        this.progressBarHero.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
+        this.progressBarHero.progressProperty().bind(MY_HERO.getModel().getHpDoubleProperty().divide(100.0));
         this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(100.0));
     }
 
@@ -228,13 +229,13 @@ public class BattleController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Initialization
-        this.place = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace());
-        this.enemyImV = place.getEnemy();
-        this.enemy = this.enemyImV.enemy;
+        this.place = PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace());
+        this.enemyImV = place.getEnemy().view;
+        this.enemy = place.getEnemy().enemy_model;
         this.eLife = this.enemy.HP_MAX;
 
         //Labels
-        this.labelEnemyName.setText(this.enemyImV.enemy.NAME);
+        this.labelEnemyName.setText(this.enemy.NAME);
         this.labelCommentary.setText(this.enemy.getOpeningScript() + "\nYou come face to face with " + this.enemy.NAME.toUpperCase());
 
         //Image

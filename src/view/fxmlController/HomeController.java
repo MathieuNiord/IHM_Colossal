@@ -1,4 +1,4 @@
-package controller;
+package view.fxmlController;
 
 
 import javafx.fxml.FXML;
@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import stage.MyStage;
+
+import static view.ressources.GameResources.MY_FONT_32;
 
 public class HomeController implements Initializable {
 
@@ -58,9 +60,12 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         button_play.setOnAction(event -> button_playAction());
+        button_play.setFont(MY_FONT_32);
 
         button_credit.setOnAction(event -> button_creditAction());
+        button_credit.setFont(MY_FONT_32);
 
         button_quit.setOnAction(event -> button_quitAction());
+        button_quit.setFont(MY_FONT_32);
     }
 }

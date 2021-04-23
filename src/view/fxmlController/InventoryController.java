@@ -1,14 +1,13 @@
-package controller;
+package view.fxmlController;
 
+import controller.GameController;
+import controller.entities.MyEntity;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
-import model.doors.BurnableDoor;
-import model.objects.ElectricityMeter;
-import model.others.Game;
 import model.others.Place;
-import model.others.Script;
-import view.classes.MyImageView;
-import view.classes.MyPlace;
+import controller.entities.MyPlace;
+
+import static controller.entities.EntitiesDatas.*;
 import static view.ressources.ImageResources.*;
 import static view.ressources.GameResources.*;
 
@@ -16,7 +15,7 @@ import static view.ressources.GameResources.*;
 public class InventoryController {
 
     /** === ATTRIBUTES === **/
-    private final FlowPane inventory;
+    private GameController gameController;
 
     /** === METHODS === **/
 
@@ -24,21 +23,21 @@ public class InventoryController {
     // --- Sub-function for manage drag and drop --- //
     // --- ------------------------------------- --- //
 
-    private void objHandleOver(DragEvent event, MyImageView target){
-        if ((event.getDragboard().getString().equals(target.obj.NAME)) &&
+    private void objHandleOver(DragEvent event, MyEntity target){
+        if ((event.getDragboard().getString().equals(target.obj_model.NAME)) &&
                 event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
         event.consume();
     }
 
-    private void objHandleDetected(MouseEvent event, MyImageView source){
-        if(source.obj.getDraggable()){
-            Dragboard db = source.startDragAndDrop(TransferMode.ANY);
+    private void objHandleDetected(MouseEvent event, MyEntity source){
+        if(source.obj_model.getDraggable()){
+            Dragboard db = source.view.startDragAndDrop(TransferMode.ANY);
 
             /* Put a string on a dragboard */
             ClipboardContent content = new ClipboardContent();
-            content.putString(source.obj.NAME);
+            content.putString(source.obj_model.NAME);
             db.setContent(content);
         }
         event.consume();
@@ -56,9 +55,7 @@ public class InventoryController {
 
         if(db.hasString()){
             success = true;
-            MONKEY_IM.monkey.setHungry(false);
-            HERO_IM.hero.getObjs().remove(BANANA_IM.obj.NAME);
-            inventory.getChildren().remove(BANANA_IM);
+            this.gameController.giveBananaToMonkey();
         }
 
         event.setDropCompleted(success);
@@ -67,10 +64,10 @@ public class InventoryController {
 
     private void monkeyDrag(){
         // source
-        BANANA_IM.setOnDragDetected(event -> objHandleDetected(event, BANANA_IM));
+        BANANA_IM.setOnDragDetected(event -> objHandleDetected(event, MY_BANANA));
 
         // target
-        MONKEY_IM.setOnDragOver(event -> objHandleOver(event, BANANA_IM));
+        MONKEY_IM.setOnDragOver(event -> objHandleOver(event, MY_BANANA));
 
         MONKEY_IM.setOnDragDropped(event -> monkeyHandleDrop(event));
     }
@@ -88,13 +85,7 @@ public class InventoryController {
 
         if (db.hasString()) {
             success = true;
-            HERO_IM.hero.getObjs().remove(FLINT_IM.obj.NAME);
-            HERO_IM.hero.getObjs().remove(STICK_IM.obj.NAME);
-            HERO_IM.hero.getObjs().put(FIREDSTICK_IM.obj.NAME, FIREDSTICK_IM.obj);
-            this.inventory.getChildren().remove(FLINT_IM);
-            this.inventory.getChildren().remove(STICK_IM);
-            this.inventory.getChildren().add(FIREDSTICK_IM);
-            FIREDSTICK_IM.obj.setDraggableTrue();
+            this.gameController.makeFiredStick();
         }
 
         event.setDropCompleted(success);
@@ -103,16 +94,16 @@ public class InventoryController {
 
     private void firedStickDrag(){
         //sources
-        STICK_IM.setOnDragDetected(event -> objHandleDetected(event, STICK_IM));
+        STICK_IM.setOnDragDetected(event -> objHandleDetected(event, MY_STICK));
 
-        FLINT_IM.setOnDragDetected(event -> objHandleDetected(event, FLINT_IM));
+        FLINT_IM.setOnDragDetected(event -> objHandleDetected(event, MY_FLINT));
 
         // target
-        FLINT_IM.setOnDragOver(event -> objHandleOver(event, STICK_IM));
+        FLINT_IM.setOnDragOver(event -> objHandleOver(event, MY_STICK));
 
         FLINT_IM.setOnDragDropped(event -> firedStickHandleDrop(event));
 
-        STICK_IM.setOnDragOver(event -> objHandleOver(event, FLINT_IM));
+        STICK_IM.setOnDragOver(event -> objHandleOver(event, MY_FLINT));
 
         STICK_IM.setOnDragDropped(event -> firedStickHandleDrop(event));
     }
@@ -128,12 +119,7 @@ public class InventoryController {
         boolean success = false;
         if(db.hasString()){
             success = true;
-            BurnableDoor door =(BurnableDoor) SECRET_PASSAGE_IM.door;
-            Game.printLetterByLetter("Congrats ! You can now pass !\n", Script.DEFAULT_NARRATOR);
-            door.unlock();
-            door.open();
-            HERO_IM.hero.getObjs().remove(Script.DEFAULT_FIREDSTICK_NAME);
-            this.inventory.getChildren().remove(FIREDSTICK_IM);
+            this.gameController.burnDoor();
         }
         event.setDropCompleted(success);
         event.consume();
@@ -141,10 +127,10 @@ public class InventoryController {
 
     private void burnedDoor(){
         // source
-        FIREDSTICK_IM.setOnDragDetected(event -> objHandleDetected(event, FIREDSTICK_IM));
+        FIREDSTICK_IM.setOnDragDetected(event -> objHandleDetected(event, MY_FIREDSTICK));
 
         // target
-        SECRET_PASSAGE_IM.setOnDragOver(event -> objHandleOver(event, FIREDSTICK_IM));
+        SECRET_PASSAGE_IM.setOnDragOver(event -> objHandleOver(event, MY_FIREDSTICK));
 
         SECRET_PASSAGE_IM.setOnDragDropped(event -> secretPassageHandleDrop(event));
     }
@@ -170,12 +156,7 @@ public class InventoryController {
 
         if(db.hasString()){
             success = true;
-            HERO_IM.hero.getObjs().remove(Script.DEFAULT_FUSE_NAME);
-            inventory.getChildren().remove(FUSE_IM);
-            ((ElectricityMeter) ELECTRICITY_METER_IM.obj).setHasFuse();
-            Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
-            ((ElectricityMeter) ELECTRICITY_METER_IM.obj).place.setEnlightened();
-            lightUpRoom(MY_COLD_ROOM);
+            this.gameController.putFuzeIntoElectricMeter();
 
         }
 
@@ -185,10 +166,10 @@ public class InventoryController {
 
     private void putFuseElectricMeter(){
         // source
-        FUSE_IM.setOnDragDetected(event -> objHandleDetected(event, FUSE_IM));
+        FUSE_IM.setOnDragDetected(event -> objHandleDetected(event, MY_FUSE));
 
         // target
-        ELECTRICITY_METER_IM.setOnDragOver(event -> objHandleOver(event, FUSE_IM));
+        ELECTRICITY_METER_IM.setOnDragOver(event -> objHandleOver(event, MY_FUSE));
 
         ELECTRICITY_METER_IM.setOnDragDropped(event -> electricityMeterHandleDrop(event));
     }
@@ -197,7 +178,7 @@ public class InventoryController {
     // --- Final --- //
 
     public InventoryController(FlowPane inventory){
-        this.inventory = inventory;
+        this.gameController = new GameController(inventory);
         monkeyDrag();
         firedStickDrag();
         burnedDoor();

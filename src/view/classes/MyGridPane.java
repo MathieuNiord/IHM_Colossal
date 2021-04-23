@@ -1,5 +1,7 @@
 package view.classes;
 
+import controller.entities.MyEntity;
+import controller.entities.MyPlace;
 import javafx.scene.layout.*;
 import view.ressources.GameResources;
 import java.util.HashMap;
@@ -26,7 +28,6 @@ public class MyGridPane extends GridPane {
     public void myRemove(MyImageView im){
         this.getChildren().remove(im);
         this.positions.remove(im.y * 9 + im.x);
-        this.myPlace.getImages().remove(im);
     }
 
     // --- SETTER ---
@@ -35,22 +36,26 @@ public class MyGridPane extends GridPane {
 
         //remove all children from previous place
         if(this.myPlace!=null){
-            this.getChildren().removeAll(this.myPlace.getImages());
-            this.getChildren().remove(this.myPlace.getEnemy());
+            for(MyEntity entity : this.myPlace.getEntities()){
+                this.getChildren().remove(entity.view);
+            }
+            if(this.myPlace.getEnemy()!=null)
+                this.getChildren().remove(this.myPlace.getEnemy().view);
             this.positions.clear();
         }
         //set new place
         this.myPlace = myPlace;
 
         //add all children from the new place
-        for (MyImageView im : myPlace.getImages()) {
+        for (MyEntity entity : myPlace.getEntities()) {
+            MyImageView im = entity.view;
             this.add(im, im.x, im.y);
             this.positions.put((im.y) * 9 + im.x, im);
         }
 
         //adding enemy if the place has one
         if(this.myPlace.getEnemy()!=null){
-            this.add(this.myPlace.getEnemy(),this.myPlace.getEnemy().x,this.myPlace.getEnemy().y);
+            this.add(this.myPlace.getEnemy().view,this.myPlace.getEnemy().view.x,this.myPlace.getEnemy().view.y);
         }
 
         //setting the background of the place

@@ -1,14 +1,18 @@
-package controller;
+package view.fxmlController;
 
+import controller.entities.EntitiesDatas;
+import controller.entities.MyEntity;
+import controller.entities.MyPlace;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import model.characters.Hero;
 import model.doors.*;
 import model.others.Script;
@@ -20,6 +24,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static controller.entities.EntitiesDatas.*;
 import static view.ressources.GameResources.*;
 
     /* =====================================================================================================
@@ -116,58 +121,56 @@ public class MainController implements Initializable {
     // --- ------------------- --- //
 
     // - This function regroups all interaction's constraints of the player -
-    private void heroInteractWithIm(MyImageView im) {
+    private void heroInteractWithIm(MyEntity entity) {
 
-        Hero hero = HERO_IM.hero;
+        Hero hero = MY_HERO.getModel();
 
         // -- Animals --
-        if (im.animal != null) labelGame.setText(im.animal.NAME.toUpperCase() + " : " + im.animal.dialog(hero));
-        if (im.monkey != null) labelGame.setText(im.monkey.NAME.toUpperCase() + " : " + im.monkey.dialog(hero));
+        if (entity.animal_model != null) labelGame.setText(entity.animal_model.NAME.toUpperCase() + " : " + entity.animal_model.dialog(hero));
+        if (entity.monkey_model != null) labelGame.setText(entity.monkey_model.NAME.toUpperCase() + " : " + entity.monkey_model.dialog(hero));
 
         // -- Objects --
-        if (im.obj != null) {
+        if (entity.obj_model != null) {
 
             // If the object is a key (specific take() method)
-            if (im.obj.NAME.equals(Script.DEFAULT_KEY1_NAME) || im.obj.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
+            if (entity.obj_model.NAME.equals(Script.DEFAULT_KEY1_NAME) || entity.obj_model.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
 
-                HERO_IM.hero.increaseKey();
-                gridPaneGame.myRemove(im);
+                MY_HERO.getModel().increaseKey();
+                gridPaneGame.myRemove(entity.view);
+                PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()).getEntities().remove(entity);
 
                 this.labelGame.setText("You found a key");
             }
 
             // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
-            else if (!im.obj.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME) && !im.obj.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
+            else if (!entity.obj_model.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME) && !entity.obj_model.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
 
                 //Banana case when the cold room is unlighted
-                if (!im.isVisible()) im.setVisible(true);
+                if (!entity.view.isVisible()) entity.view.setVisible(true);
 
-                im.obj.take(hero);
-                im.obj.setDraggableTrue();
-                im.setCursor(Cursor.HAND);
-                gridPaneGame.myRemove(im);
-                flowPaneInventory.getChildren().add(im);
+                MY_HERO.addObj(entity, gridPaneGame);
 
-                this.labelGame.setText("You found a " + im.obj.NAME);
+                this.labelGame.setText("You found a " + entity.obj_model.NAME);
             }
 
             // Else if it is the locker
-            else if (im.obj.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
+            else if (entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
 
+                MY_HERO.addObj(MY_WALKMAN, null);
                 LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
-                flowPaneInventory.getChildren().add(WALKMAN_IM);
+                //flowPaneInventory.getChildren().add(WALKMAN_IM);
 
                 this.labelGame.setText("You found a walkman");
             }
         }
 
         // -- Doors --
-        if (im.door != null) {
+        if (entity.door_model != null) {
 
             //SecretCodeDoor case
-            if (im.door instanceof SecretCodeDoor) {
+            if (entity.door_model instanceof SecretCodeDoor) {
 
-                SecretCodeDoor d = (SecretCodeDoor) im.door;
+                SecretCodeDoor d = (SecretCodeDoor) entity.door_model;
 
                 if (!d.isUnlock()) {
 
@@ -182,7 +185,7 @@ public class MainController implements Initializable {
                 }
 
                 if (d.isUnlock()) {
-                    heroCrossDoor(im, hero);
+                    heroCrossDoor(entity, hero);
                     labelTitle.setText(hero.getPlace().getName());
                     gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
                 }
@@ -193,26 +196,26 @@ public class MainController implements Initializable {
             else {
 
                 //SecretPassage case
-                if (im.door instanceof BurnableDoor && !hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME))
+                if (entity.door_model instanceof BurnableDoor && !hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME))
                     labelGame.setText("Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?");
 
                     //Infected room door case
-                else if (im.door instanceof InfectedRoomDoor)
+                else if (entity.door_model instanceof InfectedRoomDoor)
                     labelGame.setText("You can see gas coming out of this door. Unless you're immune, better not to go in that room.");
 
                     //Destructable door case
-                else if (im.door instanceof DestructableDoor)
+                else if (entity.door_model instanceof DestructableDoor)
                     labelGame.setText("It's doomed but it seems like fragile. Maybe you can smash it ?");
 
                     //Condemned room door case
-                else if (im.door instanceof CondemnedDoor)
+                else if (entity.door_model instanceof CondemnedDoor)
                     labelGame.setText("It's doomed dude ! You can not enter in.");
 
                     //Locked door case
-                else if (im.door instanceof LockedKeyDoor)
+                else if (entity.door_model instanceof LockedKeyDoor)
                     labelGame.setText("The door is locked. You can certainly find a key around stupid caveman.");
 
-                heroCrossDoor(im, hero);
+                heroCrossDoor(entity, hero);
                 labelTitle.setText(hero.getPlace().getName());
                 gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
@@ -225,12 +228,12 @@ public class MainController implements Initializable {
     // --- ----- --- //
 
     // - This function permits the player to cross doors -
-    private void heroCrossDoor(MyImageView im, Hero hero) {
+    private void heroCrossDoor(MyEntity entity, Hero hero) {
 
         String dest = null;
 
         //First we get the good place
-        for(String s : im.door.getPlaces().keySet()) {
+        for(String s : entity.door_model.getPlaces().keySet()) {
             if(!s.equals(hero.getPlace().getName())){
                 dest = s;
                 break;
@@ -239,7 +242,7 @@ public class MainController implements Initializable {
 
         if(dest != null) {
 
-            im.door.cross(hero,dest);
+            entity.door_model.cross(hero,dest);
 
             if (hero.getPlace().getName().equals(dest)) {
 
@@ -265,7 +268,7 @@ public class MainController implements Initializable {
                 }
 
                 //Else we compute the new position of the player in the room
-                else this.heroPosDoor(newPlace, im);
+                else this.heroPosDoor(newPlace, entity);
             }
         }
     }
@@ -276,9 +279,9 @@ public class MainController implements Initializable {
     // --- ----- --- //
 
     // - This function set the new position of the player after he crossed a specific door -
-    private void heroPosDoor(MyPlace dest, MyImageView door) {
+    private void heroPosDoor(MyPlace dest, MyEntity door) {
 
-        MyImageView d = dest.getDoor(door);
+        MyImageView d = dest.getDoor(door).view;
         int newX = d.x;
         int newY =d.y;
 
@@ -308,7 +311,7 @@ public class MainController implements Initializable {
 
         if(im != null){
            ans =true;
-           heroInteractWithIm(im);
+           heroInteractWithIm(findEntityOnGridGame(im));
         }
 
         //Out of bounds case
@@ -324,23 +327,25 @@ public class MainController implements Initializable {
     private boolean isPosContainsEnemy(int x, int y) {
 
         boolean res = false;
-        MyImageView enemy = PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()).getEnemy();
+        MyEntity entityEnemy = (PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace())).getEnemy();
 
-        if (enemy != null && (
-                (enemy.x == x + 2 && enemy.y == y) || (enemy.x == x - 2 && enemy.y == y)
-                || (enemy.x == x && enemy.y == y + 2) || (enemy.x == x && enemy.y == y - 2)
-                || (enemy.x == x + 2 && enemy.y == y + 2) || (enemy.x == x - 2 && enemy.y == y - 2)
-                || (enemy.x == x - 2 && enemy.y == y + 2) || (enemy.x == x + 2 && enemy.y == y - 2)
-            )
-        ) {
-            res = true;
+        if ( entityEnemy != null ){
+            MyImageView enemy = entityEnemy.view;
+            if ( (enemy.x == x + 2 && enemy.y == y) || (enemy.x == x - 2 && enemy.y == y)
+                            || (enemy.x == x && enemy.y == y + 2) || (enemy.x == x && enemy.y == y - 2)
+                            || (enemy.x == x + 2 && enemy.y == y + 2) || (enemy.x == x - 2 && enemy.y == y - 2)
+                            || (enemy.x == x - 2 && enemy.y == y + 2) || (enemy.x == x + 2 && enemy.y == y - 2)
+            ) {
+                res = true;
 
-            //Battle
-            new BattleController();
-            MyDialog myStage = new MyDialog("../fxml/battle.fxml");
-            myStage.showAndWait();
-            this.gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(HERO_IM.hero.getPlace()));
+                //Battle
+                new BattleController();
+                MyDialog myStage = new MyDialog("../fxml/battle.fxml");
+                myStage.showAndWait();
+                this.gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()));
+            }
         }
+
 
         return res;
     }
@@ -392,11 +397,12 @@ public class MainController implements Initializable {
     private void gridPaneGameSetOnMouseClickedEvent(MouseEvent event){
         try{
             MyImageView im = (MyImageView) event.getTarget();
+            MyEntity entity = EntitiesDatas.findEntity(im);
 
-            if (im.obj != null) labelGame.setText(im.obj.INFO);
-            if (im.animal != null) labelGame.setText(im.animal.DESCRIPTION);
-            if (im.monkey != null) labelGame.setText(im.monkey.DESCRIPTION);
-            if (im.enemy != null) labelGame.setText(im.enemy.DESCRIPTION);
+            if (entity.obj_model != null) labelGame.setText(entity.obj_model.INFO);
+            if (entity.animal_model != null) labelGame.setText(entity.animal_model.DESCRIPTION);
+            if (entity.monkey_model != null) labelGame.setText(entity.monkey_model.DESCRIPTION);
+            if (entity.enemy_model != null) labelGame.setText(entity.enemy_model.DESCRIPTION);
 
         } catch (Exception ignored){
             labelGame.setText("Hum...Did you just click on nothing ?");
@@ -413,16 +419,17 @@ public class MainController implements Initializable {
     private void flowPaneInventorySetOnMouseClickedEvent(MouseEvent event) {
         try {
             MyImageView im = (MyImageView) event.getTarget();
+            MyEntity entity = EntitiesDatas.findEntity(im);
             if (event.getClickCount() == 2) {
 
-                if (im.obj != null) {
+                if (entity.obj_model != null) {
 
-                    im.obj.use(HERO_IM.hero);
+                    entity.obj_model.use(MY_HERO.getModel());
 
-                    if (im.obj.NAME.equals(Script.DEFAULT_POTION_NAME) ||
-                            im.obj.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
-                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
-                            im.obj.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
+                    if (entity.obj_model.NAME.equals(Script.DEFAULT_POTION_NAME) ||
+                            entity.obj_model.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
+                            entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
+                            entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
                     ) flowPaneInventory.getChildren().remove(im);
 
                     labelObjectName.setText("");
@@ -431,13 +438,13 @@ public class MainController implements Initializable {
             }
 
             else {
-                if (im.obj != null) {
+                if (entity.obj_model != null) {
 
-                    String name = ((MyImageView) event.getTarget()).obj.NAME;
+                    String name = entity.obj_model.NAME;
                     String capName = name.substring(0, 1).toUpperCase() + name.substring(1);
 
                     labelObjectName.setText(capName);
-                    labelObjectInfo.setText(((MyImageView) event.getTarget()).obj.INFO);
+                    labelObjectInfo.setText(entity.obj_model.INFO);
                 }
             }
 
@@ -459,9 +466,7 @@ public class MainController implements Initializable {
         //Initialization
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
-        labelTitle.setText(HERO_IM.hero.getPlace().getName());
-        hp_bar.progressProperty().bind(HERO_IM.hero.getHpDoubleProperty().divide(100.0));
-        labelLife.textProperty().bind(HERO_IM.hero.getHpIntegerProperty().asString());
+        labelTitle.setText(MY_HERO.getModel().getPlace().getName());
         new InventoryController(flowPaneInventory);
         initListener();
 
@@ -475,5 +480,11 @@ public class MainController implements Initializable {
         labelObjectName.setFont(MY_FONT_32);
         buttonHelp.setFont(MY_FONT_16);
         buttonQuit.setFont(MY_FONT_16);
+        labelLife.setFont(MY_FONT_16);
+
+        // bindings
+        hp_bar.progressProperty().bind(MY_HERO.getModel().getHpDoubleProperty().divide(100.0));
+        Bindings.bindBidirectional(labelLife.textProperty(), MY_HERO.getModel().getHpDoubleProperty(), new NumberStringConverter());
+
     }
 }

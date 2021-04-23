@@ -67,17 +67,17 @@ public class Script {
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- STORYBOARD ---\n" +
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- DEVELOPMENT ---\n" +
             "BENJAMIN CHEVAIS\n" +
             "GAETAN FREJOUX\n" +
             "MATHIEU NIORD\n" +
-            "THIBAULT RUCHET\n\n" +
+            "THIBAULT RUCHER\n\n" +
             "--- SPECIAL GUESTS ---\n" +
             "IN THE ROLE OF HOUGA BOUGA :             YOU \n" +
             "IN THE ROLE OF THE ACCOUNT GUY : AFIDA TURNER\n" +
@@ -106,45 +106,40 @@ public class Script {
     //Cat
     public static final String CAT_TEXT01 = "Meeeeew mew meeew mew\n";
 
-    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany.\n" +
-            doSpaces("Cat") +  "I saw all those \"glorious soldier\" who left you here.\n" +
-            doSpaces("Cat") +  "They laughed and the boss said you were a stupid frenchy\n" +
-            doSpaces("Cat") +  "caveman who could never find a way out of this mansion !\n" +
-            doSpaces("Cat") +  "Another said that for sure no one will find the password\n" +
-            doSpaces("Cat") +  "because it is too smart, two letters I ... T. IT, IT, IT\n" +
-            doSpaces("Cat") +  "is the password !\n" +
-            doSpaces("Cat") +  "What a funny password, who came up with this great idea ?\n" +
-            doSpaces("Cat") +  "Definitely someone in a psychology degree course, haha, of\n" +
-            doSpaces("Cat") +  "course you have to be smart and quirky if you want to come\n" +
-            doSpaces("Cat") +  "up with those kinds of passwords or become a Nazi.\n";
+    public static final String CAT_TEXT02 = "Hello where are you from I came from Germany. " +
+        "I saw all those \"glorious soldier\" who left you here. " +
+        "They laughed and the boss said you were a stupid frenchy " +
+        "caveman who could never find a way out of this mansion ! " +
+        "Another said that for sure no one will find the password " +
+        "because it's too smart, two letters I ... T. IT is the password !";
 
     public static final String CAT_DESCRIPT = "Ohw easy man ! It's one of those Nazi cats !\n";
 
     //Mouse
     public static final String MOUSE_TEXT01 = "krrih krrih…\n";
 
-    public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very\n" +
-            doSpaces("Mouse") +  "smart. Are you in a psychology cursus ? Haha, I’m kidding, or...not ? Are\n" +
-            doSpaces("Mouse") +  "you homeless ? Hmm…no matter ! The password is \"S A GREAT\". I heard about\n" +
-            doSpaces("Mouse") +  "a potion that would make gas invulnerable in this room. Bye, come see me later.\n";
+    public static final String MOUSE_TEXT02 = "Hey handsome ! Are you alone ? You look well built but obviously not very " +
+            "smart. Are you in a psychology cursus ? Haha, I’m kidding, or... not ? Are " +
+            "you homeless ? Hmm... no matter ! The password is \"S A GREAT\". I heard about " +
+            "a potion that would make gas invulnerable in this room. Bye, come see me later. ";
 
     public static final String MOUSE_DESCRIPT = "A simple lab mouse locked in its cage. Looks like she's a female.\n";
 
     //Monkey
     public static final String MONKEY_TEXT01 = "Houhou HahaHaAAA !\n";
 
-    public static final String MONKEY_TEXT02 = "Wuts up bru ? Comon u saw all da shit ? Wtf !? I m a f***ing monky in a\n" +
-            doSpaces("Monkey") +  "f***ing mansion in da f***ing 80’s with da return of da f***ing Nazis :\n" +
-            doSpaces("Monkey") +  "wut da hell bru ? No waaay a die here ! and u know wut ma man ? Am starving\n" +
-            doSpaces("Monkey") +  "like a wulf, yep ! Go find me nice food and a give u da password u need for\n" +
-            doSpaces("Monkey") +  "escaping those bastards.\n";
+    public static final String MONKEY_TEXT02 = "Wuts up bru ? Comon u saw all da shit ? Wtf !? I m a f***ing monky in a " +
+            "f***ing mansion in da f***ing 80's with da return of da f***ing Nazis : " +
+            "wut da hell bru ? No waaay a die here ! and u know wut ma man ? Am starving " +
+            "like a wulf, yep ! Go find me nice food and a give u da password u need for " +
+            "escaping those bastards.";
 
-    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid \"cartoon monky\" bro ? oh, a see, cause\n" +
-            doSpaces("Monkey") +  "a m black… r u a f***ing racist ? … Wait a minute… dat s not food dumbass,\n" +
-            doSpaces("Monkey") +  "it’s a GOLD BANANA !? eh u know wut, a give u da password but only cause\n" +
-            doSpaces("Monkey") +  "a m better than u, u know wut u deserve ? dat a grab ma own shit and throw it\n" +
-            doSpaces("Monkey") +  "in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine\n" +
-            doSpaces("Monkey") +  "not urs ! Pshht, go away !\n";
+    public static final String MONKEY_TEXT03 = "R u kiddin ? u thoght a m a stoopid \"cartoon monky\" bro ? oh, a see, cause " +
+            "a m black... r u a f***ing racist ? ... Wait a minute... dat s not food dumbass, " +
+            "it's a GOLD BANANA !? eh u know wut, a give u da password but only cause " +
+            "a m better than u, u know wut u deserve ? dat a grab ma own shit and throw it " +
+            "in ur face. Password is GAME, u understand ? u r in da game, in ma game, mine " +
+            "not urs ! Pshht, go away !";
 
     public static final String MONKEY_DESCRIPT = "Do you know this monkey ? He calls you with great gestures. Maybe he's family ?\n";
 
@@ -211,12 +206,10 @@ public class Script {
     // === HELP COMMANDS ===
 
     public static final String HELP_DEFAULT = "Vous devez vous échappez d'ici : Trouvez la sortie !\n" +
-            "- Parlez aux animaux pour trouver des indices\n" +
-            "- trouvez tous les objets, ils vous seront utiles\n" +
+            "- Marchez sur les objets ou les animaux pour intéragir\n" +
             "- double-cliquez pour utiliser un objet\n" +
             "- certains objets sont fusionnables, essayez de les associer\n" +
-            "- marchez sur un objet pour le récupérer\n" +
-            "- marchez sur les animaux pour leur parler\n";
+            "- cliquez sur quelque chose pour obtenir des informations\n";
 
     public static String doSpaces(String size){
         int spaces = size.length() + 3;

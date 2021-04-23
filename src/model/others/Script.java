@@ -201,7 +201,14 @@ public class Script {
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
     public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?";
     public static final String CORPSE_DESCRIPT = "It's a corpse... What else ?...";
-    
+    //Doors
+    public static final String SECRET_CODE_DOOR_DESCRIPT = "Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...";
+    public static final String BURNABLE_DOOR_DESCRIPT = "Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?";
+    public static final String INFECTED_ROOM_DOOR_DESCRIPT = "You can see gas coming out of this door. Unless you're immune, better not to go in that room.";
+    public static final String DESTRUCTABLE_DOOR_DESCRIPT = "It's doomed but it seems like fragile. Maybe you can smash it ?";
+    public static final String CONDAMNED_DOOR_DESCRIPT = "It's doomed dude ! You can not enter in.";
+    public static final String LOCKED_DOOR_DESCRIPT = "The door is locked. You can certainly find a key around stupid caveman.";
+
     
     // === HELP COMMANDS ===
 

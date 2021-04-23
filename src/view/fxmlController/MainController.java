@@ -188,30 +188,11 @@ public class MainController implements Initializable {
                 gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
             }
             else
-                labelGame.setText("Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...");
+                labelGame.setText(entity.door_model.getDescription());
         }
 
         else {
-
-            //SecretPassage case
-            if (entity.door_model instanceof BurnableDoor && !hero.getObjs().containsKey(Script.DEFAULT_FIREDSTICK_NAME))
-                labelGame.setText("Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?");
-
-                //Infected room door case
-            else if (entity.door_model instanceof InfectedRoomDoor)
-                labelGame.setText("You can see gas coming out of this door. Unless you're immune, better not to go in that room.");
-
-                //Destructable door case
-            else if (entity.door_model instanceof DestructableDoor)
-                labelGame.setText("It's doomed but it seems like fragile. Maybe you can smash it ?");
-
-                //Condemned room door case
-            else if (entity.door_model instanceof CondemnedDoor)
-                labelGame.setText("It's doomed dude ! You can not enter in.");
-
-                //Locked door case
-            else if (entity.door_model instanceof LockedKeyDoor)
-                labelGame.setText("The door is locked. You can certainly find a key around stupid caveman.");
+            labelGame.setText(entity.door_model.getDescription());
 
             heroCrossDoor(entity, hero);
             labelTitle.setText(hero.getPlace().getName());

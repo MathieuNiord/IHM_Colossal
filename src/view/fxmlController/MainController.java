@@ -1,5 +1,6 @@
 package view.fxmlController;
 
+import controller.AnimalScriptController;
 import controller.entities.EntitiesDatas;
 import controller.entities.MyEntity;
 import controller.entities.MyPlace;
@@ -114,13 +115,14 @@ public class MainController implements Initializable {
         Hero hero = MY_HERO.getModel();
 
         // -- Animals --
-        if (entity.animal_model != null){
+        if (entity.animal_model != null || entity.monkey_model != null){
+
             //Dialog
+            AnimalScriptController.setAnimal(entity);
             new AnimalScript();
             MyDialog myStage = new MyDialog("../fxml/animal_script.fxml");
             myStage.showAndWait();
         }
-        if (entity.monkey_model != null) labelGame.setText(entity.monkey_model.NAME.toUpperCase() + " : " + entity.monkey_model.dialog(hero));
 
         // -- Objects --
         if (entity.obj_model != null) {
@@ -343,28 +345,40 @@ public class MainController implements Initializable {
                 if(!isPositionContainsEntity(x,y-1) && !isPosContainsEnemy(x, y - 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue()-1);
                 }
-                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_BACK);
+                if (MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
+                    HERO_IM.setImage(ImageResources.IMAGE_ARMED_CAVEMAN_BACK);
+                else
+                    HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_BACK);
                 break;
             }
             case Q: {
                 if (!isPositionContainsEntity(x - 1, y) && !isPosContainsEnemy(x - 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() - 1);
                 }
-                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_LEFT);
+                if (MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
+                    HERO_IM.setImage(ImageResources.IMAGE_ARMED_CAVEMAN_LEFT);
+                else
+                    HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_LEFT);
                 break;
             }
             case S: {
                 if (!isPositionContainsEntity(x , y+1) && !isPosContainsEnemy(x, y + 1)) {
                     HERO_IM.y.setValue(HERO_IM.y.getValue() + 1);
                 }
-                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_FRONT);
+                if (MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
+                    HERO_IM.setImage(ImageResources.IMAGE_ARMED_CAVEMAN_FRONT);
+                else
+                    HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_FRONT);
                 break;
             }
             case D: {
                 if (!isPositionContainsEntity(x +1, y) && !isPosContainsEnemy(x + 1, y)) {
                     HERO_IM.x.setValue(HERO_IM.x.getValue() + 1);
                 }
-                HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_RIGHT);
+                if (MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
+                    HERO_IM.setImage(ImageResources.IMAGE_ARMED_CAVEMAN_RIGHT);
+                else
+                    HERO_IM.setImage(ImageResources.IMAGE_CAVEMAN_DEFAULT_RIGHT);
                 break;
             }
         }
@@ -412,6 +426,9 @@ public class MainController implements Initializable {
 
                     labelObjectName.setText("");
                     labelObjectInfo.setText("");
+
+                    // TODO : Faire en sorte que chaque objet connaise le script de quand on l'utilise pour pouvoir l'afficher dans le labelGame
+                    //labelGame.setText();
                 }
             }
 

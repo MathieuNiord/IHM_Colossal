@@ -14,8 +14,10 @@ import static view.ressources.ImageResources.BACKGROUND_DEFAULT;
 import static view.ressources.ImageResources.IMAGE_ELECTRIC_METER_FIXED;
 
 public class GameController {
+
     /** === ATTRIBUTES === **/
     private final FlowPane inventory;
+
 
     /** === CONSTRUCTEUR === **/
     public GameController(FlowPane inventory){
@@ -51,8 +53,7 @@ public class GameController {
     // --- -------------------------- --- //
 
     public void burnDoor(){
-        BurnableDoor door =(BurnableDoor) MY_SECRET_PASSAGE.door_model;
-        Game.printLetterByLetter("Congrats ! You can now pass !\n", Script.DEFAULT_NARRATOR);
+        BurnableDoor door = (BurnableDoor) MY_SECRET_PASSAGE.door_model;
         door.unlock();
         door.open();
         MY_HERO.removeObj(MY_FIREDSTICK);
@@ -75,7 +76,6 @@ public class GameController {
     public void putFuzeIntoElectricMeter(){
         MY_HERO.removeObj(MY_FUSE);
         ((ElectricityMeter) MY_ELECTRICITY_METER.obj_model).setHasFuse();
-        Game.printLetterByLetter("You just added the missing " + Script.DEFAULT_FUSE_NAME + "\n", Script.DEFAULT_NARRATOR);
         ((ElectricityMeter) MY_ELECTRICITY_METER.obj_model).place.setEnlightened();
         lightUpRoom(MY_COLD_ROOM);
         MY_ELECTRICITY_METER.view.setImage(IMAGE_ELECTRIC_METER_FIXED);

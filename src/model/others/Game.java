@@ -77,9 +77,9 @@ public class Game {
 	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_1_NAME, Script.SEXY_POSTER);
 	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_2_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
-	private final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
-	private final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
-	private final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
 
 
 	// - Hero -
@@ -175,6 +175,7 @@ public class Game {
 		ANIM_AND_TRANSF.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
 		EXPERIM_AND_RESERV.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
 		EXPERIM_AND_DIRTY.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
+		MEET_AND_ARCH.setDescription(Script.DESTRUCTABLE_DOOR_DESCRIPT);
 	}
 
 

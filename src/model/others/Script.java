@@ -50,8 +50,10 @@ public class Script {
                     doSpaces(DEFAULT_NARRATOR) + "a superb rating for their project.\n\n" + "\t(Thanks for them...)\n\n";
 
     // - End messages for the JavaFx project -
-    public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n";
-    public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you are the head of the stock exchange...";
+    public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free ! " +
+                                              "You even decide to change your name to \"" + Game.HERO.getName() + "\" which is certainly not" +
+                                              "the better choice of your life but whatever you're free now !";
+    public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you become the head of the stock exchange...";
     public static final String WIN_ENDING_3 = "... become a rising star of cinema...";
     public static final String WIN_ENDING_4 = "... and president of the United States of America.";
     public static final String WIN_ENDING_5 = "Women run after you and men envy you, you are voted the sexiest man in the world !";

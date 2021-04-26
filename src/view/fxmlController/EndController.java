@@ -69,8 +69,6 @@ public class EndController implements Initializable {
             default :
                 Stage currentStage = (Stage) continueButton.getScene().getWindow();
                 currentStage.close();
-                MyStage myStage = new MyStage("../view/fxml/home.fxml");
-                myStage.show();
         }
     }
 

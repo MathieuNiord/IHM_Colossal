@@ -56,9 +56,9 @@ public class MyHero {
         club.take(this.model);
 
         if(gridPaneGame != null){
-            gridPaneGame.myRemove(CLUB_IM);
+            gridPaneGame.myRemove(EntitiesDatas.MY_CLUB.view);
             MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
-            currentPlace.getEntities().remove(CLUB_IM);
+            currentPlace.getEntities().remove(EntitiesDatas.MY_CLUB);
         }
     }
 

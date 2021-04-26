@@ -159,7 +159,6 @@ public class MainController implements Initializable {
 
                 MY_HERO.addObj(MY_WALKMAN, null);
                 LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
-                //flowPaneInventory.getChildren().add(WALKMAN_IM);
 
                 this.labelGame.setText("You found a walkman");
             }
@@ -200,6 +199,11 @@ public class MainController implements Initializable {
         }
 
         else {
+
+            // To not have the same description of the door after destroying it
+            if (entity.door_model instanceof DestructableDoor && MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
+                entity.door_model.setDescription("");
+
             heroCrossDoor(entity, hero);
 
             labelGame.setText(entity.door_model.getDescription());
@@ -237,8 +241,8 @@ public class MainController implements Initializable {
 
                 labelGame.setText("You entered in the " + hero.getPlace().getName());
 
-                //If the new place is the archive room, we set a position to the player
-                if (dest.equals("archives room")) {
+                //If the new place is the archive room by passing through the secret passage, we set a position to the player
+                if (dest.equals("archives room") && entity.door_model instanceof BurnableDoor) {
                     HERO_IM.x.setValue(4);
                     HERO_IM.y.setValue(1);
                 }

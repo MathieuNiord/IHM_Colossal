@@ -202,9 +202,6 @@ public class MainController implements Initializable {
         else {
             heroCrossDoor(entity, hero);
 
-            if (entity.door_model instanceof InfectedRoomDoor && MY_HERO.getModel().isImmun())
-                entity.view.setImage(ImageResources.IMAGE_DOOR_UP);
-
             labelGame.setText(entity.door_model.getDescription());
             labelTitle.setText(hero.getPlace().getName());
             gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));

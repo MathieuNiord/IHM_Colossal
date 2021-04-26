@@ -69,10 +69,19 @@ public class ImageResources {
 
 
     // - Environment -
-    public final static Image IMAGE_HEART = new Image("assets/images/environment/Heart.png");
-    public final static Image IMAGE_BACKGROUND_DEFAULT = new Image("assets/images/background/floor.png");
-    public final static Image IMAGE_BACKGROUND_CORRIDOR = new Image("assets/images/background/corridor.png");
-    public final static Image IMAGE_BACKGROUND_NO_LIGHT = new Image("assets/images/background/floor_no_light.png");
+    public final static Image IMAGE_HEART = new Image("assets/images/other/Heart.png");
+    public final static Image IMAGE_BACKGROUND_DEFAULT = new Image("assets/images/environment/floor.png");
+    public final static Image IMAGE_BACKGROUND_CORRIDOR = new Image("assets/images/environment/corridor.png");
+    public final static Image IMAGE_BACKGROUND_NO_LIGHT = new Image("assets/images/environment/floor_no_light.png");
+
+    // - End -
+
+    public final static Image END_01 = new Image("assets/images/end/escape.jpg");
+    public final static Image END_02 = new Image("assets/images/other/Heart.png"); //TODO
+    public final static Image END_03 = new Image("assets/images/end/celebrity.jpg");
+    public final static Image END_04 = new Image("assets/images/end/president.jpg");
+    public final static Image END_05 = new Image("assets/images/end/harem.jpg");
+    public final static Image END_06 = new Image("assets/images/other/Heart.png"); //TODO
 
 
     // - Doors -

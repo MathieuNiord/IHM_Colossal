@@ -94,7 +94,7 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
             <ImageView fitHeight="350.0" fitWidth="300.0" layoutX="90.0" layoutY="53.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../assets/images/background/mini_map_background.png" />
+                  <Image url="@../../assets/images/environment/mini_map_background.png" />
                </image>
             </ImageView>
             <Pane layoutX="25.0" layoutY="23.0" prefHeight="411.0" prefWidth="431.0" style="-fx-border-color: white; -fx-border-width: 3;">
@@ -139,7 +139,7 @@
    <Label fx:id="labelLife" layoutX="480.0" layoutY="688.0" prefHeight="17.0" prefWidth="43.0" text="&lt;3" textAlignment="CENTER" textFill="#ffffffa4" />
    <ImageView fx:id="imageHeart" fitHeight="25.0" fitWidth="25.0" layoutX="155.0" layoutY="680.0" pickOnBounds="true" preserveRatio="true">
        <image>
-           <Image url="@../../assets/images/environment/Heart.png" />
+           <Image url="@../../assets/images/other/Heart.png" />
        </image>
    </ImageView>
    <Label fx:id="labelGame" alignment="TOP_LEFT" layoutX="722.0" layoutY="529.0" prefHeight="113.0" prefWidth="480.0" style="-fx-background-color: black; -fx-border-color: white;" textFill="WHITE" wrapText="true">

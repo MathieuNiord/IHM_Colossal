@@ -44,8 +44,8 @@ public class ImageResources {
 
     public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefault.png");
     public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleDefault.png");
-    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/BossBattleDefault.png");
-    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/BossBattleLoose.GIF");
+    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/BossOpening.gif");
+    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/BossBattleLoose.gif");
     public final static Image IMAGE_BOSS_DEFEAT_FIX = new Image("assets/images/characters/BossLoose.png");
 
 
@@ -58,6 +58,7 @@ public class ImageResources {
     public final static Image IMAGE_SEXY_POSTER = new Image("assets/images/objects/SexyPoster.png");
     public final static Image IMAGE_FLINT = new Image("assets/images/objects/Flint.png");
     public final static Image IMAGE_STICK = new Image("assets/images/objects/Stick.png");
+    public final static Image IMAGE_CLUB = new Image("assets/images/objects/Club.png");
     public final static Image IMAGE_LOCKER_CLOSED = new Image("assets/images/objects/LockerLock.png");
     public final static Image IMAGE_LOCKER_OPENED = new Image("assets/images/objects/LockerOpen.png");
     public final static Image IMAGE_WALKMAN = new Image("assets/images/objects/Walkman.png");
@@ -65,23 +66,13 @@ public class ImageResources {
     public final static Image IMAGE_FUSE = new Image("assets/images/objects/Fuse.png");
     public final static Image IMAGE_KEY = new Image("assets/images/objects/Key.png");
     public final static Image IMAGE_ELECTRIC_METER_FIXED = new Image("assets/images/objects/ElectricMeterFixed.png");
-    public final static Image IMAGE_ELECTRIC_METER_MISSINGFUSE = new Image("assets/images/objects/ElectricMeterMissingFuse.GIF");
+    public final static Image IMAGE_ELECTRIC_METER_MISSINGFUSE = new Image("assets/images/objects/ElectricMeterMissingFuse.gif");
 
 
     // - Environment -
-    public final static Image IMAGE_HEART = new Image("assets/images/other/Heart.png");
     public final static Image IMAGE_BACKGROUND_DEFAULT = new Image("assets/images/environment/floor.png");
     public final static Image IMAGE_BACKGROUND_CORRIDOR = new Image("assets/images/environment/corridor.png");
     public final static Image IMAGE_BACKGROUND_NO_LIGHT = new Image("assets/images/environment/floor_no_light.png");
-
-    // - End -
-
-    public final static Image END_01 = new Image("assets/images/end/escape.jpg");
-    public final static Image END_02 = new Image("assets/images/other/Heart.png"); //TODO
-    public final static Image END_03 = new Image("assets/images/end/celebrity.jpg");
-    public final static Image END_04 = new Image("assets/images/end/president.jpg");
-    public final static Image END_05 = new Image("assets/images/end/harem.jpg");
-    public final static Image END_06 = new Image("assets/images/other/Heart.png"); //TODO
 
 
     // - Doors -
@@ -89,7 +80,21 @@ public class ImageResources {
     public final static Image IMAGE_DOOR_LEFT = new Image("assets/images/place/BasicDoorLeft.png");
     public final static Image IMAGE_DOOR_RIGHT = new Image("assets/images/place/BasicDoorRight.png");
     public final static Image IMAGE_DOOR_DOWN = new Image("assets/images/place/BasicDoorDown.png");
+    public final static Image IMAGE_GAS_DOOR = new Image("assets/images/place/GasDoor.png");
+    public final static Image IMAGE_SECRET_PASSAGE = new Image("assets/images/place/SecretPassage.png");
+    public final static Image IMAGE_SECRET_PASSAGE_OPENED = new Image("assets/images/place/SecretPassageOpen.png");
 
+
+    // - End -
+    public final static Image END_01 = new Image("assets/images/end/escape.jpg");
+    public final static Image END_02 = new Image("assets/images/other/Heart.png"); //TODO
+    public final static Image END_03 = new Image("assets/images/end/celebrity.jpg");
+    public final static Image END_04 = new Image("assets/images/end/president.jpg");
+    public final static Image END_05 = new Image("assets/images/end/harem.jpg");
+    public final static Image END_06 = new Image("assets/images/end/Final.jpg");
+
+
+    // - Backgrounds -
 
     public final static BackgroundImage BACKGROUND_IMAGE_DEFAULT = new BackgroundImage(IMAGE_BACKGROUND_DEFAULT,
             BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);

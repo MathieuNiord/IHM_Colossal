@@ -7,6 +7,7 @@ import model.others.Game;
 import model.others.Place;
 import model.others.Script;
 import controller.entities.MyPlace;
+import view.ressources.ImageResources;
 
 import static controller.entities.EntitiesDatas.*;
 import static view.ressources.GameResources.*;
@@ -19,7 +20,7 @@ public class GameController {
     private final FlowPane inventory;
 
 
-    /** === CONSTRUCTEUR === **/
+    /** === CONSTRUCTOR === **/
     public GameController(FlowPane inventory){
         this.inventory = inventory;
     }
@@ -57,6 +58,7 @@ public class GameController {
         door.unlock();
         door.open();
         MY_HERO.removeObj(MY_FIREDSTICK);
+        MY_SECRET_PASSAGE.view.setImage(ImageResources.IMAGE_SECRET_PASSAGE_OPENED);
     }
 
     // --- --------------------- --- //

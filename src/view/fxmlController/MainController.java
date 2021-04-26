@@ -138,12 +138,18 @@ public class MainController implements Initializable {
             }
 
             // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
-            else if (!entity.obj_model.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) && !entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME) && !entity.obj_model.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
+            else if (!entity.obj_model.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) &&
+                    !entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME) &&
+                    !entity.obj_model.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
 
                 //Banana case when the cold room is unlighted
                 if (!entity.view.isVisible()) entity.view.setVisible(true);
 
-                MY_HERO.addObj(entity, gridPaneGame);
+                if (entity.obj_model.NAME.equals(Script.DEFAULT_CLUB_NAME))
+                    MY_HERO.remClub(gridPaneGame);
+
+                else
+                    MY_HERO.addObj(entity, gridPaneGame);
 
                 this.labelGame.setText("You found a " + entity.obj_model.NAME);
             }
@@ -194,9 +200,12 @@ public class MainController implements Initializable {
         }
 
         else {
-            labelGame.setText(entity.door_model.getDescription());
-
             heroCrossDoor(entity, hero);
+
+            if (entity.door_model instanceof InfectedRoomDoor && MY_HERO.getModel().isImmun())
+                entity.view.setImage(ImageResources.IMAGE_DOOR_UP);
+
+            labelGame.setText(entity.door_model.getDescription());
             labelTitle.setText(hero.getPlace().getName());
             gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
         }
@@ -427,7 +436,7 @@ public class MainController implements Initializable {
                     labelObjectName.setText("");
                     labelObjectInfo.setText("");
 
-                    // TODO : Faire en sorte que chaque objet connaise le script de quand on l'utilise pour pouvoir l'afficher dans le labelGame
+                    // TODO : Faire en sorte que chaque objet connaisse le script de quand on l'utilise pour pouvoir l'afficher dans le labelGame
                     //labelGame.setText();
                 }
             }

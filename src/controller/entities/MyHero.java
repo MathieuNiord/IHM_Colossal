@@ -2,11 +2,14 @@ package controller.entities;
 
 import javafx.scene.Cursor;
 import model.characters.Hero;
+import model.objects.Weapon;
+import model.others.Game;
 import view.classes.MyGridPane;
 import view.classes.MyHeroImageView;
 
 import java.util.ArrayList;
 
+import static view.ressources.GameResources.CLUB_IM;
 import static view.ressources.GameResources.PLACE_TO_MY_PLACE;
 
 public class MyHero {
@@ -43,6 +46,19 @@ public class MyHero {
             gridPaneGame.myRemove(obj.view);
             MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
             currentPlace.getEntities().remove(obj);
+        }
+    }
+
+    public void remClub(MyGridPane gridPaneGame){
+
+        Weapon club = Game.CLUB;
+
+        club.take(this.model);
+
+        if(gridPaneGame != null){
+            gridPaneGame.myRemove(CLUB_IM);
+            MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
+            currentPlace.getEntities().remove(CLUB_IM);
         }
     }
 

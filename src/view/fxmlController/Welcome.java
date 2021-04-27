@@ -1,5 +1,7 @@
 package view.fxmlController;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -16,15 +18,16 @@ import static view.ressources.GameResources.MY_FONT_32;
 public class Welcome implements Initializable {
 
     /** === ATTRIBUTES === **/
-
-    public Label scriptLabel;
-    public Button okButton;
+    @FXML
+    private Label scriptLabel;
+    @FXML
+    private Button okButton;
 
     /** === METHODS === **/
 
     // - when ok is pressed we ask the name of the player and redirect to the main.fxml -
-    private void setOkButtonAction(){
-
+    @FXML
+    public void buttonOkOnAction(ActionEvent event){
         //TextInputDialog configuration
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Choose a gamer tag");
@@ -56,9 +59,7 @@ public class Welcome implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.okButton.setOnAction(event -> setOkButtonAction());
         this.okButton.setFont(MY_FONT_16);
-
         this.scriptLabel.setText(Script.WELCOME_MESSAGE + Script.SYNOPSIS);
         this.scriptLabel.setFont(MY_FONT_32);
     }

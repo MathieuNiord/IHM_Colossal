@@ -9,7 +9,7 @@ public class Stick extends Obj {
 	// ***** CONSTRUCTOR *****
 	
 	public Stick(String name, String info) {
-		super(name, info);
+		super(name, info, Script.ORTHER_ITEM_SIMPLE_USE);
 	}
 
 
@@ -25,7 +25,7 @@ public class Stick extends Obj {
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item for something else...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE, Script.DEFAULT_NARRATOR);
 	}
 
 	@Override

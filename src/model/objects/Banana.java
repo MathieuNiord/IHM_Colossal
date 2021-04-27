@@ -9,7 +9,7 @@ public class Banana extends Obj {
 	// ***** CONSTRUCTOR *****
 	
 	public Banana(String name, String info) {
-		super(name, info);
+		super(name, info, Script.BANANA_SIMPLE_USE);
 	}
 
 
@@ -27,7 +27,7 @@ public class Banana extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Maybe someone is interested for this " + this.NAME + "...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE + this.NAME + "...\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

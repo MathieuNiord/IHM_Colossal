@@ -9,7 +9,7 @@ public class Potion extends Obj {
 	// ***** CONSTRUCTOR *****
 
 	public Potion(String name, String info) {
-		super(name, info);
+		super(name, info, Script.POTION_SIMPLE_USE);
 	}
 
 	

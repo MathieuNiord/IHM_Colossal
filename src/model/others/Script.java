@@ -211,6 +211,16 @@ public class Script {
     public static final String CONDAMNED_DOOR_DESCRIPT = "It's doomed dude ! You can not enter in.";
     public static final String LOCKED_DOOR_DESCRIPT = "The door is locked. You can certainly find a key around stupid caveman.";
 
+    // Simple_use objs
+    public static final String BANANA_SIMPLE_USE = "Maybe someone is interested for this ";
+    public static final String BESCHERELLE_SIMPLE_USE = "NO PLEASE DON'T EAT THIS ";
+    public static final String ELECTRICITY_METER_SIMPLE_USE = "Use this item with something else...\n";
+    public static final String FIREDSTICK_SIMPLE_USE = "Maybe there is something burnable somewhere in this Laboratory...\n";
+    public static final String ORTHER_ITEM_SIMPLE_USE = "Use this item for something else...\n";
+    public static final String POTION_SIMPLE_USE = "I don't know what was in this solution but you no longer have a nose.\n" + "Fortunately you are an athlete and a freediving champion. You should be immune now.\n" ;
+    public static final String WALKMAN_SIMPLE_USE = "Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n";
+    public static final String WEAPON_SIMPLE_USE = "Maybe you should find someone to hit with this ";
+
     
     // === HELP COMMANDS ===
 

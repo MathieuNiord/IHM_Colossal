@@ -1,6 +1,7 @@
 package view.fxmlController;
 
 import controller.AnimalScriptController;
+import controller.GameController;
 import controller.entities.EntitiesDatas;
 import controller.entities.MyEntity;
 import controller.entities.MyPlace;
@@ -59,6 +60,8 @@ public class MainController implements Initializable {
     @FXML
     private Label labelLife;
 
+    private GameController gameController;
+
 
     /** === METHODS === **/
 
@@ -104,172 +107,12 @@ public class MainController implements Initializable {
         });
     }
 
-
-    // --- ------------------- --- //
-    // --- Player Interactions --- //
-    // --- ------------------- --- //
-
-    // - This function regroups all interaction's constraints of the player -
-    private void heroInteractWithIm(MyEntity entity) {
-
-        Hero hero = MY_HERO.getModel();
-
-        // -- Animals --
-        if (entity.animal_model != null || entity.monkey_model != null){
-
-            //Dialog
-            AnimalScriptController.setAnimal(entity);
-            new AnimalScript();
-            MyDialog myStage = new MyDialog("../fxml/animal_script.fxml");
-            myStage.showAndWait();
-        }
-
-        // -- Objects --
-        if (entity.obj_model != null) {
-
-            // If the object is a key (specific take() method)
-            if (entity.obj_model.NAME.equals(Script.DEFAULT_KEY1_NAME) || entity.obj_model.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
-
-                MY_HERO.getModel().increaseKey();
-                gridPaneGame.myRemove(entity.view);
-                PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()).getEntities().remove(entity);
-
-                this.labelGame.setText("You found a key");
-            }
-
-            // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
-            else if (!entity.obj_model.NAME.equals(Script.DEFAULT_ELECTRICMETER_NAME) &&
-                    !entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME) &&
-                    !entity.obj_model.NAME.equals(Script.DEFAULT_CORPSE_NAME)) {
-
-                //Banana case when the cold room is unlighted
-                if (!entity.view.isVisible()) entity.view.setVisible(true);
-
-                if (entity.obj_model.NAME.equals(Script.DEFAULT_CLUB_NAME))
-                    MY_HERO.remClub(gridPaneGame);
-
-                else
-                    MY_HERO.addObj(entity, gridPaneGame);
-
-                this.labelGame.setText("You found a " + entity.obj_model.NAME);
-            }
-
-            // Else if it is the locker
-            else if (entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
-
-                MY_HERO.addObj(MY_WALKMAN, null);
-                LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
-
-                this.labelGame.setText("You found a walkman");
-            }
-        }
-
-        // -- Doors --
-        if (entity.door_model != null) {
-            this.interactWithDoor(entity, hero);
-        }
-    }
-
-    private void interactWithDoor(MyEntity entity, Hero hero){
-
-        //SecretCodeDoor case
-        if (entity.door_model instanceof SecretCodeDoor) {
-
-            SecretCodeDoor d = (SecretCodeDoor) entity.door_model;
-
-            if (!d.isUnlock()) {
-
-                // TextInputDialog Component
-                TextInputDialog code = new TextInputDialog();
-                code.setHeaderText("NEED A CODE");
-                code.getEditor().setPromptText("CODE");
-                code.showAndWait();
-
-                // Unlock and open the door
-                d.unlock(code.getResult());
-            }
-
-            if (d.isUnlock()) {
-                heroCrossDoor(entity, hero);
-                labelTitle.setText(hero.getPlace().getName());
-                gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
-            }
-            else
-                labelGame.setText(entity.door_model.getDescription());
-        }
-
-        else {
-
-            // To not have the same description of the door after destroying it
-            if (entity.door_model instanceof DestructableDoor && MY_HERO.getModel().getObjs().containsKey(Script.DEFAULT_CLUB_NAME))
-                entity.door_model.setDescription("");
-
-            heroCrossDoor(entity, hero);
-
-            labelGame.setText(entity.door_model.getDescription());
-            labelTitle.setText(hero.getPlace().getName());
-            gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(hero.getPlace()));
-        }
-    }
-
-
-    // --- ----- --- //
-    // --- Doors --- //
-    // --- ----- --- //
-
-    // - This function permits the player to cross doors -
-    private void heroCrossDoor(MyEntity entity, Hero hero) {
-
-        String dest = null;
-
-        //First we get the good place
-        for(String s : entity.door_model.getPlaces().keySet()) {
-            if(!s.equals(hero.getPlace().getName())){
-                dest = s;
-                break;
-            }
-        }
-
-        if(dest != null) {
-
-            entity.door_model.cross(hero,dest);
-
-            if (hero.getPlace().getName().equals(dest)) {
-
-                MyPlace newPlace = PLACE_TO_MY_PLACE.get(hero.getPlace());
-                gridPaneGame.setMyPlace(newPlace);
-
-                labelGame.setText("You entered in the " + hero.getPlace().getName());
-
-                //If the new place is the archive room by passing through the secret passage, we set a position to the player
-                if (dest.equals("archives room") && entity.door_model instanceof BurnableDoor) {
-                    HERO_IM.x.setValue(4);
-                    HERO_IM.y.setValue(1);
-                }
-
-                //Else we check if the hero is in the last room
-                else if (dest.equals("exit")) {
-                    if (hero.isAlive() && !hero.isQuit()) {
-                        Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
-                        currentStage.close();
-                        MyDialog end = new MyDialog("../fxml/end.fxml");
-                        end.show();
-                    }
-                }
-
-                //Else we compute the new position of the player in the room
-                else this.heroPosDoor(newPlace, entity);
-            }
-        }
-    }
-
-
     // --- ----- --- //
     // --- Place --- //
     // --- ----- --- //
 
     // - This function set the new position of the player after he crossed a specific door -
-    private void heroPosDoor(MyPlace dest, MyEntity door) {
+    public void heroPosDoor(MyPlace dest, MyEntity door) {
 
         MyImageView d = dest.getDoor(door).view;
         int newX = d.x;
@@ -301,7 +144,7 @@ public class MainController implements Initializable {
 
         if(im != null){
            ans =true;
-           heroInteractWithIm(findEntityOnGridGame(im));
+            gameController.heroInteractWithIm(findEntityOnGridGame(im));
         }
 
         //Out of bounds case
@@ -424,22 +267,7 @@ public class MainController implements Initializable {
             MyEntity entity = EntitiesDatas.findEntity(im);
             if (event.getClickCount() == 2) {
 
-                if (entity.obj_model != null) {
-
-                    entity.obj_model.use(MY_HERO.getModel());
-
-                    if (entity.obj_model.NAME.equals(Script.DEFAULT_POTION_NAME) ||
-                            entity.obj_model.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
-                            entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
-                            entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
-                    ) flowPaneInventory.getChildren().remove(im);
-
-                    labelObjectName.setText("");
-                    labelObjectInfo.setText("");
-
-                    // TODO : Faire en sorte que chaque objet connaisse le script de quand on l'utilise pour pouvoir l'afficher dans le labelGame
-                    //labelGame.setText();
-                }
+                gameController.useObj(entity);
             }
 
             else {
@@ -459,6 +287,38 @@ public class MainController implements Initializable {
         }
     }
 
+    // --- ------- --- //
+    // --- Setters --- //
+    // --- ------- --- //
+    public void setOnGameLabel(String text){
+        this.labelGame.setText(text);
+    }
+
+    public void setOnGameTitle(String text){
+        this.labelTitle.setText(text);
+    }
+
+    public void setNewPlace(MyPlace myPlace){
+        gridPaneGame.setMyPlace(myPlace);
+    }
+
+    public void removeOnGridPane(MyImageView im){
+        this.gridPaneGame.myRemove(im);
+    }
+
+    public void refreshMap(){ gridPaneMap.refreshMap(PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()));}
+
+    public void setOnDescObj(String title, String desc){
+        labelObjectName.setText(title);
+        labelObjectInfo.setText(desc);
+    }
+
+    public void exitGame(){
+        Stage currentStage = (Stage) this.gridPaneGame.getScene().getWindow();
+        currentStage.close();
+        MyDialog end = new MyDialog("../fxml/end.fxml");
+        end.show();
+    }
 
     // --- -------------------------------- --- //
     // --- Initialization of the controller --- //
@@ -469,10 +329,12 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Initialization
+        gameController = new GameController(this);
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(MY_HERO.getModel().getPlace().getName());
-        new InventoryController(flowPaneInventory);
+        new InventoryController(gameController);
+
         initListener();
 
         //Set the inventory of the player

@@ -12,7 +12,7 @@ import stage.MyStage;
 
 import static view.ressources.GameResources.MY_FONT_32;
 
-public class HomeController implements Initializable {
+public class Home implements Initializable {
 
     /** === ATTRIBUTES === **/
 

@@ -14,7 +14,7 @@ import view.ressources.ImageResources;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EndController implements Initializable {
+public class End implements Initializable {
 
     /** === ATTRIBUTES === **/
 

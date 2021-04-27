@@ -1,5 +1,7 @@
 package model.others;
 
+import model.characters.Hero;
+
 import java.util.Date;
 
 public class Script {
@@ -220,7 +222,8 @@ public class Script {
     public static final String POTION_SIMPLE_USE = "I don't know what was in this solution but you no longer have a nose.\n" + "Fortunately you are an athlete and a freediving champion. You should be immune now.\n" ;
     public static final String WALKMAN_SIMPLE_USE = "Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n";
     public static final String WEAPON_SIMPLE_USE = "Maybe you should find someone to hit with this ";
-
+    public static final String NAZI_POSTER_SIMPLE_USE = "Ouch ! You loose " + 10 + " points of your life ! Take care my man...\n\n";
+    public static final String SEXY_POSTER_SIMPLE_USE = "\nYou gained " + Hero.DEFAULT_HEAL + " HP\n";
     
     // === HELP COMMANDS ===
 

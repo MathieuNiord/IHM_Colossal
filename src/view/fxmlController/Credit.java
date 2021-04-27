@@ -10,7 +10,7 @@ import stage.MyStage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreditController implements Initializable {
+public class Credit implements Initializable {
 
     @FXML
     private Button button_menu;

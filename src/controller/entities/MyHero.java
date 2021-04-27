@@ -4,14 +4,12 @@ import javafx.scene.Cursor;
 import model.characters.Hero;
 import model.objects.Weapon;
 import model.others.Game;
-import view.classes.MyGridPane;
 import view.classes.MyHeroImageView;
-import view.fxmlController.MainController;
+import view.fxmlController.Main;
 
 import java.util.ArrayList;
 
 import static controller.entities.EntitiesDatas.MY_HERO;
-import static view.ressources.GameResources.CLUB_IM;
 import static view.ressources.GameResources.PLACE_TO_MY_PLACE;
 
 public class MyHero {
@@ -36,7 +34,7 @@ public class MyHero {
         this.view.getInvView().getChildren().remove(obj.view);
     }
 
-    public void addObj(MyEntity obj, MainController mainController, String text, boolean isOnGridGame){
+    public void addObj(MyEntity obj, Main main, String text, boolean isOnGridGame){
         this.inventory.add(obj);
 
         obj.obj_model.take(this.model);
@@ -45,34 +43,34 @@ public class MyHero {
         this.view.getInvView().getChildren().add(obj.view);
 
         if(isOnGridGame){
-            mainController.removeOnGridPane(obj.view);
+            main.removeOnGridPane(obj.view);
             MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
             currentPlace.getEntities().remove(obj);
         }
-        if(text != null) mainController.setOnGameLabel(text);
+        if(text != null) main.setOnGameLabel(text);
 
 
     }
 
-    public void remClub(MainController mainController){
+    public void remClub(Main main){
 
         Weapon club = Game.CLUB;
 
         club.take(this.model);
 
-        if(mainController != null){
-            mainController.removeOnGridPane(EntitiesDatas.MY_CLUB.view);
+        if(main != null){
+            main.removeOnGridPane(EntitiesDatas.MY_CLUB.view);
             MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
             currentPlace.getEntities().remove(EntitiesDatas.MY_CLUB);
         }
     }
 
-    public void takeKey(MainController mainController, MyEntity entity){
+    public void takeKey(Main main, MyEntity entity){
         MY_HERO.getModel().increaseKey();
-        mainController.removeOnGridPane(entity.view);
+        main.removeOnGridPane(entity.view);
         PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()).getEntities().remove(entity);
 
-        mainController.setOnGameLabel("You found a key");
+        main.setOnGameLabel("You found a key");
     }
 
 }

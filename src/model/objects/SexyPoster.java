@@ -10,7 +10,7 @@ public class SexyPoster extends Poster{
 	// ***** CONSTRUCTOR *****
 	
 	public SexyPoster(String name, String info) {
-		super(name, info);
+		super(name, info, Script.SEXY_POSTER_SIMPLE_USE);
 	}
 	
 	// ***** METHODS *****

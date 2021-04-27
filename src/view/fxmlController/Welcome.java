@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 import static view.ressources.GameResources.MY_FONT_16;
 import static view.ressources.GameResources.MY_FONT_32;
 
-public class WelcomeController implements Initializable {
+public class Welcome implements Initializable {
 
     /** === ATTRIBUTES === **/
 
@@ -35,7 +35,7 @@ public class WelcomeController implements Initializable {
 
             // Initialization of the game
             new Game(dialog.getResult());
-            new MainController();
+            new Main();
 
             // Simple Alert which simply is a joke
             Alert alert = new Alert(Alert.AlertType.NONE, "You sure you want to be called \"HOUGA BOUGA\" ?");

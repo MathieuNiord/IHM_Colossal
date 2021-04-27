@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.characters.Enemy;
 import model.characters.Hero;
-import stage.MyStage;
+import view.classes.MyStage;
 import view.classes.MyImageView;
 import controller.entities.MyPlace;
 
@@ -106,7 +106,7 @@ public class Battle implements Initializable {
         if (this.enemy.isDefeat()) {
             //We remove the enemy from the place
             this.place.removeEnemy();
-            //We can now close the battle stage
+            //We can now close the battle view.stage
             Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
             stage.close();
         }
@@ -115,13 +115,13 @@ public class Battle implements Initializable {
         else {
             //We set a new image of the hero
             // - TODO Hero corpse -
-            //We can now close the battle stage
+            //We can now close the battle view.stage
             Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
             stage.close();
-            //We can close the main stage
+            //We can close the main view.stage
             ((Stage) (HERO_IM.getInvView().getScene().getWindow())).close();
             //We now open the game over view
-            MyStage gameOver = new MyStage("../view/fxml/game_over.fxml");
+            MyStage gameOver = new MyStage("../fxml/game_over.fxml");
             gameOver.show();
         }
     }

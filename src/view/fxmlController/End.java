@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.others.Script;
-import stage.MyStage;
 import view.ressources.ImageResources;
 
 import java.net.URL;

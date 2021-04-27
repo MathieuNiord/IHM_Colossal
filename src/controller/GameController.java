@@ -12,7 +12,7 @@ import model.others.Script;
 import controller.entities.MyPlace;
 import view.classes.MyDialog;
 import view.fxmlController.AnimalScript;
-import view.fxmlController.Main;
+import view.fxmlController.MyGame;
 import view.ressources.ImageResources;
 
 import static controller.entities.EntitiesDatas.*;
@@ -24,11 +24,11 @@ public class GameController {
 
     /** === ATTRIBUTES === **/
 
-    private final Main main;
+    private final MyGame myGame;
 
     /** === CONSTRUCTOR === **/
 
-    public GameController(Main main){ this.main = main; }
+    public GameController(MyGame myGame){ this.myGame = myGame; }
 
     /** === METHODS === **/
 
@@ -48,7 +48,7 @@ public class GameController {
 
     public void makeFiredStick(){
         // the object isn't on the board
-        MY_HERO.addObj(MY_FIREDSTICK, main, "Great you create a firedstick !", false);
+        MY_HERO.addObj(MY_FIREDSTICK, myGame, "Great you create a firedstick !", false);
         MY_HERO.removeObj(MY_FLINT);
         MY_HERO.removeObj(MY_STICK);
     }
@@ -124,7 +124,7 @@ public class GameController {
     private void interactWitObj(MyEntity entity){
         // If the object is a key (specific take() method)
         if (entity.obj_model.NAME.equals(Script.DEFAULT_KEY1_NAME) || entity.obj_model.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
-            MY_HERO.takeKey(main, entity);
+            MY_HERO.takeKey(myGame, entity);
         }
 
         // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
@@ -136,16 +136,16 @@ public class GameController {
             if (!entity.view.isVisible()) entity.view.setVisible(true);
 
             if (entity.obj_model.NAME.equals(Script.DEFAULT_CLUB_NAME))
-                MY_HERO.remClub(main);
+                MY_HERO.remClub(myGame);
 
             else
-                MY_HERO.addObj(entity, main, "You found a " + entity.obj_model.NAME, true);
+                MY_HERO.addObj(entity, myGame, "You found a " + entity.obj_model.NAME, true);
         }
 
         // Else if it is the locker
         else if (entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
 
-            MY_HERO.addObj(MY_WALKMAN, main, "You found a walkman", false);
+            MY_HERO.addObj(MY_WALKMAN, myGame, "You found a walkman", false);
             LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
         }
     }
@@ -171,15 +171,19 @@ public class GameController {
 
                 // Unlock and open the door
                 d.unlock(code.getResult());
+
+                if (d.isUnlock()) {
+                    myGame.setOnGameLabel("VALID CODE : You crossed the door thanks your brain nerdy !");
+                }
             }
 
             if (d.isUnlock()) {
                 heroCrossDoor(entity, hero);
-                main.setOnGameLabel(hero.getPlace().getName());
-                main.refreshMap();
+                myGame.refreshMap();
             }
+
             else
-                main.setOnGameLabel(entity.door_model.getDescription());
+                myGame.setOnGameLabel(entity.door_model.getDescription());
         }
 
         else {
@@ -190,9 +194,9 @@ public class GameController {
 
             heroCrossDoor(entity, hero);
 
-            main.setOnGameLabel(entity.door_model.getDescription());
-            main.setOnGameTitle(hero.getPlace().getName());
-            main.refreshMap();
+            myGame.setOnGameLabel(entity.door_model.getDescription());
+            myGame.setOnGameTitle(hero.getPlace().getName());
+            myGame.refreshMap();
         }
     }
 
@@ -220,9 +224,8 @@ public class GameController {
             if (hero.getPlace().getName().equals(dest)) {
 
                 MyPlace newPlace = PLACE_TO_MY_PLACE.get(hero.getPlace());
-                main.setNewPlace(newPlace);
-
-                main.setOnGameLabel("You entered in the " + hero.getPlace().getName());
+                entity.door_model.setDescription("");
+                myGame.setNewPlace(newPlace);
 
                 //If the new place is the archive room by passing through the secret passage, we set a position to the player
                 if (dest.equals("archives room") && entity.door_model instanceof BurnableDoor) {
@@ -233,12 +236,12 @@ public class GameController {
                 //Else we check if the hero is in the last room
                 else if (dest.equals("exit")) {
                     if (hero.isAlive() && !hero.isQuit()) {
-                        main.exitGame();
+                        myGame.exitGame();
                     }
                 }
 
                 //Else we compute the new position of the player in the room
-                else main.heroPosDoor(newPlace, entity);
+                else myGame.heroPosDoor(newPlace, entity);
             }
         }
     }
@@ -254,10 +257,10 @@ public class GameController {
             if((entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
                     entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)) &&
                     MY_HERO.getModel().getHP() >= Hero.DEFAULT_HP){
-                main.setOnGameLabel("Your life is already full");
+                myGame.setOnGameLabel("Your life is already full");
             }
             else if(!entity.obj_model.SIMPLE_USE.equals(""))
-                main.setOnGameLabel(entity.obj_model.SIMPLE_USE);
+                myGame.setOnGameLabel(entity.obj_model.SIMPLE_USE);
 
 
             entity.obj_model.use(MY_HERO.getModel());
@@ -268,7 +271,7 @@ public class GameController {
                     entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
             ) MY_HERO.getView().getInvView().getChildren().remove(entity.view);
 
-            main.setOnDescObj("","");
+            myGame.setOnDescObj("","");
 
         }
     }

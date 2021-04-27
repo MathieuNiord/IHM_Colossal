@@ -30,7 +30,7 @@ import static view.ressources.GameResources.*;
     === The main controller : regroups all game interactions and controls the view (display) of the game ===
     ======================================================================================================== */
 
-public class Main implements Initializable {
+public class MyGame implements Initializable {
 
     /** === ATTRIBUTES === **/
 

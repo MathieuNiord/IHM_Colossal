@@ -50,8 +50,10 @@ public class Script {
                     doSpaces(DEFAULT_NARRATOR) + "a superb rating for their project.\n\n" + "\t(Thanks for them...)\n\n";
 
     // - End messages for the JavaFx project -
-    public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free !\n";
-    public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you are the head of the stock exchange...";
+    public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free ! " +
+                                              "You even decide to change your name to \"" + Game.HERO.getName() + "\" which is certainly not" +
+                                              "the better choice of your life but whatever you're free now !";
+    public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you become the head of the stock exchange...";
     public static final String WIN_ENDING_3 = "... become a rising star of cinema...";
     public static final String WIN_ENDING_4 = "... and president of the United States of America.";
     public static final String WIN_ENDING_5 = "Women run after you and men envy you, you are voted the sexiest man in the world !";
@@ -200,7 +202,24 @@ public class Script {
     public static final String STICK_DESCRIPT = "A very basic stick. The researchers may have used it for experiments...";
     public static final String FIRED_STICK_DESCRIPT = "Wow ! Fire ! But what for ?";
     public static final String CORPSE_DESCRIPT = "It's a corpse... What else ?...";
-    
+    //Doors
+    public static final String SECRET_CODE_DOOR_DESCRIPT = "Hey buddy you won't be able to force the code. Even the Nazis are certainly smarter than you...";
+    public static final String BURNABLE_DOOR_DESCRIPT = "Wow it seems like a secret tunnel ! ...And a lot of spiders web... Maybe you can burn it ?";
+    public static final String INFECTED_ROOM_DOOR_DESCRIPT = "You can see gas coming out of this door. Unless you're immune, better not to go in that room.";
+    public static final String DESTRUCTABLE_DOOR_DESCRIPT = "It's doomed but it seems like fragile. Maybe you can smash it ?";
+    public static final String CONDAMNED_DOOR_DESCRIPT = "It's doomed dude ! You can not enter in.";
+    public static final String LOCKED_DOOR_DESCRIPT = "The door is locked. You can certainly find a key around stupid caveman.";
+
+    // Simple_use objs
+    public static final String BANANA_SIMPLE_USE = "Maybe someone is interested for this ";
+    public static final String BESCHERELLE_SIMPLE_USE = "NO PLEASE DON'T EAT THIS ";
+    public static final String ELECTRICITY_METER_SIMPLE_USE = "Use this item with something else...\n";
+    public static final String FIREDSTICK_SIMPLE_USE = "Maybe there is something burnable somewhere in this Laboratory...\n";
+    public static final String ORTHER_ITEM_SIMPLE_USE = "Use this item for something else...\n";
+    public static final String POTION_SIMPLE_USE = "I don't know what was in this solution but you no longer have a nose.\n" + "Fortunately you are an athlete and a freediving champion. You should be immune now.\n" ;
+    public static final String WALKMAN_SIMPLE_USE = "Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n";
+    public static final String WEAPON_SIMPLE_USE = "Maybe you should find someone to hit with this ";
+
     
     // === HELP COMMANDS ===
 

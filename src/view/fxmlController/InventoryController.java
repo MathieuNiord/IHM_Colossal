@@ -82,7 +82,6 @@ public class InventoryController {
         // data dropped
         Dragboard db = event.getDragboard();
         boolean success = false;
-
         if (db.hasString()) {
             success = true;
             this.gameController.makeFiredStick();
@@ -140,15 +139,6 @@ public class InventoryController {
     // --- Fuse to ElectricMeter --- //
     // --- --------------------- --- //
 
-    private void lightUpRoom(MyPlace my_place) {
-        Place place = obtainPlace(my_place);
-        if (place != null) {
-            if (place.isEnlightened()) {
-                my_place.setBackgroundImage(BACKGROUND_DEFAULT);
-                my_place.setImagesVisible();
-            }
-        }
-    }
     private void electricityMeterHandleDrop(DragEvent event){
         // data dropped
         Dragboard db = event.getDragboard();
@@ -177,8 +167,8 @@ public class InventoryController {
 
     // --- Final --- //
 
-    public InventoryController(FlowPane inventory){
-        this.gameController = new GameController(inventory);
+    public InventoryController(GameController gameController){
+        this.gameController = gameController;
         monkeyDrag();
         firedStickDrag();
         burnedDoor();

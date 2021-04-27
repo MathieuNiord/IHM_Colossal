@@ -15,7 +15,7 @@ public class ElectricityMeter extends Obj{
 	// ***** CONSTRUCTOR *****
 
 	public ElectricityMeter(String name, String info, Place p) {
-		super(name, info);
+		super(name, info, Script.ELECTRICITY_METER_SIMPLE_USE);
 		this.hasFuse = false;
 		this.place = p;
 	}
@@ -59,7 +59,7 @@ public class ElectricityMeter extends Obj{
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE , Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

@@ -9,7 +9,7 @@ public class Flint extends Obj {
 	// ***** CONSTRUCTOR *****
 	
 	public Flint(String name, String info) {
-		super(name, info);
+		super(name, info, Script.ORTHER_ITEM_SIMPLE_USE);
 	}
 	
 	
@@ -26,7 +26,7 @@ public class Flint extends Obj {
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE, Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

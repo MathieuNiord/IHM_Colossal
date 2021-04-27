@@ -9,7 +9,7 @@ public class Bescherelle extends Obj{
 	// ***** CONSTRUCTOR *****
 
 	public Bescherelle(String name, String info) {
-		super(name, info);
+		super(name, info, Script.BESCHERELLE_SIMPLE_USE);
 	}
 
 
@@ -20,7 +20,7 @@ public class Bescherelle extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("NO PLEASE DON'T EAT THIS " + this.NAME.toUpperCase() + "\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter( this.SIMPLE_USE + this.NAME.toUpperCase() + "\n", Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

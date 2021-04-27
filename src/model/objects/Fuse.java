@@ -9,7 +9,7 @@ public class Fuse extends Obj {
 	// ***** CONSTRUCTOR *****
 
 	public Fuse(String name, String info) {
-		super(name, info);
+		super(name, info, Script.ORTHER_ITEM_SIMPLE_USE);
 	}
 
 
@@ -27,7 +27,7 @@ public class Fuse extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Use this item with something else...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE, Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

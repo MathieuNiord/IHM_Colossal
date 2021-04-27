@@ -7,7 +7,7 @@ import view.classes.MyImageView;
 
 public class MyEntity {
 
-    /*** ATTRIBUTES ***/
+    /*** === ATTRIBUTES === ***/
 
     public Animal animal_model;
     public Door door_model;
@@ -18,7 +18,7 @@ public class MyEntity {
     private MyEntity defeat = null;
     private MyEntity possessedObject = null;
 
-    /*** CONSTRUCTOR ***/
+    /*** === CONSTRUCTORS === ***/
 
     public MyEntity(Enemy enemy, MyImageView myImageView, MyEntity defeat, MyEntity possessedObject){
         this.enemy_model = enemy;
@@ -57,12 +57,12 @@ public class MyEntity {
     }
 
 
+    /*** === METHODS === ***/
 
-    //Defeat Image
+    // - Enemies methods -
     public MyEntity getCorpse() {
         return this.defeat;
     }
-
     public MyEntity getPossessedObject() {
         return this.possessedObject;
     }

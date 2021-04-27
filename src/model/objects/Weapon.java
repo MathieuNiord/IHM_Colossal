@@ -9,7 +9,7 @@ public class Weapon extends Obj{
 	// ***** CONSTRUCTOR *****
 
 	public Weapon(String name, String info) {
-		super(name, info);
+		super(name, info, Script.WEAPON_SIMPLE_USE);
 	}
 
 
@@ -20,7 +20,7 @@ public class Weapon extends Obj{
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Maybe you should find someone to hit with this " + this.NAME, Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter( this.SIMPLE_USE + this.NAME, Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

@@ -1,20 +1,19 @@
 package view.ressources;
 
 import javafx.scene.text.Font;
+import java.util.HashMap;
+import java.util.Map;
+
 import model.others.Place;
 import view.classes.MyHeroImageView;
 import view.classes.MyImageView;
 import controller.entities.MyPlace;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import static controller.entities.EntitiesDatas.*;
-import static model.others.Game.*;
 import static view.ressources.ImageResources.*;
 
 public class GameResources {
+
+    /*** === ATTRIBUTES === ***/
 
     //Fonts
     public final static Font MY_FONT_16 = Font.loadFont("file:src/assets/font/rainyhearts.ttf", 16);
@@ -32,9 +31,9 @@ public class GameResources {
     public final static MyImageView MOUSE_IM = new MyImageView(IMAGE_MOUSE, 7, 6, 45);
 
     //Enemies objects
-    public final static MyImageView K_1_IM = new MyImageView(IMAGE_HEART, 5, 4);
-    public final static MyImageView FUSE_IM = new MyImageView(IMAGE_HEART, 5, 4);
-    public final static MyImageView K_2_IM = new MyImageView(IMAGE_HEART, 5, 4);
+    public final static MyImageView K_1_IM = new MyImageView(IMAGE_KEY, 5, 4);
+    public final static MyImageView FUSE_IM = new MyImageView(IMAGE_FUSE, 5, 4);
+    public final static MyImageView K_2_IM = new MyImageView(IMAGE_KEY, 5, 4);
 
     // Enemies corpses
     public final static MyImageView ACCOUNT_GUY_CORPSE_IM = new MyImageView(IMAGE_ACCOUNT_GUY_DEFEAT_FIX, 4, 4);
@@ -52,7 +51,7 @@ public class GameResources {
 
     // Objects
     public final static MyImageView NAZI_POSTER_IM = new MyImageView(IMAGE_NAZIS_POSTER, 3, 0, 40);
-    public final static MyImageView CLUB_IM = new MyImageView(IMAGE_HEART, 3, 5);
+    public final static MyImageView CLUB_IM = new MyImageView(IMAGE_CLUB, 3, 5, 45);
     public final static MyImageView POTION_IM =new MyImageView(IMAGE_POTION, 4, 4);
     public final static MyImageView BANANA_IM = new MyImageView(IMAGE_BANANA, 1, 7);
     public final static MyImageView STICK_IM = new MyImageView(IMAGE_STICK, 3, 1);
@@ -60,16 +59,16 @@ public class GameResources {
     public final static MyImageView CAT_B_IM = new MyImageView(IMAGE_CAT_BESCHERELLE, 3, 7);
     public final static MyImageView MOUSE_B_IM =new MyImageView(IMAGE_BESCHERELLE, 6, 1);
     public final static MyImageView MONKEY_B_IM = new MyImageView(IMAGE_BESCHERELLE, 5, 1);
-    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(IMAGE_HEART, 1, 1, 40);
+    public final static MyImageView ELECTRICITY_METER_IM = new MyImageView(IMAGE_ELECTRIC_METER_MISSINGFUSE, 3, 0, 40);
     public final static MyImageView LOCKER_IM = new MyImageView(IMAGE_LOCKER_CLOSED, 7, 3);
-    public final static MyImageView SEXY_POSTER_IM_1 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0);
-    public final static MyImageView SEXY_POSTER_IM_2 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0);
+    public final static MyImageView SEXY_POSTER_IM_1 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0, 50);
+    public final static MyImageView SEXY_POSTER_IM_2 = new MyImageView(IMAGE_SEXY_POSTER, 2, 0, 50);
     public final static MyImageView WALKMAN_IM = new MyImageView(IMAGE_WALKMAN, 0, 0);
     public final static MyImageView FIREDSTICK_IM = new MyImageView(IMAGE_TORCH, 0, 0);
 
     // Doors
-    public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(IMAGE_DOOR_DOWN, 4, 8);
-    public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(IMAGE_DOOR_UP, 6, 0);
+    public final static MyImageView SECRET_PASSAGE_IM = new MyImageView(IMAGE_SECRET_PASSAGE, 4, 8);
+    public final static MyImageView EXPERIM_TO_CONDA_IM = new MyImageView(IMAGE_GAS_DOOR, 6, 0);
     public final static MyImageView CONDA_TO_EXPERIM_IM = new MyImageView(IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView CHANG_TO_ENTRY_IM = new MyImageView(IMAGE_DOOR_DOWN, 4, 8);
     public final static MyImageView MEET_TO_ARCH_IM = new MyImageView(IMAGE_DOOR_RIGHT, 8, 4);
@@ -120,7 +119,12 @@ public class GameResources {
     // - HashMap Place => MyPlace -
     public final static HashMap<Place,MyPlace> PLACE_TO_MY_PLACE = new HashMap<>();
 
-    // === METHODS ===
+
+    /*** === CONSTRUCTOR === ***/
+    private GameResources() {}
+
+
+    /*** === METHODS === ***/
 
     // - Return a Place thanks the MyPlace -
     public static Place obtainPlace(MyPlace place){
@@ -137,10 +141,7 @@ public class GameResources {
         // TODO - Reset the GameResources
     }
 
-    // === INITIALIZATION ===
-    private final static GameResources GAME_RESOURCES = new GameResources();
 
-    // === CONSTRUCTOR ===
-    private GameResources() {
-    }
+    /*** === INITIALIZATION === ***/
+    private final static GameResources GAME_RESOURCES = new GameResources();
 }

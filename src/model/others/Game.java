@@ -77,9 +77,9 @@ public class Game {
 	public static final SexyPoster SEXY_POSTER_1 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_1_NAME, Script.SEXY_POSTER);
 	public static final SexyPoster SEXY_POSTER_2 = new SexyPoster(Script.DEFAULT_SEXYPOSTER_2_NAME, Script.SEXY_POSTER);
 	public static final Walkman WALKMAN = new Walkman(Script.DEFAULT_WALKMAN_NAME, Script.DEFAULT_WALKMAN_NAME);
-	private final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
-	private final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
-	private final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse ACCOUNT_GUY_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse NAZI_ZOMBIE_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
+	public final static Corpse BOSS_CORPSE = new Corpse(Script.DEFAULT_CORPSE_NAME, Script.CORPSE_DESCRIPT);
 
 
 	// - Hero -
@@ -165,6 +165,17 @@ public class Game {
 		MEETING_ROOM.addAndCreateEnemy(ACCOUNT_GUY);
 		DESERTED_ROOM.addAndCreateEnemy(ZOMBIE_NAZI);
 		DECONTAMINATION_ROOM.addAndCreateEnemy(SUPER_NAZI);
+
+		// DOORS DESCRIPTIONS
+		SECRET_PASSAGE.setDescription(Script.BURNABLE_DOOR_DESCRIPT);
+		EXPERIM_AND_CONDA.setDescription(Script.INFECTED_ROOM_DOOR_DESCRIPT);
+		CHANG_AND_ENTRY.setDescription(Script.CONDAMNED_DOOR_DESCRIPT);
+		TRANSF_AND_MEET.setDescription(Script.LOCKED_DOOR_DESCRIPT);
+		DECONT_AND_EXIT.setDescription(Script.LOCKED_DOOR_DESCRIPT);
+		ANIM_AND_TRANSF.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
+		EXPERIM_AND_RESERV.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
+		EXPERIM_AND_DIRTY.setDescription(Script.SECRET_CODE_DOOR_DESCRIPT);
+		MEET_AND_ARCH.setDescription(Script.DESTRUCTABLE_DOOR_DESCRIPT);
 	}
 
 

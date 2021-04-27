@@ -6,7 +6,7 @@ import model.others.Script;
 
 public class Walkman extends Obj{
 	public Walkman(String name, String info) {
-		super(name, info);
+		super(name, info, Script.WALKMAN_SIMPLE_USE);
 	}
 	
 	@Override
@@ -16,7 +16,7 @@ public class Walkman extends Obj{
 	
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Allumeeeeerrrrrrrrr le FEUUUUU, ALLUMEEEERRRRRRRRRRR LE FEUUUUUUUUUUU !!!!!!\n", this.NAME);
+		Game.printLetterByLetter(this.SIMPLE_USE, this.NAME);
 	}
 	
 	@Override

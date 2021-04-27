@@ -1,9 +1,7 @@
 package view.fxmlController;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.others.Game;
 import model.others.Script;
@@ -34,8 +32,21 @@ public class WelcomeController implements Initializable {
         dialog.showAndWait();
 
         if (dialog.getResult() != null && !dialog.getResult().equals("")) {
+
+            // Initialization of the game
             new Game(dialog.getResult());
             new MainController();
+
+            // Simple Alert which simply is a joke
+            Alert alert = new Alert(Alert.AlertType.NONE, "You sure you want to be called \"HOUGA BOUGA\" ?");
+
+            ButtonType ok01 = new ButtonType("Ok I choose this name btw...");
+            ButtonType ok02 = new ButtonType("Whatever launch that game please !");
+            alert.getButtonTypes().addAll(ok01, ok02);
+
+            alert.showAndWait();
+
+            // The game Stageq
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
             MyDialog myStage = new MyDialog("../fxml/main.fxml");

@@ -27,9 +27,9 @@ public class EntitiesDatas {
     public final static MyEntity MY_K_2 = new MyEntity(K_2, K_2_IM);
 
     // Enemies corpses
-    public final static MyEntity MY_ACCOUNT_GUY_CORPSE = new MyEntity(ACCOUNT_GUY_CORPSE_IM);
-    public final static MyEntity MY_NAZI_ZOMBIE_CORPSE = new MyEntity(NAZI_ZOMBIE_CORPSE_IM);
-    public final static MyEntity MY_BOSS_CORPSE = new MyEntity(BOSS_CORPSE_IM);
+    public final static MyEntity MY_ACCOUNT_GUY_CORPSE = new MyEntity(ACCOUNT_GUY_CORPSE, ACCOUNT_GUY_CORPSE_IM);
+    public final static MyEntity MY_NAZI_ZOMBIE_CORPSE = new MyEntity(NAZI_ZOMBIE_CORPSE, NAZI_ZOMBIE_CORPSE_IM);
+    public final static MyEntity MY_BOSS_CORPSE = new MyEntity(BOSS_CORPSE, BOSS_CORPSE_IM);
 
     // Enemies
     public final static MyEntity MY_ACCOUNT_GUY = new MyEntity(ACCOUNT_GUY, ACCOUNT_GUY_IM, MY_ACCOUNT_GUY_CORPSE, MY_K_1);

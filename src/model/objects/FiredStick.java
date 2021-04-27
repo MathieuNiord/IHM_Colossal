@@ -10,7 +10,7 @@ public class FiredStick extends Obj {
 	// ***** CONSTRUCTOR *****
 
 	public FiredStick(String name, String info) {
-		super(name, info);
+		super(name, info, Script.FIREDSTICK_SIMPLE_USE);
 	}
 
 
@@ -26,7 +26,7 @@ public class FiredStick extends Obj {
 
 	@Override
 	public void use(Hero h) {
-		Game.printLetterByLetter("Maybe there is something burnable somewhere in this Laboratory...\n", Script.DEFAULT_NARRATOR);
+		Game.printLetterByLetter(this.SIMPLE_USE, Script.DEFAULT_NARRATOR);
 	}
 	
 	@Override

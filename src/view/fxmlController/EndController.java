@@ -42,42 +42,40 @@ public class EndController implements Initializable {
         switch (this.count) {
             case 1 :
                 this.scriptLabel.setText(Script.WIN_ENDING_2);
-                this.illustrationScene.setImage(ImageResources.GIF_CAVEMAN);
+                this.illustrationScene.setImage(ImageResources.END_02);
                 break;
 
             case 2 :
                 this.scriptLabel.setText(Script.WIN_ENDING_3);
-                this.illustrationScene.setImage(ImageResources.IMAGE_TORCH);
+                this.illustrationScene.setImage(ImageResources.END_03);
                 break;
 
             case 3 :
                 this.scriptLabel.setText(Script.WIN_ENDING_4);
-                this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_CLOSED);
+                this.illustrationScene.setImage(ImageResources.END_04);
                 break;
 
             case 4 :
                 this.scriptLabel.setText(Script.WIN_ENDING_5);
-                this.illustrationScene.setImage(ImageResources.IMAGE_LOCKER_OPENED);
+                this.illustrationScene.setImage(ImageResources.END_05);
                 break;
 
             case 5 :
                 this.scriptLabel.setText(Script.WIN_ENDING_6);
-                this.illustrationScene.setImage(ImageResources.IMAGE_ACCOUNT_GUY_BATTLE);
+                this.illustrationScene.setImage(ImageResources.END_06);
                 this.continueButton.setText("QUIT");
                 break;
 
             default :
                 Stage currentStage = (Stage) continueButton.getScene().getWindow();
                 currentStage.close();
-                MyStage myStage = new MyStage("../view/fxml/home.fxml");
-                myStage.show();
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.continueButton.setOnAction(event -> continueButtonAction(event));
-        this.illustrationScene.setImage(ImageResources.IMAGE_BOSS_BATTLE);
+        this.illustrationScene.setImage(ImageResources.END_01);
         this.scriptLabel.setText(Script.WIN_ENDING_1);
     }
 }

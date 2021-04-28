@@ -5,7 +5,7 @@ import model.characters.Hero;
 import model.objects.Weapon;
 import model.others.Game;
 import view.classes.MyHeroImageView;
-import view.fxmlController.Main;
+import view.fxmlController.MyGame;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class MyHero {
         this.view.getInvView().getChildren().remove(obj.view);
     }
 
-    public void addObj(MyEntity obj, Main main, String text, boolean isOnGridGame){
+    public void addObj(MyEntity obj, MyGame main, String text, boolean isOnGridGame){
         this.inventory.add(obj);
 
         obj.obj_model.take(this.model);
@@ -52,7 +52,7 @@ public class MyHero {
 
     }
 
-    public void remClub(Main main){
+    public void remClub(MyGame main){
 
         Weapon club = Game.CLUB;
 
@@ -65,7 +65,7 @@ public class MyHero {
         }
     }
 
-    public void takeKey(Main main, MyEntity entity){
+    public void takeKey(MyGame main, MyEntity entity){
         MY_HERO.getModel().increaseKey();
         main.removeOnGridPane(entity.view);
         PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()).getEntities().remove(entity);

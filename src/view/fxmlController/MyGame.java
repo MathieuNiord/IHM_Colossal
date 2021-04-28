@@ -1,6 +1,5 @@
 package view.fxmlController;
 
-import controller.AnimalScriptController;
 import controller.GameController;
 import controller.entities.EntitiesDatas;
 import controller.entities.MyEntity;
@@ -15,8 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
-import model.characters.Hero;
-import model.doors.*;
 import model.others.Script;
 import view.classes.*;
 import view.classes.minimap.MiniMap;
@@ -33,7 +30,7 @@ import static view.ressources.GameResources.*;
     === The main controller : regroups all game interactions and controls the view (display) of the game ===
     ======================================================================================================== */
 
-public class MainController implements Initializable {
+public class MyGame implements Initializable {
 
     /** === ATTRIBUTES === **/
 
@@ -172,7 +169,7 @@ public class MainController implements Initializable {
                 res = true;
 
                 //Battle
-                new BattleController();
+                new Battle();
                 MyDialog myStage = new MyDialog("../fxml/battle.fxml");
                 myStage.showAndWait();
                 this.gridPaneGame.setMyPlace(PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace()));
@@ -333,7 +330,7 @@ public class MainController implements Initializable {
         gridPaneGame.setMyPlace(MY_ANIMAL_ROOM);
         gridPaneMap.refreshMap(MY_ANIMAL_ROOM);
         labelTitle.setText(MY_HERO.getModel().getPlace().getName());
-        new InventoryController(gameController);
+        new InventoryDragInit(gameController);
 
         initListener();
 

@@ -2,20 +2,17 @@ package controller;
 
 import controller.entities.MyEntity;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 import model.characters.Hero;
 import model.doors.BurnableDoor;
 import model.doors.DestructableDoor;
 import model.doors.SecretCodeDoor;
 import model.objects.ElectricityMeter;
-import model.others.Game;
 import model.others.Place;
 import model.others.Script;
 import controller.entities.MyPlace;
 import view.classes.MyDialog;
 import view.fxmlController.AnimalScript;
-import view.fxmlController.MainController;
+import view.fxmlController.MyGame;
 import view.ressources.ImageResources;
 
 import static controller.entities.EntitiesDatas.*;
@@ -27,11 +24,11 @@ public class GameController {
 
     /** === ATTRIBUTES === **/
 
-    private final MainController mainController;
+    private final MyGame myGame;
 
     /** === CONSTRUCTOR === **/
-    public GameController(MainController mainController){ this.mainController = mainController; }
 
+    public GameController(MyGame myGame){ this.myGame = myGame; }
 
     /** === METHODS === **/
 
@@ -51,7 +48,7 @@ public class GameController {
 
     public void makeFiredStick(){
         // the object isn't on the board
-        MY_HERO.addObj(MY_FIREDSTICK, mainController, "Great you create a firedstick !", false);
+        MY_HERO.addObj(MY_FIREDSTICK, myGame, "Great you create a firedstick !", false);
         MY_HERO.removeObj(MY_FLINT);
         MY_HERO.removeObj(MY_STICK);
     }
@@ -127,7 +124,7 @@ public class GameController {
     private void interactWitObj(MyEntity entity){
         // If the object is a key (specific take() method)
         if (entity.obj_model.NAME.equals(Script.DEFAULT_KEY1_NAME) || entity.obj_model.NAME.equals(Script.DEFAULT_KEY2_NAME)) {
-            MY_HERO.takeKey(mainController, entity);
+            MY_HERO.takeKey(myGame, entity);
         }
 
         // Else if the object isn't the electric meter or the locker or a corpse, the player can take it in his inventory
@@ -139,16 +136,16 @@ public class GameController {
             if (!entity.view.isVisible()) entity.view.setVisible(true);
 
             if (entity.obj_model.NAME.equals(Script.DEFAULT_CLUB_NAME))
-                MY_HERO.remClub(mainController);
+                MY_HERO.remClub(myGame);
 
             else
-                MY_HERO.addObj(entity, mainController, "You found a " + entity.obj_model.NAME, true);
+                MY_HERO.addObj(entity, myGame, "You found a " + entity.obj_model.NAME, true);
         }
 
         // Else if it is the locker
         else if (entity.obj_model.NAME.equals(Script.DEFAULT_LOCKER_NAME)) {
 
-            MY_HERO.addObj(MY_WALKMAN, mainController, "You found a walkman", false);
+            MY_HERO.addObj(MY_WALKMAN, myGame, "You found a walkman", false);
             LOCKER_IM.setImage(ImageResources.IMAGE_LOCKER_OPENED);
         }
     }
@@ -174,15 +171,19 @@ public class GameController {
 
                 // Unlock and open the door
                 d.unlock(code.getResult());
+
+                if (d.isUnlock()) {
+                    myGame.setOnGameLabel("VALID CODE : You crossed the door thanks your brain nerdy !");
+                }
             }
 
             if (d.isUnlock()) {
                 heroCrossDoor(entity, hero);
-                mainController.setOnGameLabel(hero.getPlace().getName());
-                mainController.refreshMap();
+                myGame.refreshMap();
             }
+
             else
-                mainController.setOnGameLabel(entity.door_model.getDescription());
+                myGame.setOnGameLabel(entity.door_model.getDescription());
         }
 
         else {
@@ -193,9 +194,9 @@ public class GameController {
 
             heroCrossDoor(entity, hero);
 
-            mainController.setOnGameLabel(entity.door_model.getDescription());
-            mainController.setOnGameTitle(hero.getPlace().getName());
-            mainController.refreshMap();
+            myGame.setOnGameLabel(entity.door_model.getDescription());
+            myGame.setOnGameTitle(hero.getPlace().getName());
+            myGame.refreshMap();
         }
     }
 
@@ -223,9 +224,8 @@ public class GameController {
             if (hero.getPlace().getName().equals(dest)) {
 
                 MyPlace newPlace = PLACE_TO_MY_PLACE.get(hero.getPlace());
-                mainController.setNewPlace(newPlace);
-
-                mainController.setOnGameLabel("You entered in the " + hero.getPlace().getName());
+                entity.door_model.setDescription("");
+                myGame.setNewPlace(newPlace);
 
                 //If the new place is the archive room by passing through the secret passage, we set a position to the player
                 if (dest.equals("archives room") && entity.door_model instanceof BurnableDoor) {
@@ -236,12 +236,12 @@ public class GameController {
                 //Else we check if the hero is in the last room
                 else if (dest.equals("exit")) {
                     if (hero.isAlive() && !hero.isQuit()) {
-                        mainController.exitGame();
+                        myGame.exitGame();
                     }
                 }
 
                 //Else we compute the new position of the player in the room
-                else mainController.heroPosDoor(newPlace, entity);
+                else myGame.heroPosDoor(newPlace, entity);
             }
         }
     }
@@ -254,18 +254,25 @@ public class GameController {
     public void useObj(MyEntity entity){
         if (entity.obj_model != null) {
 
+            if((entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
+                    entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)) &&
+                    MY_HERO.getModel().getHP() >= Hero.DEFAULT_HP){
+                myGame.setOnGameLabel("Your life is already full");
+            }
+            else if(!entity.obj_model.SIMPLE_USE.equals(""))
+                myGame.setOnGameLabel(entity.obj_model.SIMPLE_USE);
+
+
             entity.obj_model.use(MY_HERO.getModel());
 
             if (entity.obj_model.NAME.equals(Script.DEFAULT_POTION_NAME) ||
                     entity.obj_model.NAME.equals(Script.DEFAULT_NAZIPOSTER_NAME) ||
                     entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_1_NAME) ||
                     entity.obj_model.NAME.equals(Script.DEFAULT_SEXYPOSTER_2_NAME)
-            ) mainController.removeOnGridPane(entity.view);
+            ) MY_HERO.getView().getInvView().getChildren().remove(entity.view);
 
-            mainController.setOnDescObj("","");
+            myGame.setOnDescObj("","");
 
-            if(!entity.obj_model.SIMPLE_USE.equals(""))
-                mainController.setOnGameLabel(entity.obj_model.SIMPLE_USE);
         }
     }
 }

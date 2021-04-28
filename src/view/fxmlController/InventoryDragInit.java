@@ -12,7 +12,7 @@ import static view.ressources.ImageResources.*;
 import static view.ressources.GameResources.*;
 
 
-public class InventoryController {
+public class InventoryDragInit {
 
     /** === ATTRIBUTES === **/
     private GameController gameController;
@@ -167,7 +167,7 @@ public class InventoryController {
 
     // --- Final --- //
 
-    public InventoryController(GameController gameController){
+    public InventoryDragInit(GameController gameController){
         this.gameController = gameController;
         monkeyDrag();
         firedStickDrag();

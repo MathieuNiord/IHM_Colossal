@@ -8,11 +8,11 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Button;
-import stage.MyStage;
+import view.classes.MyStage;
 
 import static view.ressources.GameResources.MY_FONT_32;
 
-public class HomeController implements Initializable {
+public class Home implements Initializable {
 
     /** === ATTRIBUTES === **/
 
@@ -34,7 +34,7 @@ public class HomeController implements Initializable {
         //GameRessources.reset();
         Stage currentStage = (Stage) button_play.getScene().getWindow();
         currentStage.close();
-        MyStage myStage = new MyStage("../view/fxml/welcome.fxml");
+        MyStage myStage = new MyStage("../fxml/welcome.fxml");
         myStage.show();
     }
 
@@ -44,7 +44,7 @@ public class HomeController implements Initializable {
 
         Stage currentStage = (Stage) button_credit.getScene().getWindow();
         currentStage.close();
-        MyStage myStage = new MyStage("../view/fxml/credit.fxml");
+        MyStage myStage = new MyStage("../fxml/credit.fxml");
         myStage.show();
     }
 

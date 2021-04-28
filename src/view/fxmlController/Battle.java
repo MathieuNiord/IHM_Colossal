@@ -1,5 +1,6 @@
 package view.fxmlController;
 
+import controller.BattleController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.characters.Enemy;
 import model.characters.Hero;
-import stage.MyStage;
+import view.classes.MyStage;
 import view.classes.MyImageView;
 import controller.entities.MyPlace;
 
@@ -22,7 +23,7 @@ import static view.ressources.GameResources.*;
     === The battle controller : regroups all battle interactions and controls the view (display) of a battle ===
     ============================================================================================================ */
 
-public class BattleController implements Initializable {
+public class Battle implements Initializable {
 
     /*** === ATTRIBUTES === ***/
 
@@ -71,6 +72,8 @@ public class BattleController implements Initializable {
     //String for the label commentary
     private String commentary = "";
 
+    private BattleController battleController;
+
     /*** === METHODS === ***/
 
     // --- Events ---
@@ -79,18 +82,7 @@ public class BattleController implements Initializable {
     @FXML
     private void setButton_attack(ActionEvent event) {
 
-        //We set the default image
-        this.enemyIm.setImage(this.enemyImV.getBattleDefaultIm());
-
-        //The player attack the enemy
-        MY_HERO.getModel().attack(this.enemy);
-
-        //If the enemy is not yet defeated, we add a comment
-        if (!this.enemy.isDefeat())
-            this.commentary = "-" + this.enemy.NAME + " took damages [-" + Hero.DEFAULT_DAMAGE + " HP]\n";
-
-        //It's the enemy turn
-        enemyTurn();
+        battleController.heroAttack(place.getEnemy());
     }
 
     // - Set the action of the "HEAL" button -
@@ -102,31 +94,7 @@ public class BattleController implements Initializable {
             this.labelCommentary.setText("You better choose another option, you're already full of life dumb !");
 
         else {
-
-            //We set the default image
-            this.enemyIm.setImage(this.enemyImV.getBattleDefaultIm());
-
-            //We need to get which SexyPoster to remove it from the inventory (FlowPane)
-            MyImageView sexyPoster;
-
-            if (HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_1))
-                sexyPoster = SEXY_POSTER_IM_1;
-
-            else sexyPoster = SEXY_POSTER_IM_2;
-
-            //The player heal himself/herself/itself (no discrimination)
-            MY_HERO.getModel().heal();
-            //We can remove the object
-            HERO_IM.removeInv(sexyPoster);
-            this.commentary = "- You healed yourself [+" + Hero.DEFAULT_HEAL + " HP]\n";
-
-            //If now the player has nothing to heal
-            if (!HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_1) && !HERO_IM.getInvView().getChildren().contains(SEXY_POSTER_IM_2)) {
-                //The player can't no more heal hisself/herself/itself, we can disable the button
-                this.buttonHeal.setDisable(true);
-            }
-            //It's the enemy turn
-            enemyTurn();
+            battleController.healPlayer(place.getEnemy());
         }
     }
 
@@ -138,7 +106,7 @@ public class BattleController implements Initializable {
         if (this.enemy.isDefeat()) {
             //We remove the enemy from the place
             this.place.removeEnemy();
-            //We can now close the battle stage
+            //We can now close the battle view.stage
             Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
             stage.close();
         }
@@ -147,72 +115,20 @@ public class BattleController implements Initializable {
         else {
             //We set a new image of the hero
             // - TODO Hero corpse -
-            //We can now close the battle stage
+            //We can now close the battle view.stage
             Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
             stage.close();
-            //We can close the main stage
+            //We can close the main view.stage
             ((Stage) (HERO_IM.getInvView().getScene().getWindow())).close();
             //We now open the game over view
-            MyStage gameOver = new MyStage("../view/fxml/game_over.fxml");
+            MyStage gameOver = new MyStage("../fxml/game_over.fxml");
             gameOver.show();
         }
     }
 
-    // - Enemy Turn -
-    private void enemyTurn() {
-
-        //Variables
-        Random rand = new Random();
-        int eHeal = rand.nextInt(10 + 1);  //Enemy heal
-
-        //If enemy is alive
-        if (!this.enemy.isDefeat()) {
-
-            if (eHeal == 1) {
-                this.enemy.heal(10);
-                this.commentary += "-" + this.enemy.NAME + " healed itself [+10 HP]";
-            }
-
-            else {
-                this.enemy.attack();
-                MY_HERO.getModel().setLife(this.enemy.getDamage());
-                this.commentary +=
-                        "-" + this.enemy.NAME + " attacked you [-" +
-                        this.enemy.getDamage() + " HP]\n" +
-                        "Ouch ! You took several damages... Get up and beat this Nazi Crap !";
-            }
-        }
-
-        //Else enemy's dead
-        else {
-
-            //We change the image of the enemy
-            this.enemyIm.setImage(this.enemyImV.getBattleDefeatIm());
-
-            //Commentary
-            this.commentary = this.enemy.getDefeatScript() + "YOU WON THE BATTLE ! Good game HOUGA BOUGA !";
-
-            //Buttons
-            this.buttonAttack.setDisable(true);
-            this.buttonHeal.setDisable(true);
-            this.buttonQuit.setVisible(true);
-        }
-
-        //If the player lost
-        if (!MY_HERO.getModel().isAlive()) {
-            this.commentary = "You just succumbed to your wounds\n\nGAME OVER !";
-            this.buttonAttack.setDisable(true);
-            this.buttonHeal.setDisable(true);
-            this.buttonQuit.setVisible(true);
-        }
-
-        this.labelCommentary.setText(this.commentary);
-        livesDisplay();
-    }
-
     // --- Display ---
 
-    private void livesDisplay() {
+    public void livesDisplay() {
         //Labels
         this.labelEnemyLife.setText(String.valueOf(this.enemy.getHP()));
         this.labelHeroLife.setText(String.valueOf(MY_HERO.getModel().getHP()));
@@ -222,6 +138,19 @@ public class BattleController implements Initializable {
         this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(this.eLife));
     }
 
+    public void setCommentary(String text){ this.commentary = text; }
+
+    public void addCommentary(String text){ this.commentary += text; }
+
+    public void disableHealButton(){ this.buttonHeal.setDisable(true); }
+
+    public void setVisibleQuitButton(){ this.buttonQuit.setVisible(true);}
+
+    public void disableAttackButton(){ this.buttonAttack.setDisable(true);}
+
+    public void applyCommentary(){ labelCommentary.setText(this.commentary);}
+
+
     // --- Initialization of the controller ---
 
     @FXML
@@ -229,6 +158,7 @@ public class BattleController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         //Initialization
+        this.battleController = new BattleController(this);
         this.place = PLACE_TO_MY_PLACE.get(MY_HERO.getModel().getPlace());
         this.enemyImV = place.getEnemy().view;
         this.enemy = place.getEnemy().enemy_model;

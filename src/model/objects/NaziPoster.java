@@ -10,7 +10,7 @@ public class NaziPoster extends Poster{
 	// ***** CONSTRUCTOR *****
 	
 	public NaziPoster(String name, String info) {
-		super(name, info);
+		super(name, info, Script.NAZI_POSTER_SIMPLE_USE);
 	}
 	
 	// ***** METHODS *****

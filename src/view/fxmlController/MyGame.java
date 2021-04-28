@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import model.others.Script;
 import view.classes.*;
-import view.classes.minimap.MiniMap;
+import view.classes.MiniMap;
 import view.ressources.ImageResources;
 
 import java.net.URL;

@@ -25,7 +25,7 @@ public class Welcome implements Initializable {
 
     /** === METHODS === **/
 
-    // - when ok is pressed we ask the name of the player and redirect to the main.fxml -
+    // - when ok is pressed we ask the name of the player and redirect to the game.fxml -
     @FXML
     public void buttonOkOnAction(ActionEvent event){
         //TextInputDialog configuration
@@ -38,7 +38,7 @@ public class Welcome implements Initializable {
 
             // Initialization of the game
             new Game(dialog.getResult());
-            new Main();
+            new MyGame();
 
             // Simple Alert which simply is a joke
             Alert alert = new Alert(Alert.AlertType.NONE, "You sure you want to be called \"HOUGA BOUGA\" ?");
@@ -52,7 +52,7 @@ public class Welcome implements Initializable {
             // The game Stageq
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
-            MyDialog myStage = new MyDialog("../fxml/main.fxml");
+            MyDialog myStage = new MyDialog("../fxml/game.fxml");
             myStage.show();
         }
     }

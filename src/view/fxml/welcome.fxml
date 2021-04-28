@@ -16,7 +16,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Label>
-      <Button fx:id="okButton"  onAction="#buttonOkOnAction" layoutX="379.0" layoutY="661.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="541.0" text="By pressing this button I launch the game and I give all my esteem to the creators">
+      <Button fx:id="okButton"  onAction="#buttonOkOnAction" layoutX="379.0" layoutY="661.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="541.0" text="By pressing this button I launch the myGame and I give all my esteem to the creators">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>

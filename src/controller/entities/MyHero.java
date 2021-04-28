@@ -35,23 +35,19 @@ public class MyHero {
     }
 
     public void addObj(MyEntity obj, Main main, String text, boolean isOnGridGame){
+        this.inventory.add(obj);
 
-        if(!inventory.contains(obj)){
-            this.inventory.add(obj);
+        obj.obj_model.take(this.model);
+        obj.obj_model.setDraggableTrue();
+        obj.view.setCursor(Cursor.HAND);
+        this.view.getInvView().getChildren().add(obj.view);
 
-            obj.obj_model.take(this.model);
-            obj.obj_model.setDraggableTrue();
-            obj.view.setCursor(Cursor.HAND);
-            this.view.getInvView().getChildren().add(obj.view);
-
-            if(isOnGridGame){
-                main.removeOnGridPane(obj.view);
-                MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
-                currentPlace.getEntities().remove(obj);
-            }
-            if(text != null) main.setOnGameLabel(text);
-
+        if(isOnGridGame){
+            main.removeOnGridPane(obj.view);
+            MyPlace currentPlace =  PLACE_TO_MY_PLACE.get(this.getModel().getPlace());
+            currentPlace.getEntities().remove(obj);
         }
+        if(text != null) main.setOnGameLabel(text);
 
 
     }

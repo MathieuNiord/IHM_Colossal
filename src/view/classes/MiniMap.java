@@ -1,4 +1,4 @@
-package view.classes.minimap;
+package view.classes;
 
 import javafx.scene.Node;
 import javafx.scene.layout.*;

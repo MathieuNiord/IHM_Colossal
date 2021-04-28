@@ -1,4 +1,4 @@
-package view.classes.minimap;
+package view.classes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

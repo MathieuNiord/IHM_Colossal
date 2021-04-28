@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import view.classes.MyImageView;
 
-import java.util.Locale;
 
 import static controller.entities.EntitiesDatas.*;
 

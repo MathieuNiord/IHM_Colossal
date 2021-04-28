@@ -136,11 +136,6 @@ public class GameResources {
         return null;
     }
 
-    // - Reset GameResources -
-    public static void reset() {
-        // TODO - Reset the GameResources
-    }
-
 
     /*** === INITIALIZATION === ***/
     private final static GameResources GAME_RESOURCES = new GameResources();

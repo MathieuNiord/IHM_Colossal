@@ -3,12 +3,7 @@ package view.fxmlController;
 import controller.GameController;
 import controller.entities.MyEntity;
 import javafx.scene.input.*;
-import javafx.scene.layout.FlowPane;
-import model.others.Place;
-import controller.entities.MyPlace;
-
 import static controller.entities.EntitiesDatas.*;
-import static view.ressources.ImageResources.*;
 import static view.ressources.GameResources.*;
 
 

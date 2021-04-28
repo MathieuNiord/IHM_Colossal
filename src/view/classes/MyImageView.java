@@ -2,11 +2,6 @@ package view.classes;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.characters.Animal;
-import model.characters.Enemy;
-import model.characters.Monkey;
-import model.doors.Door;
-import model.objects.Obj;
 
 public class MyImageView extends ImageView {
 

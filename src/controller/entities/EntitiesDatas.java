@@ -3,7 +3,6 @@ package controller.entities;
 
 import model.others.Place;
 import view.classes.MyImageView;
-import view.ressources.GameResources;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,7 @@
 package controller.entities;
 
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import model.others.Place;
-import view.classes.MyImageView;
 
 import java.util.ArrayList;
 
@@ -94,11 +92,7 @@ public class MyPlace {
     // - Return true if there is an enemy in the room -
     public boolean battle() {
 
-        boolean res = false;
-
-        if (this.enemy != null) res = true;
-
-        return res;
+        return this.enemy != null;
     }
 
 

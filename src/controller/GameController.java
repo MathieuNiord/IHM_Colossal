@@ -250,7 +250,7 @@ public class GameController {
     // --- Use object --- //
     // --- ---------- --- //
 
-    // When you double click on your inventory's object
+    // - When you double click on your inventory's object -
     public void useObj(MyEntity entity){
         if (entity.obj_model != null) {
 

@@ -1,6 +1,7 @@
 package controller;
 
 import controller.entities.MyEntity;
+import javafx.scene.image.Image;
 import model.characters.Hero;
 import view.classes.MyImageView;
 import view.fxmlController.Battle;
@@ -24,7 +25,7 @@ public class BattleController {
 
     public void healPlayer(MyEntity myEntity){
         //We set the default image
-        myEntity.view.setImage(myEntity.view.getBattleDefaultIm());
+        battle.setImageFromImage(myEntity.view.getBattleDefaultIm());
 
         //We need to get which SexyPoster to remove it from the inventory (FlowPane)
         MyImageView sexyPoster;
@@ -78,7 +79,7 @@ public class BattleController {
         else {
 
             //We change the image of the enemy
-            myEntity.view.setImage(myEntity.view.getBattleDefeatIm());
+            battle.setImageFromURL(myEntity.view.getBattleDefeat());
 
             //Commentary
             battle.setCommentary(myEntity.enemy_model.getDefeatScript() + "YOU WON THE BATTLE ! Good game HOUGA BOUGA !");
@@ -103,7 +104,7 @@ public class BattleController {
 
     public void heroAttack(MyEntity enemy){
         //We set the default image
-        enemy.view.setImage(enemy.view.getBattleDefaultIm());
+        battle.setImageFromImage(enemy.view.getBattleDefaultIm());
 
         //The player attack the enemy
         MY_HERO.getModel().attack(enemy.enemy_model);

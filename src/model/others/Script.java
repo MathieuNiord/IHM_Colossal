@@ -53,7 +53,7 @@ public class Script {
 
     // - End messages for the JavaFx project -
     public static final String WIN_ENDING_1 = "You managed to run away from the lab and escape those fucking Nazis ! You are free ! " +
-                                              "You even decide to change your name to \"" + Game.HERO.getName() + "\" which is certainly not" +
+                                              "You even decide to change your name to \"" + Game.HERO.getName() + "\" which is certainly not " +
                                               "the better choice of your life but whatever you're free now !";
     public static final String WIN_ENDING_2 = (CURRENT_YEAR - 1984) + " years later you become the head of the stock exchange...";
     public static final String WIN_ENDING_3 = "... become a rising star of cinema...";

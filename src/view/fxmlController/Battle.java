@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -144,6 +145,14 @@ public class Battle implements Initializable {
         this.progressBarEnemy.progressProperty().bind(this.enemy.getHpProperty().divide(this.eLife));
     }
 
+    public void setImageFromURL(String url){
+        this.enemyIm.setImage(new Image(url));
+    }
+
+    public void setImageFromImage(Image image) {
+        this.enemyIm.setImage(image);
+    }
+
     public void setCommentary(String text){ this.commentary = text; }
 
     public void addCommentary(String text){ this.commentary += text; }
@@ -175,7 +184,8 @@ public class Battle implements Initializable {
         this.labelCommentary.setText(this.enemy.getOpeningScript() + "\nYou come face to face with " + this.enemy.NAME.toUpperCase());
 
         //Image
-        this.enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
+        //this.enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
+        this.enemyIm.setImage(new Image(this.enemyImV.getBattleOpening()));
 
         livesDisplay();
 

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.characters.Enemy;
 import model.characters.Hero;
@@ -25,6 +26,7 @@ import static view.ressources.GameResources.*;
 
 public class Battle implements Initializable {
 
+
     /*** === ATTRIBUTES === ***/
 
     //Labels
@@ -38,6 +40,10 @@ public class Battle implements Initializable {
     private Label labelHeroLife;
     @FXML
     private Label labelEnemyLife;
+    @FXML
+    private Pane pane_battle;
+    @FXML
+    private Pane pane_commentary;
 
     //ProgressBars
     @FXML

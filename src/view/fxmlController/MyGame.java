@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import model.others.Script;
@@ -34,6 +35,8 @@ public class MyGame implements Initializable {
 
     /** === ATTRIBUTES === **/
 
+    @FXML
+    private Pane paneMain;
     @FXML
     private MyGridPane gridPaneGame;
     @FXML

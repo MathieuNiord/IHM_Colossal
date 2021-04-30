@@ -20,6 +20,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label alignment="CENTER" layoutX="374.0" layoutY="689.0" prefHeight="17.0" prefWidth="532.0" text="* By pressing this button you'll launch the game and you'll give all your esteem to the creators" textAlignment="CENTER" textFill="WHITE" />
+      <Label alignment="CENTER" layoutX="278.0" layoutY="689.0" prefHeight="17.0" prefWidth="724.0" text="* By pressing this button you'll launch the game and you'll give all your esteem to the creators" textAlignment="CENTER" textFill="WHITE" />
+      <Label layoutX="1202.0" layoutY="689.0" text="V 1.0 - 2021" textFill="WHITE" />
    </children>
 </AnchorPane>

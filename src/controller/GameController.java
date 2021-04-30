@@ -179,6 +179,7 @@ public class GameController {
 
             if (d.isUnlock()) {
                 heroCrossDoor(entity, hero);
+                myGame.setOnGameTitle(hero.getPlace().getName());
                 myGame.refreshMap();
             }
 

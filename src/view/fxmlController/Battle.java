@@ -120,12 +120,10 @@ public class Battle implements Initializable {
 
         //Else the game is over
         else {
-            //We set a new image of the hero
-            // - TODO Hero corpse -
-            //We can now close the battle view.stage
+            //We can now close the battle stage
             Stage stage = (Stage) this.buttonQuit.getScene().getWindow();
             stage.close();
-            //We can close the main view.stage
+            //We can close the main stage
             ((Stage) (HERO_IM.getInvView().getScene().getWindow())).close();
             //We now open the game over view
             MyStage gameOver = new MyStage("../fxml/game_over.fxml");
@@ -184,7 +182,6 @@ public class Battle implements Initializable {
         this.labelCommentary.setText(this.enemy.getOpeningScript() + "\nYou come face to face with " + this.enemy.NAME.toUpperCase());
 
         //Image
-        //this.enemyIm.setImage(this.enemyImV.getBattleOpeningIm());
         this.enemyIm.setImage(new Image(this.enemyImV.getBattleOpening()));
 
         livesDisplay();

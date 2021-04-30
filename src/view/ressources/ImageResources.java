@@ -87,7 +87,7 @@ public class ImageResources {
 
     // - End -
     public final static Image END_01 = new Image("assets/images/end/escape.jpg");
-    public final static Image END_02 = new Image("assets/images/other/Heart.png"); //TODO
+    public final static Image END_02 = new Image("assets/images/other/Heart.png");
     public final static Image END_03 = new Image("assets/images/end/celebrity.jpg");
     public final static Image END_04 = new Image("assets/images/end/president.jpg");
     public final static Image END_05 = new Image("assets/images/end/harem.jpg");

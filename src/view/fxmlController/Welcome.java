@@ -49,7 +49,7 @@ public class Welcome implements Initializable {
 
             alert.showAndWait();
 
-            // The game Stageq
+            // The game Stage
             Stage currentStage = (Stage) okButton.getScene().getWindow();
             currentStage.close();
             MyDialog myStage = new MyDialog("../fxml/game.fxml");

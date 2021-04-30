@@ -1,7 +1,6 @@
 package controller;
 
 import controller.entities.MyEntity;
-import javafx.scene.image.Image;
 import model.characters.Hero;
 import view.classes.MyImageView;
 import view.fxmlController.Battle;

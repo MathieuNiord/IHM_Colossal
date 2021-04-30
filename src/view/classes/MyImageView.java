@@ -9,8 +9,8 @@ public class MyImageView extends ImageView {
 
     public final int x,y;
     private Image battleDefaultIm = null;
-    private Image battleOpeningIm = null;
-    private Image battleDefeatIm = null;
+    private String battleOpening = null;
+    private String battleDefeat = null;
 
 
     /*** CONSTRUCTOR ***/
@@ -27,11 +27,11 @@ public class MyImageView extends ImageView {
         this.y = y;
     }
 
-    public MyImageView(Image path, Image battle, Image opening, Image defeatAnim, int x, int y){
+    public MyImageView(Image path, Image battle, String opening, String defeatAnim, int x, int y){
         super(path);
         this.battleDefaultIm = battle;
-        this.battleOpeningIm = opening;
-        this.battleDefeatIm = defeatAnim;
+        this.battleOpening = opening;
+        this.battleDefeat = defeatAnim;
         this.x = x;
         this.y = y;
     }
@@ -43,20 +43,16 @@ public class MyImageView extends ImageView {
 
     // -- Enemies get Images --
 
-    //Battle default Image
+    //Get the battle default Image
     public Image getBattleDefaultIm() {
         return this.battleDefaultIm;
     }
 
-    //Battle opening Image
-    public Image getBattleOpeningIm() {
-        return this.battleOpeningIm;
-    }
+    //Get battle opening gif url
+    public String getBattleOpening() {return this.battleOpening;}
 
-    //Battle defeat gif
-    public Image getBattleDefeatIm() {
-        return this.battleDefeatIm;
-    }
+    //Get battle defeat gif url
+    public String getBattleDefeat() {return this.battleDefeat;}
 
 
     // --- SETTER ---

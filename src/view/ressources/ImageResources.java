@@ -32,20 +32,20 @@ public class ImageResources {
     // - Enemies -
     public final static Image IMAGE_ACCOUNT_GUY_DEFAULT = new Image("assets/images/characters/AccountGuyDefault.png");
     public final static Image IMAGE_ACCOUNT_GUY_BATTLE = new Image("assets/images/characters/AccountGuyDefault.png");
-    public final static Image IMAGE_ACCOUNT_GUY_OPENING = new Image("assets/images/characters/AcountGuyOpening.png");
-    public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_ANIM = new Image("assets/images/characters/AccountGuyLoose.png");
+    public final static String URL_ACCOUNT_GUY_OPENING = "assets/images/characters/AcountGuyOpening.png";
+    public final static String URL_ACCOUNT_CUY_DEFEAT = "assets/images/characters/AccountGuyLoose.png";
     public final static Image IMAGE_ACCOUNT_GUY_DEFEAT_FIX = new Image("assets/images/characters/AccountGuyLoose.png");
 
     public final static Image IMAGE_NAZI_ZOMBIE_DEFAULT = new Image("assets/images/characters/NaziZombieDefault.png");
     public final static Image IMAGE_NAZI_ZOMBIE_BATTLE = new Image("assets/images/characters/NaziZombieBattleDefault.png");
-    public final static Image IMAGE_NAZI_ZOMBIE_OPENING = new Image("assets/images/characters/NaziZombieOpening.gif");
-    public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_ANIM = new Image("assets/images/characters/NaziZombieLoose.gif");
+    public final static String URL_NAZI_ZOMBIE_OPENING = "assets/images/characters/NaziZombieOpening.gif";
+    public final static String URL_NAZI_ZOMBIE_DEFEAT = "assets/images/characters/NaziZombieLoose.gif";
     public final static Image IMAGE_NAZI_ZOMBIE_DEFEAT_FIX = new Image("assets/images/characters/NaziZombieLoose.png");
 
     public final static Image IMAGE_BOSS_DEFAULT = new Image("assets/images/characters/BossDefault.png");
     public final static Image IMAGE_BOSS_BATTLE = new Image("assets/images/characters/BossBattleDefault.png");
-    public final static Image IMAGE_BOSS_OPENING = new Image("assets/images/characters/BossOpening.gif");
-    public final static Image IMAGE_BOSS_DEFEAT_ANIM = new Image("assets/images/characters/BossBattleLoose.gif");
+    public final static String URL_BOSS_OPENING = "assets/images/characters/BossOpening.gif";
+    public final static String URL_BOSS_DEFEAT = "assets/images/characters/BossBattleLoose.gif";
     public final static Image IMAGE_BOSS_DEFEAT_FIX = new Image("assets/images/characters/BossLoose.png");
 
 
